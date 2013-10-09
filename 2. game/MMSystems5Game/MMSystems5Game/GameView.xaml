@@ -1,0 +1,76 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MMSystems5Game.GameView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid  Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Grid.Column="0" Source="gras.png"></Image>
+            <Grid  x:Name="bord" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+  
+                <Image Grid.Column="0" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="1" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="2" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="3" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="4" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="5" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="6" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="7" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Grid.Column="8" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
+                <Image Source="SpelerRood.PNG" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+
+
+
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Column="2" >
+            <Button Click="Gooi">Gooi</Button>
+            <Button Click="Exit">Exit</Button>
+            <TextBlock x:Name="PlaatsOpBord" Height="35"></TextBlock>
+            <TextBlock x:Name="AantalDobbelsteen" Height="35"></TextBlock>
+        </StackPanel>
+        
+    </Grid>
+
+</phone:PhoneApplicationPage>
