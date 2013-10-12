@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMSystems5Silverlight", "MMSystems5Silverlight\MMSystems5Silverlight.csproj", "{FB245E61-640B-4ED7-8D0F-BEEF508F8AE3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{224A04D5-9BF5-4E08-959B-80A88F72A22C} = {224A04D5-9BF5-4E08-959B-80A88F72A22C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMSystems5Silverlight.Web", "MMSystems5Silverlight.Web\MMSystems5Silverlight.Web.csproj", "{224A04D5-9BF5-4E08-959B-80A88F72A22C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB245E61-640B-4ED7-8D0F-BEEF508F8AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB245E61-640B-4ED7-8D0F-BEEF508F8AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB245E61-640B-4ED7-8D0F-BEEF508F8AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB245E61-640B-4ED7-8D0F-BEEF508F8AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8db0095e-8c3e-4d77-8b26-d8902f9b6525" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2738/GanzenbordService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="5073e016-0ca8-4b2f-8aa3-a7f5806250a8" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GanzenbordService1.xsd" MetadataType="Schema" ID="177668b9-6f62-492d-8f09-5c08f1b354cf" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="d2b8a226-326b-42ec-8d7a-5ab35985f01f" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?wsdl" />
+    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="d274ecee-c832-46c8-8431-6ef2f8f27f99" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?disco" />
+    <MetadataFile FileName="GanzenbordService11.xsd" MetadataType="Schema" ID="f0be08a8-1939-412e-be93-a3077ba0e259" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

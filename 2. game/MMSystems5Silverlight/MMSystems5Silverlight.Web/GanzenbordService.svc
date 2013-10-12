@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MMSystems5Silverlight.Web.GanzenbordService" CodeBehind="GanzenbordService.svc.cs" %>

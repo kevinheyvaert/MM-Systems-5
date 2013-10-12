@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IGanzenbordService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="../GanzenbordService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IGanzenbordService"
+                contract="GanzenBordServiceLocal.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService" />
+        </client>
+    </system.serviceModel>
+</configuration>
