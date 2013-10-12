@@ -26,6 +26,7 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Image Grid.Row="1" Grid.Column="0" Source="gras.png"></Image>
+            
             <Grid  x:Name="bord" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -58,11 +59,12 @@
                 <Image Grid.Column="6" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
                 <Image Grid.Column="7" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
                 <Image Grid.Column="8" Grid.Row="6" Source="Plaatsbordrand2.png"></Image>
-                <Image Source="SpelerRood.PNG" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+                <Image  Source="SpelerRood.PNG" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
 
 
 
             </Grid>
+            
         </Grid>
         <StackPanel Grid.Column="2" >
             <Button Click="Gooi">Gooi</Button>
