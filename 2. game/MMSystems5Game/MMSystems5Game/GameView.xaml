@@ -9,16 +9,22 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid >
+    
+    <Grid  >
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Achtergrond.jpeg"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+
         <Grid  Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -65,14 +71,23 @@
 
             </Grid>
             
+
+         
         </Grid>
+        
         <StackPanel Grid.Column="2" >
-            <Button Click="Gooi">Gooi</Button>
+            <Button BorderThickness="0" Height="150" Width="150" x:Name="gooi" Content="Dobbel"   Click="Gooi">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
+                </Button.Background>
+             </Button>
             <Button Click="Exit">Exit</Button>
-            <TextBlock x:Name="PlaatsOpBord" Height="35"></TextBlock>
-            <TextBlock x:Name="AantalDobbelsteen" Height="35"></TextBlock>
+            <TextBlock FontSize="20" TextAlignment="Center" x:Name="PlaatsOpBord" Height="35"></TextBlock>
+            <TextBlock FontSize="20" TextAlignment="Center" x:Name="AantalDobbelsteen" Height="35"></TextBlock>
         </StackPanel>
         
+        
     </Grid>
+    
 
 </phone:PhoneApplicationPage>

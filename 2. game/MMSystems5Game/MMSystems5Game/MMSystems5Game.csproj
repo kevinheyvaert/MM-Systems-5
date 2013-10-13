@@ -106,14 +106,17 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Achtergrond.jpeg" />
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="dobbelsteen.png" />
     <Content Include="ganzenbord.jpg" />
     <Content Include="gras.png" />
+    <Content Include="GroenA.png" />
     <Content Include="Plaatsbordrand2.png" />
     <Content Include="SpelerRood.png" />
     <Content Include="SplashScreenImage.jpg" />
