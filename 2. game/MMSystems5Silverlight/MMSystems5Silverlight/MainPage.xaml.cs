@@ -20,6 +20,9 @@ namespace MMSystems5Silverlight
         public MainPage()
         {
             InitializeComponent();
+            Speelbord = new Bord();
+            Speler = new Player();
+            this.DataContext = Speler;
            client = new GanzenBordServiceLocal.GanzenbordServiceClient();
            client.GooiCompleted += client_GooiCompleted;
            client.GooiAsync();
@@ -27,9 +30,10 @@ namespace MMSystems5Silverlight
 
         void client_GooiCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            throw new NotImplementedException();
-            client.GooiAsync();
+            //throw new NotImplementedException();
+            //client.GooiAsync();
             //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
+            client.GooiAsync();
             AantalDobbelsteen.Text = Speler.Locatie.ToString();
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
@@ -38,7 +42,16 @@ namespace MMSystems5Silverlight
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            client.GooiCompleted += client_GooiCompleted;
+            
+            //Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
+            //Dobbelsteen1.GeefWaardeDobbelsteen();
+            //// Moet dit hier staan ? 
+            //Speler.Locatie = Dobbelsteen1.Waarde + Speler.Locatie;
+            //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
+            //AantalDobbelsteen.Text = Speler.Locatie.ToString();
+            //Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
+            //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+
         }
     }
 }
