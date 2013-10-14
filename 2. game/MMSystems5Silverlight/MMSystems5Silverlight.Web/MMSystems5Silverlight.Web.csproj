@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Bord.cs" />
     <Compile Include="Dobbelsteen.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="GanzenbordService.svc.cs">
       <DependentUpon>GanzenbordService.svc</DependentUpon>
     </Compile>
