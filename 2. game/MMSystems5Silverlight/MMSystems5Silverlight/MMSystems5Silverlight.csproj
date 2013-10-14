@@ -104,6 +104,9 @@
     <None Include="Service References\GanzenBordServiceLocal\GanzenbordService.disco" />
     <None Include="Service References\GanzenBordServiceLocal\configuration91.svcinfo" />
     <None Include="Service References\GanzenBordServiceLocal\configuration.svcinfo" />
+    <None Include="Service References\GanzenBordServiceLocal\GanzenbordService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GanzenBordServiceLocal\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

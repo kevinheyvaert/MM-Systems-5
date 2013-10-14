@@ -27,24 +27,31 @@ namespace MMSystems5Silverlight
            client = new GanzenBordServiceLocal.GanzenbordServiceClient();
            client.GooiCompleted += client_GooiCompleted;
         
-           client.GooiAsync();
+          
         }
 
-        void client_GooiCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        void client_GooiCompleted(object sender, GanzenBordServiceLocal.GooiCompletedEventArgs e)
         {
-            //throw new NotImplementedException();
-            //client.GooiAsync();
-            //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
-            //client.GooiAsync();
-            AantalDobbelsteen.Text = Speler.Locatie.ToString();
+
+            AantalDobbelsteen.Text = e.Result.ToString();
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+            
         }
+
+        
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            client.GooiAsync();
+
+            //throw new NotImplementedException();
+            //client.GooiAsync();
+            //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
+            //client.GooiAsync();
+           
             //Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
             //Dobbelsteen1.GeefWaardeDobbelsteen();
             //// Moet dit hier staan ? 

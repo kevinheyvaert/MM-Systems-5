@@ -15,6 +15,6 @@ namespace MMSystems5Silverlight.Web
         void DoWork();
 
         [OperationContract]
-        void Gooi();
+        string Gooi();
     }
 }

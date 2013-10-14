@@ -15,11 +15,11 @@ namespace MMSystems5Silverlight.Web
         {
         }
 
-        public void Gooi()
+        public string  Gooi()
         {
 
-            Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
-            Dobbelsteen1.GeefWaardeDobbelsteen();
+            //Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
+           
             
             // Moet dit hier staan ? 
             //Speler.Locatie = Dobbelsteen1.Waarde + Speler.Locatie;
@@ -27,6 +27,7 @@ namespace MMSystems5Silverlight.Web
             //AantalDobbelsteen.Text = Speler.Locatie.ToString();
             //Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+            return "Hallo";
         }
     }
 }
