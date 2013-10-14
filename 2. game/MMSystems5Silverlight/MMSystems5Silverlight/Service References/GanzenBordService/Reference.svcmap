@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="71615d69-a4d9-468b-9766-56b9a03dcc03" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cb8298d8-1d98-47d3-864c-ee16e146f212" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,9 +23,9 @@
     <MetadataSource Address="http://localhost:2738/GanzenbordService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="f368967a-d4f1-4c2e-aa8d-e999180c787a" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?xsd=xsd0" />
-    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="8373365c-6bf7-4c26-aed5-05f34fc7bc6e" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?wsdl" />
-    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="5f55d140-c381-4e28-a477-64372e9c80b8" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?disco" />
+    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="326b7499-1241-43a4-a6fd-c58625d40ed7" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="e97e84ad-960f-4a14-ab93-a8d2503972e4" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?wsdl" />
+    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="4ca79aae-fb8d-4989-aca0-e26ab53f0940" SourceId="1" SourceUrl="http://localhost:2738/GanzenbordService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
