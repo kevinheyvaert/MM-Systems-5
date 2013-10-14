@@ -26,7 +26,7 @@ namespace MMSystems5Silverlight.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/Gooi", ReplyAction="http://tempuri.org/IGanzenbordService/GooiResponse")]
         System.IAsyncResult BeginGooi(System.AsyncCallback callback, object asyncState);
         
-        string EndGooi(System.IAsyncResult result);
+        int EndGooi(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -44,10 +44,10 @@ namespace MMSystems5Silverlight.ServiceReference1 {
             this.results = results;
         }
         
-        public string Result {
+        public int Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -178,7 +178,7 @@ namespace MMSystems5Silverlight.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string MMSystems5Silverlight.ServiceReference1.IGanzenbordService.EndGooi(System.IAsyncResult result) {
+        int MMSystems5Silverlight.ServiceReference1.IGanzenbordService.EndGooi(System.IAsyncResult result) {
             return base.Channel.EndGooi(result);
         }
         
@@ -187,7 +187,7 @@ namespace MMSystems5Silverlight.ServiceReference1 {
         }
         
         private object[] OnEndGooi(System.IAsyncResult result) {
-            string retVal = ((MMSystems5Silverlight.ServiceReference1.IGanzenbordService)(this)).EndGooi(result);
+            int retVal = ((MMSystems5Silverlight.ServiceReference1.IGanzenbordService)(this)).EndGooi(result);
             return new object[] {
                     retVal};
         }
@@ -309,9 +309,9 @@ namespace MMSystems5Silverlight.ServiceReference1 {
                 return _result;
             }
             
-            public string EndGooi(System.IAsyncResult result) {
+            public int EndGooi(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("Gooi", _args, result)));
+                int _result = ((int)(base.EndInvoke("Gooi", _args, result)));
                 return _result;
             }
         }

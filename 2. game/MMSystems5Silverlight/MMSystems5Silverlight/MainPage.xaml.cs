@@ -34,6 +34,8 @@ namespace MMSystems5Silverlight
         {
 
             AantalDobbelsteen.Text = e.Result.ToString();
+            Speler.Locatie = Speler.Locatie + e.Result;
+            PlaatsOpBord.Text = Speler.Locatie.ToString();
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
             
