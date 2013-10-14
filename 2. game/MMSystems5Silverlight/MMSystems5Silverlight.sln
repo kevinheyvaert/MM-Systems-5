@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMSystems5Silverlight", "MM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMSystems5Silverlight.Web", "MMSystems5Silverlight.Web\MMSystems5Silverlight.Web.csproj", "{224A04D5-9BF5-4E08-959B-80A88F72A22C}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "MMSystems5Silverlight.Web.Azure2", "MMSystems5Silverlight.Web.Azure2\MMSystems5Silverlight.Web.Azure2.ccproj", "{F5AF17EF-0B4D-451E-875C-6C347E152070}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224A04D5-9BF5-4E08-959B-80A88F72A22C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AF17EF-0B4D-451E-875C-6C347E152070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5AF17EF-0B4D-451E-875C-6C347E152070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5AF17EF-0B4D-451E-875C-6C347E152070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5AF17EF-0B4D-451E-875C-6C347E152070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
