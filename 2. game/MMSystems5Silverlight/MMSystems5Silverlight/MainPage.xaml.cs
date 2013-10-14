@@ -14,7 +14,7 @@ namespace MMSystems5Silverlight
 {
     public partial class MainPage : UserControl
     {
-        GanzenBordServiceLocal.GanzenbordServiceClient client;
+        ServiceReference1.GanzenbordServiceClient client;
         
         Bord Speelbord;
         Player Speler;
@@ -24,13 +24,13 @@ namespace MMSystems5Silverlight
             Speelbord = new Bord();
             Speler = new Player();
             this.DataContext = Speler;
-           client = new GanzenBordServiceLocal.GanzenbordServiceClient();
+           client = new ServiceReference1.GanzenbordServiceClient();
            client.GooiCompleted += client_GooiCompleted;
         
           
         }
 
-        void client_GooiCompleted(object sender, GanzenBordServiceLocal.GooiCompletedEventArgs e)
+        void client_GooiCompleted(object sender, ServiceReference1.GooiCompletedEventArgs e)
         {
 
             AantalDobbelsteen.Text = e.Result.ToString();

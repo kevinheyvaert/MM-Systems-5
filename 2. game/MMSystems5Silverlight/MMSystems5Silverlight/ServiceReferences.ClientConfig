@@ -11,7 +11,7 @@
         <client>
             <endpoint address="../GanzenbordService.svc" binding="basicHttpBinding"
                 bindingConfiguration="BasicHttpBinding_IGanzenbordService"
-                contract="GanzenBordServiceLocal.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService" />
+                contract="ServiceReference1.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService" />
         </client>
     </system.serviceModel>
 </configuration>
