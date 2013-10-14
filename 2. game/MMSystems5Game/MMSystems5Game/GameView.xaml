@@ -31,7 +31,7 @@
                 <RowDefinition Height="25*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Grid.Row="1" Grid.Column="0" Source="gras.png"></Image>
+  
             
             <Grid  x:Name="bord" Grid.Row="1">
                 <Grid.RowDefinitions>
