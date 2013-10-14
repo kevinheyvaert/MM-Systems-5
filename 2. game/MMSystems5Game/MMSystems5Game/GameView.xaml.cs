@@ -51,6 +51,8 @@ namespace MMSystems5Game
             Speler.PlaatsR =Speelbord.Plaats[Speler.Locatie, 1];
         }
 
+
+        //http://cespage.com/silverlight/tutorials/wp7tut7.html
         private void Add(Grid grid, int row, int column)
         {
             Ellipse _dot = new Ellipse();
