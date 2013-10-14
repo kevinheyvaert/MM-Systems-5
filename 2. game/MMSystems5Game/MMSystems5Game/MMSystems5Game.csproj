@@ -114,9 +114,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="dobbelsteen.png" />
+    <Content Include="Einde.png" />
     <Content Include="ganzenbord.jpg" />
-    <Content Include="gras.png" />
-    <Content Include="Plaatsbordrand2.png" />
+    <Content Include="Plaatsbordrand2b.png" />
+    <Content Include="Plaatsbordrand2l.png" />
+    <Content Include="Plaatsbordrand2o.png" />
+    <Content Include="Plaatsbordrand2os.png" />
+    <Content Include="Plaatsbordrand2r.png" />
+    <Content Include="Plaatsbordrandborder.png" />
+    <Content Include="Plaatsbordrandborderl.png" />
+    <Content Include="Plaatsbordrandborderlb.png" />
+    <Content Include="Plaatsbordrandborderr.png" />
     <Content Include="SpelerRood.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>

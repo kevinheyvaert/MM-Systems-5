@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ServiceConfiguration serviceName="MMSystems5Silverlight.Web.Azure1" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-03.2.0">
-  <Role name="MMSystems5Silverlight.Web">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=kevinheyvaertstorage;AccountKey=vCA6Ysn7WVksIR/Jzq6iJ/GWY8WGnMBpk3wGXFP2PR5EfY3b7XIkv/zdurBe7pV3uvTC7VVfMjoVyPNbbMoJQQ==" />
-    </ConfigurationSettings>
-  </Role>
-</ServiceConfiguration>

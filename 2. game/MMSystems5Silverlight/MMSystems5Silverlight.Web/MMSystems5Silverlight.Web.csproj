@@ -88,7 +88,9 @@
     <Content Include="MMSystems5SilverlightTestPage.aspx" />
     <Content Include="MMSystems5SilverlightTestPage.html" />
     <Content Include="Silverlight.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bord.cs" />
