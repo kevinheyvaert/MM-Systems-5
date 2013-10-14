@@ -15,6 +15,7 @@ namespace MMSystems5Silverlight
     public partial class MainPage : UserControl
     {
         GanzenBordServiceLocal.GanzenbordServiceClient client;
+        
         Bord Speelbord;
         Player Speler;
         public MainPage()
@@ -25,6 +26,7 @@ namespace MMSystems5Silverlight
             this.DataContext = Speler;
            client = new GanzenBordServiceLocal.GanzenbordServiceClient();
            client.GooiCompleted += client_GooiCompleted;
+        
            client.GooiAsync();
         }
 
@@ -33,7 +35,7 @@ namespace MMSystems5Silverlight
             //throw new NotImplementedException();
             //client.GooiAsync();
             //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
-            client.GooiAsync();
+            //client.GooiAsync();
             AantalDobbelsteen.Text = Speler.Locatie.ToString();
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
