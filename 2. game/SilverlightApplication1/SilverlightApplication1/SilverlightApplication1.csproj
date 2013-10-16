@@ -87,6 +87,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Ganzenbordcloud\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -107,13 +112,28 @@
     <None Include="Service References\Ganzebord\GanzenbordService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Ganzenbordcloud\GanzenbordService.disco" />
+    <None Include="Service References\Ganzenbordcloud\configuration91.svcinfo" />
+    <None Include="Service References\Ganzenbordcloud\configuration.svcinfo" />
+    <None Include="Service References\Ganzenbordcloud\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\Ganzenbordcloud\GanzenbordService.wsdl" />
+    <None Include="Service References\Ganzenbordcloud\GanzenbordService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ganzenbordcloud\GanzenbordService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Ganzebord\" />
+    <WCFMetadataStorage Include="Service References\Ganzenbordcloud\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Ganzebord\GanzenbordService.disco" />
