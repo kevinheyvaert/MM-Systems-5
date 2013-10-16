@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d3a49d67-57b8-480a-850f-e7164e037c53" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1091/GanzenbordService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="2da029a1-f5b3-4f05-adf8-564f85e48737" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?wsdl" />
+    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="496801ca-5ed6-439f-ba9f-ffbe43dae1a4" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GanzenbordService1.xsd" MetadataType="Schema" ID="1c3d7907-22e6-4591-aaaa-5cf0f45e7924" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="2c420224-52ef-433b-a6c7-c6676cb8ec70" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
