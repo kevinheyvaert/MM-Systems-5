@@ -15,79 +15,83 @@ namespace MMSystems5Silverlight.Web
         void DoWork();
 
         [OperationContract]
-        int Gooi(Player currentplayer);
+        int Gooi();
 
-        [DataContract]
-        public class Bord
-        {
-            [DataMember]
-            public int[] plaats;
-        }
+        //[DataContract]
+        //public class Bord
+        //{
+        //    [DataMember]
+        //    public int[] plaats;
+        //}
 
-        [DataContract]
-        public class Lobby
-        {
-            public Lobby(string playername)
-            {
-                HostPlayer = new Player() { UserName = playername };
-                Players = new List<Player>();
-                Players.Add(HostPlayer);
-                this.LobbyName = playername;
-                WachtOpPlayers = true;
+        //[DataContract]
+        //public class Lobby
+        //{
+        //    public Lobby(string playername)
+        //    {
+        //        HostPlayer = new Player() { UserName = playername };
+        //        Players = new List<Player>();
+        //        Players.Add(HostPlayer);
+        //        this.LobbyName = playername;
+        //        WachtOpPlayers = true;
 
-            }
+        //    }
 
-            [DataMember]
-            public string LobbyName { get; set; }
-            [DataMember]
-            public List<Player> Players { get; set; }
-            [DataMember]
-            public Player HostPlayer { get; private set; }
-            [DataMember]
-            public bool WachtOpPlayers{
-                get {return WachtOpPlayers}
-                set{
-                    if (Players.Count > 4)
-                    {
-                        WachtOpPlayers = false;
-                    }
-                    }}
-          
-        }
+        //    [DataMember]
+        //    public string LobbyName { get; set; }
+        //    [DataMember]
+        //    public List<Player> Players { get; set; }
+        //    [DataMember]
+        //    public Player HostPlayer { get; private set; }
+        //    [DataMember]
+        //    public bool WachtOpPlayers
+        //    {
+        //        get {return WachtOpPlayers}
+        //        set
+        //        {
+        //            if (Players.Count > 4)
+        //            {
+        //                WachtOpPlayers = false;
+        //            }
+        //        }
+        //    }
 
-        public void UpdateLobby()
-        { 
+        //}
 
-        
-        }
+        //public void UpdateLobby()
+        //{
 
-        private static List<Lobby> gameLobbies = new List<Lobby>();
-    
-        [OperationContract]
-        public IEnumerable<Lobby> GetLobbies()
-        {
-            var waiting = from p in gameLobbies where p.WachtOpPlayers select p;
-            return waiting;
-        }
 
-        [OperationContract]
-        public bool CreateLobby(string playername) 
-        { Lobby lob = new Lobby(playername);
-          gameLobbies.Add(lob); 
-            return true; 
-        } 
-          
-        [OperationContract]         
-        public bool EnterLobby(string playername)         
-          {             
-              if (playername != null)             
-          {                  
-                  //var lob =from p in gameLobbies where playername == p.LobbyName select p).FirstOrDefault();                 
-                  //    lob.Players.Add(new Player() {UserName = playername});                     
-                  //    return true;                 
+        //}
+
+        //private static List<Lobby> gameLobbies = new List<Lobby>();
+
+        //[OperationContract]
+        //public IEnumerable<Lobby> GetLobbies()
+        //{
+        //    var waiting = from p in gameLobbies where p.WachtOpPlayers select p;
+        //    return waiting;
+        //}
+
+        //[OperationContract]
+        //public bool CreateLobby(string playername)
+        //{
+        //    Lobby lob = new Lobby(playername);
+        //    gameLobbies.Add(lob);
+        //    return true;
+        //}
+
+        //[OperationContract]
+        //public bool EnterLobby(string playername)         
+        //  {             
+        //      if (playername != null)             
+        //  {                  
+        //          var lob =from p in gameLobbies where playername == p.LobbyName select p).FirstOrDefault();                 
+        //              lob.Players.Add(new Player() {UserName = playername});                     
+        //              return true;                 
                               
-              }                        
-              return false;         
-          } 
+        //      }                        
+        //      return false;         
+        //  } 
     }
 }

@@ -37,8 +37,10 @@ namespace MMSystems5Silverlight
         void client1_GooiCompleted(object sender, GanzenBordServiceAzure.GooiCompletedEventArgs e)
         {
             //throw new NotImplementedException();
+            //Speler.Locatie = e.Result;
+            Speler.Locatie = Speler.Locatie + e.Result;
             AantalDobbelsteen.Text = e.Result.ToString();
-            Speler.Locatie = e.Result;
+      
             PlaatsOpBord.Text = Speler.Locatie.ToString();
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
             Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
@@ -59,7 +61,7 @@ namespace MMSystems5Silverlight
         {
 
             //client.GooiAsync();
-            client1.GooiAsync(Speler);
+            client1.GooiAsync();
 
             
 
