@@ -19,6 +19,7 @@ namespace MMSystems5Game
 {
     public partial class GameView : PhoneApplicationPage 
     {
+        GanzenBordServiceCloud.GanzenbordServiceClient client;
         Bord Speelbord;
         Player Speler;
         public GameView()
@@ -28,6 +29,19 @@ namespace MMSystems5Game
             Speelbord = new Bord();
             Speler = new Player();
             this.DataContext = Speler;
+
+            client = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            client.GooiCompleted += client_GooiCompleted;
+        }
+
+        void client_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
+        {
+            AantalDobbelsteen.Text = e.Result.ToString();
+            Speler.Locatie = Speler.Locatie + e.Result;
+            PlaatsOpBord.Text = Speler.Locatie.ToString();
+            gooi.Content = Dice(e.Result);
+            Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
+            Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -38,17 +52,9 @@ namespace MMSystems5Game
        
         public void Gooi(object sender, RoutedEventArgs e)
         {
+            client.GooiAsync();
             
             
-            Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
-            Dobbelsteen1.GeefWaardeDobbelsteen();
-            gooi.Content = Dice(Dobbelsteen1.Waarde);
-            // Moet dit hier staan ? 
-            Speler.Locatie = Dobbelsteen1.Waarde + Speler.Locatie;
-            PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
-            AantalDobbelsteen.Text = Speler.Locatie.ToString();
-            Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-            Speler.PlaatsR =Speelbord.Plaats[Speler.Locatie, 1];
         }
 
 
