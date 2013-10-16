@@ -28,7 +28,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Play" HorizontalAlignment="Left" Margin="142,53,0,0" VerticalAlignment="Top" Width="187" Click="Play"/>
+            <Button Content="Lobby" HorizontalAlignment="Left" Margin="142,53,0,0" VerticalAlignment="Top" Width="187" Click="Play"/>
             <Button Content="High Scores" HorizontalAlignment="Left" Margin="142,155,0,0" VerticalAlignment="Top" Click="View_Scores"/>
             <Button Content="Exit" HorizontalAlignment="Left" Margin="142,264,0,0" VerticalAlignment="Top" Width="187" Click="Exit_Game"/>
 

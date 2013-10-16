@@ -19,7 +19,7 @@ namespace MMSystems5Game
 
         private void Play(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
+            NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
         }
 
         private void View_Scores(object sender, RoutedEventArgs e)

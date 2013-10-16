@@ -8,11 +8,10 @@ namespace MMSystems5Silverlight.Web
     public class Gamestate
     {
         List<Player> Players;
-        Player ActivePlayer;
-        Bord Mainbord;
+        public Player ActivePlayer;
         GameFase CurrentFase;
 
     }
 
-    enum GameFase { Buying, Walking, Bargaining }  //Aanpassen
+    enum GameFase { Ingelogd, Aanbeurt }  
 }

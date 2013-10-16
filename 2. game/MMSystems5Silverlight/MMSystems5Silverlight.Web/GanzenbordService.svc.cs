@@ -11,23 +11,23 @@ namespace MMSystems5Silverlight.Web
     // NOTE: In order to launch WCF Test Client for testing this service, please select GanzenbordService.svc or GanzenbordService.svc.cs at the Solution Explorer and start debugging.
     public class GanzenbordService : IGanzenbordService
     {
+        
         public void DoWork()
         {
         }
-
-        public int  Gooi()
-        {
-
-            Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
-           
+        Gamestate status = new Gamestate();
+        public int  Gooi(Player currentplayer)
+        {   
             
-            // Moet dit hier staan ? 
-            //Speler.Locatie = Dobbelsteen1.Waarde + Speler.Locatie;
-            //PlaatsOpBord.Text = Dobbelsteen1.Waarde.ToString();
-            //AantalDobbelsteen.Text = Speler.Locatie.ToString();
-            //Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-            //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+            Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
+            currentplayer.Locatie = currentplayer.Locatie+Dobbelsteen1.GeefWaardeDobbelsteen();
+            status.ActivePlayer = currentplayer;
+            
             return Dobbelsteen1.GeefWaardeDobbelsteen();
         }
+
+        
+
+
     }
 }
