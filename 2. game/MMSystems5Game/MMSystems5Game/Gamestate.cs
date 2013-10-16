@@ -14,5 +14,5 @@ namespace MMSystems5Game
 
     }
 
-    enum GameFase { Buying, Walking, Bargaining }  //Aanpassen
+    enum GameFase { Beurt, InLobby, Speleinde }  //Aangepast
 }
