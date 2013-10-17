@@ -41,6 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -61,6 +62,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="ClientBin\SilverlightApplication1.xap" />
     <Content Include="GanzenbordService.svc" />
     <Content Include="Silverlight.js" />
@@ -71,15 +76,27 @@
   <ItemGroup>
     <Compile Include="Bord.cs" />
     <Compile Include="Dobbelsteen.cs" />
+    <Compile Include="DTO\Lobby.cs" />
+    <Compile Include="DTO\Player.cs" />
+    <Compile Include="DTO\PlayerLobby.cs" />
     <Compile Include="Gamestate.cs" />
+    <Compile Include="GanzenBord.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GanzenBord.dbml</DependentUpon>
+    </Compile>
     <Compile Include="GanzenbordService.svc.cs">
       <DependentUpon>GanzenbordService.svc</DependentUpon>
     </Compile>
     <Compile Include="IGanzenbordService.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GanzenBord.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>GanzenBord.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -87,7 +104,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GanzenBord.dbml.layout">
+      <DependentUpon>GanzenBord.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

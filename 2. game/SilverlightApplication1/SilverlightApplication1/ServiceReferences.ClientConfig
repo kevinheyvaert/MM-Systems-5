@@ -10,6 +10,10 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
+                <binding name="BasicHttpBinding_IGanzenbordService2" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
             </basicHttpBinding>
         </bindings>
         <client>
@@ -19,6 +23,9 @@
             <endpoint address="http://ganzenbordphone.cloudapp.net/GanzenbordService.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGanzenbordService1"
                 contract="Ganzenbordcloud.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService1" />
+            <endpoint address="../GanzenbordService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IGanzenbordService2"
+                contract="GanzenbordServiceSpel.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService2" />
         </client>
     </system.serviceModel>
 </configuration>

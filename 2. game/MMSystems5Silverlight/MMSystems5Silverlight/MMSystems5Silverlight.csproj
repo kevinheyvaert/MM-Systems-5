@@ -105,6 +105,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="SpelerRood.png" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.wsdl" />
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.xsd">
@@ -127,6 +128,17 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Plaatsbordrand2b.png" />
+    <Resource Include="Plaatsbordrand2l.png" />
+    <Resource Include="Plaatsbordrand2o.png" />
+    <Resource Include="Plaatsbordrand2os.png" />
+    <Resource Include="Plaatsbordrand2r.png" />
+    <Resource Include="Plaatsbordrandborder.png" />
+    <Resource Include="Plaatsbordrandborderl.png" />
+    <Resource Include="Plaatsbordrandborderlb.png" />
+    <Resource Include="Plaatsbordrandborderr.png" />
+    <Resource Include="Einde.png" />
+    <Resource Include="Achtergrond.jpeg" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ServiceReference1\GanzenbordService.wsdl" />
     <None Include="Service References\ServiceReference1\GanzenbordService.xsd">

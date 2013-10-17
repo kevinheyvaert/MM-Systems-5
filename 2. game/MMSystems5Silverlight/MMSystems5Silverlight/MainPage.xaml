@@ -6,6 +6,9 @@
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="400">
     <Grid ShowGridLines="True">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Achtergrond.jpeg"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
@@ -17,6 +20,7 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid x:Name="bord" Grid.Row="1">
+              
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -37,7 +41,71 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="{Binding PlaatsC}" Grid.Row="{Binding PlaatsR}" Content="1" Click="Button_Click"></Button>
+                <Image Grid.Column="0" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="1" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="2" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="3" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="4" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="5" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="6" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="7" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="8" Grid.Row="6" Source="Plaatsbordrandborder.png"></Image>
+                <Image Grid.Column="8" Grid.Row="5" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="8" Grid.Row="4" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="8" Grid.Row="3" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="8" Grid.Row="2" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="8" Grid.Row="1" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="8" Grid.Row="0" Source="Plaatsbordrandborderr.png"></Image>
+                <Image Grid.Column="7" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="6" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="5" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="4" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="3" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="2" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="1" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="0" Grid.Row="0" Source="Plaatsbordrandborderlb.png"></Image>
+                <Image Grid.Column="0" Grid.Row="1" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="0" Grid.Row="2" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="0" Grid.Row="3" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="0" Grid.Row="4" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="0" Grid.Row="5" Source="Plaatsbordrandborderl.png"></Image>
+                <Image Grid.Column="1" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="2" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="3" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="4" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="5" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="6" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="7" Grid.Row="5" Source="Plaatsbordrandborder.png"></Image>
+                <Image Grid.Column="7" Grid.Row="4" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="7" Grid.Row="3" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="7" Grid.Row="2" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="7" Grid.Row="1" Source="Plaatsbordrandborderr.png"></Image>
+                <Image Grid.Column="6" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="5" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="4" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="3" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="2" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="1" Grid.Row="1" Source="Plaatsbordrandborderlb.png"></Image>
+                <Image Grid.Column="1" Grid.Row="2" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="1" Grid.Row="3" Source="Plaatsbordrand2l.png"></Image>
+                <Image Grid.Column="1" Grid.Row="4" Source="Plaatsbordrandborderl.png"></Image>
+                <Image Grid.Column="2" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="3" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="4" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="5" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
+                <Image Grid.Column="6" Grid.Row="4" Source="Plaatsbordrandborder.png"></Image>
+                <Image Grid.Column="6" Grid.Row="3" Source="Plaatsbordrand2r.png"></Image>
+                <Image Grid.Column="6" Grid.Row="2" Source="Plaatsbordrandborderr.png"></Image>
+                <Image Grid.Column="5" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="4" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="3" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
+                <Image Grid.Column="2" Grid.Row="2" Source="Plaatsbordrandborderlb.png"></Image>
+                <Image Grid.Column="2" Grid.Row="3" Source="Plaatsbordrandborderl.png"></Image>
+                <Image Grid.Column="3" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
+                <Image Grid.Column="4" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
+                <Image Grid.Column="5" Grid.Row="3" Source="Einde.png"></Image>
+
+                <Image  Source="SpelerRood.PNG" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
             </Grid>
         </Grid>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="68" x:Name="PlaatsOpBord"/>

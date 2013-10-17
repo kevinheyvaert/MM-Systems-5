@@ -17,5 +17,11 @@ namespace SilverlightApplication1.Web
 
         [OperationContract]
         int Gooi();
+
+        [OperationContract]
+        void Inloggen(string naam, string wachtwoord);
+
+        [OperationContract]
+        void MaakAccount(string naam, string wachtwoord);
     }
 }

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="GanzenBordDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Database1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Lobby" Member="Lobbies">
+    <Type Name="Lobby">
+      <Column Name="LobbyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LobbyNaam" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IsBeschikbaar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerNaam" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Gewonnen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Verloren" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wachtwoord" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Locatie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlayerLobby" Member="PlayerLobbies">
+    <Type Name="PlayerLobby">
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LobbyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HostPlayer" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

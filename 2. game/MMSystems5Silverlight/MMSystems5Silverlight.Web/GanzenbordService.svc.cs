@@ -11,18 +11,15 @@ namespace MMSystems5Silverlight.Web
     // NOTE: In order to launch WCF Test Client for testing this service, please select GanzenbordService.svc or GanzenbordService.svc.cs at the Solution Explorer and start debugging.
     public class GanzenbordService : IGanzenbordService
     {
-        public Player test = new Player();
+       
         public void DoWork()
         {
         }
-        Gamestate status = new Gamestate();
+        
         public int  Gooi()
         {   
             
             Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
-            
-            status.ActivePlayer = test;
-
             return Dobbelsteen1.GeefWaardeDobbelsteen();
         }
 
