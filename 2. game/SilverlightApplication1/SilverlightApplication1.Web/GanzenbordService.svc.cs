@@ -33,9 +33,39 @@ namespace SilverlightApplication1.Web
         }
 
 
-        public void Inloggen(string naam, string wachtwoord)
+        public DTO.Player Inloggen(string naam, string wachtwoord)
         {
+            List<DTO.Player> playerList = new List<DTO.Player>();
+            try
+            {
 
+ 
+
+                var usercontrol = from u in gb.Players
+                                  where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
+                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord};
+
+                foreach (var item in usercontrol)
+	            {
+		            playerList.Add(new DTO.Player(){Naam=item.PlayerNaam, Wachtwoord=item.Wachtwoord,Verloren=(int)item.Verloren, Gewonnen=(int)item.Gewonnen});
+	           }
+                if(playerList.Count()>0)
+                {
+                    return playerList.First();
+                }
+                else 
+                    return null;
+
+                                      
+
+
+              
+            }
+            catch (Exception)
+            {
+                return null;
+                
+            }
             
         }
 

@@ -32,10 +32,16 @@ namespace SilverlightApplication1
             //client1.GooiCompleted += client1_GooiCompleted;
             client2 = new GanzenbordServiceSpel.GanzenbordServiceClient();
             client2.MaakAccountCompleted += client2_MaakAccountCompleted;
+            client2.InloggenCompleted += client2_InloggenCompleted;
             
             
             //client = new Ganzebord.GanzenbordServiceClient();
             //client.GooiCompleted += client_GooiCompleted;
+        }
+
+        void client2_InloggenCompleted(object sender, GanzenbordServiceSpel.InloggenCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());
         }
 
         void client2_MaakAccountCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -69,6 +75,14 @@ namespace SilverlightApplication1
         {
            
             client2.MaakAccountAsync("kevin" , "bba");
+        }
+
+        private void inloggen_Click(object sender, RoutedEventArgs e)
+        {
+            txtboxnaam = naam.ToString();
+            txtboxwachtwoord = wachtwoord.ToString();
+            client2.InloggenAsync(txtboxnaam, txtboxwachtwoord);
+
         }
        
     }

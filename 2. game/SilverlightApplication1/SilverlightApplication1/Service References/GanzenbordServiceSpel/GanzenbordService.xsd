@@ -32,7 +32,9 @@
   </xs:element>
   <xs:element name="InloggenResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InloggenResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="MaakAccount">

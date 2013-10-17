@@ -31,7 +31,7 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/Inloggen", ReplyAction="http://tempuri.org/IGanzenbordService/InloggenResponse")]
         System.IAsyncResult BeginInloggen(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState);
         
-        void EndInloggen(System.IAsyncResult result);
+        bool EndInloggen(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakAccount", ReplyAction="http://tempuri.org/IGanzenbordService/MaakAccountResponse")]
         System.IAsyncResult BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState);
@@ -58,6 +58,25 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InloggenCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InloggenCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
@@ -147,7 +166,7 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         
         public event System.EventHandler<GooiCompletedEventArgs> GooiCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> InloggenCompleted;
+        public event System.EventHandler<InloggenCompletedEventArgs> InloggenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> MaakAccountCompleted;
         
@@ -248,8 +267,8 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndInloggen(System.IAsyncResult result) {
-            base.Channel.EndInloggen(result);
+        bool SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndInloggen(System.IAsyncResult result) {
+            return base.Channel.EndInloggen(result);
         }
         
         private System.IAsyncResult OnBeginInloggen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -259,14 +278,15 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         private object[] OnEndInloggen(System.IAsyncResult result) {
-            ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndInloggen(result);
-            return null;
+            bool retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndInloggen(result);
+            return new object[] {
+                    retVal};
         }
         
         private void OnInloggenCompleted(object state) {
             if ((this.InloggenCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.InloggenCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.InloggenCompleted(this, new InloggenCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
@@ -443,9 +463,10 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 return _result;
             }
             
-            public void EndInloggen(System.IAsyncResult result) {
+            public bool EndInloggen(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("Inloggen", _args, result);
+                bool _result = ((bool)(base.EndInvoke("Inloggen", _args, result)));
+                return _result;
             }
             
             public System.IAsyncResult BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState) {

@@ -41,12 +41,15 @@
                 <Button Grid.Column="{Binding PlaatsC}" Grid.Row="{Binding PlaatsR}" Content="1" Click="Button_Click"></Button>
             </Grid>
         </Grid>
+        <StackPanel Grid.Column="1">
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="68" x:Name="PlaatsOpBord"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,85,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="70" x:Name="AantalDobbelsteen"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button x:Name="MaakAccount" Content="MaakAccount" HorizontalAlignment="Left" Margin="315,204,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="MaakAccount_Click"/>
-        <TextBox x:Name="naam" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="5,148,-45,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
-        <TextBox x:Name="wachtwoord" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="5,176,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="50"/>
+        <Button x:Name="MaakAccount" Content="MaakAccount" HorizontalAlignment="Left" Margin="5,204,0,0" VerticalAlignment="Top" Width="75" Click="MaakAccount_Click" Grid.Column="1"/>
+        <Button x:Name="inloggen" Grid.Column="1" Click="inloggen_Click">Inloggen</Button>
+        <TextBox x:Name="naam"  Text="TextBox" />
+        <TextBox x:Name="wachtwoord"  Text="TextBox" />
+        </StackPanel>
     </Grid>
 
 </UserControl>
