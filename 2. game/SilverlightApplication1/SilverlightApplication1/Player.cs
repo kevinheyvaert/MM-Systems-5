@@ -20,6 +20,7 @@ namespace SilverlightApplication1
 
         }
         public string UserName { get; set; }
+
         public bool Beurt { get; set; }
         public string Email { get; set; }
         public int Score { get; set; }

@@ -41,7 +41,21 @@ namespace SilverlightApplication1
 
         void client2_InloggenCompleted(object sender, GanzenbordServiceSpel.InloggenCompletedEventArgs e)
         {
-            MessageBox.Show(e.Result.ToString());
+
+            if (e.Result == null) 
+            {
+                MessageBox.Show("Niet juist");
+            }
+           
+            else
+            {
+            Player player = new Player();
+
+                player.UserName=e.Result.Naam;
+                MessageBox.Show("[proficiat ");
+               
+            }
+
         }
 
         void client2_MaakAccountCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -74,13 +88,15 @@ namespace SilverlightApplication1
         private void MaakAccount_Click(object sender, RoutedEventArgs e)
         {
            
-            client2.MaakAccountAsync("kevin" , "bba");
+            txtboxnaam = naam.Text;
+            txtboxwachtwoord = wachtwoord.Text;
+            client2.MaakAccountAsync(txtboxnaam , txtboxwachtwoord);
         }
 
         private void inloggen_Click(object sender, RoutedEventArgs e)
         {
-            txtboxnaam = naam.ToString();
-            txtboxwachtwoord = wachtwoord.ToString();
+            txtboxnaam = naam.Text;
+            txtboxwachtwoord = wachtwoord.Text;
             client2.InloggenAsync(txtboxnaam, txtboxwachtwoord);
 
         }

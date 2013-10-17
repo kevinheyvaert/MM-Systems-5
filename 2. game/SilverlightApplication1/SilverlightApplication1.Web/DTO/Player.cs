@@ -18,7 +18,7 @@ namespace SilverlightApplication1.Web.DTO
             [DataMember]
             public string Wachtwoord { get; set; }
             [DataMember]
-            public int Locatie { get; set; }
+            public int Locatie { get; set;  }
             [DataMember]
             public int Gewonnen { get; set; }
             [DataMember]

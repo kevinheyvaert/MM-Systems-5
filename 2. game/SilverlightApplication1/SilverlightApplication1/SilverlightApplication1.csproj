@@ -127,6 +127,9 @@
     <None Include="Service References\GanzenbordServiceSpel\GanzenbordService.disco" />
     <None Include="Service References\GanzenbordServiceSpel\configuration91.svcinfo" />
     <None Include="Service References\GanzenbordServiceSpel\configuration.svcinfo" />
+    <None Include="Service References\GanzenbordServiceSpel\GanzenbordService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GanzenbordServiceSpel\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -145,6 +148,9 @@
     </None>
     <None Include="Service References\GanzenbordServiceSpel\GanzenbordService1.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GanzenbordServiceSpel\SilverlightApplication1.GanzenbordServiceSpel.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -46,9 +46,9 @@ namespace SilverlightApplication1.Web
                                   select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord};
 
                 foreach (var item in usercontrol)
-	            {
-		            playerList.Add(new DTO.Player(){Naam=item.PlayerNaam, Wachtwoord=item.Wachtwoord,Verloren=(int)item.Verloren, Gewonnen=(int)item.Gewonnen});
-	           }
+                {
+                    playerList.Add(new DTO.Player() { Naam = item.PlayerNaam, Wachtwoord = item.Wachtwoord });
+                }
                 if(playerList.Count()>0)
                 {
                     return playerList.First();
