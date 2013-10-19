@@ -114,6 +114,12 @@
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GanzenBordServiceAzure\GanzenbordService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\GanzenbordService.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />

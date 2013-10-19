@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IGanzenbordService_DoWork_InputMessage">
@@ -18,6 +19,18 @@
   <wsdl:message name="IGanzenbordService_Gooi_OutputMessage">
     <wsdl:part name="parameters" element="tns:GooiResponse" />
   </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Inloggen_InputMessage">
+    <wsdl:part name="parameters" element="tns:Inloggen" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Inloggen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InloggenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaakAccount" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaakAccountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGanzenbordService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/DoWork" message="tns:IGanzenbordService_DoWork_InputMessage" />
@@ -26,6 +39,14 @@
     <wsdl:operation name="Gooi">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Gooi" message="tns:IGanzenbordService_Gooi_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/GooiResponse" message="tns:IGanzenbordService_Gooi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Inloggen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Inloggen" message="tns:IGanzenbordService_Inloggen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/InloggenResponse" message="tns:IGanzenbordService_Inloggen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaakAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccount" message="tns:IGanzenbordService_MaakAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccountResponse" message="tns:IGanzenbordService_MaakAccount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGanzenbordService" type="tns:IGanzenbordService">
@@ -41,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="Gooi">
       <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Gooi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Inloggen">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Inloggen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaakAccount">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakAccount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

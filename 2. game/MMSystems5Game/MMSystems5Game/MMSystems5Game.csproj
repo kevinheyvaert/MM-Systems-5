@@ -81,6 +81,9 @@
     <Compile Include="Lobby.xaml.cs">
       <DependentUpon>Lobby.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MakeAccount.xaml.cs">
+      <DependentUpon>MakeAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Plaats.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MakeAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +158,12 @@
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService.disco" />
     <None Include="Service References\GanzenBordServiceCloud\configuration91.svcinfo" />
     <None Include="Service References\GanzenBordServiceCloud\configuration.svcinfo" />
+    <None Include="Service References\GanzenBordServiceCloud\GanzenbordService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GanzenBordServiceCloud\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

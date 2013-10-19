@@ -16,6 +16,9 @@ namespace MMSystems5Silverlight
     {
         ServiceReference1.GanzenbordServiceClient client;
         GanzenBordServiceAzure.GanzenbordServiceClient client1;
+
+        string txtboxnaam;
+        string txtboxwachtwoord;
         
         Bord Speelbord;
         Player Speler;
@@ -30,8 +33,31 @@ namespace MMSystems5Silverlight
 
             client1 = new GanzenBordServiceAzure.GanzenbordServiceClient();
             client1.GooiCompleted += client1_GooiCompleted;
+            client1.MaakAccountCompleted += client1_MaakAccountCompleted;
+            client1.InloggenCompleted += client1_InloggenCompleted;
         
           
+        }
+
+        void client1_InloggenCompleted(object sender, GanzenBordServiceAzure.InloggenCompletedEventArgs e)
+        {
+            if (e.Result == null)
+            {
+                MessageBox.Show("Niet juist");
+            }
+
+            else
+            {
+                Player player = new Player();
+
+                player.UserName = e.Result.Naam;
+                MessageBox.Show("[proficiat ");
+            }  
+        }
+
+        private void client1_MaakAccountCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            MessageBox.Show("Normaal ist gelukt");
         }
 
         void client1_GooiCompleted(object sender, GanzenBordServiceAzure.GooiCompletedEventArgs e)
@@ -65,6 +91,20 @@ namespace MMSystems5Silverlight
 
             
 
+        }
+
+        private void MaakAccount(object sender, RoutedEventArgs e)
+        {
+            txtboxnaam = naam.Text;
+            txtboxwachtwoord = wachtwoord.Text;
+            client1.MaakAccountAsync(txtboxnaam, txtboxwachtwoord);
+        }
+
+        private void LogIn(object sender, RoutedEventArgs e)
+        {
+            txtboxnaam = naam.Text;
+            txtboxwachtwoord = wachtwoord.Text;
+            client1.InloggenAsync(txtboxnaam, txtboxwachtwoord);
         }
     }
 }

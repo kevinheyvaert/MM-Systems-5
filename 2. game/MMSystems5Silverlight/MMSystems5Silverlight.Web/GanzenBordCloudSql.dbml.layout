@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GanzenBordCloudSql">
+  <DataContextMoniker Name="/GanzenBordCloudSqlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9ceeba11-e08b-4db8-9985-830c7e829ffa" absoluteBounds="1.125, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/GanzenBordCloudSqlDataContext/Lobby" />
+      <nestedChildShapes>
+        <elementListCompartment Id="faa79a29-922e-4a2c-a177-86bd51db524a" absoluteBounds="1.1400000000000001, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e22272a-dda9-4a7b-92ae-e88cd7b73cc5" absoluteBounds="3.625, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/GanzenBordCloudSqlDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b804090-6e29-458e-9098-fa842b9f2c23" absoluteBounds="3.6399999999999997, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac4ad7f2-e216-4ef6-abe5-dd5b8c396b06" absoluteBounds="1, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/GanzenBordCloudSqlDataContext/PlayerLobby" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2930529-b2cf-4edf-996f-32e6dbf84e0b" absoluteBounds="1.0150000000000001, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

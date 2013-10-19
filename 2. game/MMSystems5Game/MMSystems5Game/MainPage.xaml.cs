@@ -27,6 +27,11 @@ namespace MMSystems5Game
             //controleren met database of username en password wel kloppen
         }
 
+        private void MaakNieuwAccount(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         
     }
 }

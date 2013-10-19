@@ -17,6 +17,12 @@ namespace MMSystems5Silverlight.Web
         [OperationContract]
         int Gooi();
 
+        [OperationContract]
+        DTO.Player Inloggen(string naam, string wachtwoord);
+
+        [OperationContract]
+        void MaakAccount(string PlayerNaam, string Wachtwoord);
+
         //[DataContract]
         //public class Bord
         //{

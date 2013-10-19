@@ -111,6 +111,10 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="68" x:Name="PlaatsOpBord"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5,85,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="70" x:Name="AantalDobbelsteen"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Maak" Grid.Column="1" HorizontalAlignment="Left" Margin="130,135,-125,0" VerticalAlignment="Top" Width="75" Click="MaakAccount"  />
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="130,107,-170,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" x:Name="wachtwoord"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="130,78,-170,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" x:Name="naam" />
+        <Button Content="Log In" Grid.Column="1" HorizontalAlignment="Left" Margin="130,173,-125,0" VerticalAlignment="Top" Width="75" Click="LogIn"  />
     </Grid>
 
 </UserControl>

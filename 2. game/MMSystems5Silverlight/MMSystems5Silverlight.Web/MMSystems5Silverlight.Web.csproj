@@ -59,6 +59,7 @@
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.2.0.6.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -83,6 +84,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\GanzenBordDatabase.mdf" />
+    <Content Include="App_Data\GanzenBordDatabase_log.ldf">
+      <DependentUpon>GanzenBordDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="ClientBin\MMSystems5Silverlight.xap" />
     <Content Include="GanzenbordService.svc" />
@@ -96,16 +101,28 @@
   <ItemGroup>
     <Compile Include="Bord.cs" />
     <Compile Include="Dobbelsteen.cs" />
+    <Compile Include="DTO\Lobby.cs" />
+    <Compile Include="DTO\Player.cs" />
+    <Compile Include="DTO\PlayerLobby.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="GanzenBordCloudSql.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GanzenBordCloudSql.dbml</DependentUpon>
+    </Compile>
     <Compile Include="GanzenbordService.svc.cs">
       <DependentUpon>GanzenbordService.svc</DependentUpon>
     </Compile>
     <Compile Include="IGanzenbordService.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="GanzenBordCloudSql.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>GanzenBordCloudSql.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,9 +130,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GanzenBordCloudSql.dbml.layout">
+      <DependentUpon>GanzenBordCloudSql.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
