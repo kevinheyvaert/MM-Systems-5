@@ -22,61 +22,53 @@ namespace SilverlightApplication1.Web
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
-	public partial class GanzenBordDataContext : System.Data.Linq.DataContext
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="GanzenBordDataBase")]
+	public partial class DataCloudDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertLobby(Lobby instance);
-    partial void UpdateLobby(Lobby instance);
-    partial void DeleteLobby(Lobby instance);
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
+    partial void InsertLobby(Lobby instance);
+    partial void UpdateLobby(Lobby instance);
+    partial void DeleteLobby(Lobby instance);
     partial void InsertPlayerLobby(PlayerLobby instance);
     partial void UpdatePlayerLobby(PlayerLobby instance);
     partial void DeletePlayerLobby(PlayerLobby instance);
     #endregion
 		
-		public GanzenBordDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Database1ConnectionString"].ConnectionString, mappingSource)
+		public DataCloudDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GanzenBordDataBaseConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public GanzenBordDataContext(string connection) : 
+		public DataCloudDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public GanzenBordDataContext(System.Data.IDbConnection connection) : 
+		public DataCloudDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public GanzenBordDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataCloudDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public GanzenBordDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataCloudDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Lobby> Lobbies
-		{
-			get
-			{
-				return this.GetTable<Lobby>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Player> Players
@@ -87,11 +79,201 @@ namespace SilverlightApplication1.Web
 			}
 		}
 		
+		public System.Data.Linq.Table<Lobby> Lobbies
+		{
+			get
+			{
+				return this.GetTable<Lobby>();
+			}
+		}
+		
 		public System.Data.Linq.Table<PlayerLobby> PlayerLobbies
 		{
 			get
 			{
 				return this.GetTable<PlayerLobby>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Player")]
+	public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PlayerId;
+		
+		private string _PlayerNaam;
+		
+		private string _Wachtwoord;
+		
+		private System.Nullable<int> _Locatie;
+		
+		private System.Nullable<int> _Gewonnen;
+		
+		private System.Nullable<int> _Verloren;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPlayerIdChanging(int value);
+    partial void OnPlayerIdChanged();
+    partial void OnPlayerNaamChanging(string value);
+    partial void OnPlayerNaamChanged();
+    partial void OnWachtwoordChanging(string value);
+    partial void OnWachtwoordChanged();
+    partial void OnLocatieChanging(System.Nullable<int> value);
+    partial void OnLocatieChanged();
+    partial void OnGewonnenChanging(System.Nullable<int> value);
+    partial void OnGewonnenChanged();
+    partial void OnVerlorenChanging(System.Nullable<int> value);
+    partial void OnVerlorenChanged();
+    #endregion
+		
+		public Player()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int PlayerId
+		{
+			get
+			{
+				return this._PlayerId;
+			}
+			set
+			{
+				if ((this._PlayerId != value))
+				{
+					this.OnPlayerIdChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerId = value;
+					this.SendPropertyChanged("PlayerId");
+					this.OnPlayerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerNaam", DbType="NChar(10)")]
+		public string PlayerNaam
+		{
+			get
+			{
+				return this._PlayerNaam;
+			}
+			set
+			{
+				if ((this._PlayerNaam != value))
+				{
+					this.OnPlayerNaamChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerNaam = value;
+					this.SendPropertyChanged("PlayerNaam");
+					this.OnPlayerNaamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wachtwoord", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string Wachtwoord
+		{
+			get
+			{
+				return this._Wachtwoord;
+			}
+			set
+			{
+				if ((this._Wachtwoord != value))
+				{
+					this.OnWachtwoordChanging(value);
+					this.SendPropertyChanging();
+					this._Wachtwoord = value;
+					this.SendPropertyChanged("Wachtwoord");
+					this.OnWachtwoordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locatie", DbType="Int")]
+		public System.Nullable<int> Locatie
+		{
+			get
+			{
+				return this._Locatie;
+			}
+			set
+			{
+				if ((this._Locatie != value))
+				{
+					this.OnLocatieChanging(value);
+					this.SendPropertyChanging();
+					this._Locatie = value;
+					this.SendPropertyChanged("Locatie");
+					this.OnLocatieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gewonnen", DbType="Int")]
+		public System.Nullable<int> Gewonnen
+		{
+			get
+			{
+				return this._Gewonnen;
+			}
+			set
+			{
+				if ((this._Gewonnen != value))
+				{
+					this.OnGewonnenChanging(value);
+					this.SendPropertyChanging();
+					this._Gewonnen = value;
+					this.SendPropertyChanged("Gewonnen");
+					this.OnGewonnenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Verloren", DbType="Int")]
+		public System.Nullable<int> Verloren
+		{
+			get
+			{
+				return this._Verloren;
+			}
+			set
+			{
+				if ((this._Verloren != value))
+				{
+					this.OnVerlorenChanging(value);
+					this.SendPropertyChanging();
+					this._Verloren = value;
+					this.SendPropertyChanged("Verloren");
+					this.OnVerlorenChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -206,197 +388,15 @@ namespace SilverlightApplication1.Web
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Player")]
-	public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PlayerId;
-		
-		private string _PlayerNaam;
-		
-		private System.Nullable<int> _Gewonnen;
-		
-		private System.Nullable<int> _Verloren;
-		
-		private string _Wachtwoord;
-		
-		private System.Nullable<int> _Locatie;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPlayerIdChanging(int value);
-    partial void OnPlayerIdChanged();
-    partial void OnPlayerNaamChanging(string value);
-    partial void OnPlayerNaamChanged();
-    partial void OnGewonnenChanging(System.Nullable<int> value);
-    partial void OnGewonnenChanged();
-    partial void OnVerlorenChanging(System.Nullable<int> value);
-    partial void OnVerlorenChanged();
-    partial void OnWachtwoordChanging(string value);
-    partial void OnWachtwoordChanged();
-    partial void OnLocatieChanging(System.Nullable<int> value);
-    partial void OnLocatieChanged();
-    #endregion
-		
-		public Player()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int PlayerId
-		{
-			get
-			{
-				return this._PlayerId;
-			}
-			set
-			{
-				if ((this._PlayerId != value))
-				{
-					this.OnPlayerIdChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerId = value;
-					this.SendPropertyChanged("PlayerId");
-					this.OnPlayerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerNaam", DbType="NChar(10)")]
-		public string PlayerNaam
-		{
-			get
-			{
-				return this._PlayerNaam;
-			}
-			set
-			{
-				if ((this._PlayerNaam != value))
-				{
-					this.OnPlayerNaamChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerNaam = value;
-					this.SendPropertyChanged("PlayerNaam");
-					this.OnPlayerNaamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gewonnen", DbType="Int")]
-		public System.Nullable<int> Gewonnen
-		{
-			get
-			{
-				return this._Gewonnen;
-			}
-			set
-			{
-				if ((this._Gewonnen != value))
-				{
-					this.OnGewonnenChanging(value);
-					this.SendPropertyChanging();
-					this._Gewonnen = value;
-					this.SendPropertyChanged("Gewonnen");
-					this.OnGewonnenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Verloren", DbType="Int")]
-		public System.Nullable<int> Verloren
-		{
-			get
-			{
-				return this._Verloren;
-			}
-			set
-			{
-				if ((this._Verloren != value))
-				{
-					this.OnVerlorenChanging(value);
-					this.SendPropertyChanging();
-					this._Verloren = value;
-					this.SendPropertyChanged("Verloren");
-					this.OnVerlorenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wachtwoord", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string Wachtwoord
-		{
-			get
-			{
-				return this._Wachtwoord;
-			}
-			set
-			{
-				if ((this._Wachtwoord != value))
-				{
-					this.OnWachtwoordChanging(value);
-					this.SendPropertyChanging();
-					this._Wachtwoord = value;
-					this.SendPropertyChanged("Wachtwoord");
-					this.OnWachtwoordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locatie", DbType="Int")]
-		public System.Nullable<int> Locatie
-		{
-			get
-			{
-				return this._Locatie;
-			}
-			set
-			{
-				if ((this._Locatie != value))
-				{
-					this.OnLocatieChanging(value);
-					this.SendPropertyChanging();
-					this._Locatie = value;
-					this.SendPropertyChanged("Locatie");
-					this.OnLocatieChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PlayerLobby")]
 	public partial class PlayerLobby : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _PlayerId;
-		
 		private int _LobbyId;
+		
+		private int _PlayerId;
 		
 		private string _HostPlayer;
 		
@@ -404,10 +404,10 @@ namespace SilverlightApplication1.Web
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnPlayerIdChanging(int value);
-    partial void OnPlayerIdChanged();
     partial void OnLobbyIdChanging(int value);
     partial void OnLobbyIdChanged();
+    partial void OnPlayerIdChanging(int value);
+    partial void OnPlayerIdChanged();
     partial void OnHostPlayerChanging(string value);
     partial void OnHostPlayerChanged();
     #endregion
@@ -415,26 +415,6 @@ namespace SilverlightApplication1.Web
 		public PlayerLobby()
 		{
 			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL")]
-		public int PlayerId
-		{
-			get
-			{
-				return this._PlayerId;
-			}
-			set
-			{
-				if ((this._PlayerId != value))
-				{
-					this.OnPlayerIdChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerId = value;
-					this.SendPropertyChanged("PlayerId");
-					this.OnPlayerIdChanged();
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LobbyId", DbType="Int NOT NULL", IsPrimaryKey=true)]
@@ -453,6 +433,26 @@ namespace SilverlightApplication1.Web
 					this._LobbyId = value;
 					this.SendPropertyChanged("LobbyId");
 					this.OnLobbyIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL")]
+		public int PlayerId
+		{
+			get
+			{
+				return this._PlayerId;
+			}
+			set
+			{
+				if ((this._PlayerId != value))
+				{
+					this.OnPlayerIdChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerId = value;
+					this.SendPropertyChanged("PlayerId");
+					this.OnPlayerIdChanged();
 				}
 			}
 		}

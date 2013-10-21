@@ -75,16 +75,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bord.cs" />
+    <Compile Include="DataCloud.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataCloud.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Dobbelsteen.cs" />
     <Compile Include="DTO\Lobby.cs" />
     <Compile Include="DTO\Player.cs" />
     <Compile Include="DTO\PlayerLobby.cs" />
     <Compile Include="Gamestate.cs" />
-    <Compile Include="GanzenBord.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GanzenBord.dbml</DependentUpon>
-    </Compile>
     <Compile Include="GanzenbordService.svc.cs">
       <DependentUpon>GanzenbordService.svc</DependentUpon>
     </Compile>
@@ -92,9 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GanzenBord.dbml">
+    <Content Include="DataCloud.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>GanzenBord.designer.cs</LastGenOutput>
+      <LastGenOutput>DataCloud.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Web.Debug.config">
@@ -108,12 +108,12 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GanzenBord.dbml.layout">
-      <DependentUpon>GanzenBord.dbml</DependentUpon>
-    </None>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <None Include="DataCloud.dbml.layout">
+      <DependentUpon>DataCloud.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

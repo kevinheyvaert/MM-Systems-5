@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GanzenBordDataBase" Class="DataCloudDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=hoegfejaux.database.windows.net;Initial Catalog=GanzenBordDataBase;Persist Security Info=True;User ID=KevinDataBase" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GanzenBordDataBaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerNaam" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Wachtwoord" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Locatie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gewonnen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Verloren" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lobby" Member="Lobbies">
+    <Type Name="Lobby">
+      <Column Name="LobbyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LobbyNaam" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IsBeschikbaar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlayerLobby" Member="PlayerLobbies">
+    <Type Name="PlayerLobby">
+      <Column Name="LobbyId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HostPlayer" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

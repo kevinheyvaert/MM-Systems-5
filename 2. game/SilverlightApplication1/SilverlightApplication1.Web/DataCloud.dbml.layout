@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataCloud">
+  <DataContextMoniker Name="/DataCloudDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a55eeba2-868a-4cdc-ac25-99e996306180" absoluteBounds="4.375, 1.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataCloudDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61adc511-0b1f-4f5c-b28a-e03dee852b25" absoluteBounds="4.39, 1.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2e40dd5-ba12-4236-a48c-86ac1bebed0a" absoluteBounds="6.625, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataCloudDataContext/Lobby" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24f9b8c5-ae43-4f31-8177-897823cdb3dc" absoluteBounds="6.64, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b39b7ba-e9ef-47ca-88cc-4aab339d9389" absoluteBounds="1.375, 1.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataCloudDataContext/PlayerLobby" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74fcbcfb-27f4-4165-b73c-a24a73a206fb" absoluteBounds="1.3900000000000001, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
