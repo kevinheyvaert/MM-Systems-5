@@ -50,7 +50,7 @@ namespace MMSystems5Silverlight
             {
                 Player player = new Player();
 
-                player.UserName = e.Result.Naam;
+                player.UserName = e.Result.PlayerNaam;
                 MessageBox.Show("[proficiat ");
             }  
         }

@@ -42,7 +42,7 @@ namespace MMSystems5Silverlight.Web
     #endregion
 		
 		public GanzenBordCloudSqlDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GanzenBordDataBaseConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["GanzenBordDataBaseConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

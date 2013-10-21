@@ -65,62 +65,25 @@ namespace MMSystems5Silverlight.Web
         SqlConnection con;
         public void MaakAccount(string PlayerNaam, string Wachtwoord)
         {
+            var maxId = (from r in gb.Players
+                         select r.PlayerId).Max();
+            playerid = maxId + 1;
+
             try
             {
-                ///using SQL to insert new user
-                using (con = new SqlConnection("Server=tcp:hoegfejaux.database.windows.net,1433;Database=GanzenBordDataBase;User ID=KevinDatabase@hoegfejaux;Password=Fiat500R;Trusted_Connection=False;"))
-                {
-                    try
-                    {
-                        con.Open();
-                    }
-                    catch
-                    {
-                        return;
-                    }
 
-                    try
-                    {
-                        using (SqlCommand command = new SqlCommand(
-                        "INSERT INTO Player (Naam, Wachtwoord) VALUES (@Naam, @Wachtwoord)", con))
-                        {
-                            command.Parameters.Add(new SqlParameter("@PlayerNaam", PlayerNaam));
-                            command.Parameters.Add(new SqlParameter("@Wachtwoord", Wachtwoord));
-                            command.ExecuteNonQuery();
-                            con.Close();
-                            con.Dispose();
-                        }
-                    }
-                    catch (SqlException)
-                    {
-                        throw;
-                    }
-                }
+                Player player = new Player();
+                player.PlayerNaam = (string)PlayerNaam;
+                player.Wachtwoord = (string)Wachtwoord;
+                player.PlayerId = playerid;
+                gb.Players.InsertOnSubmit(player);
+                gb.SubmitChanges();
 
-
-                var maxId = (from r in gb.Players
-                             select r.PlayerId).Max();
-                playerid = maxId + 1;
-
-                try
-                {
-                    Player player = new Player();
-                    player.PlayerNaam = (string)PlayerNaam;
-                    player.Wachtwoord = (string)Wachtwoord;
-                    player.PlayerId = playerid;
-                    gb.Players.InsertOnSubmit(player);
-                    gb.SubmitChanges();
-
-                }
-                catch (Exception)
-                {
-                    throw;
-
-                }
             }
-            catch
+            catch (Exception)
             {
 
+                throw;
             }
         }
     }

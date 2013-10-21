@@ -24,9 +24,9 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         
         private int LocatieField;
         
-        private string NaamField;
-        
         private int PlayerIdField;
+        
+        private string PlayerNaamField;
         
         private int VerlorenField;
         
@@ -59,19 +59,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Naam {
-            get {
-                return this.NaamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NaamField, value) != true)) {
-                    this.NaamField = value;
-                    this.RaisePropertyChanged("Naam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int PlayerId {
             get {
                 return this.PlayerIdField;
@@ -80,6 +67,19 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 if ((this.PlayerIdField.Equals(value) != true)) {
                     this.PlayerIdField = value;
                     this.RaisePropertyChanged("PlayerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlayerNaam {
+            get {
+                return this.PlayerNaamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayerNaamField, value) != true)) {
+                    this.PlayerNaamField = value;
+                    this.RaisePropertyChanged("PlayerNaam");
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         MMSystems5Game.GanzenBordServiceCloud.Player EndInloggen(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakAccount", ReplyAction="http://tempuri.org/IGanzenbordService/MaakAccountResponse")]
-        System.IAsyncResult BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginMaakAccount(string PlayerNaam, string Wachtwoord, System.AsyncCallback callback, object asyncState);
         
         void EndMaakAccount(System.IAsyncResult result);
     }
@@ -416,8 +416,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginMaakAccount(naam, wachtwoord, callback, asyncState);
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginMaakAccount(string PlayerNaam, string Wachtwoord, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMaakAccount(PlayerNaam, Wachtwoord, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -426,9 +426,9 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         private System.IAsyncResult OnBeginMaakAccount(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string naam = ((string)(inValues[0]));
-            string wachtwoord = ((string)(inValues[1]));
-            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginMaakAccount(naam, wachtwoord, callback, asyncState);
+            string PlayerNaam = ((string)(inValues[0]));
+            string Wachtwoord = ((string)(inValues[1]));
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginMaakAccount(PlayerNaam, Wachtwoord, callback, asyncState);
         }
         
         private object[] OnEndMaakAccount(System.IAsyncResult result) {
@@ -443,11 +443,11 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             }
         }
         
-        public void MaakAccountAsync(string naam, string wachtwoord) {
-            this.MaakAccountAsync(naam, wachtwoord, null);
+        public void MaakAccountAsync(string PlayerNaam, string Wachtwoord) {
+            this.MaakAccountAsync(PlayerNaam, Wachtwoord, null);
         }
         
-        public void MaakAccountAsync(string naam, string wachtwoord, object userState) {
+        public void MaakAccountAsync(string PlayerNaam, string Wachtwoord, object userState) {
             if ((this.onBeginMaakAccountDelegate == null)) {
                 this.onBeginMaakAccountDelegate = new BeginOperationDelegate(this.OnBeginMaakAccount);
             }
@@ -458,8 +458,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 this.onMaakAccountCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMaakAccountCompleted);
             }
             base.InvokeAsync(this.onBeginMaakAccountDelegate, new object[] {
-                        naam,
-                        wachtwoord}, this.onEndMaakAccountDelegate, this.onMaakAccountCompletedDelegate, userState);
+                        PlayerNaam,
+                        Wachtwoord}, this.onEndMaakAccountDelegate, this.onMaakAccountCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -575,10 +575,10 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 return _result;
             }
             
-            public System.IAsyncResult BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginMaakAccount(string PlayerNaam, string Wachtwoord, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[2];
-                _args[0] = naam;
-                _args[1] = wachtwoord;
+                _args[0] = PlayerNaam;
+                _args[1] = Wachtwoord;
                 System.IAsyncResult _result = base.BeginInvoke("MaakAccount", _args, callback, asyncState);
                 return _result;
             }

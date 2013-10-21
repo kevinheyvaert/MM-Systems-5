@@ -15,23 +15,46 @@ namespace MMSystems5Game
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        GanzenBordServiceCloud.GanzenbordServiceClient client1;
+        string temp1;
+        string temp2;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            client1.InloggenCompleted += client1_InloggenCompleted;
+        }
+
+        void client1_InloggenCompleted(object sender, GanzenBordServiceCloud.InloggenCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+            }
+
+            else
+            {
+                MessageBox.Show("Foute gegevens");
+            }
+
+
         }
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
-            //controleren met database of username en password wel kloppen
+            temp1 = Username.Text;
+            temp2 = Password.Text;
+            client1.InloggenAsync(temp1, temp2);
         }
 
         private void MaakNieuwAccount(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri(string.Format("/MakeAccount.xaml"), UriKind.Relative));
         }
 
+        
         
     }
 }

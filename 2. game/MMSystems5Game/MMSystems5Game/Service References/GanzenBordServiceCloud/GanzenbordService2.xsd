@@ -4,8 +4,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Gewonnen" type="xs:int" />
       <xs:element minOccurs="0" name="Locatie" type="xs:int" />
-      <xs:element minOccurs="0" name="Naam" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+      <xs:element minOccurs="0" name="PlayerNaam" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Verloren" type="xs:int" />
       <xs:element minOccurs="0" name="Wachtwoord" nillable="true" type="xs:string" />
     </xs:sequence>
