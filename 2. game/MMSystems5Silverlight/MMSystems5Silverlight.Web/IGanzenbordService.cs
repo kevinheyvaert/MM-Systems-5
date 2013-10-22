@@ -21,8 +21,19 @@ namespace MMSystems5Silverlight.Web
         DTO.Player Inloggen(string naam, string wachtwoord);
 
         [OperationContract]
-        void MaakAccount(string PlayerNaam, string Wachtwoord);
+        DTO.Player MaakAccount(string PlayerNaam, string Wachtwoord);
 
+        [OperationContract]
+        List<DTO.Lobby> BeschikbareLobbys();
+
+        [OperationContract]
+        DTO.Player MaakLobby(DTO.Player player);
+
+        [OperationContract]
+        List<DTO.Player> LobbyInfo(DTO.Lobby lobby);
+
+        [OperationContract]
+        void JoinLobby(DTO.Lobby lobby, DTO.Player player);
         //[DataContract]
         //public class Bord
         //{

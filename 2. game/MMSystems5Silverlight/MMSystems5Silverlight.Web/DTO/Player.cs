@@ -21,6 +21,11 @@ namespace MMSystems5Silverlight.Web.DTO
         public int Gewonnen { get; set; }
         [DataMember]
         public int Verloren { get; set; }
+        [DataMember]
+        public string Lobby { get; set; }
+        [DataMember]
+        public bool IsHost { get; set; }
+       
 
     }
 }

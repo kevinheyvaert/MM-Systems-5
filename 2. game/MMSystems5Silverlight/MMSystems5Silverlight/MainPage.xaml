@@ -20,7 +20,7 @@
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid x:Name="bord" Grid.Row="1">
-              
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -115,6 +115,8 @@
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="130,107,-170,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" x:Name="wachtwoord"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="130,78,-170,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" x:Name="naam" />
         <Button Content="Log In" Grid.Column="1" HorizontalAlignment="Left" Margin="130,173,-125,0" VerticalAlignment="Top" Width="75" Click="LogIn"  />
+        <ListBox Grid.Column="1" HorizontalAlignment="Left" Height="84" Margin="130,216,-125,0" VerticalAlignment="Top" Width="75" x:Name="lstBox" />
+        <Button Content="MaakLobby" HorizontalAlignment="Left" Margin="315,216,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" x:Name="MaakLobby" Click="MaakLobby_Click"/>
     </Grid>
 
 </UserControl>

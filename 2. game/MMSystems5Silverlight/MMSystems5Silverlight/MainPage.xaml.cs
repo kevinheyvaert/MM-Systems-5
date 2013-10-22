@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -14,20 +15,22 @@ namespace MMSystems5Silverlight
 {
     public partial class MainPage : UserControl
     {
-        ServiceReference1.GanzenbordServiceClient client;
+        //ServiceReference1.GanzenbordServiceClient client;
         GanzenBordServiceAzure.GanzenbordServiceClient client1;
+
+        GanzenBordServiceAzure.Player player = new GanzenBordServiceAzure.Player();
+        ObservableCollection<GanzenBordServiceAzure.Lobby> aList = new ObservableCollection<GanzenBordServiceAzure.Lobby>();
 
         string txtboxnaam;
         string txtboxwachtwoord;
         
         Bord Speelbord;
-        Player Speler;
         public MainPage()
         {
             InitializeComponent();
             Speelbord = new Bord();
-            Speler = new Player();
-            this.DataContext = Speler;
+            
+            this.DataContext = player;
             //client = new ServiceReference1.GanzenbordServiceClient();
             //client.GooiCompleted += client_GooiCompleted;
 
@@ -35,8 +38,28 @@ namespace MMSystems5Silverlight
             client1.GooiCompleted += client1_GooiCompleted;
             client1.MaakAccountCompleted += client1_MaakAccountCompleted;
             client1.InloggenCompleted += client1_InloggenCompleted;
+            client1.MaakLobbyCompleted += client1_MaakLobbyCompleted;
+            client1.BeschikbareLobbysCompleted += client1_BeschikbareLobbysCompleted;
         
           
+        }
+
+        void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceAzure.BeschikbareLobbysCompletedEventArgs e)
+        {
+            MessageBox.Show("De lobbys");
+
+            foreach (var item in e.Result)
+            {
+                lstBox.Items.Add(e.Result);
+            }
+            
+            
+        }
+
+        void client1_MaakLobbyCompleted(object sender, GanzenBordServiceAzure.MaakLobbyCompletedEventArgs e)
+        {
+            MessageBox.Show("Lobby toegevoegd");
+            client1.BeschikbareLobbysAsync();
         }
 
         void client1_InloggenCompleted(object sender, GanzenBordServiceAzure.InloggenCompletedEventArgs e)
@@ -64,12 +87,12 @@ namespace MMSystems5Silverlight
         {
             //throw new NotImplementedException();
             //Speler.Locatie = e.Result;
-            Speler.Locatie = Speler.Locatie + e.Result;
+            player.Locatie = player.Locatie + e.Result;
             AantalDobbelsteen.Text = e.Result.ToString();
       
-            PlaatsOpBord.Text = Speler.Locatie.ToString();
-            Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-            Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+            PlaatsOpBord.Text = player.Locatie.ToString();
+            //player.PlaatsC = Speelbord.Plaats[player.Locatie, 0];
+            //player.PlaatsR = Speelbord.Plaats[player.Locatie, 1];
         }
 
         //void client_GooiCompleted(object sender, ServiceReference1.GooiCompletedEventArgs e)
@@ -105,6 +128,11 @@ namespace MMSystems5Silverlight
             txtboxnaam = naam.Text;
             txtboxwachtwoord = wachtwoord.Text;
             client1.InloggenAsync(txtboxnaam, txtboxwachtwoord);
+        }
+
+        private void MaakLobby_Click(object sender, RoutedEventArgs e)
+        {
+            client1.MaakLobbyAsync(player);
         }
     }
 }
