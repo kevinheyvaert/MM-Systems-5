@@ -29,9 +29,9 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" Text="Type username" VerticalAlignment="Top" Width="456" Margin="0,32,0,0" x:Name="Username" />
+            <TextBox HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="456" Margin="0,32,0,0" x:Name="Username" />
             <TextBlock HorizontalAlignment="Left" Margin="10,129,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="72" Margin="0,151,0,0" TextWrapping="Wrap" Text="Type password" VerticalAlignment="Top" Width="456" x:Name="Password"/>
+            <TextBox HorizontalAlignment="Left" Height="72" Margin="0,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="456" x:Name="Password"/>
             <Button Content="Create Account" HorizontalAlignment="Left" Margin="79,261,0,0" VerticalAlignment="Top" Width="268" Click="MaakNieuwAan" />
         </Grid>
     </Grid>

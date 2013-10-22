@@ -24,11 +24,16 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" TextAlignment="Center" Margin="15">Lobby </TextBlock>
-
+            <StackPanel Grid.Column="0">
+                <TextBlock Grid.Row="0" TextAlignment="Center" Margin="15">Lobby</TextBlock>
+                <ListBox x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged"  ></ListBox>
+            </StackPanel>
+            
+            
+            
         </Grid>
         <StackPanel Grid.Column="1">
-            <ListBox></ListBox>
+            <ListBox x:Name="LijstSpelersInLobby" ></ListBox>
             <Button Content="Play" Click="Button_Click" ></Button>
         </StackPanel>
         

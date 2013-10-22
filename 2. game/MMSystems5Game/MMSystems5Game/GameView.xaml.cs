@@ -37,7 +37,7 @@ namespace MMSystems5Game
         void client_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
         {
             AantalDobbelsteen.Text = e.Result.ToString();
-            Speler.Locatie =  e.Result;
+            Speler.Locatie =  Speler.Locatie + e.Result;
             PlaatsOpBord.Text = Speler.Locatie.ToString();
             gooi.Content = Dice(e.Result);
             Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];

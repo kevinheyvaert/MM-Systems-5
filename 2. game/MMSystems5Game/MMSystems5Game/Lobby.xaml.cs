@@ -21,5 +21,10 @@ namespace MMSystems5Game
         {
             NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
         }
+
+        private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
