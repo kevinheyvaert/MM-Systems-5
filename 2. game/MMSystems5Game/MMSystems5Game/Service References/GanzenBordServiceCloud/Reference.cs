@@ -22,6 +22,10 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         
         private int GewonnenField;
         
+        private bool IsHostField;
+        
+        private string LobbyField;
+        
         private int LocatieField;
         
         private int PlayerIdField;
@@ -41,6 +45,32 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 if ((this.GewonnenField.Equals(value) != true)) {
                     this.GewonnenField = value;
                     this.RaisePropertyChanged("Gewonnen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsHost {
+            get {
+                return this.IsHostField;
+            }
+            set {
+                if ((this.IsHostField.Equals(value) != true)) {
+                    this.IsHostField = value;
+                    this.RaisePropertyChanged("IsHost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lobby {
+            get {
+                return this.LobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LobbyField, value) != true)) {
+                    this.LobbyField = value;
+                    this.RaisePropertyChanged("Lobby");
                 }
             }
         }
@@ -120,6 +150,66 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Lobby", Namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO")]
+    public partial class Lobby : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool CanJoinLobbyField;
+        
+        private string HostPlayerField;
+        
+        private System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> PlayersInLobbyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanJoinLobby {
+            get {
+                return this.CanJoinLobbyField;
+            }
+            set {
+                if ((this.CanJoinLobbyField.Equals(value) != true)) {
+                    this.CanJoinLobbyField = value;
+                    this.RaisePropertyChanged("CanJoinLobby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HostPlayer {
+            get {
+                return this.HostPlayerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HostPlayerField, value) != true)) {
+                    this.HostPlayerField = value;
+                    this.RaisePropertyChanged("HostPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> PlayersInLobby {
+            get {
+                return this.PlayersInLobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayersInLobbyField, value) != true)) {
+                    this.PlayersInLobbyField = value;
+                    this.RaisePropertyChanged("PlayersInLobby");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GanzenBordServiceCloud.IGanzenbordService")]
     public interface IGanzenbordService {
@@ -142,7 +232,27 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakAccount", ReplyAction="http://tempuri.org/IGanzenbordService/MaakAccountResponse")]
         System.IAsyncResult BeginMaakAccount(string PlayerNaam, string Wachtwoord, System.AsyncCallback callback, object asyncState);
         
-        void EndMaakAccount(System.IAsyncResult result);
+        MMSystems5Game.GanzenBordServiceCloud.Player EndMaakAccount(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbys", ReplyAction="http://tempuri.org/IGanzenbordService/BeschikbareLobbysResponse")]
+        System.IAsyncResult BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> EndBeschikbareLobbys(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakLobby", ReplyAction="http://tempuri.org/IGanzenbordService/MaakLobbyResponse")]
+        System.IAsyncResult BeginMaakLobby(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
+        
+        MMSystems5Game.GanzenBordServiceCloud.Player EndMaakLobby(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/LobbyInfo", ReplyAction="http://tempuri.org/IGanzenbordService/LobbyInfoResponse")]
+        System.IAsyncResult BeginLobbyInfo(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> EndLobbyInfo(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/JoinLobby", ReplyAction="http://tempuri.org/IGanzenbordService/JoinLobbyResponse")]
+        System.IAsyncResult BeginJoinLobby(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
+        
+        void EndJoinLobby(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -189,6 +299,82 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MaakAccountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public MaakAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public MMSystems5Game.GanzenBordServiceCloud.Player Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((MMSystems5Game.GanzenBordServiceCloud.Player)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BeschikbareLobbysCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public BeschikbareLobbysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MaakLobbyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public MaakLobbyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public MMSystems5Game.GanzenBordServiceCloud.Player Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((MMSystems5Game.GanzenBordServiceCloud.Player)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public LobbyInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GanzenbordServiceClient : System.ServiceModel.ClientBase<MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService>, MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -214,6 +400,30 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         private EndOperationDelegate onEndMaakAccountDelegate;
         
         private System.Threading.SendOrPostCallback onMaakAccountCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginBeschikbareLobbysDelegate;
+        
+        private EndOperationDelegate onEndBeschikbareLobbysDelegate;
+        
+        private System.Threading.SendOrPostCallback onBeschikbareLobbysCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginMaakLobbyDelegate;
+        
+        private EndOperationDelegate onEndMaakLobbyDelegate;
+        
+        private System.Threading.SendOrPostCallback onMaakLobbyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLobbyInfoDelegate;
+        
+        private EndOperationDelegate onEndLobbyInfoDelegate;
+        
+        private System.Threading.SendOrPostCallback onLobbyInfoCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginJoinLobbyDelegate;
+        
+        private EndOperationDelegate onEndJoinLobbyDelegate;
+        
+        private System.Threading.SendOrPostCallback onJoinLobbyCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -274,7 +484,15 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         
         public event System.EventHandler<InloggenCompletedEventArgs> InloggenCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> MaakAccountCompleted;
+        public event System.EventHandler<MaakAccountCompletedEventArgs> MaakAccountCompleted;
+        
+        public event System.EventHandler<BeschikbareLobbysCompletedEventArgs> BeschikbareLobbysCompleted;
+        
+        public event System.EventHandler<MaakLobbyCompletedEventArgs> MaakLobbyCompleted;
+        
+        public event System.EventHandler<LobbyInfoCompletedEventArgs> LobbyInfoCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> JoinLobbyCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -421,8 +639,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndMaakAccount(System.IAsyncResult result) {
-            base.Channel.EndMaakAccount(result);
+        MMSystems5Game.GanzenBordServiceCloud.Player MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndMaakAccount(System.IAsyncResult result) {
+            return base.Channel.EndMaakAccount(result);
         }
         
         private System.IAsyncResult OnBeginMaakAccount(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -432,14 +650,15 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         private object[] OnEndMaakAccount(System.IAsyncResult result) {
-            ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndMaakAccount(result);
-            return null;
+            MMSystems5Game.GanzenBordServiceCloud.Player retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndMaakAccount(result);
+            return new object[] {
+                    retVal};
         }
         
         private void OnMaakAccountCompleted(object state) {
             if ((this.MaakAccountCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.MaakAccountCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.MaakAccountCompleted(this, new MaakAccountCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
@@ -460,6 +679,189 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             base.InvokeAsync(this.onBeginMaakAccountDelegate, new object[] {
                         PlayerNaam,
                         Wachtwoord}, this.onEndMaakAccountDelegate, this.onMaakAccountCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginBeschikbareLobbys(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndBeschikbareLobbys(System.IAsyncResult result) {
+            return base.Channel.EndBeschikbareLobbys(result);
+        }
+        
+        private System.IAsyncResult OnBeginBeschikbareLobbys(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginBeschikbareLobbys(callback, asyncState);
+        }
+        
+        private object[] OnEndBeschikbareLobbys(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndBeschikbareLobbys(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnBeschikbareLobbysCompleted(object state) {
+            if ((this.BeschikbareLobbysCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.BeschikbareLobbysCompleted(this, new BeschikbareLobbysCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void BeschikbareLobbysAsync() {
+            this.BeschikbareLobbysAsync(null);
+        }
+        
+        public void BeschikbareLobbysAsync(object userState) {
+            if ((this.onBeginBeschikbareLobbysDelegate == null)) {
+                this.onBeginBeschikbareLobbysDelegate = new BeginOperationDelegate(this.OnBeginBeschikbareLobbys);
+            }
+            if ((this.onEndBeschikbareLobbysDelegate == null)) {
+                this.onEndBeschikbareLobbysDelegate = new EndOperationDelegate(this.OnEndBeschikbareLobbys);
+            }
+            if ((this.onBeschikbareLobbysCompletedDelegate == null)) {
+                this.onBeschikbareLobbysCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnBeschikbareLobbysCompleted);
+            }
+            base.InvokeAsync(this.onBeginBeschikbareLobbysDelegate, null, this.onEndBeschikbareLobbysDelegate, this.onBeschikbareLobbysCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginMaakLobby(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMaakLobby(player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        MMSystems5Game.GanzenBordServiceCloud.Player MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndMaakLobby(System.IAsyncResult result) {
+            return base.Channel.EndMaakLobby(result);
+        }
+        
+        private System.IAsyncResult OnBeginMaakLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            MMSystems5Game.GanzenBordServiceCloud.Player player = ((MMSystems5Game.GanzenBordServiceCloud.Player)(inValues[0]));
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginMaakLobby(player, callback, asyncState);
+        }
+        
+        private object[] OnEndMaakLobby(System.IAsyncResult result) {
+            MMSystems5Game.GanzenBordServiceCloud.Player retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndMaakLobby(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnMaakLobbyCompleted(object state) {
+            if ((this.MaakLobbyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.MaakLobbyCompleted(this, new MaakLobbyCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void MaakLobbyAsync(MMSystems5Game.GanzenBordServiceCloud.Player player) {
+            this.MaakLobbyAsync(player, null);
+        }
+        
+        public void MaakLobbyAsync(MMSystems5Game.GanzenBordServiceCloud.Player player, object userState) {
+            if ((this.onBeginMaakLobbyDelegate == null)) {
+                this.onBeginMaakLobbyDelegate = new BeginOperationDelegate(this.OnBeginMaakLobby);
+            }
+            if ((this.onEndMaakLobbyDelegate == null)) {
+                this.onEndMaakLobbyDelegate = new EndOperationDelegate(this.OnEndMaakLobby);
+            }
+            if ((this.onMaakLobbyCompletedDelegate == null)) {
+                this.onMaakLobbyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMaakLobbyCompleted);
+            }
+            base.InvokeAsync(this.onBeginMaakLobbyDelegate, new object[] {
+                        player}, this.onEndMaakLobbyDelegate, this.onMaakLobbyCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginLobbyInfo(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLobbyInfo(lobby, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndLobbyInfo(System.IAsyncResult result) {
+            return base.Channel.EndLobbyInfo(result);
+        }
+        
+        private System.IAsyncResult OnBeginLobbyInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            MMSystems5Game.GanzenBordServiceCloud.Lobby lobby = ((MMSystems5Game.GanzenBordServiceCloud.Lobby)(inValues[0]));
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginLobbyInfo(lobby, callback, asyncState);
+        }
+        
+        private object[] OnEndLobbyInfo(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndLobbyInfo(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnLobbyInfoCompleted(object state) {
+            if ((this.LobbyInfoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LobbyInfoCompleted(this, new LobbyInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LobbyInfoAsync(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby) {
+            this.LobbyInfoAsync(lobby, null);
+        }
+        
+        public void LobbyInfoAsync(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, object userState) {
+            if ((this.onBeginLobbyInfoDelegate == null)) {
+                this.onBeginLobbyInfoDelegate = new BeginOperationDelegate(this.OnBeginLobbyInfo);
+            }
+            if ((this.onEndLobbyInfoDelegate == null)) {
+                this.onEndLobbyInfoDelegate = new EndOperationDelegate(this.OnEndLobbyInfo);
+            }
+            if ((this.onLobbyInfoCompletedDelegate == null)) {
+                this.onLobbyInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLobbyInfoCompleted);
+            }
+            base.InvokeAsync(this.onBeginLobbyInfoDelegate, new object[] {
+                        lobby}, this.onEndLobbyInfoDelegate, this.onLobbyInfoCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginJoinLobby(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginJoinLobby(lobby, player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndJoinLobby(System.IAsyncResult result) {
+            base.Channel.EndJoinLobby(result);
+        }
+        
+        private System.IAsyncResult OnBeginJoinLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            MMSystems5Game.GanzenBordServiceCloud.Lobby lobby = ((MMSystems5Game.GanzenBordServiceCloud.Lobby)(inValues[0]));
+            MMSystems5Game.GanzenBordServiceCloud.Player player = ((MMSystems5Game.GanzenBordServiceCloud.Player)(inValues[1]));
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginJoinLobby(lobby, player, callback, asyncState);
+        }
+        
+        private object[] OnEndJoinLobby(System.IAsyncResult result) {
+            ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndJoinLobby(result);
+            return null;
+        }
+        
+        private void OnJoinLobbyCompleted(object state) {
+            if ((this.JoinLobbyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.JoinLobbyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void JoinLobbyAsync(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player) {
+            this.JoinLobbyAsync(lobby, player, null);
+        }
+        
+        public void JoinLobbyAsync(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player, object userState) {
+            if ((this.onBeginJoinLobbyDelegate == null)) {
+                this.onBeginJoinLobbyDelegate = new BeginOperationDelegate(this.OnBeginJoinLobby);
+            }
+            if ((this.onEndJoinLobbyDelegate == null)) {
+                this.onEndJoinLobbyDelegate = new EndOperationDelegate(this.OnEndJoinLobby);
+            }
+            if ((this.onJoinLobbyCompletedDelegate == null)) {
+                this.onJoinLobbyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnJoinLobbyCompleted);
+            }
+            base.InvokeAsync(this.onBeginJoinLobbyDelegate, new object[] {
+                        lobby,
+                        player}, this.onEndJoinLobbyDelegate, this.onJoinLobbyCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -583,9 +985,61 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 return _result;
             }
             
-            public void EndMaakAccount(System.IAsyncResult result) {
+            public MMSystems5Game.GanzenBordServiceCloud.Player EndMaakAccount(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("MaakAccount", _args, result);
+                MMSystems5Game.GanzenBordServiceCloud.Player _result = ((MMSystems5Game.GanzenBordServiceCloud.Player)(base.EndInvoke("MaakAccount", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("BeschikbareLobbys", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> EndBeschikbareLobbys(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby> _result = ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Lobby>)(base.EndInvoke("BeschikbareLobbys", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginMaakLobby(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = player;
+                System.IAsyncResult _result = base.BeginInvoke("MaakLobby", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public MMSystems5Game.GanzenBordServiceCloud.Player EndMaakLobby(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                MMSystems5Game.GanzenBordServiceCloud.Player _result = ((MMSystems5Game.GanzenBordServiceCloud.Player)(base.EndInvoke("MaakLobby", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginLobbyInfo(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = lobby;
+                System.IAsyncResult _result = base.BeginInvoke("LobbyInfo", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> EndLobbyInfo(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> _result = ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player>)(base.EndInvoke("LobbyInfo", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginJoinLobby(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = lobby;
+                _args[1] = player;
+                System.IAsyncResult _result = base.BeginInvoke("JoinLobby", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndJoinLobby(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("JoinLobby", _args, result);
             }
         }
     }

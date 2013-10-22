@@ -161,6 +161,9 @@
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.Lobby.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.Player.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

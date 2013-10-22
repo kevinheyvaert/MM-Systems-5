@@ -22,13 +22,14 @@ namespace MMSystems5Game
              (App.Current as App).client1.MaakAccountCompleted += client1_MaakAccountCompleted;
         }
 
-        void client1_MaakAccountCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        void client1_MaakAccountCompleted(object sender, GanzenBordServiceCloud.MaakAccountCompletedEventArgs e)
         {
-           
+            (App.Current as App).player = e.Result;
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
             MessageBox.Show("Account aangemaakt");
         }
 
+     
         private void MaakNieuwAan(object sender, RoutedEventArgs e)
         {
              

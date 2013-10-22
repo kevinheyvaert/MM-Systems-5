@@ -16,7 +16,42 @@ namespace MMSystems5Game
         {
             InitializeComponent();
             (App.Current as App).client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            (App.Current as App).client1.BeschikbareLobbysCompleted += client1_BeschikbareLobbysCompleted;
+            (App.Current as App).client1.MaakLobbyCompleted += client1_MaakLobbyCompleted;
+            (App.Current as App).client1.LobbyInfoCompleted += client1_LobbyInfoCompleted;
+            (App.Current as App).client1.JoinLobbyCompleted += client1_JoinLobbyCompleted;
             
+        }
+
+        void client1_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            
+        }
+
+        void client1_LobbyInfoCompleted(object sender, GanzenBordServiceCloud.LobbyInfoCompletedEventArgs e)
+        {
+            foreach (var item in e.Result)
+            {
+                LijstSpelersInLobby.Items.Add(item.PlayerNaam);
+            }
+        }
+
+      
+
+        void client1_MaakLobbyCompleted(object sender, GanzenBordServiceCloud.MaakLobbyCompletedEventArgs e)
+        {
+            MessageBox.Show("gelukt");
+            ListAvaibleLobbys.Items.Clear();
+            (App.Current as App).client1.BeschikbareLobbysAsync();
+            (App.Current as App).player.Lobby = (App.Current as App).player.PlayerNaam;
+        }
+
+        void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
+        {
+            foreach (var item in e.Result)
+            {
+                ListAvaibleLobbys.Items.Add(item.HostPlayer);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -26,12 +61,24 @@ namespace MMSystems5Game
 
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LijstSpelersInLobby.Items.Clear();
+            (App.Current as App).lobby.HostPlayer = ListAvaibleLobbys.SelectedItem.ToString();
+            (App.Current as App).client1.LobbyInfoAsync((App.Current as App).lobby);
+            
 
+            
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            (App.Current as App).client1.BeschikbareLobbysAsync();
+        }
 
+      
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App).client1.MaakLobbyAsync((App.Current as App).player);
         }
     }
 }

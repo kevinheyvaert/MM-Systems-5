@@ -26,7 +26,12 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0">
                 <TextBlock Grid.Row="0" TextAlignment="Center" Margin="15">Lobby</TextBlock>
-                <ListBox x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged"  ></ListBox>
+                
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged"   ></ListBox>
+                <Button Content="Create Lobby" Click="Button_Click_2"  ></Button>
+                
             </StackPanel>
             
             

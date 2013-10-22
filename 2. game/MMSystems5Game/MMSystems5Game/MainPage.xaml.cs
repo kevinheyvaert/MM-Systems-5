@@ -29,6 +29,7 @@ namespace MMSystems5Game
         {
             if (e.Result != null)
             {
+                (App.Current as App).player = e.Result;
                 MessageBox.Show("Succesvol ingelogd");
                 NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
             }

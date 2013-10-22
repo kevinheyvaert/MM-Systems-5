@@ -96,8 +96,8 @@ namespace SilverlightApplication1.Web
             }
             catch (Exception)
             {
-                
-                throw;
+
+                return null;
             }
         }
 
