@@ -26,7 +26,8 @@ namespace MMSystems5Game
         void client1_MaakAccountCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
            
-            NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+            NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
+            MessageBox.Show("Account aangemaakt");
         }
 
         private void MaakNieuwAan(object sender, RoutedEventArgs e)
