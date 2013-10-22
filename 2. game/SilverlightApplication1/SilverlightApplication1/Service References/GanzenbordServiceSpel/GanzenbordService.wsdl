@@ -31,6 +31,18 @@
   <wsdl:message name="IGanzenbordService_MaakAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:MaakAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_InputMessage">
+    <wsdl:part name="parameters" element="tns:BeschikbareLobbys" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BeschikbareLobbysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaakLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaakLobbyResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGanzenbordService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/DoWork" message="tns:IGanzenbordService_DoWork_InputMessage" />
@@ -47,6 +59,14 @@
     <wsdl:operation name="MaakAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccount" message="tns:IGanzenbordService_MaakAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccountResponse" message="tns:IGanzenbordService_MaakAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BeschikbareLobbys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" message="tns:IGanzenbordService_BeschikbareLobbys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbysResponse" message="tns:IGanzenbordService_BeschikbareLobbys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaakLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobby" message="tns:IGanzenbordService_MaakLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobbyResponse" message="tns:IGanzenbordService_MaakLobby_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGanzenbordService" type="tns:IGanzenbordService">
@@ -80,6 +100,24 @@
     </wsdl:operation>
     <wsdl:operation name="MaakAccount">
       <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeschikbareLobbys">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaakLobby">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakLobby" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

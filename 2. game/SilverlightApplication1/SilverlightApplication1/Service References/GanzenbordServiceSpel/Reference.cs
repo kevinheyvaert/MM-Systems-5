@@ -22,11 +22,13 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         
         private int GewonnenField;
         
+        private string LobbyField;
+        
         private int LocatieField;
         
-        private string NaamField;
-        
         private int PlayerIdField;
+        
+        private string PlayerNaamField;
         
         private int VerlorenField;
         
@@ -46,6 +48,19 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lobby {
+            get {
+                return this.LobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LobbyField, value) != true)) {
+                    this.LobbyField = value;
+                    this.RaisePropertyChanged("Lobby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Locatie {
             get {
                 return this.LocatieField;
@@ -59,19 +74,6 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Naam {
-            get {
-                return this.NaamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NaamField, value) != true)) {
-                    this.NaamField = value;
-                    this.RaisePropertyChanged("Naam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int PlayerId {
             get {
                 return this.PlayerIdField;
@@ -80,6 +82,19 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 if ((this.PlayerIdField.Equals(value) != true)) {
                     this.PlayerIdField = value;
                     this.RaisePropertyChanged("PlayerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlayerNaam {
+            get {
+                return this.PlayerNaamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayerNaamField, value) != true)) {
+                    this.PlayerNaamField = value;
+                    this.RaisePropertyChanged("PlayerNaam");
                 }
             }
         }
@@ -120,6 +135,66 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Lobby", Namespace="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO")]
+    public partial class Lobby : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool CanJoinLobbyField;
+        
+        private string HostPlayerField;
+        
+        private System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> PlayersInLobbyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CanJoinLobby {
+            get {
+                return this.CanJoinLobbyField;
+            }
+            set {
+                if ((this.CanJoinLobbyField.Equals(value) != true)) {
+                    this.CanJoinLobbyField = value;
+                    this.RaisePropertyChanged("CanJoinLobby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HostPlayer {
+            get {
+                return this.HostPlayerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HostPlayerField, value) != true)) {
+                    this.HostPlayerField = value;
+                    this.RaisePropertyChanged("HostPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> PlayersInLobby {
+            get {
+                return this.PlayersInLobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayersInLobbyField, value) != true)) {
+                    this.PlayersInLobbyField = value;
+                    this.RaisePropertyChanged("PlayersInLobby");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GanzenbordServiceSpel.IGanzenbordService")]
     public interface IGanzenbordService {
@@ -142,7 +217,17 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakAccount", ReplyAction="http://tempuri.org/IGanzenbordService/MaakAccountResponse")]
         System.IAsyncResult BeginMaakAccount(string naam, string wachtwoord, System.AsyncCallback callback, object asyncState);
         
-        void EndMaakAccount(System.IAsyncResult result);
+        SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakAccount(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbys", ReplyAction="http://tempuri.org/IGanzenbordService/BeschikbareLobbysResponse")]
+        System.IAsyncResult BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> EndBeschikbareLobbys(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/MaakLobby", ReplyAction="http://tempuri.org/IGanzenbordService/MaakLobbyResponse")]
+        System.IAsyncResult BeginMaakLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
+        
+        SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakLobby(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -189,6 +274,63 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MaakAccountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public MaakAccountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SilverlightApplication1.GanzenbordServiceSpel.Player Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SilverlightApplication1.GanzenbordServiceSpel.Player)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BeschikbareLobbysCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public BeschikbareLobbysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MaakLobbyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public MaakLobbyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SilverlightApplication1.GanzenbordServiceSpel.Player Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SilverlightApplication1.GanzenbordServiceSpel.Player)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GanzenbordServiceClient : System.ServiceModel.ClientBase<SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService>, SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -214,6 +356,18 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         private EndOperationDelegate onEndMaakAccountDelegate;
         
         private System.Threading.SendOrPostCallback onMaakAccountCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginBeschikbareLobbysDelegate;
+        
+        private EndOperationDelegate onEndBeschikbareLobbysDelegate;
+        
+        private System.Threading.SendOrPostCallback onBeschikbareLobbysCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginMaakLobbyDelegate;
+        
+        private EndOperationDelegate onEndMaakLobbyDelegate;
+        
+        private System.Threading.SendOrPostCallback onMaakLobbyCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -274,7 +428,11 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         
         public event System.EventHandler<InloggenCompletedEventArgs> InloggenCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> MaakAccountCompleted;
+        public event System.EventHandler<MaakAccountCompletedEventArgs> MaakAccountCompleted;
+        
+        public event System.EventHandler<BeschikbareLobbysCompletedEventArgs> BeschikbareLobbysCompleted;
+        
+        public event System.EventHandler<MaakLobbyCompletedEventArgs> MaakLobbyCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -421,8 +579,8 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndMaakAccount(System.IAsyncResult result) {
-            base.Channel.EndMaakAccount(result);
+        SilverlightApplication1.GanzenbordServiceSpel.Player SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndMaakAccount(System.IAsyncResult result) {
+            return base.Channel.EndMaakAccount(result);
         }
         
         private System.IAsyncResult OnBeginMaakAccount(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -432,14 +590,15 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         private object[] OnEndMaakAccount(System.IAsyncResult result) {
-            ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndMaakAccount(result);
-            return null;
+            SilverlightApplication1.GanzenbordServiceSpel.Player retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndMaakAccount(result);
+            return new object[] {
+                    retVal};
         }
         
         private void OnMaakAccountCompleted(object state) {
             if ((this.MaakAccountCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.MaakAccountCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.MaakAccountCompleted(this, new MaakAccountCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
@@ -460,6 +619,96 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
             base.InvokeAsync(this.onBeginMaakAccountDelegate, new object[] {
                         naam,
                         wachtwoord}, this.onEndMaakAccountDelegate, this.onMaakAccountCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginBeschikbareLobbys(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndBeschikbareLobbys(System.IAsyncResult result) {
+            return base.Channel.EndBeschikbareLobbys(result);
+        }
+        
+        private System.IAsyncResult OnBeginBeschikbareLobbys(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginBeschikbareLobbys(callback, asyncState);
+        }
+        
+        private object[] OnEndBeschikbareLobbys(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndBeschikbareLobbys(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnBeschikbareLobbysCompleted(object state) {
+            if ((this.BeschikbareLobbysCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.BeschikbareLobbysCompleted(this, new BeschikbareLobbysCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void BeschikbareLobbysAsync() {
+            this.BeschikbareLobbysAsync(null);
+        }
+        
+        public void BeschikbareLobbysAsync(object userState) {
+            if ((this.onBeginBeschikbareLobbysDelegate == null)) {
+                this.onBeginBeschikbareLobbysDelegate = new BeginOperationDelegate(this.OnBeginBeschikbareLobbys);
+            }
+            if ((this.onEndBeschikbareLobbysDelegate == null)) {
+                this.onEndBeschikbareLobbysDelegate = new EndOperationDelegate(this.OnEndBeschikbareLobbys);
+            }
+            if ((this.onBeschikbareLobbysCompletedDelegate == null)) {
+                this.onBeschikbareLobbysCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnBeschikbareLobbysCompleted);
+            }
+            base.InvokeAsync(this.onBeginBeschikbareLobbysDelegate, null, this.onEndBeschikbareLobbysDelegate, this.onBeschikbareLobbysCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginMaakLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMaakLobby(player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SilverlightApplication1.GanzenbordServiceSpel.Player SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndMaakLobby(System.IAsyncResult result) {
+            return base.Channel.EndMaakLobby(result);
+        }
+        
+        private System.IAsyncResult OnBeginMaakLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            SilverlightApplication1.GanzenbordServiceSpel.Player player = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(inValues[0]));
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginMaakLobby(player, callback, asyncState);
+        }
+        
+        private object[] OnEndMaakLobby(System.IAsyncResult result) {
+            SilverlightApplication1.GanzenbordServiceSpel.Player retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndMaakLobby(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnMaakLobbyCompleted(object state) {
+            if ((this.MaakLobbyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.MaakLobbyCompleted(this, new MaakLobbyCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void MaakLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player) {
+            this.MaakLobbyAsync(player, null);
+        }
+        
+        public void MaakLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player, object userState) {
+            if ((this.onBeginMaakLobbyDelegate == null)) {
+                this.onBeginMaakLobbyDelegate = new BeginOperationDelegate(this.OnBeginMaakLobby);
+            }
+            if ((this.onEndMaakLobbyDelegate == null)) {
+                this.onEndMaakLobbyDelegate = new EndOperationDelegate(this.OnEndMaakLobby);
+            }
+            if ((this.onMaakLobbyCompletedDelegate == null)) {
+                this.onMaakLobbyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMaakLobbyCompleted);
+            }
+            base.InvokeAsync(this.onBeginMaakLobbyDelegate, new object[] {
+                        player}, this.onEndMaakLobbyDelegate, this.onMaakLobbyCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -583,9 +832,35 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 return _result;
             }
             
-            public void EndMaakAccount(System.IAsyncResult result) {
+            public SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakAccount(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("MaakAccount", _args, result);
+                SilverlightApplication1.GanzenbordServiceSpel.Player _result = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(base.EndInvoke("MaakAccount", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginBeschikbareLobbys(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("BeschikbareLobbys", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> EndBeschikbareLobbys(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby> _result = ((System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby>)(base.EndInvoke("BeschikbareLobbys", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginMaakLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = player;
+                System.IAsyncResult _result = base.BeginInvoke("MaakLobby", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakLobby(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SilverlightApplication1.GanzenbordServiceSpel.Player _result = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(base.EndInvoke("MaakLobby", _args, result)));
+                return _result;
             }
         }
     }

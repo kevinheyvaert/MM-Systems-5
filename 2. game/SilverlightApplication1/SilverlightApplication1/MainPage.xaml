@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="700" d:DesignWidth="700">
 
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
@@ -47,8 +47,10 @@
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="MaakAccount" Content="MaakAccount" HorizontalAlignment="Left" Margin="5,204,0,0" VerticalAlignment="Top" Width="75" Click="MaakAccount_Click" Grid.Column="1"/>
         <Button x:Name="inloggen" Grid.Column="1" Click="inloggen_Click">Inloggen</Button>
+            <Button x:Name="MaakLobby" Grid.Column="1" Click="MaakLobby_Click" >MaakLobby</Button> 
         <TextBox x:Name="naam"  Text="TextBox" />
         <TextBox x:Name="wachtwoord"  Text="TextBox" />
+           
         </StackPanel>
     </Grid>
 

@@ -22,6 +22,12 @@ namespace SilverlightApplication1.Web
         DTO.Player Inloggen(string naam, string wachtwoord);
 
         [OperationContract]
-        void MaakAccount(string naam, string wachtwoord);
+        DTO.Player MaakAccount(string naam, string wachtwoord);
+
+        [OperationContract]
+        List<DTO.Lobby> BeschikbareLobbys();
+       
+        [OperationContract]
+        DTO.Player MaakLobby(DTO.Player player);
     }
 }

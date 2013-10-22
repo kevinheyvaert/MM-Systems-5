@@ -48,7 +48,35 @@
   </xs:element>
   <xs:element name="MaakAccountResponse">
     <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="MaakAccountResult" nillable="true" type="q2:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeschikbareLobbys">
+    <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeschikbareLobbysResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="BeschikbareLobbysResult" nillable="true" type="q3:ArrayOfLobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MaakLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="player" nillable="true" type="q4:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MaakLobbyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="MaakLobbyResult" nillable="true" type="q5:Player" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

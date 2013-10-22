@@ -19,12 +19,14 @@ namespace SilverlightApplication1
 
 
         }
-        public string UserName { get; set; }
-
+        public string PlayerName { get; set; }
+        public string Wachtwoord { get; set; }
         public bool Beurt { get; set; }
-        public string Email { get; set; }
-        public int Score { get; set; }
-        // Plaats van begin op bord(grid)
+        public int PlayerId { get; set; }
+        public int Locatie { get; set; }
+        public int Gewonnen { get; set; }
+        public int Verloren { get; set; }
+      
         private int _plaatsc = 0;
         private int _plaatsr = 6;
         public int PlaatsC
@@ -37,8 +39,7 @@ namespace SilverlightApplication1
             get { return _plaatsr; }
             set { _plaatsr = value; OnPropertyChanged("PlaatsR"); }
         }
-        public int Id { get; set; }
-        public int Locatie { get; set; }
+       
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)

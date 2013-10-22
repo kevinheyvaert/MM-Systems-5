@@ -14,7 +14,7 @@ namespace SilverlightApplication1.Web.DTO
             [DataMember]
             public int PlayerId { get; set; }
             [DataMember]
-            public string Naam { get; set; }
+            public string PlayerNaam { get; set; }
             [DataMember]
             public string Wachtwoord { get; set; }
             [DataMember]
@@ -23,6 +23,8 @@ namespace SilverlightApplication1.Web.DTO
             public int Gewonnen { get; set; }
             [DataMember]
             public int Verloren { get; set; }
+             [DataMember]
+            public string Lobby { get; set; }
            
         }
   }

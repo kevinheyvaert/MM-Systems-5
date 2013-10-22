@@ -62,7 +62,7 @@ namespace MMSystems5Silverlight.Web
 
         }
 
-        SqlConnection con;
+        
         public void MaakAccount(string PlayerNaam, string Wachtwoord)
         {
             var maxId = (from r in gb.Players

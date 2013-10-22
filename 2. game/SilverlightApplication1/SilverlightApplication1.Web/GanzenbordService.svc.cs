@@ -13,8 +13,8 @@ namespace SilverlightApplication1.Web
    
     public class GanzenbordService : IGanzenbordService
     {
-        
-        
+
+        Player player = new Player();
         private DataCloudDataContext db;
         private int playerid;
         
@@ -45,11 +45,11 @@ namespace SilverlightApplication1.Web
 
                 var usercontrol = from u in db.Players
                                   where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord};
+                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord, u.PlayerId};
 
                 foreach (var item in usercontrol)
                 {
-                    playerList.Add(new DTO.Player() { Naam = item.PlayerNaam, Wachtwoord = item.Wachtwoord });
+                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId=item.PlayerId });
                 }
                 if(playerList.Count()>0)
                 {
@@ -72,7 +72,7 @@ namespace SilverlightApplication1.Web
         }
 
 
-        public void MaakAccount(string naam, string wachtwoord)
+        public DTO.Player MaakAccount(string naam, string wachtwoord)
         {
 
             var maxId = (from r in db.Players
@@ -84,12 +84,14 @@ namespace SilverlightApplication1.Web
             try
             {
 
-                Player player = new Player();
+                
                 player.PlayerNaam = (string)naam;
                 player.Wachtwoord =(string) wachtwoord;
                 player.PlayerId = playerid;
                 db.Players.InsertOnSubmit(player);
                 db.SubmitChanges();
+
+                return Inloggen(naam, wachtwoord);
                 
             }
             catch (Exception)
@@ -97,6 +99,46 @@ namespace SilverlightApplication1.Web
                 
                 throw;
             }
+        }
+
+
+
+
+        public List<DTO.Lobby> BeschikbareLobbys()
+        {
+            var BeschikbareLobbys = (from l in db.Lobbies
+                                     where l.CanJoinLobby == true
+                                      select new {l.Hostplayer});
+
+            List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
+
+            foreach (var item in BeschikbareLobbys)
+            {
+               LobbyList.Add(new DTO.Lobby() { HostPlayer=item.Hostplayer });
+            }
+
+            return LobbyList;
+
+            
+        }
+
+
+        public DTO.Player MaakLobby(DTO.Player player)
+        {
+            Lobby lobby = new Lobby();
+            lobby.Hostplayer = (string)player.PlayerNaam;
+            lobby.CanJoinLobby = true;
+            db.Lobbies.InsertOnSubmit(lobby);
+            db.SubmitChanges();
+
+            PlayerLobby playerlobby = new PlayerLobby();
+            playerlobby.PlayerId = player.PlayerId;
+            playerlobby.HostPlayer = player.PlayerNaam;
+            db.PlayerLobbies.InsertOnSubmit(playerlobby);
+            db.SubmitChanges();
+
+            return player;
+            
         }
     }
 }
