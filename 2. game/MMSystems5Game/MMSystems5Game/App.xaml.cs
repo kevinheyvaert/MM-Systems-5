@@ -17,6 +17,8 @@ namespace MMSystems5Game
 {
     public partial class App : Application
     {
+      public GanzenBordServiceCloud.GanzenbordServiceClient client1;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>

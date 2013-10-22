@@ -15,16 +15,14 @@ namespace MMSystems5Game
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        GanzenBordServiceCloud.GanzenbordServiceClient client1;
-        string temp1;
-        string temp2;
+        
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-            client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
-            client1.InloggenCompleted += client1_InloggenCompleted;
+             (App.Current as App).client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+             (App.Current as App).client1.InloggenCompleted += client1_InloggenCompleted;
         }
 
         void client1_InloggenCompleted(object sender, GanzenBordServiceCloud.InloggenCompletedEventArgs e)
@@ -45,9 +43,8 @@ namespace MMSystems5Game
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            temp1 = Username.Text;
-            temp2 = Password.Text;
-            client1.InloggenAsync(temp1, temp2);
+            
+             (App.Current as App).client1.InloggenAsync(Username.Text, Password.Text);
         }
 
         private void MaakNieuwAccount(object sender, RoutedEventArgs e)

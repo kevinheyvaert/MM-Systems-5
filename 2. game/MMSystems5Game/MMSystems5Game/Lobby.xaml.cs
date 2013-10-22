@@ -15,6 +15,8 @@ namespace MMSystems5Game
         public Page1()
         {
             InitializeComponent();
+            (App.Current as App).client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -23,6 +25,11 @@ namespace MMSystems5Game
         }
 
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
 
         }
