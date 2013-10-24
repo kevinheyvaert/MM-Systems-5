@@ -30,10 +30,7 @@ namespace MMSystems5Game
 
         void client1_LobbyInfoCompleted(object sender, GanzenBordServiceCloud.LobbyInfoCompletedEventArgs e)
         {
-            foreach (var item in e.Result)
-            {
-                LijstSpelersInLobby.Items.Add(item.PlayerNaam);
-            }
+           LijstSpelersInLobby.ItemsSource = e.Result;
         }
 
       
@@ -41,17 +38,19 @@ namespace MMSystems5Game
         void client1_MaakLobbyCompleted(object sender, GanzenBordServiceCloud.MaakLobbyCompletedEventArgs e)
         {
             MessageBox.Show("gelukt");
-            ListAvaibleLobbys.Items.Clear();
+            
             (App.Current as App).client1.BeschikbareLobbysAsync();
             (App.Current as App).player.Lobby = (App.Current as App).player.PlayerNaam;
         }
 
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
         {
-            foreach (var item in e.Result)
-            {
-                ListAvaibleLobbys.Items.Add(item.HostPlayer);
-            }
+
+            ListAvaibleLobbys.ItemsSource = e.Result;
+            //foreach (var item in e.Result)
+            //{
+            //    ListAvaibleLobbys.Items.Add(item.HostPlayer);
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,9 +60,9 @@ namespace MMSystems5Game
 
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LijstSpelersInLobby.Items.Clear();
-            (App.Current as App).lobby.HostPlayer = ListAvaibleLobbys.SelectedItem.ToString();
-            (App.Current as App).client1.LobbyInfoAsync((App.Current as App).lobby);
+            
+      
+            (App.Current as App).client1.LobbyInfoAsync((GanzenBordServiceCloud.Lobby)ListAvaibleLobbys.SelectedValue);
             
 
             
@@ -71,7 +70,17 @@ namespace MMSystems5Game
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            (App.Current as App).client1.BeschikbareLobbysAsync();
+            try
+            { 
+                (App.Current as App).client1.BeschikbareLobbysAsync();
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+         
         }
 
       

@@ -29,17 +29,36 @@
                 
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged"   ></ListBox>
                 <Button Content="Create Lobby" Click="Button_Click_2"  ></Button>
+                <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                         <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20"  Text="{Binding HostPlayer}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+      
                 
             </StackPanel>
             
             
             
         </Grid>
+        
         <StackPanel Grid.Column="1">
-            <ListBox x:Name="LijstSpelersInLobby" ></ListBox>
             <Button Content="Play" Click="Button_Click" ></Button>
+            <ListBox x:Name="LijstSpelersInLobby" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+           
         </StackPanel>
         
 

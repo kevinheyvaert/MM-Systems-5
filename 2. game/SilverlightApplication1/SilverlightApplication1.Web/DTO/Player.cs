@@ -23,8 +23,10 @@ namespace SilverlightApplication1.Web.DTO
             public int Gewonnen { get; set; }
             [DataMember]
             public int Verloren { get; set; }
-             [DataMember]
+            [DataMember]
             public string Lobby { get; set; }
+            [DataMember]
+            public bool IsHost { get; set; }
            
         }
   }

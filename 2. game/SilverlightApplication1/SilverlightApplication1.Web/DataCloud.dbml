@@ -1,11 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GanzenBordDataBase" Class="DataCloudDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=hoegfejaux.database.windows.net;Initial Catalog=GanzenBordDataBase;Persist Security Info=True;User ID=KevinDataBase" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GanzenBordDataBaseConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Lobby" Member="Lobbies">
-    <Type Name="Lobby">
-      <Column Name="Hostplayer" Type="System.String" DbType="Char(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CanJoinLobby" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.PlayerLobby" Member="PlayerLobbies">
     <Type Name="PlayerLobby">
       <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -15,12 +9,20 @@
   <Table Name="dbo.Player" Member="Players">
     <Type Name="Player">
       <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PlayerNaam" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="PlayerNaam" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="Wachtwoord" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="Locatie" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Gewonnen" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Verloren" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lobby" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="IsHost" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lobby" Member="Lobbies">
+    <Type Name="Lobby">
+      <Column Name="Hostplayer" Type="System.String" DbType="Char(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CanJoinLobby" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AantalPlayers" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

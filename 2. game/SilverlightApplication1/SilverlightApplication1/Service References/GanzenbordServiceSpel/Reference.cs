@@ -22,6 +22,8 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         
         private int GewonnenField;
         
+        private bool IsHostField;
+        
         private string LobbyField;
         
         private int LocatieField;
@@ -43,6 +45,19 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 if ((this.GewonnenField.Equals(value) != true)) {
                     this.GewonnenField = value;
                     this.RaisePropertyChanged("Gewonnen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsHost {
+            get {
+                return this.IsHostField;
+            }
+            set {
+                if ((this.IsHostField.Equals(value) != true)) {
+                    this.IsHostField = value;
+                    this.RaisePropertyChanged("IsHost");
                 }
             }
         }
@@ -228,6 +243,31 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         System.IAsyncResult BeginMaakLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
         
         SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakLobby(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/LobbyInfo", ReplyAction="http://tempuri.org/IGanzenbordService/LobbyInfoResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<object>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SilverlightApplication1.GanzenbordServiceSpel.Player))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SilverlightApplication1.GanzenbordServiceSpel.Lobby))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player>))]
+        System.IAsyncResult BeginLobbyInfo(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<object> EndLobbyInfo(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/JoinLobby", ReplyAction="http://tempuri.org/IGanzenbordService/JoinLobbyResponse")]
+        System.IAsyncResult BeginJoinLobby(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
+        
+        void EndJoinLobby(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/ExitLobby", ReplyAction="http://tempuri.org/IGanzenbordService/ExitLobbyResponse")]
+        System.IAsyncResult BeginExitLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
+        
+        void EndExitLobby(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/StopHost", ReplyAction="http://tempuri.org/IGanzenbordService/StopHostResponse")]
+        System.IAsyncResult BeginStopHost(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
+        
+        void EndStopHost(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -331,6 +371,25 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public LobbyInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<object> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<object>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GanzenbordServiceClient : System.ServiceModel.ClientBase<SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService>, SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -368,6 +427,30 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         private EndOperationDelegate onEndMaakLobbyDelegate;
         
         private System.Threading.SendOrPostCallback onMaakLobbyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLobbyInfoDelegate;
+        
+        private EndOperationDelegate onEndLobbyInfoDelegate;
+        
+        private System.Threading.SendOrPostCallback onLobbyInfoCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginJoinLobbyDelegate;
+        
+        private EndOperationDelegate onEndJoinLobbyDelegate;
+        
+        private System.Threading.SendOrPostCallback onJoinLobbyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginExitLobbyDelegate;
+        
+        private EndOperationDelegate onEndExitLobbyDelegate;
+        
+        private System.Threading.SendOrPostCallback onExitLobbyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginStopHostDelegate;
+        
+        private EndOperationDelegate onEndStopHostDelegate;
+        
+        private System.Threading.SendOrPostCallback onStopHostCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -433,6 +516,14 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         public event System.EventHandler<BeschikbareLobbysCompletedEventArgs> BeschikbareLobbysCompleted;
         
         public event System.EventHandler<MaakLobbyCompletedEventArgs> MaakLobbyCompleted;
+        
+        public event System.EventHandler<LobbyInfoCompletedEventArgs> LobbyInfoCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> JoinLobbyCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ExitLobbyCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> StopHostCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -711,6 +802,189 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                         player}, this.onEndMaakLobbyDelegate, this.onMaakLobbyCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginLobbyInfo(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLobbyInfo(lobby, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<object> SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndLobbyInfo(System.IAsyncResult result) {
+            return base.Channel.EndLobbyInfo(result);
+        }
+        
+        private System.IAsyncResult OnBeginLobbyInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby = ((SilverlightApplication1.GanzenbordServiceSpel.Lobby)(inValues[0]));
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginLobbyInfo(lobby, callback, asyncState);
+        }
+        
+        private object[] OnEndLobbyInfo(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<object> retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndLobbyInfo(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnLobbyInfoCompleted(object state) {
+            if ((this.LobbyInfoCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LobbyInfoCompleted(this, new LobbyInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LobbyInfoAsync(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby) {
+            this.LobbyInfoAsync(lobby, null);
+        }
+        
+        public void LobbyInfoAsync(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, object userState) {
+            if ((this.onBeginLobbyInfoDelegate == null)) {
+                this.onBeginLobbyInfoDelegate = new BeginOperationDelegate(this.OnBeginLobbyInfo);
+            }
+            if ((this.onEndLobbyInfoDelegate == null)) {
+                this.onEndLobbyInfoDelegate = new EndOperationDelegate(this.OnEndLobbyInfo);
+            }
+            if ((this.onLobbyInfoCompletedDelegate == null)) {
+                this.onLobbyInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLobbyInfoCompleted);
+            }
+            base.InvokeAsync(this.onBeginLobbyInfoDelegate, new object[] {
+                        lobby}, this.onEndLobbyInfoDelegate, this.onLobbyInfoCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginJoinLobby(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginJoinLobby(lobby, player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndJoinLobby(System.IAsyncResult result) {
+            base.Channel.EndJoinLobby(result);
+        }
+        
+        private System.IAsyncResult OnBeginJoinLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby = ((SilverlightApplication1.GanzenbordServiceSpel.Lobby)(inValues[0]));
+            SilverlightApplication1.GanzenbordServiceSpel.Player player = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(inValues[1]));
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginJoinLobby(lobby, player, callback, asyncState);
+        }
+        
+        private object[] OnEndJoinLobby(System.IAsyncResult result) {
+            ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndJoinLobby(result);
+            return null;
+        }
+        
+        private void OnJoinLobbyCompleted(object state) {
+            if ((this.JoinLobbyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.JoinLobbyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void JoinLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player) {
+            this.JoinLobbyAsync(lobby, player, null);
+        }
+        
+        public void JoinLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player, object userState) {
+            if ((this.onBeginJoinLobbyDelegate == null)) {
+                this.onBeginJoinLobbyDelegate = new BeginOperationDelegate(this.OnBeginJoinLobby);
+            }
+            if ((this.onEndJoinLobbyDelegate == null)) {
+                this.onEndJoinLobbyDelegate = new EndOperationDelegate(this.OnEndJoinLobby);
+            }
+            if ((this.onJoinLobbyCompletedDelegate == null)) {
+                this.onJoinLobbyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnJoinLobbyCompleted);
+            }
+            base.InvokeAsync(this.onBeginJoinLobbyDelegate, new object[] {
+                        lobby,
+                        player}, this.onEndJoinLobbyDelegate, this.onJoinLobbyCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginExitLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginExitLobby(player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndExitLobby(System.IAsyncResult result) {
+            base.Channel.EndExitLobby(result);
+        }
+        
+        private System.IAsyncResult OnBeginExitLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            SilverlightApplication1.GanzenbordServiceSpel.Player player = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(inValues[0]));
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginExitLobby(player, callback, asyncState);
+        }
+        
+        private object[] OnEndExitLobby(System.IAsyncResult result) {
+            ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndExitLobby(result);
+            return null;
+        }
+        
+        private void OnExitLobbyCompleted(object state) {
+            if ((this.ExitLobbyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ExitLobbyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ExitLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player) {
+            this.ExitLobbyAsync(player, null);
+        }
+        
+        public void ExitLobbyAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player, object userState) {
+            if ((this.onBeginExitLobbyDelegate == null)) {
+                this.onBeginExitLobbyDelegate = new BeginOperationDelegate(this.OnBeginExitLobby);
+            }
+            if ((this.onEndExitLobbyDelegate == null)) {
+                this.onEndExitLobbyDelegate = new EndOperationDelegate(this.OnEndExitLobby);
+            }
+            if ((this.onExitLobbyCompletedDelegate == null)) {
+                this.onExitLobbyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnExitLobbyCompleted);
+            }
+            base.InvokeAsync(this.onBeginExitLobbyDelegate, new object[] {
+                        player}, this.onEndExitLobbyDelegate, this.onExitLobbyCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.BeginStopHost(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginStopHost(player, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndStopHost(System.IAsyncResult result) {
+            base.Channel.EndStopHost(result);
+        }
+        
+        private System.IAsyncResult OnBeginStopHost(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            SilverlightApplication1.GanzenbordServiceSpel.Player player = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(inValues[0]));
+            return ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).BeginStopHost(player, callback, asyncState);
+        }
+        
+        private object[] OnEndStopHost(System.IAsyncResult result) {
+            ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndStopHost(result);
+            return null;
+        }
+        
+        private void OnStopHostCompleted(object state) {
+            if ((this.StopHostCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.StopHostCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void StopHostAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player) {
+            this.StopHostAsync(player, null);
+        }
+        
+        public void StopHostAsync(SilverlightApplication1.GanzenbordServiceSpel.Player player, object userState) {
+            if ((this.onBeginStopHostDelegate == null)) {
+                this.onBeginStopHostDelegate = new BeginOperationDelegate(this.OnBeginStopHost);
+            }
+            if ((this.onEndStopHostDelegate == null)) {
+                this.onEndStopHostDelegate = new EndOperationDelegate(this.OnEndStopHost);
+            }
+            if ((this.onStopHostCompletedDelegate == null)) {
+                this.onStopHostCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnStopHostCompleted);
+            }
+            base.InvokeAsync(this.onBeginStopHostDelegate, new object[] {
+                        player}, this.onEndStopHostDelegate, this.onStopHostCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -861,6 +1135,56 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 object[] _args = new object[0];
                 SilverlightApplication1.GanzenbordServiceSpel.Player _result = ((SilverlightApplication1.GanzenbordServiceSpel.Player)(base.EndInvoke("MaakLobby", _args, result)));
                 return _result;
+            }
+            
+            public System.IAsyncResult BeginLobbyInfo(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = lobby;
+                System.IAsyncResult _result = base.BeginInvoke("LobbyInfo", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<object> EndLobbyInfo(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<object> _result = ((System.Collections.ObjectModel.ObservableCollection<object>)(base.EndInvoke("LobbyInfo", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginJoinLobby(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = lobby;
+                _args[1] = player;
+                System.IAsyncResult _result = base.BeginInvoke("JoinLobby", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndJoinLobby(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("JoinLobby", _args, result);
+            }
+            
+            public System.IAsyncResult BeginExitLobby(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = player;
+                System.IAsyncResult _result = base.BeginInvoke("ExitLobby", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndExitLobby(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("ExitLobby", _args, result);
+            }
+            
+            public System.IAsyncResult BeginStopHost(SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = player;
+                System.IAsyncResult _result = base.BeginInvoke("StopHost", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndStopHost(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("StopHost", _args, result);
             }
         }
     }

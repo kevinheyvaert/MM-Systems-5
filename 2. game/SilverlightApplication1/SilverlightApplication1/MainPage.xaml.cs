@@ -24,7 +24,8 @@ namespace SilverlightApplication1
 
         Bord Speelbord;
         GanzenbordServiceSpel.Player player = new GanzenbordServiceSpel.Player();
-        ObservableCollection<GanzenbordServiceSpel.Lobby> aList = new ObservableCollection<GanzenbordServiceSpel.Lobby>();
+        GanzenbordServiceSpel.Lobby lobby = new GanzenbordServiceSpel.Lobby();
+        
         public MainPage()
         {
             InitializeComponent();
@@ -38,10 +39,30 @@ namespace SilverlightApplication1
             client2.InloggenCompleted += client2_InloggenCompleted;
             client2.MaakLobbyCompleted += client2_MaakLobbyCompleted;
             client2.BeschikbareLobbysCompleted += client2_BeschikbareLobbysCompleted;
+            client2.LobbyInfoCompleted += client2_LobbyInfoCompleted;
+            client2.JoinLobbyCompleted += client2_JoinLobbyCompleted;
+            client2.StopHostCompleted += client2_StopHostCompleted;
+         
 
 
             //client = new Ganzebord.GanzenbordServiceClient();
             //client.GooiCompleted += client_GooiCompleted;
+        }
+
+        void client2_StopHostCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            
+        }
+
+        void client2_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+           // MessageBox.Show("gejoint");
+            
+        }
+
+        void client2_LobbyInfoCompleted(object sender, GanzenbordServiceSpel.LobbyInfoCompletedEventArgs e)
+        {
+            LijstSpelersInLobby.ItemsSource = e.Result;
         }
 
         void client2_MaakAccountCompleted(object sender, GanzenbordServiceSpel.MaakAccountCompletedEventArgs e)
@@ -51,14 +72,12 @@ namespace SilverlightApplication1
 
         void client2_BeschikbareLobbysCompleted(object sender, GanzenbordServiceSpel.BeschikbareLobbysCompletedEventArgs e)
         {
-            MessageBox.Show("De lobbys");
-           
-            aList = e.Result;
+            ListAvaibleLobbys.ItemsSource = e.Result;
         }
 
         void client2_MaakLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            MessageBox.Show("Lobby toegevoegd");
+           // MessageBox.Show("Lobby toegevoegd");
             client2.BeschikbareLobbysAsync();
         }
 
@@ -75,32 +94,15 @@ namespace SilverlightApplication1
 
                 player = e.Result;
 
-                MessageBox.Show("[proficiat ");
+               // MessageBox.Show("proficiat ");
                 client2.BeschikbareLobbysAsync();
 
             }
 
         }
 
-       
-
-        //void client1_GooiCompleted(object sender, Ganzenbordcloud.GooiCompletedEventArgs e)
-        //{
-        //    AantalDobbelsteen.Text = e.Result.ToString();
-        //    Speler.Locatie = Speler.Locatie + e.Result;
-        //    PlaatsOpBord.Text = Speler.Locatie.ToString();
-        //    Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-        //    Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
-        //}
-
-        //void client_GooiCompleted(object sender, Ganzebord.GooiCompletedEventArgs e)
-        //{
-        //    AantalDobbelsteen.Text = e.Result.ToString();
-        //    Speler.Locatie = Speler.Locatie + e.Result;
-        //    PlaatsOpBord.Text = Speler.Locatie.ToString();
-        //    Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-        //    Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
-        //}
+ 
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //client.GooiAsync();
@@ -132,5 +134,25 @@ namespace SilverlightApplication1
 
 
         }
+
+        private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            client2.LobbyInfoAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue);
+        }
+
+        private void join_Click(object sender, RoutedEventArgs e)
+        {
+            client2.StopHostAsync(player);
+            client2.JoinLobbyAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue, player);
+            
+
+        }
+
+        private void stopHost_Click(object sender, RoutedEventArgs e)
+        {
+            client2.StopHostAsync(player);
+        }
+        
     }
 }

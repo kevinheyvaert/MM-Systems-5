@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Net.NetworkInformation;
+
 
 namespace MMSystems5Game
 {
@@ -19,7 +21,8 @@ namespace MMSystems5Game
     {
       public GanzenBordServiceCloud.GanzenbordServiceClient client1;
       public GanzenBordServiceCloud.Player player = new GanzenBordServiceCloud.Player();
-       public GanzenBordServiceCloud.Lobby lobby = new GanzenBordServiceCloud.Lobby();
+      public GanzenBordServiceCloud.Lobby lobby = new GanzenBordServiceCloud.Lobby();
+       
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -61,6 +64,36 @@ namespace MMSystems5Game
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
+
+        }
+
+        void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
+        {
+           
+            switch (e.NotificationType)
+            {
+                case NetworkNotificationType.InterfaceConnected:
+                    {
+                        MessageBox.Show("Connected");
+                        break;
+                    }
+                case NetworkNotificationType.InterfaceDisconnected:
+                    {
+                        MessageBox.Show("Geen Internet");
+                        break;
+                    }
+                case NetworkNotificationType.CharacteristicUpdate:
+                    {
+                        MessageBox.Show("Geen Internet");
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Fout met de verbinding");
+                        break;
+                    }
+            }
         }
 
         // Code to execute when the application is launching (eg, from Start)

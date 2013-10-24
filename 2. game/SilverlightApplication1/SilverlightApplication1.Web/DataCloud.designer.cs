@@ -30,15 +30,15 @@ namespace SilverlightApplication1.Web
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertLobby(Lobby instance);
-    partial void UpdateLobby(Lobby instance);
-    partial void DeleteLobby(Lobby instance);
     partial void InsertPlayerLobby(PlayerLobby instance);
     partial void UpdatePlayerLobby(PlayerLobby instance);
     partial void DeletePlayerLobby(PlayerLobby instance);
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
+    partial void InsertLobby(Lobby instance);
+    partial void UpdateLobby(Lobby instance);
+    partial void DeleteLobby(Lobby instance);
     #endregion
 		
 		public DataCloudDataContext() : 
@@ -71,14 +71,6 @@ namespace SilverlightApplication1.Web
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Lobby> Lobbies
-		{
-			get
-			{
-				return this.GetTable<Lobby>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PlayerLobby> PlayerLobbies
 		{
 			get
@@ -94,90 +86,12 @@ namespace SilverlightApplication1.Web
 				return this.GetTable<Player>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lobby")]
-	public partial class Lobby : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Hostplayer;
-		
-		private bool _CanJoinLobby;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnHostplayerChanging(string value);
-    partial void OnHostplayerChanged();
-    partial void OnCanJoinLobbyChanging(bool value);
-    partial void OnCanJoinLobbyChanged();
-    #endregion
-		
-		public Lobby()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hostplayer", DbType="Char(25) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Hostplayer
+		public System.Data.Linq.Table<Lobby> Lobbies
 		{
 			get
 			{
-				return this._Hostplayer;
-			}
-			set
-			{
-				if ((this._Hostplayer != value))
-				{
-					this.OnHostplayerChanging(value);
-					this.SendPropertyChanging();
-					this._Hostplayer = value;
-					this.SendPropertyChanged("Hostplayer");
-					this.OnHostplayerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanJoinLobby", DbType="Bit NOT NULL")]
-		public bool CanJoinLobby
-		{
-			get
-			{
-				return this._CanJoinLobby;
-			}
-			set
-			{
-				if ((this._CanJoinLobby != value))
-				{
-					this.OnCanJoinLobbyChanging(value);
-					this.SendPropertyChanging();
-					this._CanJoinLobby = value;
-					this.SendPropertyChanged("CanJoinLobby");
-					this.OnCanJoinLobbyChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<Lobby>();
 			}
 		}
 	}
@@ -288,6 +202,8 @@ namespace SilverlightApplication1.Web
 		
 		private string _Lobby;
 		
+		private System.Nullable<bool> _IsHost;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -306,6 +222,8 @@ namespace SilverlightApplication1.Web
     partial void OnVerlorenChanged();
     partial void OnLobbyChanging(string value);
     partial void OnLobbyChanged();
+    partial void OnIsHostChanging(System.Nullable<bool> value);
+    partial void OnIsHostChanged();
     #endregion
 		
 		public Player()
@@ -333,7 +251,7 @@ namespace SilverlightApplication1.Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerNaam", DbType="NChar(25)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerNaam", DbType="NChar(25) NOT NULL", CanBeNull=false)]
 		public string PlayerNaam
 		{
 			get
@@ -449,6 +367,136 @@ namespace SilverlightApplication1.Web
 					this._Lobby = value;
 					this.SendPropertyChanged("Lobby");
 					this.OnLobbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHost", DbType="Bit")]
+		public System.Nullable<bool> IsHost
+		{
+			get
+			{
+				return this._IsHost;
+			}
+			set
+			{
+				if ((this._IsHost != value))
+				{
+					this.OnIsHostChanging(value);
+					this.SendPropertyChanging();
+					this._IsHost = value;
+					this.SendPropertyChanged("IsHost");
+					this.OnIsHostChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lobby")]
+	public partial class Lobby : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Hostplayer;
+		
+		private bool _CanJoinLobby;
+		
+		private System.Nullable<int> _AantalPlayers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnHostplayerChanging(string value);
+    partial void OnHostplayerChanged();
+    partial void OnCanJoinLobbyChanging(bool value);
+    partial void OnCanJoinLobbyChanged();
+    partial void OnAantalPlayersChanging(System.Nullable<int> value);
+    partial void OnAantalPlayersChanged();
+    #endregion
+		
+		public Lobby()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hostplayer", DbType="Char(25) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Hostplayer
+		{
+			get
+			{
+				return this._Hostplayer;
+			}
+			set
+			{
+				if ((this._Hostplayer != value))
+				{
+					this.OnHostplayerChanging(value);
+					this.SendPropertyChanging();
+					this._Hostplayer = value;
+					this.SendPropertyChanged("Hostplayer");
+					this.OnHostplayerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanJoinLobby", DbType="Bit NOT NULL")]
+		public bool CanJoinLobby
+		{
+			get
+			{
+				return this._CanJoinLobby;
+			}
+			set
+			{
+				if ((this._CanJoinLobby != value))
+				{
+					this.OnCanJoinLobbyChanging(value);
+					this.SendPropertyChanging();
+					this._CanJoinLobby = value;
+					this.SendPropertyChanged("CanJoinLobby");
+					this.OnCanJoinLobbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AantalPlayers", DbType="Int")]
+		public System.Nullable<int> AantalPlayers
+		{
+			get
+			{
+				return this._AantalPlayers;
+			}
+			set
+			{
+				if ((this._AantalPlayers != value))
+				{
+					this.OnAantalPlayersChanging(value);
+					this.SendPropertyChanging();
+					this._AantalPlayers = value;
+					this.SendPropertyChanged("AantalPlayers");
+					this.OnAantalPlayersChanged();
 				}
 			}
 		}

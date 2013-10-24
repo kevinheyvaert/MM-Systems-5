@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Net.NetworkInformation;
 
 namespace MMSystems5Game
 {
@@ -23,6 +24,12 @@ namespace MMSystems5Game
             InitializeComponent();
              (App.Current as App).client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
              (App.Current as App).client1.InloggenCompleted += client1_InloggenCompleted;
+             
+        }
+
+        void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
+        {
+           
         }
 
         void client1_InloggenCompleted(object sender, GanzenBordServiceCloud.InloggenCompletedEventArgs e)
@@ -44,8 +51,18 @@ namespace MMSystems5Game
 
         private void Login(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                (App.Current as App).client1.InloggenAsync(Username.Text, Password.Text);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Geen internet");
+            }
             
-             (App.Current as App).client1.InloggenAsync(Username.Text, Password.Text);
+             
         }
 
         private void MaakNieuwAccount(object sender, RoutedEventArgs e)

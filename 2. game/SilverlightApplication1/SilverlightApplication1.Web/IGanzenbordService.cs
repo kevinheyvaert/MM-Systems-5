@@ -29,5 +29,17 @@ namespace SilverlightApplication1.Web
        
         [OperationContract]
         DTO.Player MaakLobby(DTO.Player player);
+        
+        [OperationContract]
+        List<object> LobbyInfo(DTO.Lobby lobby);
+
+        [OperationContract]
+        void JoinLobby(DTO.Lobby lobby, DTO.Player player);
+
+        [OperationContract]
+        void ExitLobby (DTO.Player player);
+        
+        [OperationContract]
+        void StopHost(DTO.Player player);
     }
 }

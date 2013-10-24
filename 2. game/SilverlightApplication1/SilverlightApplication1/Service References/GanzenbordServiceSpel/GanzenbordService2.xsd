@@ -3,6 +3,7 @@
   <xs:complexType name="Player">
     <xs:sequence>
       <xs:element minOccurs="0" name="Gewonnen" type="xs:int" />
+      <xs:element minOccurs="0" name="IsHost" type="xs:boolean" />
       <xs:element minOccurs="0" name="Lobby" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Locatie" type="xs:int" />
       <xs:element minOccurs="0" name="PlayerId" type="xs:int" />

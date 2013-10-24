@@ -58,9 +58,6 @@ namespace SilverlightApplication1.Web
                 else 
                     return null;
 
-                                      
-
-
               
             }
             catch (Exception)
@@ -75,11 +72,11 @@ namespace SilverlightApplication1.Web
         public DTO.Player MaakAccount(string naam, string wachtwoord)
         {
 
+            //check voor welk Id toekennen
             var maxId = (from r in db.Players
                          select r.PlayerId).Max();
             playerid = maxId + 1;
 
-            
 
             try
             {
@@ -88,6 +85,7 @@ namespace SilverlightApplication1.Web
                 player.PlayerNaam = (string)naam;
                 player.Wachtwoord =(string) wachtwoord;
                 player.PlayerId = playerid;
+                player.IsHost = false;
                 db.Players.InsertOnSubmit(player);
                 db.SubmitChanges();
 
@@ -125,9 +123,19 @@ namespace SilverlightApplication1.Web
 
         public DTO.Player MaakLobby(DTO.Player player)
         {
+            try
+            {
+                if(player.Lobby!=null)
+                { 
+                    player.Lobby = null; 
+                }
+                
             Lobby lobby = new Lobby();
-            lobby.Hostplayer = (string)player.PlayerNaam;
+            lobby.Hostplayer = player.PlayerNaam;
             lobby.CanJoinLobby = true;
+
+            player.Lobby = player.PlayerNaam;
+            player.IsHost = true;
             db.Lobbies.InsertOnSubmit(lobby);
             db.SubmitChanges();
 
@@ -137,8 +145,105 @@ namespace SilverlightApplication1.Web
             db.PlayerLobbies.InsertOnSubmit(playerlobby);
             db.SubmitChanges();
 
+
+
+            var isHost = (from i in db.Players
+                          where i.PlayerNaam == player.PlayerNaam && i.Wachtwoord == player.Wachtwoord
+                          select i).First();
+
+            isHost.Lobby = player.PlayerNaam;
+            isHost.IsHost = true;
+            db.SubmitChanges();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
             return player;
+        }
+
+        public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
+        {
+
+            var spelersinlobby = (from s in db.Players
+                                  where s.Lobby == lobby.HostPlayer
+                                  select new { s.PlayerNaam });
+
+            List<DTO.Player> lobbyinfo = new List<DTO.Player>();
+            foreach (var item in spelersinlobby)
+            {
+                lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam });
+            }
+
+            return lobbyinfo;
+
+        }
+
+
+        public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
+        {
+
+
+
             
+                {
+                    var join = (from l in db.Players
+                                where l.PlayerId == player.PlayerId && l.IsHost != true
+                                select l).First();
+                    
+
+                    join.Lobby = lobby.HostPlayer;
+                    db.SubmitChanges();
+                   
+
+                }
+
+             
+
+                
+                              
+                
+
+            
+
+           
+        }
+
+
+
+
+        public void ExitLobby(DTO.Player player)
+        {
+            var exit = (from l in db.Players
+                        where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
+                        select l).First();
+            exit.Lobby = null;
+            db.SubmitChanges();
+
+        }
+
+
+        public void StopHost(DTO.Player player)
+        {
+            var stophost = (from s in db.Players
+                            where s.Lobby == player.PlayerNaam
+                            select s);
+
+            foreach (var item in stophost)
+            {
+                item.Lobby = null;
+                item.IsHost=false;
+            }
+           
+
+            var stoplobby = (from s in db.Lobbies
+                             where s.Hostplayer==player.PlayerNaam
+                             select s).First();
+
+            db.Lobbies.DeleteOnSubmit(stoplobby);
+            db.SubmitChanges();
         }
     }
 }
