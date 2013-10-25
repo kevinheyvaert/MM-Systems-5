@@ -54,32 +54,43 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Update">
+  <xs:element name="BeschikbareLobbys">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="Lobbym" nillable="true" type="q3:Lobby" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="Player" nillable="true" type="q4:Player" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateResponse">
+  <xs:element name="BeschikbareLobbysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UpdateResult" nillable="true" type="q5:ArrayOfanyType" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="BeschikbareLobbysResult" nillable="true" type="q3:ArrayOfLobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="MaakLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="player" nillable="true" type="q6:Player" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="player" nillable="true" type="q4:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="MaakLobbyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="MaakLobbyResult" nillable="true" type="q7:Player" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="MaakLobbyResult" nillable="true" type="q5:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LobbyInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SilverlightApplication1.Web.DTO" minOccurs="0" name="lobby" nillable="true" type="q6:Lobby" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LobbyInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LobbyInfoResult" nillable="true" type="q7:ArrayOfanyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

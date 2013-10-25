@@ -38,20 +38,15 @@ namespace SilverlightApplication1
             client2.MaakAccountCompleted += client2_MaakAccountCompleted;
             client2.InloggenCompleted += client2_InloggenCompleted;
             client2.MaakLobbyCompleted += client2_MaakLobbyCompleted;
+            client2.BeschikbareLobbysCompleted += client2_BeschikbareLobbysCompleted;
+            client2.LobbyInfoCompleted += client2_LobbyInfoCompleted;
             client2.JoinLobbyCompleted += client2_JoinLobbyCompleted;
             client2.StopHostCompleted += client2_StopHostCompleted;
-            client2.UpdateCompleted += client2_UpdateCompleted;
-            lobby.HostPlayer = "TextBox";
+         
 
 
             //client = new Ganzebord.GanzenbordServiceClient();
             //client.GooiCompleted += client_GooiCompleted;
-        }
-
-        void client2_UpdateCompleted(object sender, GanzenbordServiceSpel.UpdateCompletedEventArgs e)
-        {
-            LijstSpelersInLobby.ItemsSource = (e.Result[1] as GanzenbordServiceSpel.Player).PlayerNaam;
-            ListAvaibleLobbys.ItemsSource = (e.Result[0] as GanzenbordServiceSpel.Lobby).HostPlayer;
         }
 
         void client2_StopHostCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
@@ -65,24 +60,29 @@ namespace SilverlightApplication1
             
         }
 
-       
+        void client2_LobbyInfoCompleted(object sender, GanzenbordServiceSpel.LobbyInfoCompletedEventArgs e)
+        {
+            LijstSpelersInLobby.ItemsSource = e.Result;
+        }
 
         void client2_MaakAccountCompleted(object sender, GanzenbordServiceSpel.MaakAccountCompletedEventArgs e)
         {
             player = e.Result;
         }
 
-       
+        void client2_BeschikbareLobbysCompleted(object sender, GanzenbordServiceSpel.BeschikbareLobbysCompletedEventArgs e)
+        {
+            ListAvaibleLobbys.ItemsSource = e.Result;
+        }
 
         void client2_MaakLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
            // MessageBox.Show("Lobby toegevoegd");
-           
+            client2.BeschikbareLobbysAsync();
         }
 
         void client2_InloggenCompleted(object sender, GanzenbordServiceSpel.InloggenCompletedEventArgs e)
         {
-
 
             if (e.Result == null)
             {
@@ -95,13 +95,9 @@ namespace SilverlightApplication1
                 player = e.Result;
 
                // MessageBox.Show("proficiat ");
-                client2.UpdateAsync(lobby, player);
-                
+                client2.BeschikbareLobbysAsync();
 
             }
-
-
-            
 
         }
 
@@ -118,7 +114,7 @@ namespace SilverlightApplication1
             txtboxnaam = naam.Text;
             txtboxwachtwoord = wachtwoord.Text;
             client2.MaakAccountAsync(txtboxnaam, txtboxwachtwoord);
-         
+            client2.BeschikbareLobbysAsync();
         }
 
         private void inloggen_Click(object sender, RoutedEventArgs e)
@@ -135,7 +131,6 @@ namespace SilverlightApplication1
         {
 
             client2.MaakLobbyAsync(player);
-            
 
 
         }
@@ -143,8 +138,7 @@ namespace SilverlightApplication1
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-           
-           
+            client2.LobbyInfoAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue);
         }
 
         private void join_Click(object sender, RoutedEventArgs e)

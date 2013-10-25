@@ -14,10 +14,10 @@
         <elementListCompartment Id="19e51941-0c2e-4e2b-98df-4fd951c22dd4" absoluteBounds="3.5149999999999997, 1.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="54561b7d-1bc9-438c-93f8-68da5d9ee3f4" absoluteBounds="7.125, 1.875, 2, 1.9631982421875">
+    <classShape Id="06f913f7-437d-401b-963f-1bb760ec6590" absoluteBounds="6.25, 1.875, 2, 1.3862939453125">
       <DataClassMoniker Name="/DataCloudDataContext/Lobby" />
       <nestedChildShapes>
-        <elementListCompartment Id="6074fa07-ce00-4b6a-a4bd-240e8f45729e" absoluteBounds="7.14, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e11d0485-498c-4d6d-8609-c985e4a2ba03" absoluteBounds="6.265, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

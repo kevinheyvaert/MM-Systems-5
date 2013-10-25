@@ -102,52 +102,23 @@ namespace SilverlightApplication1.Web
 
 
 
-        public object[] Update(DTO.Lobby Lobby,DTO.Player Player)
+        public List<DTO.Lobby> BeschikbareLobbys()
         {
-
-            
-            
-
-          
-           
-
-        
-            List<DTO.Lobby> lobbylijst = new List<DTO.Lobby>();
-           //Welke lobbys zijn er
             var BeschikbareLobbys = (from l in db.Lobbies
                                      where l.CanJoinLobby == true
-                                     select new { l.Hostplayer });
+                                      select new {l.Hostplayer});
+
+            List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
+
             foreach (var item in BeschikbareLobbys)
             {
-                lobbylijst.Add(new DTO.Lobby() { HostPlayer = item.Hostplayer });
-            }
-           
-
-
-           //// welke spelers zitten er in die lobby
-            var spelersinlobby = (from s in db.Players
-                                   where s.Lobby!=null
-                                  select new { s.PlayerNaam });
-
-            List<DTO.Player> lobbyinfo = new List<DTO.Player>();
-            foreach (var item in spelersinlobby)
-            {
-                lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam });
+               LobbyList.Add(new DTO.Lobby() { HostPlayer=item.Hostplayer });
             }
 
-
-            //on 
-            //              new { SomeID = t1.SomeID, SomeName = someName} equals 
-            //              new { SomeID = t2.SomeID, SomeName = t2.SomeName} into j1 
-
-
-           // update[0] = lobbyinfo;
-
-            return null;
+            return LobbyList;
 
             
         }
-
 
 
         public DTO.Player MaakLobby(DTO.Player player)
@@ -193,21 +164,29 @@ namespace SilverlightApplication1.Web
             return player;
         }
 
-       
+        public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
+        {
+
+            var spelersinlobby = (from s in db.Players
+                                  where s.Lobby == lobby.HostPlayer
+                                  select new { s.PlayerNaam });
+
+            List<DTO.Player> lobbyinfo = new List<DTO.Player>();
+            foreach (var item in spelersinlobby)
+            {
+                lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam });
+            }
+
+            return lobbyinfo;
+
+        }
 
 
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
 
-            var NextPlayer = (from r in db.Lobbies
-                              where r.Hostplayer==lobby.HostPlayer
-                              select r).Single();
 
-            if (NextPlayer.Player2 == null)
-            {
-                NextPlayer.Player2 = player.PlayerId;
-            }
-            
+
             
                 {
                     var join = (from l in db.Players
@@ -222,6 +201,11 @@ namespace SilverlightApplication1.Web
                 }
 
              
+
+                
+                              
+                
+
             
 
            

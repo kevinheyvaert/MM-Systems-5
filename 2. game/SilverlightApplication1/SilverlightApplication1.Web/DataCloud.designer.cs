@@ -424,12 +424,6 @@ namespace SilverlightApplication1.Web
 		
 		private System.Nullable<int> _AantalPlayers;
 		
-		private System.Nullable<int> _Player2;
-		
-		private System.Nullable<int> _Player3;
-		
-		private System.Nullable<int> _Player4;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -440,12 +434,6 @@ namespace SilverlightApplication1.Web
     partial void OnCanJoinLobbyChanged();
     partial void OnAantalPlayersChanging(System.Nullable<int> value);
     partial void OnAantalPlayersChanged();
-    partial void OnPlayer2Changing(System.Nullable<int> value);
-    partial void OnPlayer2Changed();
-    partial void OnPlayer3Changing(System.Nullable<int> value);
-    partial void OnPlayer3Changed();
-    partial void OnPlayer4Changing(System.Nullable<int> value);
-    partial void OnPlayer4Changed();
     #endregion
 		
 		public Lobby()
@@ -509,66 +497,6 @@ namespace SilverlightApplication1.Web
 					this._AantalPlayers = value;
 					this.SendPropertyChanged("AantalPlayers");
 					this.OnAantalPlayersChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player2", DbType="Int")]
-		public System.Nullable<int> Player2
-		{
-			get
-			{
-				return this._Player2;
-			}
-			set
-			{
-				if ((this._Player2 != value))
-				{
-					this.OnPlayer2Changing(value);
-					this.SendPropertyChanging();
-					this._Player2 = value;
-					this.SendPropertyChanged("Player2");
-					this.OnPlayer2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player3", DbType="Int")]
-		public System.Nullable<int> Player3
-		{
-			get
-			{
-				return this._Player3;
-			}
-			set
-			{
-				if ((this._Player3 != value))
-				{
-					this.OnPlayer3Changing(value);
-					this.SendPropertyChanging();
-					this._Player3 = value;
-					this.SendPropertyChanged("Player3");
-					this.OnPlayer3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player4", DbType="Int")]
-		public System.Nullable<int> Player4
-		{
-			get
-			{
-				return this._Player4;
-			}
-			set
-			{
-				if ((this._Player4 != value))
-				{
-					this.OnPlayer4Changing(value);
-					this.SendPropertyChanging();
-					this._Player4 = value;
-					this.SendPropertyChanged("Player4");
-					this.OnPlayer4Changed();
 				}
 			}
 		}

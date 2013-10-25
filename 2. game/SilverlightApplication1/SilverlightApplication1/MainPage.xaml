@@ -52,7 +52,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20"  Text="{Binding  HostPlayer}"></TextBlock>
+                            <TextBlock FontSize="20"  Text="{Binding HostPlayer}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -61,7 +61,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                            <TextBlock Text="{Binding Player.PlayerNaam}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
