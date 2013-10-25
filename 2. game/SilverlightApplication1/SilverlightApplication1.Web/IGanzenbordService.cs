@@ -31,7 +31,7 @@ namespace SilverlightApplication1.Web
         DTO.Player MaakLobby(DTO.Player player);
         
         [OperationContract]
-        List<object> LobbyInfo(DTO.Lobby lobby);
+        List<DTO.Player> LobbyInfo(DTO.Lobby lobby);
 
         [OperationContract]
         void JoinLobby(DTO.Lobby lobby, DTO.Player player);

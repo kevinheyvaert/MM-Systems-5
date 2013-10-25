@@ -130,9 +130,6 @@
     <None Include="Service References\GanzenbordServiceSpel\GanzenbordService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GanzenbordServiceSpel\GanzenbordService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\GanzenbordServiceSpel\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

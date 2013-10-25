@@ -245,14 +245,9 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         SilverlightApplication1.GanzenbordServiceSpel.Player EndMaakLobby(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/LobbyInfo", ReplyAction="http://tempuri.org/IGanzenbordService/LobbyInfoResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<object>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SilverlightApplication1.GanzenbordServiceSpel.Player))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Lobby>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(SilverlightApplication1.GanzenbordServiceSpel.Lobby))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player>))]
         System.IAsyncResult BeginLobbyInfo(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.ObjectModel.ObservableCollection<object> EndLobbyInfo(System.IAsyncResult result);
+        System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> EndLobbyInfo(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/JoinLobby", ReplyAction="http://tempuri.org/IGanzenbordService/JoinLobbyResponse")]
         System.IAsyncResult BeginJoinLobby(SilverlightApplication1.GanzenbordServiceSpel.Lobby lobby, SilverlightApplication1.GanzenbordServiceSpel.Player player, System.AsyncCallback callback, object asyncState);
@@ -380,10 +375,10 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
             this.results = results;
         }
         
-        public System.Collections.ObjectModel.ObservableCollection<object> Result {
+        public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.ObjectModel.ObservableCollection<object>)(this.results[0]));
+                return ((System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player>)(this.results[0]));
             }
         }
     }
@@ -808,7 +803,7 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Collections.ObjectModel.ObservableCollection<object> SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndLobbyInfo(System.IAsyncResult result) {
+        System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService.EndLobbyInfo(System.IAsyncResult result) {
             return base.Channel.EndLobbyInfo(result);
         }
         
@@ -818,7 +813,7 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
         }
         
         private object[] OnEndLobbyInfo(System.IAsyncResult result) {
-            System.Collections.ObjectModel.ObservableCollection<object> retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndLobbyInfo(result);
+            System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> retVal = ((SilverlightApplication1.GanzenbordServiceSpel.IGanzenbordService)(this)).EndLobbyInfo(result);
             return new object[] {
                     retVal};
         }
@@ -1144,9 +1139,9 @@ namespace SilverlightApplication1.GanzenbordServiceSpel {
                 return _result;
             }
             
-            public System.Collections.ObjectModel.ObservableCollection<object> EndLobbyInfo(System.IAsyncResult result) {
+            public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> EndLobbyInfo(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                System.Collections.ObjectModel.ObservableCollection<object> _result = ((System.Collections.ObjectModel.ObservableCollection<object>)(base.EndInvoke("LobbyInfo", _args, result)));
+                System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player> _result = ((System.Collections.ObjectModel.ObservableCollection<SilverlightApplication1.GanzenbordServiceSpel.Player>)(base.EndInvoke("LobbyInfo", _args, result)));
                 return _result;
             }
             

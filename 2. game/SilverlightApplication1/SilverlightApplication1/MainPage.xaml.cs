@@ -20,6 +20,7 @@ namespace SilverlightApplication1
         GanzenbordServiceSpel.GanzenbordServiceClient client2;
         string txtboxnaam;
         string txtboxwachtwoord;
+        bool joinbl;
 
 
         Bord Speelbord;
@@ -51,12 +52,20 @@ namespace SilverlightApplication1
 
         void client2_StopHostCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            
+            if (joinbl == true)
+            {
+                client2.JoinLobbyAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue, player);
+            }
+
+            joinbl = false;
+
+            client2.BeschikbareLobbysAsync();
         }
 
         void client2_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
            // MessageBox.Show("gejoint");
+            client2.BeschikbareLobbysAsync();
             
         }
 
@@ -78,6 +87,7 @@ namespace SilverlightApplication1
         void client2_MaakLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
            // MessageBox.Show("Lobby toegevoegd");
+            
             client2.BeschikbareLobbysAsync();
         }
 
@@ -138,13 +148,15 @@ namespace SilverlightApplication1
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            client2.LobbyInfoAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue);
+           // client2.LobbyInfoAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue);
         }
 
         private void join_Click(object sender, RoutedEventArgs e)
         {
+            joinbl = true;
             client2.StopHostAsync(player);
-            client2.JoinLobbyAsync((GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue, player);
+            
+            
             
 
         }

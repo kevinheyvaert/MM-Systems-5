@@ -41,15 +41,13 @@ namespace SilverlightApplication1.Web
             try
             {
 
- 
-
                 var usercontrol = from u in db.Players
                                   where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord, u.PlayerId};
+                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord, u.PlayerId ,u.Lobby};
 
                 foreach (var item in usercontrol)
                 {
-                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId=item.PlayerId });
+                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId=item.PlayerId , Lobby=item.Lobby});
                 }
                 if(playerList.Count()>0)
                 {
@@ -125,11 +123,8 @@ namespace SilverlightApplication1.Web
         {
             try
             {
-                if(player.Lobby!=null)
-                { 
-                    player.Lobby = null; 
-                }
-                
+              
+            player.Lobby = null; 
             Lobby lobby = new Lobby();
             lobby.Hostplayer = player.PlayerNaam;
             lobby.CanJoinLobby = true;
@@ -139,16 +134,16 @@ namespace SilverlightApplication1.Web
             db.Lobbies.InsertOnSubmit(lobby);
             db.SubmitChanges();
 
-            PlayerLobby playerlobby = new PlayerLobby();
-            playerlobby.PlayerId = player.PlayerId;
-            playerlobby.HostPlayer = player.PlayerNaam;
-            db.PlayerLobbies.InsertOnSubmit(playerlobby);
-            db.SubmitChanges();
+            //PlayerLobby playerlobby = new PlayerLobby();
+            //playerlobby.PlayerId = player.PlayerId;
+            //playerlobby.HostPlayer = player.PlayerNaam;
+            //db.PlayerLobbies.InsertOnSubmit(playerlobby);
+            //db.SubmitChanges();
 
 
 
             var isHost = (from i in db.Players
-                          where i.PlayerNaam == player.PlayerNaam && i.Wachtwoord == player.Wachtwoord
+                          where i.PlayerId == player.PlayerId
                           select i).First();
 
             isHost.Lobby = player.PlayerNaam;
@@ -185,13 +180,10 @@ namespace SilverlightApplication1.Web
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
 
-
-
-            
                 {
                     var join = (from l in db.Players
-                                where l.PlayerId == player.PlayerId && l.IsHost != true
-                                select l).First();
+                                where l.PlayerId == player.PlayerId
+                                select l).Single();
                     
 
                     join.Lobby = lobby.HostPlayer;
@@ -199,19 +191,8 @@ namespace SilverlightApplication1.Web
                    
 
                 }
-
-             
-
-                
-                              
-                
-
-            
-
-           
+ 
         }
-
-
 
 
         public void ExitLobby(DTO.Player player)
