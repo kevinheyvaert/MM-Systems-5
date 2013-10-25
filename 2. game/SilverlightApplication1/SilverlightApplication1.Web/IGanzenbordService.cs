@@ -25,13 +25,12 @@ namespace SilverlightApplication1.Web
         DTO.Player MaakAccount(string naam, string wachtwoord);
 
         [OperationContract]
-        List<DTO.Lobby> BeschikbareLobbys();
+        object[] Update(DTO.Lobby Lobbym, DTO.Player Player);
        
         [OperationContract]
         DTO.Player MaakLobby(DTO.Player player);
+    
         
-        [OperationContract]
-        List<object> LobbyInfo(DTO.Lobby lobby);
 
         [OperationContract]
         void JoinLobby(DTO.Lobby lobby, DTO.Player player);

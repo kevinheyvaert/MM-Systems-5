@@ -32,23 +32,17 @@
   <wsdl:message name="IGanzenbordService_MaakAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:MaakAccountResponse" />
   </wsdl:message>
-  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_InputMessage">
-    <wsdl:part name="parameters" element="tns:BeschikbareLobbys" />
+  <wsdl:message name="IGanzenbordService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
   </wsdl:message>
-  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BeschikbareLobbysResponse" />
+  <wsdl:message name="IGanzenbordService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
   </wsdl:message>
   <wsdl:message name="IGanzenbordService_MaakLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:MaakLobby" />
   </wsdl:message>
   <wsdl:message name="IGanzenbordService_MaakLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:MaakLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IGanzenbordService_LobbyInfo_InputMessage">
-    <wsdl:part name="parameters" element="tns:LobbyInfo" />
-  </wsdl:message>
-  <wsdl:message name="IGanzenbordService_LobbyInfo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LobbyInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IGanzenbordService_JoinLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinLobby" />
@@ -85,17 +79,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccount" message="tns:IGanzenbordService_MaakAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccountResponse" message="tns:IGanzenbordService_MaakAccount_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="BeschikbareLobbys">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" message="tns:IGanzenbordService_BeschikbareLobbys_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbysResponse" message="tns:IGanzenbordService_BeschikbareLobbys_OutputMessage" />
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Update" message="tns:IGanzenbordService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/UpdateResponse" message="tns:IGanzenbordService_Update_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MaakLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobby" message="tns:IGanzenbordService_MaakLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobbyResponse" message="tns:IGanzenbordService_MaakLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LobbyInfo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/LobbyInfo" message="tns:IGanzenbordService_LobbyInfo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/LobbyInfoResponse" message="tns:IGanzenbordService_LobbyInfo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/JoinLobby" message="tns:IGanzenbordService_JoinLobby_InputMessage" />
@@ -148,8 +138,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="BeschikbareLobbys">
-      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" style="document" />
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Update" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -159,15 +149,6 @@
     </wsdl:operation>
     <wsdl:operation name="MaakLobby">
       <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakLobby" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LobbyInfo">
-      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/LobbyInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
