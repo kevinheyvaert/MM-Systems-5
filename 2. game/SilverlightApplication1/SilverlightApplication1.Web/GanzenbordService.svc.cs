@@ -179,6 +179,7 @@ namespace SilverlightApplication1.Web
 
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
+            StopHost(player);
 
                 {
                     var join = (from l in db.Players
