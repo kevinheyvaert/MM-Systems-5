@@ -34,6 +34,12 @@ namespace MMSystems5Silverlight.Web
 
         [OperationContract]
         void JoinLobby(DTO.Lobby lobby, DTO.Player player);
+
+        [OperationContract]
+        void ExitLobby(DTO.Player player);
+
+        [OperationContract]
+        void StopHost(DTO.Player player);
         //[DataContract]
         //public class Bord
         //{

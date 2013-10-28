@@ -115,21 +115,25 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
-
+                player.Lobby = null;
                 Lobby lobby = new Lobby();
-                lobby.Hostplayer = (string)player.PlayerNaam;
+                lobby.Hostplayer = player.PlayerNaam;
                 lobby.CanJoinLobby = true;
+
+                player.Lobby = player.PlayerNaam;
+                player.IsHost = true;
                 gb.Lobbies.InsertOnSubmit(lobby);
                 gb.SubmitChanges();
+               
 
-                PlayerLobby playerlobby = new PlayerLobby();
-                playerlobby.PlayerId = player.PlayerId;
-                playerlobby.HostPlayer = player.PlayerNaam;
-                gb.PlayerLobbies.InsertOnSubmit(playerlobby);
-                gb.SubmitChanges();
+                //PlayerLobby playerlobby = new PlayerLobby();
+                //playerlobby.PlayerId = player.PlayerId;
+                //playerlobby.HostPlayer = player.PlayerNaam;
+                //gb.PlayerLobbies.InsertOnSubmit(playerlobby);
+                //gb.SubmitChanges();
 
                 var isHost = (from i in gb.Players
-                              where i.PlayerNaam == player.PlayerNaam && i.Wachtwoord == player.Wachtwoord
+                              where i.PlayerId == player.PlayerId
                               select i).First();
 
                 isHost.Lobby = player.PlayerNaam;
@@ -167,11 +171,14 @@ namespace MMSystems5Silverlight.Web
 
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
+        
             try
             {
+                StopHost(player);
+                
                 var join = (from l in gb.Players
                             where l.PlayerId == player.PlayerId
-                            select l).First();
+                            select l).Single();
 
 
                 join.Lobby = lobby.HostPlayer;
@@ -181,6 +188,36 @@ namespace MMSystems5Silverlight.Web
 
             catch 
             { }
+        }
+
+
+        public void ExitLobby(DTO.Player player)
+        {
+            var exit = (from l in gb.Players
+                        where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
+                        select l).First();
+            exit.Lobby = null;
+            gb.SubmitChanges();
+        }
+
+        public void StopHost(DTO.Player player)
+        {
+            var stophost = (from s in gb.Players
+                            where s.Lobby == player.PlayerNaam
+                            select s);
+
+            foreach (var item in stophost)
+            {
+                item.Lobby = null;
+                item.IsHost = false;
+            }
+
+            var stoplobby = (from s in gb.Lobbies
+                             where s.Hostplayer == player.PlayerNaam
+                             select s).First();
+
+            gb.Lobbies.DeleteOnSubmit(stoplobby);
+            gb.SubmitChanges();
         }
     }
 }
