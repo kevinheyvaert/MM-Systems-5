@@ -16,8 +16,9 @@ namespace SilverlightApplication1.Web
 
         Player player = new Player();
         private DataCloudDataContext db;
-        private int playerid;
         
+        private int playerid;
+       
         public GanzenbordService()
         { 
           
@@ -43,7 +44,7 @@ namespace SilverlightApplication1.Web
 
                 var usercontrol = from u in db.Players
                                   where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord, u.PlayerId ,u.Lobby};
+                                  select new {u.PlayerNaam,u.Gewonnen,u.Verloren,u.Wachtwoord, u.PlayerId ,u.Lobby,u.IsHost};
 
                 foreach (var item in usercontrol)
                 {

@@ -13,15 +13,27 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Net.NetworkInformation;
+using System.Windows.Threading;
+
 
 
 namespace MMSystems5Game
 {
     public partial class App : Application
     {
-      public GanzenBordServiceCloud.GanzenbordServiceClient client1;
-      public GanzenBordServiceCloud.Player player = new GanzenBordServiceCloud.Player();
-      public GanzenBordServiceCloud.Lobby lobby = new GanzenBordServiceCloud.Lobby();
+        public static GanzenBordServiceCloud.GanzenbordServiceClient client1;
+        public static GanzenBordServiceCloud.Player player;
+        public static GanzenBordServiceCloud.Lobby lobby;
+        public static InloggenVM login;
+        public static MaakAccountVM maakaccount;
+        public static LobbysListVM lobbylistvm;
+        public static GanzenBordServiceCloud.Lobby InfoLobby;
+        public static PlayersInLobby LobbyInfo;
+        public static MaakLobbyVM MaakLobby;
+        public static DispatcherTimer timer;
+        public static JoinVM join;
+        
+
        
 
         /// <summary>
@@ -35,6 +47,7 @@ namespace MMSystems5Game
         /// </summary>
         public App()
         {
+
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 
@@ -64,9 +77,56 @@ namespace MMSystems5Game
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += timer_Tick;
+            client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            player = new GanzenBordServiceCloud.Player();
+            lobby = new GanzenBordServiceCloud.Lobby();
+            login = new InloggenVM();
+            maakaccount = new MaakAccountVM();
+            lobbylistvm = new LobbysListVM();
+            InfoLobby = new GanzenBordServiceCloud.Lobby();
+            LobbyInfo = new PlayersInLobby();
+            MaakLobby = new MaakLobbyVM();
+            join = new JoinVM();
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
+         
 
         }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+
+            if (lobbylistvm.InfoLobby != null)
+            {
+                lobbylistvm.TemplateBind = lobbylistvm.InfoLobby;
+                LobbyInfo.infolobby(lobbylistvm.TemplateBind);
+
+            }
+
+            else
+            {
+                if(lobbylistvm.TemplateBind!=null)
+                LobbyInfo.infolobby(lobbylistvm.TemplateBind);
+            }
+
+            if (player.IsHost == true)
+            {
+                join.playjoin = "Play";
+            }
+
+            else
+            {
+                join.playjoin = "Join";
+            }
+           
+           lobbylistvm.GetLobbys();
+            
+        }
+
+      
+
 
         void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
         {

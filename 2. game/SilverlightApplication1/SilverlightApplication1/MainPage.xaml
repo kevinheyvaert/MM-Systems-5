@@ -48,26 +48,26 @@
         <Button x:Name="MaakLobby" Grid.Column="1" Click="MaakLobby_Click" >MaakLobby</Button> 
         <TextBox x:Name="naam"  Text="TextBox" />
         <TextBox x:Name="wachtwoord"  Text="TextBox" />
-            <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged" >
+            <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20"  Text="{Binding HostPlayer}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox x:Name="LijstSpelersInLobby" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Player.PlayerNaam}"></TextBlock>
+                            <TextBlock Text="{Binding HostPlayer}" ></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <Button x:Name="join" Click="join_Click">Join</Button>
             <Button x:Name="stopHost" Click="stopHost_Click">StopHost</Button>
+            <ListBox x:Name="LijstSpelersInLobby" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
         </StackPanel>
     </Grid>

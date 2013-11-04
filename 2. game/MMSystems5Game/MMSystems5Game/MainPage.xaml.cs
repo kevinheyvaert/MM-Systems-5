@@ -16,58 +16,26 @@ namespace MMSystems5Game
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        
 
+        
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-             (App.Current as App).client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
-             (App.Current as App).client1.InloggenCompleted += client1_InloggenCompleted;
-             
         }
 
-        void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
-        {
-           
-        }
-
-        void client1_InloggenCompleted(object sender, GanzenBordServiceCloud.InloggenCompletedEventArgs e)
-        {
-            if (e.Result != null)
-            {
-                (App.Current as App).player = e.Result;
-                MessageBox.Show("Succesvol ingelogd");
-                NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
-            }
-
-            else
-            {
-                MessageBox.Show("Foute gegevens");
-            }
-
-
-        }
+        
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                (App.Current as App).client1.InloggenAsync(Username.Text, Password.Text);
-
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Geen internet");
-            }
-            
-             
+            App.login.inloggen(Username.Text, Password.Text);
         }
 
         private void MaakNieuwAccount(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MakeAccount.xaml"), UriKind.Relative));
+
         }
 
         

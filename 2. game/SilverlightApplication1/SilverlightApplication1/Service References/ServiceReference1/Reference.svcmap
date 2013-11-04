@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="38d53500-ea3e-4f1d-b093-18361e4b7cd7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ganzenbordmmsystems5.cloudapp.net/GanzenBordService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="e3162df2-6561-4a1f-bf4f-ad64fd628230" SourceId="1" SourceUrl="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?disco" />
+    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="61675363-b7f8-4dfd-9d4c-4eff1c9c3a4a" SourceId="1" SourceUrl="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="53047a35-af89-4ecc-85e4-26693a90b948" SourceId="1" SourceUrl="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?wsdl" />
+    <MetadataFile FileName="GanzenbordService1.xsd" MetadataType="Schema" ID="9484d40c-eca1-4e14-afc8-f5801d6c5cde" SourceId="1" SourceUrl="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GanzenbordService2.xsd" MetadataType="Schema" ID="ffdad515-802c-4688-b359-3d8ed7b278ed" SourceId="1" SourceUrl="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

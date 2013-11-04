@@ -30,11 +30,11 @@
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <Button Content="Create Lobby" Click="Button_Click_2"  ></Button>
-                <ListBox  x:Name="ListAvaibleLobbys" SelectionChanged="ListAvaibleLobbys_SelectionChanged">
+                <ListBox  ItemsSource="{Binding BeschikbareLobbys}" x:Name="ListAvaibleLobbys" SelectedItem="{Binding InfoLobby, Mode=TwoWay}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20"  Text="{Binding HostPlayer}"></TextBlock>
+                         <StackPanel  Background="Black" Orientation="Horizontal">
+                                    <TextBlock Margin="10" Text="{Binding HostPlayer }"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -48,8 +48,11 @@
         </Grid>
         
         <StackPanel Grid.Column="1">
-            <Button Content="Play" Click="Button_Click" ></Button>
-            <ListBox x:Name="LijstSpelersInLobby" >
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button  Content="Play" x:Name="play"  Click="Button_Click" ></Button>
+                <Button Content="join" x:Name="join"></Button>
+            </StackPanel>
+            <ListBox x:Name="LijstSpelersInLobby" ItemsSource="{Binding LijstSpelersInLobby}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
