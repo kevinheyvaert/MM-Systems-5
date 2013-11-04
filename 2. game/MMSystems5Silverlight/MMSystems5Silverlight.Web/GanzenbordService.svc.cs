@@ -14,42 +14,36 @@ namespace MMSystems5Silverlight.Web
     // NOTE: In order to launch WCF Test Client for testing this service, please select GanzenbordService.svc or GanzenbordService.svc.cs at the Solution Explorer and start debugging.
     public class GanzenbordService : IGanzenbordService
     {
-        private GanzenBordCloudSqlDataContext gb;
-        private int playerid;
         Player player = new Player();
+        private GanzenBordCloudSqlDataContext db;
+
+        private int playerid;
 
         public GanzenbordService()
         {
-            gb = new GanzenBordCloudSqlDataContext();
+
+            db = new GanzenBordCloudSqlDataContext();
 
         }
-        
         public void DoWork()
         {
         }
-        
-        public int  Gooi()
-        {   
-            
+        public int Gooi()
+        {
             Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
             return Dobbelsteen1.GeefWaardeDobbelsteen();
         }
-
-       
-
         public DTO.Player Inloggen(string naam, string wachtwoord)
         {
             List<DTO.Player> playerList = new List<DTO.Player>();
             try
             {
-                var usercontrol = from u in gb.Players
+                var usercontrol = from u in db.Players
                                   where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u
-                                  .PlayerId};
-
+                                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
                 foreach (var item in usercontrol)
                 {
-                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord });
+                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby });
                 }
                 if (playerList.Count() > 0)
                 {
@@ -57,6 +51,7 @@ namespace MMSystems5Silverlight.Web
                 }
                 else
                     return null;
+
             }
             catch (Exception)
             {
@@ -65,159 +60,124 @@ namespace MMSystems5Silverlight.Web
             }
 
         }
-
-        
-        public DTO.Player MaakAccount(string PlayerNaam, string Wachtwoord)
+        public DTO.Player MaakAccount(string naam, string wachtwoord)
         {
-            var maxId = (from r in gb.Players
+            //check voor welk Id toekennen
+            var maxId = (from r in db.Players
                          select r.PlayerId).Max();
             playerid = maxId + 1;
-
             try
             {
 
-                Player player = new Player();
-                player.PlayerNaam = (string)PlayerNaam;
-                player.Wachtwoord = (string)Wachtwoord;
+                player.PlayerNaam = (string)naam;
+                player.Wachtwoord = (string)wachtwoord;
                 player.PlayerId = playerid;
-                gb.Players.InsertOnSubmit(player);
-                gb.SubmitChanges();
+                player.IsHost = false;
+                db.Players.InsertOnSubmit(player);
+                db.SubmitChanges();
+                return Inloggen(naam, wachtwoord);
 
-                return Inloggen(PlayerNaam, Wachtwoord);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<DTO.Lobby> BeschikbareLobbys()
+        {
+            var BeschikbareLobbys = (from l in db.Lobbies
+                                     where l.CanJoinLobby == true
+                                     select new { l.Hostplayer });
+            List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
+            foreach (var item in BeschikbareLobbys)
+            {
+                LobbyList.Add(new DTO.Lobby() { HostPlayer = item.Hostplayer });
+            }
+            return LobbyList;
 
+        }
+        public DTO.Player MaakLobby(DTO.Player player)
+        {
+            try
+            {
+
+                player.Lobby = null;
+                Lobby lobby = new Lobby();
+                lobby.Hostplayer = player.PlayerNaam;
+                lobby.CanJoinLobby = true;
+                player.Lobby = player.PlayerNaam;
+                player.IsHost = true;
+                db.Lobbies.InsertOnSubmit(lobby);
+                db.SubmitChanges();
+                //PlayerLobby playerlobby = new PlayerLobby();
+                //playerlobby.PlayerId = player.PlayerId;
+                //playerlobby.HostPlayer = player.PlayerNaam;
+                //db.PlayerLobbies.InsertOnSubmit(playerlobby);
+                //db.SubmitChanges();
+                var isHost = (from i in db.Players
+                              where i.PlayerId == player.PlayerId
+                              select i).First();
+                isHost.Lobby = player.PlayerNaam;
+                isHost.IsHost = true;
+                db.SubmitChanges();
             }
             catch (Exception)
             {
 
                 throw;
             }
-        }
-
-        public List<DTO.Lobby> BeschikbareLobbys()
-        {
-            var BeschikbareLobbys = (from l in gb.Lobbies
-                                     where l.CanJoinLobby == true
-                                     select new { l.Hostplayer });
-
-            List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
-
-            foreach (var item in BeschikbareLobbys)
-            {
-                LobbyList.Add(new DTO.Lobby() { HostPlayer = item.Hostplayer });
-            }
-
-            return LobbyList;
-
-
-        }
-
-        public DTO.Player MaakLobby(DTO.Player player)
-        {
-            try
-            {
-                player.Lobby = null;
-                Lobby lobby = new Lobby();
-                lobby.Hostplayer = player.PlayerNaam;
-                lobby.CanJoinLobby = true;
-
-                player.Lobby = player.PlayerNaam;
-                player.IsHost = true;
-                gb.Lobbies.InsertOnSubmit(lobby);
-                gb.SubmitChanges();
-               
-
-                //PlayerLobby playerlobby = new PlayerLobby();
-                //playerlobby.PlayerId = player.PlayerId;
-                //playerlobby.HostPlayer = player.PlayerNaam;
-                //gb.PlayerLobbies.InsertOnSubmit(playerlobby);
-                //gb.SubmitChanges();
-
-                var isHost = (from i in gb.Players
-                              where i.PlayerId == player.PlayerId
-                              select i).First();
-
-                isHost.Lobby = player.PlayerNaam;
-                isHost.IsHost = true;
-                gb.SubmitChanges();
-              
-               
-            }
-
-            catch
-            {
-
-            }
             return player;
         }
-
-
         public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
         {
-
-            var spelersinlobby = (from s in gb.Players 
-                                  where s.Lobby==lobby.HostPlayer 
-                                  select new {s.PlayerNaam});
-
+            var spelersinlobby = (from s in db.Players
+                                  where s.Lobby == lobby.HostPlayer
+                                  select new { s.PlayerNaam });
             List<DTO.Player> lobbyinfo = new List<DTO.Player>();
             foreach (var item in spelersinlobby)
             {
-               lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam});
+                lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam });
             }
-
             return lobbyinfo;
-
         }
-
-
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
-        
-            try
+            StopHost(player);
             {
-                StopHost(player);
-                
-                var join = (from l in gb.Players
+                var join = (from l in db.Players
                             where l.PlayerId == player.PlayerId
                             select l).Single();
 
-
                 join.Lobby = lobby.HostPlayer;
-                gb.SubmitChanges();
+                db.SubmitChanges();
 
             }
 
-            catch 
-            { }
         }
-
-
         public void ExitLobby(DTO.Player player)
         {
-            var exit = (from l in gb.Players
+            var exit = (from l in db.Players
                         where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
                         select l).First();
             exit.Lobby = null;
-            gb.SubmitChanges();
+            db.SubmitChanges();
         }
-
         public void StopHost(DTO.Player player)
         {
-            var stophost = (from s in gb.Players
+            var stophost = (from s in db.Players
                             where s.Lobby == player.PlayerNaam
                             select s);
-
             foreach (var item in stophost)
             {
                 item.Lobby = null;
                 item.IsHost = false;
             }
 
-            var stoplobby = (from s in gb.Lobbies
+            var stoplobby = (from s in db.Lobbies
                              where s.Hostplayer == player.PlayerNaam
                              select s).First();
-
-            gb.Lobbies.DeleteOnSubmit(stoplobby);
-            gb.SubmitChanges();
+            db.Lobbies.DeleteOnSubmit(stoplobby);
+            db.SubmitChanges();
         }
     }
 }
