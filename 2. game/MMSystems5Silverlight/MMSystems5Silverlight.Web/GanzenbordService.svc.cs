@@ -126,9 +126,8 @@ namespace MMSystems5Silverlight.Web
             {
 
 
-
+                updatelobby(player.Lobby);
                 player.Lobby = null;
-                updatelobby(player.Lobby, -1);
                 Lobby lobby = new Lobby();
                 lobby.Hostplayer = player.PlayerNaam;
                 lobby.CanJoinLobby = true;
@@ -184,21 +183,27 @@ namespace MMSystems5Silverlight.Web
 
         }
 
-        private void updatelobby(string lobby, int hoeveel)
+        private void updatelobby(string lobby)
         {
 
             var ad = (from i in db.Lobbies
                       where i.Hostplayer == lobby
                       select i).Single();
+           
+            var count =(from i in db.Players
+                        where i.Lobby==lobby
+                        select i).Count();
 
-            ad.AantalPlayers = ad.AantalPlayers + hoeveel;
-            db.SubmitChanges();
+            
 
             if (ad.AantalPlayers == 4)
                 updateaantal(lobby, false);
+            
             else if (ad.AantalPlayers < 4)
             {
                 updateaantal(lobby, true);
+                ad.AantalPlayers = count;
+                db.SubmitChanges();
             }
 
 
@@ -241,10 +246,10 @@ namespace MMSystems5Silverlight.Web
                         where l.PlayerId == player.PlayerId
                         select l).Single();
 
-            updatelobby(lobby.HostPlayer, 1);
+            
             join.Lobby = lobby.HostPlayer;
             db.SubmitChanges();
-
+            updatelobby(lobby.HostPlayer);
 
 
 
@@ -256,9 +261,10 @@ namespace MMSystems5Silverlight.Web
             var exit = (from l in db.Players
                         where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
                         select l).First();
-            updatelobby(player.Lobby, -1);
+            
             exit.Lobby = null;
             db.SubmitChanges();
+            updatelobby(player.Lobby);
 
         }
 
