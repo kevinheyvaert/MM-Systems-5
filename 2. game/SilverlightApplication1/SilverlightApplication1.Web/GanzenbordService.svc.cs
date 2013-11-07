@@ -124,16 +124,22 @@ namespace SilverlightApplication1.Web
         {
             try
             {
-              
-            player.Lobby = null; 
-            Lobby lobby = new Lobby();
-            lobby.Hostplayer = player.PlayerNaam;
-            lobby.CanJoinLobby = true;
 
-            player.Lobby = player.PlayerNaam;
-            player.IsHost = true;
-            db.Lobbies.InsertOnSubmit(lobby);
-            db.SubmitChanges();
+              
+
+                    player.Lobby = null;
+                    Lobby lobby = new Lobby();
+                    lobby.Hostplayer = player.PlayerNaam;
+                    lobby.CanJoinLobby = true;
+                    lobby.AantalPlayers = 1;
+
+                    player.Lobby = player.PlayerNaam;
+                    player.IsHost = true;
+                    db.Lobbies.InsertOnSubmit(lobby);
+                    db.SubmitChanges();
+
+                
+           
 
             //PlayerLobby playerlobby = new PlayerLobby();
             //playerlobby.PlayerId = player.PlayerId;
@@ -177,22 +183,65 @@ namespace SilverlightApplication1.Web
 
         }
 
+        private void updatelobby(string lobby, int hoeveel)
+        {
+            
+            var ad = (from i in db.Lobbies
+                      where i.Hostplayer == lobby
+                      select i).Single();
+
+            ad.AantalPlayers = ad.AantalPlayers+hoeveel;
+            db.SubmitChanges();
+
+            if (ad.AantalPlayers == 4)
+                updateaantal(lobby, false);
+            else if (ad.AantalPlayers < 4)
+            {
+                updateaantal(lobby, true);
+            }
+
+            
+
+        }
+
+        private void updateaantal(string lobby, bool canjoin)
+        {
+
+            var ad = (from i in db.Lobbies
+                      where i.Hostplayer == lobby
+                      select i).Single();
+
+            if (canjoin==false)
+            {
+                ad.CanJoinLobby = false;
+            }
+            else if (canjoin==true)
+            {
+                ad.CanJoinLobby = true;
+            }
+            db.SubmitChanges();
+            
+            
+        }
+
+        
 
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
+            
             StopHost(player);
 
-                {
+                
                     var join = (from l in db.Players
                                 where l.PlayerId == player.PlayerId
                                 select l).Single();
-                    
 
+                    updatelobby(lobby.HostPlayer, 1);
                     join.Lobby = lobby.HostPlayer;
                     db.SubmitChanges();
                    
 
-                }
+                
  
         }
 
@@ -202,6 +251,7 @@ namespace SilverlightApplication1.Web
             var exit = (from l in db.Players
                         where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
                         select l).First();
+            updatelobby(player.Lobby, -1);
             exit.Lobby = null;
             db.SubmitChanges();
 

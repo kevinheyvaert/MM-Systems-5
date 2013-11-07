@@ -19,8 +19,8 @@ namespace SilverlightApplication1
     {
         // Ganzebord.GanzenbordServiceClient client;
         // Ganzenbordcloud.GanzenbordServiceClient client1;
-        //GanzenbordServiceSpel.GanzenbordServiceClient client2;
-        ServiceReference1.GanzenbordServiceClient client2;
+        GanzenbordServiceSpel.GanzenbordServiceClient client2;
+        //ServiceReference1.GanzenbordServiceClient client2;
 
         DispatcherTimer update = new DispatcherTimer();
         string txtboxnaam;
@@ -43,8 +43,8 @@ namespace SilverlightApplication1
 
 
         Bord Speelbord;
-        ServiceReference1.Player player = new ServiceReference1.Player();
-        ServiceReference1.Lobby lobby = new ServiceReference1.Lobby();
+        GanzenbordServiceSpel.Player player = new GanzenbordServiceSpel.Player();
+        GanzenbordServiceSpel.Lobby lobby = new GanzenbordServiceSpel.Lobby();
         
         
         public MainPage()
@@ -55,7 +55,7 @@ namespace SilverlightApplication1
             //this.DataContext = Speler;
             //client1 = new Ganzenbordcloud.GanzenbordServiceClient();
             //client1.GooiCompleted += client1_GooiCompleted;
-            client2 = new ServiceReference1.GanzenbordServiceClient();
+            client2 = new GanzenbordServiceSpel.GanzenbordServiceClient();
             client2.MaakAccountCompleted += client2_MaakAccountCompleted;
             client2.InloggenCompleted +=client2_InloggenCompleted;
             client2.MaakLobbyCompleted += client2_MaakLobbyCompleted;
@@ -73,7 +73,7 @@ namespace SilverlightApplication1
             //client.GooiCompleted += client_GooiCompleted;
         }
 
-        void client2_LobbyInfoCompleted(object sender, ServiceReference1.LobbyInfoCompletedEventArgs e)
+        void client2_LobbyInfoCompleted(object sender, GanzenbordServiceSpel.LobbyInfoCompletedEventArgs e)
         {
             try
             {
@@ -87,12 +87,12 @@ namespace SilverlightApplication1
            
         }
 
-        void client2_BeschikbareLobbysCompleted(object sender, ServiceReference1.BeschikbareLobbysCompletedEventArgs e)
+        void client2_BeschikbareLobbysCompleted(object sender, GanzenbordServiceSpel.BeschikbareLobbysCompletedEventArgs e)
         {
             ListAvaibleLobbys.ItemsSource = e.Result;
         }
 
-        void client2_InloggenCompleted(object sender, ServiceReference1.InloggenCompletedEventArgs e)
+        void client2_InloggenCompleted(object sender, GanzenbordServiceSpel.InloggenCompletedEventArgs e)
         {
             if (e.Result == null)
             {
@@ -112,7 +112,7 @@ namespace SilverlightApplication1
 
         }
 
-        void client2_MaakAccountCompleted(object sender, ServiceReference1.MaakAccountCompletedEventArgs e)
+        void client2_MaakAccountCompleted(object sender, GanzenbordServiceSpel.MaakAccountCompletedEventArgs e)
         {
             player = e.Result;
         }
@@ -211,7 +211,7 @@ namespace SilverlightApplication1
      
         private void ListAvaibleLobbys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lobby = (ServiceReference1.Lobby)ListAvaibleLobbys.SelectedValue;
+            lobby = (GanzenbordServiceSpel.Lobby)ListAvaibleLobbys.SelectedValue;
             client2.LobbyInfoAsync(lobby);
         }
 
