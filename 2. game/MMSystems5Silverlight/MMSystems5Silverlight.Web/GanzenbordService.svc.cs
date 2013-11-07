@@ -124,30 +124,12 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
-
-
-                updatelobby(player.Lobby);
-                player.Lobby = null;
                 Lobby lobby = new Lobby();
                 lobby.Hostplayer = player.PlayerNaam;
                 lobby.CanJoinLobby = true;
                 lobby.AantalPlayers = 1;
-
-                player.Lobby = player.PlayerNaam;
-                player.IsHost = true;
                 db.Lobbies.InsertOnSubmit(lobby);
                 db.SubmitChanges();
-
-
-
-
-                //PlayerLobby playerlobby = new PlayerLobby();
-                //playerlobby.PlayerId = player.PlayerId;
-                //playerlobby.HostPlayer = player.PlayerNaam;
-                //db.PlayerLobbies.InsertOnSubmit(playerlobby);
-                //db.SubmitChanges();
-
-
 
                 var isHost = (from i in db.Players
                               where i.PlayerId == player.PlayerId
@@ -156,14 +138,18 @@ namespace MMSystems5Silverlight.Web
                 isHost.Lobby = player.PlayerNaam;
                 isHost.IsHost = true;
                 db.SubmitChanges();
+                updatelobby(player.Lobby);
+                return player;
+                
             }
             catch (Exception)
             {
 
-                throw;
+                return null;
             }
 
-            return player;
+            
+            
         }
 
         public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
@@ -194,18 +180,23 @@ namespace MMSystems5Silverlight.Web
                         where i.Lobby==lobby
                         select i).Count();
 
-            
+
 
             if (ad.AantalPlayers == 4)
+            {
                 updateaantal(lobby, false);
-            
+                ad.AantalPlayers = count;
+            }
+
+
             else if (ad.AantalPlayers < 4)
             {
                 updateaantal(lobby, true);
                 ad.AantalPlayers = count;
-                db.SubmitChanges();
+                
             }
 
+            db.SubmitChanges();
 
 
         }
