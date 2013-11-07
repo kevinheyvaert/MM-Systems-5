@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MMSystems5Game
 {
-    class StopHostVM
+    public class StopHostVM
     {
         public StopHostVM()
         {

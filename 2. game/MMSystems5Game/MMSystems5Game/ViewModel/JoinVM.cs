@@ -17,15 +17,19 @@ namespace MMSystems5Game
 
         void client1_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            
+            App.player.IsHost = false;
         }
 
         public void Join(GanzenBordServiceCloud.Lobby lobby, GanzenBordServiceCloud.Player player)
         {
             try
             {
-                App.client1.JoinLobbyAsync(lobby, player);
-                App.player.Lobby = lobby.HostPlayer;
+                if (lobby!=null && player!=null)
+                {
+                    App.client1.JoinLobbyAsync(lobby, player);
+                    App.player.Lobby = lobby.HostPlayer;
+                }
+                
             }
             catch (Exception)
             {

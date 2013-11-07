@@ -31,6 +31,13 @@ namespace MMSystems5Game
 
         public GanzenBordServiceCloud.Lobby InfoLobby { get; set; }
         public GanzenBordServiceCloud.Lobby TemplateBind { get; set; }
+
+        public bool Join
+        {
+            get { return _join; }
+            set { _join = value; RaisePropChanged("Join"); }
+        }
+        private bool _join { get; set; }
        
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
         {

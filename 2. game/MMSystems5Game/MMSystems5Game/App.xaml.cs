@@ -32,6 +32,8 @@ namespace MMSystems5Game
         public static MaakLobbyVM MaakLobby;
         public static DispatcherTimer timer;
         public static JoinVM join;
+        public static StopHostVM stophost;
+
         
 
        
@@ -90,9 +92,18 @@ namespace MMSystems5Game
             LobbyInfo = new PlayersInLobby();
             MaakLobby = new MaakLobbyVM();
             join = new JoinVM();
+            stophost = new StopHostVM();
+
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
+            PhoneApplicationService.Current.Deactivated += Current_Deactivated;
+
          
 
+        }
+
+        void Current_Deactivated(object sender, DeactivatedEventArgs e)
+        {
+            stophost.StopHost(player);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -111,17 +122,27 @@ namespace MMSystems5Game
                 LobbyInfo.infolobby(lobbylistvm.TemplateBind);
             }
 
-            if (player.IsHost == true)
-            {
-                join.playjoin = "Play";
-            }
 
-            else
+            if (lobbylistvm.TemplateBind!=null)
             {
-                join.playjoin = "Join";
+                if (lobbylistvm.TemplateBind.HostPlayer != player.PlayerNaam)
+                {
+
+                    lobbylistvm.Join = true;
+
+                }
+
+                else
+                {
+                    lobbylistvm.Join = false;
+                }
+                
             }
            
-           lobbylistvm.GetLobbys();
+
+          
+
+            lobbylistvm.GetLobbys();
             
         }
 

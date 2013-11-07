@@ -49,8 +49,8 @@
         
         <StackPanel Grid.Column="1">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button  Content="Play" x:Name="play"  Click="Button_Click" ></Button>
-                <Button Content="join" x:Name="join"></Button>
+                <Button  IsEnabled="{Binding IsHost}" Content="Play" x:Name="play"  Click="Button_Click" ></Button>
+                <Button IsEnabled="{Binding Join}" Content="join" x:Name="join" Click="join_Click"></Button>
             </StackPanel>
             <ListBox x:Name="LijstSpelersInLobby" ItemsSource="{Binding LijstSpelersInLobby}" >
                 <ListBox.ItemTemplate>

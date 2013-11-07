@@ -18,23 +18,17 @@ namespace MMSystems5Game
             InitializeComponent();
             ListAvaibleLobbys.DataContext = App.lobbylistvm;
             LijstSpelersInLobby.DataContext = App.LobbyInfo;
-            play.DataContext = App.join;
-
-            if (App.player.IsHost == false)
-            {
-                play.IsEnabled = false;
-            }
-            
-            
+            play.DataContext = App.player;
+            join.DataContext = App.lobbylistvm;
+  
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (App.player.IsHost == true)
+            
                 NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
-            else
-                App.join.Join(App.lobbylistvm.TemplateBind, App.player);
+            
 
         }
 
@@ -43,7 +37,7 @@ namespace MMSystems5Game
         {
             try
             {
-                App.lobbylistvm.GetLobbys();
+                
                 App.timer.Start();  
             }
             catch (Exception)
@@ -62,6 +56,13 @@ namespace MMSystems5Game
         private void jn_Click(object sender, RoutedEventArgs e)
         {
            
+        }
+
+        private void join_Click(object sender, RoutedEventArgs e)
+        {
+            
+            App.join.Join(App.lobbylistvm.TemplateBind, App.player);
+
         }
     }
 }
