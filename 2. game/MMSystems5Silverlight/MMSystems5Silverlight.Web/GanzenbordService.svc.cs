@@ -76,11 +76,8 @@ namespace MMSystems5Silverlight.Web
                          select r.PlayerId).Max();
             playerid = maxId + 1;
 
-
             try
             {
-
-
                 player.PlayerNaam = (string)naam;
                 player.Wachtwoord = (string)wachtwoord;
                 player.PlayerId = playerid;
@@ -98,9 +95,6 @@ namespace MMSystems5Silverlight.Web
             }
         }
 
-
-
-
         public List<DTO.Lobby> BeschikbareLobbys()
         {
             var BeschikbareLobbys = (from l in db.Lobbies
@@ -115,7 +109,6 @@ namespace MMSystems5Silverlight.Web
             }
 
             return LobbyList;
-
 
         }
 
@@ -147,9 +140,7 @@ namespace MMSystems5Silverlight.Web
 
                 return null;
             }
-
-            
-            
+ 
         }
 
         public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
@@ -198,7 +189,6 @@ namespace MMSystems5Silverlight.Web
 
             db.SubmitChanges();
 
-
         }
 
         private void updateaantal(string lobby, bool canjoin)
@@ -218,10 +208,7 @@ namespace MMSystems5Silverlight.Web
             }
             db.SubmitChanges();
 
-
         }
-
-
 
         public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
@@ -229,20 +216,15 @@ namespace MMSystems5Silverlight.Web
             if (player.IsHost == true)
            {
                 StopHost(player);
-            }
+           }
            
-
-
             var join = (from l in db.Players
                         where l.PlayerId == player.PlayerId
                         select l).Single();
-
-            
+  
             join.Lobby = lobby.HostPlayer;
             db.SubmitChanges();
             updatelobby(lobby.HostPlayer);
-
-
 
         }
 
@@ -271,7 +253,6 @@ namespace MMSystems5Silverlight.Web
                 item.Lobby = null;
                 item.IsHost = false;
             }
-
 
             var stoplobby = (from s in db.Lobbies
                              where s.Hostplayer == player.PlayerNaam

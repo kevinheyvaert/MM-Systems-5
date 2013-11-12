@@ -139,15 +139,8 @@ namespace MMSystems5Game
                 
             }
            
-
-          
-
-            lobbylistvm.GetLobbys();
-            
+            lobbylistvm.GetLobbys();   
         }
-
-      
-
 
         void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
         {

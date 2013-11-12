@@ -1,0 +1,9 @@
+TO DO LIJST GANZENBORD 12/11/2013
+
+- Player Locatie in Service bepalen en meegeven
+- Regels per locatie implementeren
+- Wanneer locatie >63, plaatsen terug zetten
+--> Eerst dobbellen
+- Met meerdere spelers in game kunnen spelen
+- Highscore pagina
+- Uitleg spel pagina (misschien??)
