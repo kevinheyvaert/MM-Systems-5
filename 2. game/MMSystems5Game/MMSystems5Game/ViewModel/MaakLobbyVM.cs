@@ -15,8 +15,11 @@ namespace MMSystems5Game
 
         void client1_MaakLobbyCompleted(object sender, GanzenBordServiceCloud.MaakLobbyCompletedEventArgs e)
         {
-            App.player.Lobby = App.player.PlayerNaam;
-            App.player.IsHost = true;
+            if(e.Result!=null)
+            {
+                  App.player.Lobby = App.player.PlayerNaam;
+                  App.player.IsHost = true;
+            }
         }
 
         public void MaakLobby(GanzenBordServiceCloud.Player player)

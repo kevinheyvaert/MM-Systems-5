@@ -104,6 +104,7 @@ namespace MMSystems5Game
         void Current_Deactivated(object sender, DeactivatedEventArgs e)
         {
             stophost.StopHost(player);
+           
         }
 
         void timer_Tick(object sender, EventArgs e)

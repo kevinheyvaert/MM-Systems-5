@@ -50,7 +50,8 @@ namespace MMSystems5Game
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            App.MaakLobby.MaakLobby(App.player);
+           App.MaakLobby.MaakLobby(App.player);
+            
         }
 
         private void jn_Click(object sender, RoutedEventArgs e)
