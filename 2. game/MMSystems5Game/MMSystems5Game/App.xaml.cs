@@ -33,6 +33,7 @@ namespace MMSystems5Game
         public static DispatcherTimer timer;
         public static JoinVM join;
         public static StopHostVM stophost;
+        public static Dice dice;
 
         
 
@@ -93,6 +94,7 @@ namespace MMSystems5Game
             MaakLobby = new MaakLobbyVM();
             join = new JoinVM();
             stophost = new StopHostVM();
+            dice = new Dice();
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
             PhoneApplicationService.Current.Deactivated += Current_Deactivated;

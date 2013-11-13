@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Dice.cs" />
     <Compile Include="ViewModel\ExitLobbyVM.cs" />
     <Compile Include="ViewModel\InloggenVM.cs" />
     <Compile Include="ViewModel\JoinVM.cs" />

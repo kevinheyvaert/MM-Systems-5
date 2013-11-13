@@ -16,23 +16,88 @@ namespace MMSystems5Silverlight.Web
     {
         Player player = new Player();
         private GanzenBordCloudSqlDataContext db;
+        Dobbelsteen Dobbelsteen1;
+        int[] DobbelEnLocatie;
 
         private int playerid;
 
         public GanzenbordService()
         {
-
+            
+            Dobbelsteen1 = new Dobbelsteen();
             db = new GanzenBordCloudSqlDataContext();
+
 
         }
         public void DoWork()
         {
         }
 
-        public int Gooi()
+        public int [] Gooi(DTO.Player player)
         {
-            Dobbelsteen Dobbelsteen1 = new Dobbelsteen();
-            return Dobbelsteen1.GeefWaardeDobbelsteen();
+            DobbelEnLocatie[0] = Dobbelsteen1.GeefWaardeDobbelsteen();
+            //gooi.Content = Dice(e.Result);
+            var speler = (from s in db.Players
+                          where s.PlayerId == player.PlayerId
+                          select s).Single();
+
+            speler.Locatie += DobbelEnLocatie[0]; 
+           // Speler.Locatie = Speler.Locatie + e.Result;
+
+            //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
+            //{
+            //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
+            //}
+
+            if (speler.Locatie == 6)
+            {
+                speler.Locatie = 12;
+               // MessageBox.Show("Brug : Ga naar 12");
+            }
+            if (speler.Locatie == 19)
+            {
+                //nog te maken bool Herberg
+                //MessageBox.Show("Beurt overslaan");
+            }
+            if (speler.Locatie == 31)
+            {
+                //nog te maken bool Put
+               // MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
+            }
+            if (speler.Locatie == 42)
+            {
+                speler.Locatie = 39;
+               // MessageBox.Show("Doolhof : Ga naar 39");
+            }
+            if (speler.Locatie == 52)
+            {
+                //nog te maken bool Gevangenis
+              //  MessageBox.Show("Gevangenis : Je zit in de put tot er een andere speler in komt");
+            }
+            if (speler.Locatie == 58)
+            {
+                speler.Locatie = 0;
+               // MessageBox.Show("Dood : Terug naar begin");
+            }
+
+            if (speler.Locatie > 63)
+            {
+                
+                int TijdelijkeLocatie = speler.Locatie.Value - 63;
+                speler.Locatie = 63 - TijdelijkeLocatie;
+            }
+
+            if (speler.Locatie == 63)
+            {
+               // MessageBox.Show("Einde : U heeft gewonnen!");
+                speler.Locatie = 62;
+                //Speler.Score = Speler.Score + 1;
+               // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+            }
+
+            db.SubmitChanges();
+            DobbelEnLocatie[1] = speler.Locatie.Value;
+            return DobbelEnLocatie;
         }
 
 

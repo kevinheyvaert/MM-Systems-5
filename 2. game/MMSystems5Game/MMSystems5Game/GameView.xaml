@@ -121,7 +121,9 @@
                 <Image Grid.Column="5" Grid.Row="3" Source="Einde.png"></Image>
                 
                 <Image  Source="SpelerRood.PNG" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
-
+                <Image Source="SpelerBlauw.PGN" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+                <Image Source="SpelerGroen.PGN" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+                <Image Source="SpelerGeel.PGN" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
 
 
             </Grid>
@@ -131,7 +133,7 @@
         </Grid>
         
         <StackPanel Grid.Column="2" >
-            <Button BorderThickness="0" Height="150" Width="150" x:Name="gooi" Content="Dobbel"   Click="Gooi">
+            <Button BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
                 <Button.Background>
                     <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
                 </Button.Background>
