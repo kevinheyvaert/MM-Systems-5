@@ -40,6 +40,9 @@ namespace MMSystems5Silverlight.Web
 
         [OperationContract]
         void StopHost(DTO.Player player);
+
+        [OperationContract]
+        DTO.GameState Gamestate(DTO.Player player);
         //[DataContract]
         //public class Bord
         //{

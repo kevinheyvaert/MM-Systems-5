@@ -104,8 +104,7 @@ namespace MMSystems5Silverlight.Web
         public DTO.Player Inloggen(string naam, string wachtwoord)
         {
             List<DTO.Player> playerList = new List<DTO.Player>();
-            try
-            {
+            
 
                 var usercontrol = from u in db.Players
                                   where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
@@ -121,14 +120,6 @@ namespace MMSystems5Silverlight.Web
                 }
                 else
                     return null;
-
-
-            }
-            catch (Exception)
-            {
-                return null;
-
-            }
 
         }
 
@@ -325,6 +316,27 @@ namespace MMSystems5Silverlight.Web
 
             db.Lobbies.DeleteOnSubmit(stoplobby);
             db.SubmitChanges();
+        }
+
+
+        public DTO.GameState Gamestate(DTO.Player player)
+        {
+            DTO.GameState gamestate = new DTO.GameState();
+
+            var spelers = (from s in db.Players
+                           where s.Lobby == player.Lobby
+                           select new { s.PlayerNaam, s.Locatie, s.PlayerId } );
+             
+
+            foreach (var item in spelers)
+            {
+                gamestate.players.Add(new DTO.Player() {PlayerNaam=item.PlayerNaam, Locatie= item.Locatie.Value, PlayerId=item.PlayerId });
+            }
+
+            
+            gamestate.turn = gamestate.players.First();
+
+            return gamestate;
         }
     }
 }

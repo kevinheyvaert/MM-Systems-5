@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Bord.cs" />
     <Compile Include="Dobbelsteen.cs" />
+    <Compile Include="DTO\GameState.cs" />
     <Compile Include="DTO\Lobby.cs" />
     <Compile Include="DTO\Player.cs" />
     <Compile Include="DTO\PlayerLobby.cs" />
