@@ -30,7 +30,7 @@ namespace MMSystems5Game
             Speler = new Player();
            // this.DataContext = Speler;
             dobbel.DataContext = App.dice;
-          
+          //blablaba
 
            // App.client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
             App.client1.GooiCompleted += client_GooiCompleted;
