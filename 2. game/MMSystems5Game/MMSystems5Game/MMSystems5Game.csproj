@@ -172,6 +172,12 @@
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\GanzenBordServiceCloud\GanzenbordService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.GameState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.Lobby.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -182,6 +188,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="SpelerBlauw.png" />
+    <Content Include="SpelerGeel.png" />
+    <Content Include="SpelerGroen.png" />
     <Content Include="SpelerRood.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>

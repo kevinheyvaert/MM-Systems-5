@@ -34,6 +34,7 @@ namespace MMSystems5Game
         public static JoinVM join;
         public static StopHostVM stophost;
         public static Dice dice;
+        public static 
 
         
 
@@ -97,17 +98,13 @@ namespace MMSystems5Game
             dice = new Dice();
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
-            PhoneApplicationService.Current.Deactivated += Current_Deactivated;
+            
 
          
 
         }
 
-        void Current_Deactivated(object sender, DeactivatedEventArgs e)
-        {
-            stophost.StopHost(player);
-           
-        }
+   
 
         void timer_Tick(object sender, EventArgs e)
         {
@@ -189,12 +186,14 @@ namespace MMSystems5Game
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            stophost.StopHost(player);
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            stophost.StopHost(player);
         }
 
         // Code to execute if a navigation fails

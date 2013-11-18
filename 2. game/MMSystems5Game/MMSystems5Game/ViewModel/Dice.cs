@@ -10,9 +10,16 @@ using System.Windows.Shapes;
 
 namespace MMSystems5Game
 {
-   public class Dice
-    {
-        public Grid DobbelAantal { get; set; }
+   public class Dice:BaseViewModel
+   {
+       
+       private Grid _dobbelaantal;
+        public Grid DobbelAantal 
+        {
+            get { return _dobbelaantal; }
+            set { _dobbelaantal = value; RaisePropChanged("DobbelAantal"); }
+        }
+        
         public Dice()
         {
             App.client1.GooiCompleted += client1_GooiCompleted;
@@ -20,9 +27,14 @@ namespace MMSystems5Game
 
         void client1_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
         {
-
-            DobbelAantal=dice(e.Result);
+         DobbelAantal = dice(e.Result[0]);
         }
+
+        public void dobbel(GanzenBordServiceCloud.Player player)
+        {
+            App.client1.GooiAsync(player);
+        }
+        
 
 
         //http://cespage.com/silverlight/tutorials/wp7tut7.html
@@ -84,6 +96,9 @@ namespace MMSystems5Game
                     Add(_grid, 1, 2); // Middle Right
                     Add(_grid, 2, 0); // Bottom Left
                     Add(_grid, 2, 2); // Bottom Right
+                    break;
+                default:
+                    Debug.WriteLine("eror in dobbel");
                     break;
             }
             return _grid;

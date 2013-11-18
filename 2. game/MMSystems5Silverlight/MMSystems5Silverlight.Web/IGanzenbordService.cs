@@ -15,7 +15,7 @@ namespace MMSystems5Silverlight.Web
         void DoWork();
 
         [OperationContract]
-        int[] Gooi(DTO.Player player);
+        List<int> Gooi(DTO.Player player);
 
         [OperationContract]
         DTO.Player Inloggen(string naam, string wachtwoord);

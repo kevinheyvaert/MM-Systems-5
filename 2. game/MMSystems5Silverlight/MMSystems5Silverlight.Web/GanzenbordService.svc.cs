@@ -17,13 +17,14 @@ namespace MMSystems5Silverlight.Web
         Player player = new Player();
         private GanzenBordCloudSqlDataContext db;
         Dobbelsteen Dobbelsteen1;
-        int[] DobbelEnLocatie;
+        List<int> DobbelEnLocatie = new List<int>();
 
         private int playerid;
 
         public GanzenbordService()
         {
-            
+
+
             Dobbelsteen1 = new Dobbelsteen();
             db = new GanzenBordCloudSqlDataContext();
 
@@ -33,102 +34,111 @@ namespace MMSystems5Silverlight.Web
         {
         }
 
-        public int [] Gooi(DTO.Player player)
+        public List<int> Gooi(DTO.Player player)
         {
-            DobbelEnLocatie[0] = Dobbelsteen1.GeefWaardeDobbelsteen();
-            //gooi.Content = Dice(e.Result);
-            var speler = (from s in db.Players
-                          where s.PlayerId == player.PlayerId
-                          select s).Single();
 
-            speler.Locatie += DobbelEnLocatie[0]; 
-           // Speler.Locatie = Speler.Locatie + e.Result;
 
-            //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
-            //{
-            //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
-            //}
+            DobbelEnLocatie = new List<int>();
+            DobbelEnLocatie.Add(Dobbelsteen1.GeefWaardeDobbelsteen());
+            try
+            {
+                var speler = (from s in db.Players
+                              where s.PlayerId == player.PlayerId
+                              select s).First();
+                if (speler != null)
+                {
+                    if (speler.Locatie.HasValue)
+                        speler.Locatie += DobbelEnLocatie[0];
+                    else
+                        speler.Locatie = 0;
+                    // Speler.Locatie = Speler.Locatie + e.Result;
 
-            if (speler.Locatie == 6)
-            {
-                speler.Locatie = 12;
-               // MessageBox.Show("Brug : Ga naar 12");
-            }
-            if (speler.Locatie == 19)
-            {
-                //nog te maken bool Herberg
-                //MessageBox.Show("Beurt overslaan");
-            }
-            if (speler.Locatie == 31)
-            {
-                //nog te maken bool Put
-               // MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
-            }
-            if (speler.Locatie == 42)
-            {
-                speler.Locatie = 39;
-               // MessageBox.Show("Doolhof : Ga naar 39");
-            }
-            if (speler.Locatie == 52)
-            {
-                //nog te maken bool Gevangenis
-              //  MessageBox.Show("Gevangenis : Je zit in de put tot er een andere speler in komt");
-            }
-            if (speler.Locatie == 58)
-            {
-                speler.Locatie = 0;
-               // MessageBox.Show("Dood : Terug naar begin");
-            }
+                    //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
+                    //{
+                    //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
+                    //}
 
-            if (speler.Locatie > 63)
-            {
-                
-                int TijdelijkeLocatie = speler.Locatie.Value - 63;
-                speler.Locatie = 63 - TijdelijkeLocatie;
-            }
+                    if (speler.Locatie == 6)
+                    {
+                        speler.Locatie = 12;
+                        // MessageBox.Show("Brug : Ga naar 12");
+                    }
+                    else if (speler.Locatie == 19)
+                    {
+                        //nog te maken bool Herberg
+                        //MessageBox.Show("Beurt overslaan");
+                    }
+                    else if (speler.Locatie == 31)
+                    {
+                        //nog te maken bool Put
+                        // MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
+                    }
+                    else if (speler.Locatie == 42)
+                    {
+                        speler.Locatie = 39;
+                        // MessageBox.Show("Doolhof : Ga naar 39");
+                    }
+                    else if (speler.Locatie == 52)
+                    {
+                        //nog te maken bool Gevangenis
+                        //  MessageBox.Show("Gevangenis : Je zit in de put tot er een andere speler in komt");
+                    }
+                    else if (speler.Locatie == 58)
+                    {
+                        speler.Locatie = 0;
+                        // MessageBox.Show("Dood : Terug naar begin");
+                    }
 
-            if (speler.Locatie == 63)
-            {
-               // MessageBox.Show("Einde : U heeft gewonnen!");
-                speler.Locatie = 62;
-                //Speler.Score = Speler.Score + 1;
-               // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
-            }
+                    else if (speler.Locatie > 63)
+                    {
 
-            db.SubmitChanges();
-            DobbelEnLocatie[1] = speler.Locatie.Value;
-            return DobbelEnLocatie;
+                        int TijdelijkeLocatie = speler.Locatie.Value - 63;
+                        speler.Locatie = 63 - TijdelijkeLocatie;
+                    }
+
+                    else if (speler.Locatie == 63)
+                    {
+                        // MessageBox.Show("Einde : U heeft gewonnen!");
+                        speler.Locatie = 62;
+                        //Speler.Score = Speler.Score + 1;
+                        // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+                    }
+
+                    DobbelEnLocatie.Add(speler.Locatie.Value);
+                    db.SubmitChanges();
+                }
+                else
+                    DobbelEnLocatie.Add(6);
+                return DobbelEnLocatie;
+            }
+            catch (Exception)
+            {
+
+                DobbelEnLocatie.Add(666);
+                return DobbelEnLocatie;
+            }
         }
 
 
         public DTO.Player Inloggen(string naam, string wachtwoord)
         {
             List<DTO.Player> playerList = new List<DTO.Player>();
-            try
+
+
+            var usercontrol = from u in db.Players
+                              where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
+                              select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
+
+            foreach (var item in usercontrol)
             {
-
-                var usercontrol = from u in db.Players
-                                  where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
-
-                foreach (var item in usercontrol)
-                {
-                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby });
-                }
-                if (playerList.Count() > 0)
-                {
-                    return playerList.First();
-                }
-                else
-                    return null;
-
-
+                playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby });
             }
-            catch (Exception)
+            if (playerList.Count() > 0)
             {
+                return playerList.First();
+            }
+            else
                 return null;
-
-            }
 
         }
 
@@ -198,14 +208,14 @@ namespace MMSystems5Silverlight.Web
                 db.SubmitChanges();
                 updatelobby(player.Lobby);
                 return player;
-                
+
             }
             catch (Exception)
             {
 
                 return null;
             }
- 
+
         }
 
         public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
@@ -230,11 +240,11 @@ namespace MMSystems5Silverlight.Web
 
             var ad = (from i in db.Lobbies
                       where i.Hostplayer == lobby
-                      select i).Single();
-           
-            var count =(from i in db.Players
-                        where i.Lobby==lobby
-                        select i).Count();
+                      select i).First();
+
+            var count = (from i in db.Players
+                         where i.Lobby == lobby
+                         select i).Count();
 
 
 
@@ -249,7 +259,7 @@ namespace MMSystems5Silverlight.Web
             {
                 updateaantal(lobby, true);
                 ad.AantalPlayers = count;
-                
+
             }
 
             db.SubmitChanges();
@@ -261,7 +271,7 @@ namespace MMSystems5Silverlight.Web
 
             var ad = (from i in db.Lobbies
                       where i.Hostplayer == lobby
-                      select i).Single();
+                      select i).First();
 
             if (canjoin == false)
             {
@@ -279,14 +289,14 @@ namespace MMSystems5Silverlight.Web
         {
 
             if (player.IsHost == true)
-           {
+            {
                 StopHost(player);
-           }
-           
+            }
+
             var join = (from l in db.Players
                         where l.PlayerId == player.PlayerId
-                        select l).Single();
-  
+                        select l).First();
+
             join.Lobby = lobby.HostPlayer;
             db.SubmitChanges();
             updatelobby(lobby.HostPlayer);
@@ -299,7 +309,7 @@ namespace MMSystems5Silverlight.Web
             var exit = (from l in db.Players
                         where l.Lobby == player.Lobby && l.PlayerId == player.PlayerId
                         select l).First();
-            
+
             exit.Lobby = null;
             db.SubmitChanges();
             updatelobby(player.Lobby);
@@ -325,6 +335,41 @@ namespace MMSystems5Silverlight.Web
 
             db.Lobbies.DeleteOnSubmit(stoplobby);
             db.SubmitChanges();
+        }
+
+
+        public DTO.GameState Gamestate(DTO.Player player)
+        {
+            DTO.GameState gamestate = new DTO.GameState();
+
+            var spelers = (from s in db.Players
+                           where s.Lobby == player.Lobby
+                           select new { s.PlayerNaam, s.Locatie, s.PlayerId });
+
+
+            foreach (var item in spelers)
+            {
+                gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie.Value, PlayerId = item.PlayerId });
+            }
+
+
+            var lobby = (from l in db.Lobbies
+                         where l.Hostplayer == player.Lobby
+                         select l).First();
+
+            gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
+
+            if (lobby.WhosTunrId == gamestate.players.Count)
+            {
+                lobby.WhosTunrId = 0;
+            }
+
+            else if (lobby.WhosTunrId < gamestate.players.Count)
+            {
+                lobby.WhosTunrId += 1;
+            }
+
+            return gamestate;
         }
     }
 }

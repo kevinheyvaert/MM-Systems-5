@@ -23,6 +23,7 @@
       <Column Name="Hostplayer" Type="System.String" DbType="Char(25) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CanJoinLobby" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="AantalPlayers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WhosTunrId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

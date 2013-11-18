@@ -424,6 +424,8 @@ namespace MMSystems5Silverlight.Web
 		
 		private System.Nullable<int> _AantalPlayers;
 		
+		private System.Nullable<int> _WhosTunrId;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -434,6 +436,8 @@ namespace MMSystems5Silverlight.Web
     partial void OnCanJoinLobbyChanged();
     partial void OnAantalPlayersChanging(System.Nullable<int> value);
     partial void OnAantalPlayersChanged();
+    partial void OnWhosTunrIdChanging(System.Nullable<int> value);
+    partial void OnWhosTunrIdChanged();
     #endregion
 		
 		public Lobby()
@@ -497,6 +501,26 @@ namespace MMSystems5Silverlight.Web
 					this._AantalPlayers = value;
 					this.SendPropertyChanged("AantalPlayers");
 					this.OnAantalPlayersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WhosTunrId", DbType="Int")]
+		public System.Nullable<int> WhosTunrId
+		{
+			get
+			{
+				return this._WhosTunrId;
+			}
+			set
+			{
+				if ((this._WhosTunrId != value))
+				{
+					this.OnWhosTunrIdChanging(value);
+					this.SendPropertyChanging();
+					this._WhosTunrId = value;
+					this.SendPropertyChanged("WhosTunrId");
+					this.OnWhosTunrIdChanged();
 				}
 			}
 		}

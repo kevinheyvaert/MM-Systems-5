@@ -26,7 +26,8 @@ namespace MMSystems5Game
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
+                 App.timer.Stop();
                 NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
             
 

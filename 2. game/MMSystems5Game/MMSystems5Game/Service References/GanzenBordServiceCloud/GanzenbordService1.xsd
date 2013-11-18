@@ -130,4 +130,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="Gamestate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q14:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GamestateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="GamestateResult" nillable="true" type="q15:GameState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

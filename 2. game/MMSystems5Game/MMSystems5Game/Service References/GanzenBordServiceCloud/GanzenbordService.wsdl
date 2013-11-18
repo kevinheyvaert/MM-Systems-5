@@ -67,6 +67,12 @@
   <wsdl:message name="IGanzenbordService_StopHost_OutputMessage">
     <wsdl:part name="parameters" element="tns:StopHostResponse" />
   </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gamestate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Gamestate" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gamestate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GamestateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGanzenbordService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/DoWork" message="tns:IGanzenbordService_DoWork_InputMessage" />
@@ -107,6 +113,10 @@
     <wsdl:operation name="StopHost">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/StopHost" message="tns:IGanzenbordService_StopHost_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/StopHostResponse" message="tns:IGanzenbordService_StopHost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Gamestate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Gamestate" message="tns:IGanzenbordService_Gamestate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/GamestateResponse" message="tns:IGanzenbordService_Gamestate_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGanzenbordService" type="tns:IGanzenbordService">
@@ -194,6 +204,15 @@
     </wsdl:operation>
     <wsdl:operation name="StopHost">
       <soap:operation soapAction="http://tempuri.org/IGanzenbordService/StopHost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Gamestate">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Gamestate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
