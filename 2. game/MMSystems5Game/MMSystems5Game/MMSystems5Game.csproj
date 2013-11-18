@@ -96,7 +96,6 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Dice.cs" />
     <Compile Include="ViewModel\ExitLobbyVM.cs" />
-    <Compile Include="ViewModel\GameUpdate.cs" />
     <Compile Include="ViewModel\InloggenVM.cs" />
     <Compile Include="ViewModel\JoinVM.cs" />
     <Compile Include="ViewModel\LobbysListVM.cs" />
@@ -173,9 +172,6 @@
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GanzenBordServiceCloud\GanzenbordService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.Lobby.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -186,9 +182,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="SpelerBlauw.png" />
-    <Content Include="SpelerGeel.png" />
-    <Content Include="SpelerGroen.png" />
     <Content Include="SpelerRood.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>

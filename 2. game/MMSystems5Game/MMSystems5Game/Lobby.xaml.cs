@@ -18,7 +18,7 @@ namespace MMSystems5Game
             InitializeComponent();
             ListAvaibleLobbys.DataContext = App.lobbylistvm;
             LijstSpelersInLobby.DataContext = App.LobbyInfo;
-            //play.DataContext = App.player; IsEnabled="{Binding IsHost}"
+            play.DataContext = App.player;
             join.DataContext = App.lobbylistvm;
   
         }

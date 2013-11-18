@@ -13,7 +13,6 @@ namespace MMSystems5Game
    public class Dice
     {
         public Grid DobbelAantal { get; set; }
-        
         public Dice()
         {
             App.client1.GooiCompleted += client1_GooiCompleted;
@@ -21,14 +20,9 @@ namespace MMSystems5Game
 
         void client1_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
         {
-         DobbelAantal = dice(e.Result[0]);
-        }
 
-        public void dobbel(GanzenBordServiceCloud.Player player)
-        {
-            App.client1.GooiAsync(player);
+            DobbelAantal=dice(e.Result);
         }
-        
 
 
         //http://cespage.com/silverlight/tutorials/wp7tut7.html

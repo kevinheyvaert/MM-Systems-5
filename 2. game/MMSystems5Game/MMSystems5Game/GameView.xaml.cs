@@ -40,7 +40,7 @@ namespace MMSystems5Game
         {
            
             //gooi.Content = Dice(e.Result);
-          //  Speler.Locatie = Speler.Locatie + e.Result;
+            Speler.Locatie = Speler.Locatie + e.Result;
 
             //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
             //{
@@ -105,7 +105,7 @@ namespace MMSystems5Game
        
         public void Gooi(object sender, RoutedEventArgs e)
         {
-            App.dice.dobbel(App.player);
+            App.client1.GooiAsync(Speler);
             
             
         }
