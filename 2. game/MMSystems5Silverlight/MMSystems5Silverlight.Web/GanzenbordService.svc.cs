@@ -190,8 +190,7 @@ namespace MMSystems5Silverlight.Web
 
         public DTO.Player MaakLobby(DTO.Player player)
         {
-            try
-            {
+           
                 Lobby lobby = new Lobby();
                 lobby.Hostplayer = player.PlayerNaam;
                 lobby.CanJoinLobby = true;
@@ -201,20 +200,15 @@ namespace MMSystems5Silverlight.Web
 
                 var isHost = (from i in db.Players
                               where i.PlayerId == player.PlayerId
-                              select i).First();
+                              select i).FirstOrDefault();
 
                 isHost.Lobby = player.PlayerNaam;
                 isHost.IsHost = true;
                 db.SubmitChanges();
-                updatelobby(player.Lobby);
+               // updatelobby(player.Lobby);
                 return player;
 
-            }
-            catch (Exception)
-            {
-
-                return null;
-            }
+           
 
         }
 

@@ -33,11 +33,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlayer" nillable="true" type="tns:ArrayOfPlayer" />
-  <xs:complexType name="GameState">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="players" nillable="true" type="tns:ArrayOfPlayer" />
-      <xs:element minOccurs="0" name="turn" nillable="true" type="tns:Player" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GameState" nillable="true" type="tns:GameState" />
 </xs:schema>

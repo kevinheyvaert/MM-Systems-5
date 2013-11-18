@@ -210,51 +210,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameState", Namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO")]
-    public partial class GameState : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> playersField;
-        
-        private MMSystems5Game.GanzenBordServiceCloud.Player turnField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> players {
-            get {
-                return this.playersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.playersField, value) != true)) {
-                    this.playersField = value;
-                    this.RaisePropertyChanged("players");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MMSystems5Game.GanzenBordServiceCloud.Player turn {
-            get {
-                return this.turnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.turnField, value) != true)) {
-                    this.turnField = value;
-                    this.RaisePropertyChanged("turn");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GanzenBordServiceCloud.IGanzenbordService")]
     public interface IGanzenbordService {
@@ -308,11 +263,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         System.IAsyncResult BeginStopHost(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
         
         void EndStopHost(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/Gamestate", ReplyAction="http://tempuri.org/IGanzenbordService/GamestateResponse")]
-        System.IAsyncResult BeginGamestate(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
-        
-        MMSystems5Game.GanzenBordServiceCloud.GameState EndGamestate(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -435,25 +385,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GamestateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GamestateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public MMSystems5Game.GanzenBordServiceCloud.GameState Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((MMSystems5Game.GanzenBordServiceCloud.GameState)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GanzenbordServiceClient : System.ServiceModel.ClientBase<MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService>, MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -515,12 +446,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         private EndOperationDelegate onEndStopHostDelegate;
         
         private System.Threading.SendOrPostCallback onStopHostCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGamestateDelegate;
-        
-        private EndOperationDelegate onEndGamestateDelegate;
-        
-        private System.Threading.SendOrPostCallback onGamestateCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -594,8 +519,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ExitLobbyCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> StopHostCompleted;
-        
-        public event System.EventHandler<GamestateCompletedEventArgs> GamestateCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1059,52 +982,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                         player}, this.onEndStopHostDelegate, this.onStopHostCompletedDelegate, userState);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginGamestate(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGamestate(player, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        MMSystems5Game.GanzenBordServiceCloud.GameState MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndGamestate(System.IAsyncResult result) {
-            return base.Channel.EndGamestate(result);
-        }
-        
-        private System.IAsyncResult OnBeginGamestate(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            MMSystems5Game.GanzenBordServiceCloud.Player player = ((MMSystems5Game.GanzenBordServiceCloud.Player)(inValues[0]));
-            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginGamestate(player, callback, asyncState);
-        }
-        
-        private object[] OnEndGamestate(System.IAsyncResult result) {
-            MMSystems5Game.GanzenBordServiceCloud.GameState retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndGamestate(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGamestateCompleted(object state) {
-            if ((this.GamestateCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GamestateCompleted(this, new GamestateCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GamestateAsync(MMSystems5Game.GanzenBordServiceCloud.Player player) {
-            this.GamestateAsync(player, null);
-        }
-        
-        public void GamestateAsync(MMSystems5Game.GanzenBordServiceCloud.Player player, object userState) {
-            if ((this.onBeginGamestateDelegate == null)) {
-                this.onBeginGamestateDelegate = new BeginOperationDelegate(this.OnBeginGamestate);
-            }
-            if ((this.onEndGamestateDelegate == null)) {
-                this.onEndGamestateDelegate = new EndOperationDelegate(this.OnEndGamestate);
-            }
-            if ((this.onGamestateCompletedDelegate == null)) {
-                this.onGamestateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGamestateCompleted);
-            }
-            base.InvokeAsync(this.onBeginGamestateDelegate, new object[] {
-                        player}, this.onEndGamestateDelegate, this.onGamestateCompletedDelegate, userState);
-        }
-        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1306,19 +1183,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             public void EndStopHost(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("StopHost", _args, result);
-            }
-            
-            public System.IAsyncResult BeginGamestate(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = player;
-                System.IAsyncResult _result = base.BeginInvoke("Gamestate", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public MMSystems5Game.GanzenBordServiceCloud.GameState EndGamestate(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                MMSystems5Game.GanzenBordServiceCloud.GameState _result = ((MMSystems5Game.GanzenBordServiceCloud.GameState)(base.EndInvoke("Gamestate", _args, result)));
-                return _result;
             }
         }
     }
