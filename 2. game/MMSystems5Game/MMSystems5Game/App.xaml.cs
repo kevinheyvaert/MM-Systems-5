@@ -34,7 +34,7 @@ namespace MMSystems5Game
         public static JoinVM join;
         public static StopHostVM stophost;
         public static Dice dice;
-        public static 
+      
 
         
 

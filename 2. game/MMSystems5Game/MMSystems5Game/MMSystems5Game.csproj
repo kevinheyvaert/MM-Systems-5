@@ -63,7 +63,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Bord.cs" />
     <Compile Include="Dobbelsteen.cs" />
     <Compile Include="Gamestate.cs" />
     <Compile Include="GameView.xaml.cs">
@@ -94,6 +93,7 @@
     </Compile>
     <Compile Include="ViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BordVm.cs" />
     <Compile Include="ViewModel\Dice.cs" />
     <Compile Include="ViewModel\ExitLobbyVM.cs" />
     <Compile Include="ViewModel\InloggenVM.cs" />
@@ -173,6 +173,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GanzenBordServiceCloud\GanzenbordService31.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GanzenBordServiceCloud\MMSystems5Game.GanzenBordServiceCloud.GameState.datasource">

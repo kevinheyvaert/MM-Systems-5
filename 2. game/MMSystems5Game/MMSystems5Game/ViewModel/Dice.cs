@@ -98,7 +98,6 @@ namespace MMSystems5Game
                     Add(_grid, 2, 2); // Bottom Right
                     break;
                 default:
-                    Debug.WriteLine("eror in dobbel");
                     break;
             }
             return _grid;

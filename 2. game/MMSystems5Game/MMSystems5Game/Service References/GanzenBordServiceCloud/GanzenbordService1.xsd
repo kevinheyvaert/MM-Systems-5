@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" />
+  <xs:import schemaLocation="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="DoWork">
     <xs:complexType>
       <xs:sequence />
@@ -13,13 +14,15 @@
   </xs:element>
   <xs:element name="Gooi">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q1:Player" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GooiResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GooiResult" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GooiResult" nillable="true" type="q2:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -34,7 +37,7 @@
   <xs:element name="InloggenResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="InloggenResult" nillable="true" type="q1:Player" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="InloggenResult" nillable="true" type="q3:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,7 +52,7 @@
   <xs:element name="MaakAccountResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="MaakAccountResult" nillable="true" type="q2:Player" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="MaakAccountResult" nillable="true" type="q4:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,43 +64,43 @@
   <xs:element name="BeschikbareLobbysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="BeschikbareLobbysResult" nillable="true" type="q3:ArrayOfLobby" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="BeschikbareLobbysResult" nillable="true" type="q5:ArrayOfLobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="MaakLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q4:Player" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q6:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="MaakLobbyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="MaakLobbyResult" nillable="true" type="q5:Player" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="MaakLobbyResult" nillable="true" type="q7:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="LobbyInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="lobby" nillable="true" type="q6:Lobby" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="lobby" nillable="true" type="q8:Lobby" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="LobbyInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="LobbyInfoResult" nillable="true" type="q7:ArrayOfPlayer" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="LobbyInfoResult" nillable="true" type="q9:ArrayOfPlayer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="JoinLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="lobby" nillable="true" type="q8:Lobby" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q9:Player" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="lobby" nillable="true" type="q10:Lobby" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q11:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -109,7 +112,7 @@
   <xs:element name="ExitLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q10:Player" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q12:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -121,7 +124,7 @@
   <xs:element name="StopHost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q11:Player" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="player" nillable="true" type="q13:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -17,7 +17,7 @@ namespace MMSystems5Silverlight.Web
         Player player = new Player();
         private GanzenBordCloudSqlDataContext db;
         Dobbelsteen Dobbelsteen1;
-        List<int> DobbelEnLocatie = new List<int>();
+        List<int> DobbelEnLocatie;
 
         private int playerid;
 
