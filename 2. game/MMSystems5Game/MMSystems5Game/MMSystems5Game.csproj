@@ -99,6 +99,7 @@
     <Compile Include="ViewModel\InloggenVM.cs" />
     <Compile Include="ViewModel\JoinVM.cs" />
     <Compile Include="ViewModel\LobbysListVM.cs" />
+    <Compile Include="ViewModel\LocatieVM.cs" />
     <Compile Include="ViewModel\MaakAccountVM.cs" />
     <Compile Include="ViewModel\MaakLobbyVM.cs" />
     <Compile Include="ViewModel\PlayersInLobbyVM.cs" />

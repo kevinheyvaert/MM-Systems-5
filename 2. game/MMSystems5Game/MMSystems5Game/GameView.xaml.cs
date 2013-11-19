@@ -20,16 +20,20 @@ namespace MMSystems5Game
     public partial class GameView : PhoneApplicationPage 
     {
        // GanzenBordServiceCloud.GanzenbordServiceClient client;
-        Bord Speelbord;
+        
         Player Speler;
         public GameView()
         {
             InitializeComponent();
             
-            Speelbord = new Bord();
+           
             Speler = new Player();
            // this.DataContext = Speler;
             dobbel.DataContext = App.dice;
+            rdpion.DataContext = App.rood;
+            blpion.DataContext = App.blauw;
+            grpion.DataContext = App.groen;
+            glpion.DataContext = App.geel;
           //blablaba
 
            // App.client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
@@ -93,13 +97,14 @@ namespace MMSystems5Game
             }
             
             PlaatsOpBord.Text = Speler.Locatie.ToString();
-            Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-            Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+           // Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
+            //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
+            App.stophost.StopHost(App.player);
         }
 
        

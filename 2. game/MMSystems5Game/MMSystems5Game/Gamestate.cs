@@ -9,7 +9,7 @@ namespace MMSystems5Game
     {
         List<Player> Players;
         Player ActivePlayer;
-        Bord Mainbord;
+       
         GameFase CurrentFase;
 
     }

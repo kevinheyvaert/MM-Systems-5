@@ -24,16 +24,27 @@ namespace MMSystems5Game
         public static GanzenBordServiceCloud.GanzenbordServiceClient client1;
         public static GanzenBordServiceCloud.Player player;
         public static GanzenBordServiceCloud.Lobby lobby;
+       
         public static InloggenVM login;
         public static MaakAccountVM maakaccount;
+
         public static LobbysListVM lobbylistvm;
-        public static GanzenBordServiceCloud.Lobby InfoLobby;
         public static PlayersInLobby LobbyInfo;
         public static MaakLobbyVM MaakLobby;
+       
         public static DispatcherTimer timer;
+       
         public static JoinVM join;
         public static StopHostVM stophost;
+       
         public static Dice dice;
+     
+        public static LocatieVM rood;
+        public static LocatieVM blauw;
+        public static LocatieVM groen;
+        public static LocatieVM geel;
+        public static BordVm bord;
+
       
 
         
@@ -90,12 +101,19 @@ namespace MMSystems5Game
             login = new InloggenVM();
             maakaccount = new MaakAccountVM();
             lobbylistvm = new LobbysListVM();
-            InfoLobby = new GanzenBordServiceCloud.Lobby();
             LobbyInfo = new PlayersInLobby();
             MaakLobby = new MaakLobbyVM();
             join = new JoinVM();
             stophost = new StopHostVM();
             dice = new Dice();
+
+
+            rood = new LocatieVM();
+            blauw = new LocatieVM();
+            groen = new LocatieVM();
+            geel = new LocatieVM();
+            bord = new BordVm();
+
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
             

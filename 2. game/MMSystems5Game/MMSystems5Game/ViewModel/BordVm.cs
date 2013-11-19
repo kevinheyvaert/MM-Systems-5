@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MMSystems5Game
 {
-    public class Bord
+    public class BordVm
     {
         public int[,] Plaats = new int[63, 2]{
         {0,6},{1,6},{2,6},{3,6},{4,6},{5,6},{6,6},{7,6},{8,6},

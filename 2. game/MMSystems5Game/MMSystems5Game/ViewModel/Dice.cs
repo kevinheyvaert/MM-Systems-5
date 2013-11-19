@@ -23,11 +23,14 @@ namespace MMSystems5Game
         public Dice()
         {
             App.client1.GooiCompleted += client1_GooiCompleted;
+
         }
 
         void client1_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
         {
          DobbelAantal = dice(e.Result[0]);
+            App.rood.PlaatsC = App.bord.Plaats[e.Result[1],0];
+            App.rood.PlaatsR = App.bord.Plaats[e.Result[1], 1];
         }
 
         public void dobbel(GanzenBordServiceCloud.Player player)
