@@ -29,7 +29,7 @@
                 
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <Button Content="Create Lobby" Click="Button_Click_2"  ></Button>
+                <Button x:Name="create" Content="{Binding createstop}" Click="Button_Click_2"  ></Button>
                 <ListBox  ItemsSource="{Binding BeschikbareLobbys}" x:Name="ListAvaibleLobbys" SelectedItem="{Binding InfoLobby, Mode=TwoWay}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

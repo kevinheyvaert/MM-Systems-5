@@ -139,7 +139,7 @@ namespace MMSystems5Silverlight.Web
 
                 foreach (var item in usercontrol)
                 {
-                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby });
+                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby, IsHost=item.IsHost.Value, Gewonnen=item.Gewonnen.Value, Verloren=item.Verloren.Value });
                 }
                 if (playerList.Count() > 0)
                 {

@@ -57,6 +57,10 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             set {
                 if ((this.IsHostField.Equals(value) != true)) {
                     this.IsHostField = value;
+                    if (IsHostField == false)
+                        App.MaakLobby.createstop = "Create Lobby";
+                    else
+                        App.MaakLobby.createstop = "Stop Lobby";
                     this.RaisePropertyChanged("IsHost");
                 }
             }

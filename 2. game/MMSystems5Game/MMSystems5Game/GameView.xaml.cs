@@ -51,54 +51,54 @@ namespace MMSystems5Game
             //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
             //}
 
-            if (Speler.Locatie == 6)
-            {
-                Speler.Locatie = 12;
-                MessageBox.Show("Brug : Ga naar 12");
-            }
-            if (Speler.Locatie == 19)
-            {
-                //nog te maken bool Herberg
-                MessageBox.Show("Beurt overslaan");
-            }
-            if (Speler.Locatie == 31)
-            {
-                //nog te maken bool Put
-                MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
-            }
-            if (Speler.Locatie == 42)
-            {
-                Speler.Locatie = 39;
-                MessageBox.Show("Doolhof : Ga naar 39");
-            }
-            if (Speler.Locatie == 52)
-            {
-                //nog te maken bool Gevangenis
-                MessageBox.Show("Gevangenis : Je zit in de put tot er een andere speler in komt");
-            }
-            if (Speler.Locatie == 58)
-            {
-                Speler.Locatie = 0;
-                MessageBox.Show("Dood : Terug naar begin");
-            }
+           // if (Speler.Locatie == 6)
+           // {
+           //     Speler.Locatie = 12;
+           //     MessageBox.Show("Brug : Ga naar 12");
+           // }
+           // if (Speler.Locatie == 19)
+           // {
+           //     //nog te maken bool Herberg
+           //     MessageBox.Show("Beurt overslaan");
+           // }
+           // if (Speler.Locatie == 31)
+           // {
+           //     //nog te maken bool Put
+           //     MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
+           // }
+           // if (Speler.Locatie == 42)
+           // {
+           //     Speler.Locatie = 39;
+           //     MessageBox.Show("Doolhof : Ga naar 39");
+           // }
+           // if (Speler.Locatie == 52)
+           // {
+           //     //nog te maken bool Gevangenis
+           //     MessageBox.Show("Gevangenis : Je zit in de put tot er een andere speler in komt");
+           // }
+           // if (Speler.Locatie == 58)
+           // {
+           //     Speler.Locatie = 0;
+           //     MessageBox.Show("Dood : Terug naar begin");
+           // }
 
-            if (Speler.Locatie > 63)
-            {
-                int TijdelijkeLocatie = Speler.Locatie - 63;
-                Speler.Locatie = 63 - TijdelijkeLocatie;
-            }
+           // if (Speler.Locatie > 63)
+           // {
+           //     int TijdelijkeLocatie = Speler.Locatie - 63;
+           //     Speler.Locatie = 63 - TijdelijkeLocatie;
+           // }
 
-            if (Speler.Locatie == 63)
-            {
-                MessageBox.Show("Einde : U heeft gewonnen!");
-                Speler.Locatie = 62;
-                //Speler.Score = Speler.Score + 1;
-                NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
-            }
+           // if (Speler.Locatie == 63)
+           // {
+           //     MessageBox.Show("Einde : U heeft gewonnen!");
+           //     Speler.Locatie = 62;
+           //     //Speler.Score = Speler.Score + 1;
+           //     NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+           // }
             
-            PlaatsOpBord.Text = Speler.Locatie.ToString();
-           // Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
-            //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
+           // PlaatsOpBord.Text = Speler.Locatie.ToString();
+           //// Speler.PlaatsC = Speelbord.Plaats[Speler.Locatie, 0];
+           // //Speler.PlaatsR = Speelbord.Plaats[Speler.Locatie, 1];
         }
 
         private void Exit(object sender, RoutedEventArgs e)

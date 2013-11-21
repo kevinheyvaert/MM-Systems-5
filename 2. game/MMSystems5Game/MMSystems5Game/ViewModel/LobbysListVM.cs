@@ -28,24 +28,34 @@ namespace MMSystems5Game
             set { _beschikbarelobbys = value; RaisePropChanged("BeschikbareLobbys"); }
         }
 
+       
 
         public GanzenBordServiceCloud.Lobby InfoLobby { get; set; }
         public GanzenBordServiceCloud.Lobby TemplateBind { get; set; }
 
+        private bool _join { get; set; }
         public bool Join
         {
             get { return _join; }
             set { _join = value; RaisePropChanged("Join"); }
         }
-        private bool _join { get; set; }
+        
        
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
         {
-           
+
+
+                if (BeschikbareLobbys == null || !BeschikbareLobbys.Equals(e.Result))
+                {
+                    BeschikbareLobbys = e.Result;
+                }
+                
             
 
+       
+           
 
-            BeschikbareLobbys = e.Result;
+           
           
            
         }

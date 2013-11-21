@@ -16,6 +16,7 @@ namespace MMSystems5Game
         {
             App.player.Lobby = null;
             App.player.IsHost = false;
+            
         }
 
         public void StopHost(GanzenBordServiceCloud.Player player)

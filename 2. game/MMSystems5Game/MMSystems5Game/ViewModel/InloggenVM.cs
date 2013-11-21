@@ -54,9 +54,8 @@ namespace MMSystems5Game
             {
 
                 App.player = e.Result;
-                App.player.IsHost = false;
                 (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
-
+                App.player.IsHost = false;
                
                 
             }

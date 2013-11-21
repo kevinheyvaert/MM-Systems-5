@@ -20,6 +20,7 @@ namespace MMSystems5Game
             LijstSpelersInLobby.DataContext = App.LobbyInfo;
             play.DataContext = App.player;
             join.DataContext = App.lobbylistvm;
+            create.DataContext = App.MaakLobby;
   
         }
 
@@ -27,7 +28,7 @@ namespace MMSystems5Game
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-                 App.timer.Stop();
+                App.timer.Stop();
                 NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
             
 
@@ -51,7 +52,12 @@ namespace MMSystems5Game
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-           App.MaakLobby.MaakLobby(App.player);
+            if (App.player.IsHost)
+            {
+                App.stophost.StopHost(App.player);
+            }
+            else
+             App.MaakLobby.MaakLobby(App.player);
             
         }
 
