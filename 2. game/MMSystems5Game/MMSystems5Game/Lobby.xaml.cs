@@ -29,7 +29,8 @@ namespace MMSystems5Game
         {
 
                 App.timer.Stop();
-                NavigationService.Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
+                App.start.Start(App.lobbylistvm.TemplateBind);
+                
             
 
         }

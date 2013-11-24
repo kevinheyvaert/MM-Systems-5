@@ -103,6 +103,7 @@
     <Compile Include="ViewModel\MaakAccountVM.cs" />
     <Compile Include="ViewModel\MaakLobbyVM.cs" />
     <Compile Include="ViewModel\PlayersInLobbyVM.cs" />
+    <Compile Include="ViewModel\StartPlayVM.cs" />
     <Compile Include="ViewModel\StopHostVM.cs" />
   </ItemGroup>
   <ItemGroup>

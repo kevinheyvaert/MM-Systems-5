@@ -143,12 +143,27 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerId = user.PlayerId;
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
-                player.Locatie = user.Locatie.Value;
-                player.IsHost = user.IsHost.Value;
-                player.HostID = user.HostID.Value;
-                player.Gewonnen = user.Gewonnen.Value;
-                player.Verloren = user.Verloren.Value;
-                player.Lobby = user.Lobby;
+
+                if (user.Locatie.HasValue)
+                     player.Locatie = user.Locatie.Value;
+                
+                if (user.IsHost.HasValue)
+                   player.IsHost = user.IsHost.Value;
+                
+
+                if (user.HostID.HasValue)
+                    player.HostID = user.HostID.Value;
+
+                
+                if (user.Gewonnen.HasValue)
+                    player.Gewonnen = user.Gewonnen.Value;
+                
+
+                if (user.Verloren.HasValue)
+                    player.Verloren = user.Verloren.Value;
+                
+                
+                
 
 
 

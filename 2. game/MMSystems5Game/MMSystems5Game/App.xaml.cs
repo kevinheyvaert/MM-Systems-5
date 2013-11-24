@@ -36,6 +36,7 @@ namespace MMSystems5Game
        
         public static JoinVM join;
         public static StopHostVM stophost;
+        public static StartPlayVM start;
        
         public static Dice dice;
      
@@ -106,6 +107,7 @@ namespace MMSystems5Game
             join = new JoinVM();
             stophost = new StopHostVM();
             dice = new Dice();
+            start = new StartPlayVM();
 
 
             rood = new LocatieVM();
