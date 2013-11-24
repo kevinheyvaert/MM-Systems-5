@@ -20,12 +20,17 @@ namespace MMSystems5Game
 
         void client1_StartCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
-        }
+            Startclient();
+            }
 
         public void Start(GanzenBordServiceCloud.Lobby lobby)
         {
             App.client1.StartAsync(lobby);
+        }
+
+        public void Startclient()
+        {
+            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
         }
     }
 }

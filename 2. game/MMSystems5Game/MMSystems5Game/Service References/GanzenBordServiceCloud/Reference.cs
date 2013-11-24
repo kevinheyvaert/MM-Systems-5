@@ -303,6 +303,7 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             }
             set {
                 if ((this.StartField.Equals(value) != true)) {
+                    App.start.Startclient();
                     this.StartField = value;
                     this.RaisePropertyChanged("Start");
                 }

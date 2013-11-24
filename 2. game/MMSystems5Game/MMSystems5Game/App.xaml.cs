@@ -33,6 +33,7 @@ namespace MMSystems5Game
         public static MaakLobbyVM MaakLobby;
        
         public static DispatcherTimer timer;
+        public static DispatcherTimer gametimer;
        
         public static JoinVM join;
         public static StopHostVM stophost;
@@ -96,6 +97,12 @@ namespace MMSystems5Game
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += timer_Tick;
+
+            gametimer = new DispatcherTimer();
+            gametimer.Interval = TimeSpan.FromSeconds(2);
+            gametimer.Tick += gametimer_Tick;
+
+
             client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
             player = new GanzenBordServiceCloud.Player();
             lobby = new GanzenBordServiceCloud.Lobby();
@@ -122,6 +129,11 @@ namespace MMSystems5Game
 
          
 
+        }
+
+        void gametimer_Tick(object sender, EventArgs e)
+        {
+            
         }
 
    

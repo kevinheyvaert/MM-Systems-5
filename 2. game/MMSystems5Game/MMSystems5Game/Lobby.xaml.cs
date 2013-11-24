@@ -30,6 +30,7 @@ namespace MMSystems5Game
 
                 App.timer.Stop();
                 App.start.Start(App.lobbylistvm.TemplateBind);
+                App.gametimer.Start();
                 
             
 
@@ -71,6 +72,7 @@ namespace MMSystems5Game
         {
             
             App.join.Join(App.lobbylistvm.TemplateBind, App.player);
+            App.gametimer.Start();
 
         }
     }
