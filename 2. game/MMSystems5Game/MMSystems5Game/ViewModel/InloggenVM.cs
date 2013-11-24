@@ -17,15 +17,8 @@ namespace MMSystems5Game
     {
         public InloggenVM()
         {
-            try
-            {
-                App.client1.InloggenCompleted += client1_InloggenCompleted;
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+           App.client1.InloggenCompleted += client1_InloggenCompleted;
+            
           
         }
 
@@ -56,6 +49,7 @@ namespace MMSystems5Game
                 App.player = e.Result;
                 (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
                 App.player.IsHost = false;
+                
                
                 
             }

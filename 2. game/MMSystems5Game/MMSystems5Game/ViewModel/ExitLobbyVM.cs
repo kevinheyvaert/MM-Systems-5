@@ -16,6 +16,7 @@ namespace MMSystems5Game
         void client1_ExitLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             App.player.Lobby = null;
+            
         }
 
         public void ExitLobby(GanzenBordServiceCloud.Player player)

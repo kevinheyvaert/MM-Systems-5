@@ -127,24 +127,37 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-                List<DTO.Player> playerList = new List<DTO.Player>();
+               // List<DTO.Player> playerList = new List<DTO.Player>();
+
+                DTO.Player player = new DTO.Player();
 
                 // look for player
-                var usercontrol = from u in db.Players
-                                  where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
+                //var usercontrol = from u in db.Players
+                //                  where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
+                //                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
+
+                var user = (from u in db.Players
+                            where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
+                            select u).First();
+
+                player.PlayerId = user.PlayerId;
+                player.PlayerNaam = user.PlayerNaam;
+                player.Lobby = user.Lobby;
+                player.Locatie = user.Locatie.Value;
+                player.IsHost = user.IsHost.Value;
+                player.HostID = user.HostID.Value;
+                player.Gewonnen = user.Gewonnen.Value;
+                player.Verloren = user.Verloren.Value;
+                player.Lobby = user.Lobby;
+
+
 
                 // add players attributes  
-                foreach (var item in usercontrol)
-                {
-                    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby, IsHost=item.IsHost.Value, Gewonnen=item.Gewonnen.Value, Verloren=item.Verloren.Value });
-                }
-                if (playerList.Count() > 0)
-                {
-                    return playerList.First();
-                }
-                else
-                    return null;
+                //foreach (var item in user)
+                //{
+                //    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby, IsHost=item.IsHost.Value, Gewonnen=item.Gewonnen.Value, Verloren=item.Verloren.Value });
+                //}
+                return player;
             }
 
             catch (Exception)

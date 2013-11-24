@@ -26,6 +26,7 @@ namespace MMSystems5Game
             {
                   App.player.Lobby = App.player.PlayerNaam;
                   App.player.IsHost = true;
+                  App.player.HostID = App.player.PlayerId;
                     
             }
         }
