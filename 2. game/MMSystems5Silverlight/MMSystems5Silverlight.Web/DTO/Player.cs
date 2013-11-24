@@ -25,6 +25,8 @@ namespace MMSystems5Silverlight.Web.DTO
         public string Lobby { get; set; }
         [DataMember]
         public bool IsHost { get; set; }
+        [DataMember]
+        public int  HostID { get; set; }
        
 
     }
