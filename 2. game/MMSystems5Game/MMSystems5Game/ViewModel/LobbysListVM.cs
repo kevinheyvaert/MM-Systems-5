@@ -45,7 +45,7 @@ namespace MMSystems5Game
         {
 
 
-                if (BeschikbareLobbys == null || !BeschikbareLobbys.Equals(e.Result))
+                if (BeschikbareLobbys == null || BeschikbareLobbys.Count != e.Result.Count)
                 {
                     BeschikbareLobbys = e.Result;
                 }
