@@ -509,20 +509,27 @@ namespace MMSystems5Silverlight.Web
 
                 else
                 {
-
-                    gamestate.Start = lobby.Start.Value;
-
-                    gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
-
-                    if (lobby.WhosTunrId == gamestate.players.Count)
+                    if (lobby.Start.HasValue)
                     {
-                        lobby.WhosTunrId = 0;
-                    }
 
-                    else if (lobby.WhosTunrId < gamestate.players.Count)
-                    {
-                        lobby.WhosTunrId += 1;
+                        gamestate.Start = lobby.Start.Value;
                     }
+                        if (lobby.WhosTunrId.HasValue)
+                        {
+                            gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
+                        }
+                       
+
+                        if (lobby.WhosTunrId == gamestate.players.Count)
+                        {
+                            lobby.WhosTunrId = 0;
+                        }
+
+                        else if (lobby.WhosTunrId < gamestate.players.Count)
+                        {
+                            lobby.WhosTunrId += 1;
+                        }
+                    
                 }
                 return gamestate;
 
