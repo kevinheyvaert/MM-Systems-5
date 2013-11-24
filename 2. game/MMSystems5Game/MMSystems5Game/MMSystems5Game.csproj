@@ -64,7 +64,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dobbelsteen.cs" />
-    <Compile Include="Gamestate.cs" />
     <Compile Include="GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>

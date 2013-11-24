@@ -38,6 +38,7 @@ namespace MMSystems5Game
         public static JoinVM join;
         public static StopHostVM stophost;
         public static StartPlayVM start;
+        public static GameState Status;
        
         public static Dice dice;
      
@@ -115,6 +116,7 @@ namespace MMSystems5Game
             stophost = new StopHostVM();
             dice = new Dice();
             start = new StartPlayVM();
+            Status = new GameState();
 
 
             rood = new LocatieVM();
@@ -133,7 +135,7 @@ namespace MMSystems5Game
 
         void gametimer_Tick(object sender, EventArgs e)
         {
-            
+            Status.status(player);
         }
 
    

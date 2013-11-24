@@ -18,6 +18,8 @@ namespace MMSystems5Game
         void client1_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             App.player.IsHost = false;
+            App.player.HostID = App.lobbylistvm.TemplateBind.HostID;
+            App.player.Lobby = App.lobbylistvm.TemplateBind.HostPlayer;
             
         }
 
