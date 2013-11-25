@@ -269,6 +269,9 @@ namespace MMSystems5Silverlight.Web
                 {
                     updatelobby(player.HostID);
                 }
+                player.HostID = player.PlayerId;
+                player.Lobby = player.PlayerNaam;
+                player.IsHost = true;
                 return player;
 
             }

@@ -15,13 +15,9 @@ namespace MMSystems5Game
         
         }
 
-        void client1_JoinLobbyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        void client1_JoinLobbyCompleted(object sender, GanzenBordServiceCloud.JoinLobbyCompletedEventArgs e)
         {
-            App.player.IsHost = false;
-            App.player.HostID = App.lobbylistvm.TemplateBind.HostID;
-            App.player.Lobby = App.lobbylistvm.TemplateBind.HostPlayer;
-            
-            
+            App.player = e.Result;
         }
 
         public void Join(GanzenBordServiceCloud.Lobby lobby, GanzenBordServiceCloud.Player player)
