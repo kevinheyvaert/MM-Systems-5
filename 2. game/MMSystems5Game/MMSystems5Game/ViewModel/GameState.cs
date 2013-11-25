@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MMSystems5Game
 {
-    public class GameState
+    public class GameState:BaseViewModel
     {
        
         public GameState()
