@@ -108,8 +108,11 @@ namespace MMSystems5Silverlight.Web
                     db.SubmitChanges();
 
 
-                
-                
+
+                    if (DobbelEnLocatie[0] != 6)
+                    {
+                        next(player);
+                    }
                 return DobbelEnLocatie;
 
             }
@@ -261,6 +264,7 @@ namespace MMSystems5Silverlight.Web
 
                 isHost.Lobby = player.PlayerNaam;
                 isHost.IsHost = true;
+                isHost.HostID = player.PlayerId;
                 db.SubmitChanges();
                 if (player.Lobby != null)
                 {
@@ -374,9 +378,9 @@ namespace MMSystems5Silverlight.Web
 
         }
 
-        public void JoinLobby(DTO.Lobby lobby, DTO.Player player)
+        public DTO.Player JoinLobby(DTO.Lobby lobby, DTO.Player player)
         {
-
+            DTO.Player returnplay = new DTO.Player();
             try
             {
                 if (player.IsHost == true)
@@ -399,9 +403,13 @@ namespace MMSystems5Silverlight.Web
                     db.SubmitChanges();
                     updatelobby(lobby.HostID);
                 }
-                
-                
+
+                returnplay = player;
+                returnplay.HostID = lobby.HostID;
+                returnplay.Lobby = lobby.HostPlayer;
+                return returnplay;
             }
+
             catch (Exception)
             {
                 
@@ -422,6 +430,7 @@ namespace MMSystems5Silverlight.Web
 
                 exit.Lobby = null;
                 exit.HostID = null;
+                exit.Locatie = null;
                 db.SubmitChanges();
                 updatelobby(player.HostID);
             }
@@ -448,6 +457,7 @@ namespace MMSystems5Silverlight.Web
                     item.Lobby = null;
                     item.IsHost = false;
                     item.HostID = null;
+                    item.Locatie = null;
                    
                 }
 
@@ -477,15 +487,35 @@ namespace MMSystems5Silverlight.Web
             db.SubmitChanges();
         }
 
+        private void next(DTO.Player player)
+        {
+            var lob = (from l in db.Lobbis
+                       where l.HostID == player.HostID
+                       select l).FirstOrDefault();
+           
+            var players = (from p in db.Players
+                          where p.HostID == lob.HostID
+                          select p).Count();
+
+            
+            if (lob.WhosTunrId.HasValue)
+            {
+                int turn = lob.WhosTunrId.Value;
+                if (turn == players)
+                    lob.WhosTunrId = 0;
+                else
+                    lob.WhosTunrId++;
+            }
+            db.SubmitChanges();
+        }
+
 
         public DTO.GameState Gamestate(DTO.Player player)
         {
             DTO.GameState gamestate = new DTO.GameState();
+            
             try
             {
-
-
-                
 
                 var spelers = (from s in db.Players
                                where s.HostID == player.HostID
@@ -502,33 +532,24 @@ namespace MMSystems5Silverlight.Web
                              where l.HostID == player.HostID
                              select l).First();
 
-                if (lobby == null)
+
+                if (lobby != null)
                 {
-                    gamestate.Start = false;
+                    if (lobby.Start.HasValue)
+                        gamestate.Start = lobby.Start.Value;
+
+                    if (lobby.WhosTunrId.HasValue)
+                    {
+                        gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
+                    }
+
+                    
                 }
 
                 else
                 {
-                    if (lobby.Start.HasValue)
-                    {
-
-                        gamestate.Start = lobby.Start.Value;
-                    }
-                        if (lobby.WhosTunrId.HasValue)
-                        {
-                            gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
-                        }
-                       
-
-                        if (lobby.WhosTunrId == gamestate.players.Count)
-                        {
-                            lobby.WhosTunrId = 0;
-                        }
-
-                        else if (lobby.WhosTunrId < gamestate.players.Count)
-                        {
-                            lobby.WhosTunrId += 1;
-                        }
+                    
+                    gamestate.Start = false;
                     
                 }
                 return gamestate;

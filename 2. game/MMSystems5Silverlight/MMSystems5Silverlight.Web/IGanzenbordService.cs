@@ -33,7 +33,7 @@ namespace MMSystems5Silverlight.Web
         List<DTO.Player> LobbyInfo(DTO.Lobby lobby);
 
         [OperationContract]
-        void JoinLobby(DTO.Lobby lobby, DTO.Player player);
+        DTO.Player JoinLobby(DTO.Lobby lobby, DTO.Player player);
 
         [OperationContract]
         void ExitLobby(DTO.Player player);

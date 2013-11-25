@@ -7,11 +7,11 @@ namespace MMSystems5Game
 {
     public class GameState
     {
-        GanzenBordServiceCloud.GameState gamestate;
+        GanzenBordServiceCloud.GameState gamestate= new GanzenBordServiceCloud.GameState();
         public GameState()
         {
             App.client1.GamestateCompleted += client1_GamestateCompleted;
-            gamestate = new GanzenBordServiceCloud.GameState();
+            
         }
 
 
