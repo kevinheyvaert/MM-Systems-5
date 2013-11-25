@@ -525,8 +525,11 @@ namespace MMSystems5Silverlight.Web
 
                 if (spelers != null)
                 {
+
+                    gamestate.players=new List<DTO.Player>();
                     foreach (var item in spelers)
                     {
+                       
                         gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie, PlayerId = item.PlayerId });
                     }
                 }
@@ -539,10 +542,12 @@ namespace MMSystems5Silverlight.Web
 
                 if (lobby != null)
                 {
-                    if (lobby.Start.HasValue)
+                    if (lobby.Start!=null)
+                    {
                         gamestate.Start = lobby.Start.Value;
+                    }
 
-                    if (lobby.WhosTunrId.HasValue)
+                    if (lobby.WhosTunrId!=null)
                     {
                         gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
                     }
