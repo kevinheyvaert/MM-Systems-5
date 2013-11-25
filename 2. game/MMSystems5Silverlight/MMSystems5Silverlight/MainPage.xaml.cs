@@ -16,8 +16,10 @@ namespace MMSystems5Silverlight
     public partial class MainPage : UserControl
     {
         //ServiceReference1.GanzenbordServiceClient client1;
-        GanzenBordServiceAzure.GanzenbordServiceClient client1;
-        GanzenBordServiceAzure.Player player = new GanzenBordServiceAzure.Player();
+        //GanzenBordServiceAzure.GanzenbordServiceClient client1;
+        //GanzenBordServiceAzure.Player player = new GanzenBordServiceAzure.Player();
+        ServiceLocal.GanzenbordServiceClient client1;
+        ServiceLocal.Player player = new ServiceLocal.Player();
 
   
         ObservableCollection<GanzenBordServiceAzure.Lobby> aList = new ObservableCollection<GanzenBordServiceAzure.Lobby>();
@@ -35,7 +37,7 @@ namespace MMSystems5Silverlight
             //client = new ServiceReference1.GanzenbordServiceClient();
             //client.GooiCompleted += client_GooiCompleted;
 
-            client1 = new GanzenBordServiceAzure.GanzenbordServiceClient();
+            client1 = new ServiceLocal.GanzenbordServiceClient();
             client1.GooiCompleted += client1_GooiCompleted;
             client1.MaakAccountCompleted += client1_MaakAccountCompleted;
             client1.InloggenCompleted += client1_InloggenCompleted;
@@ -46,12 +48,12 @@ namespace MMSystems5Silverlight
           
         }
 
-        void client1_GamestateCompleted(object sender, GanzenBordServiceAzure.GamestateCompletedEventArgs e)
+        void client1_GamestateCompleted(object sender, ServiceLocal.GamestateCompletedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceAzure.BeschikbareLobbysCompletedEventArgs e)
+        void client1_BeschikbareLobbysCompleted(object sender, ServiceLocal.BeschikbareLobbysCompletedEventArgs e)
         {
             MessageBox.Show("De lobbys");
 
@@ -63,14 +65,14 @@ namespace MMSystems5Silverlight
             
         }
 
-        void client1_MaakLobbyCompleted(object sender, GanzenBordServiceAzure.MaakLobbyCompletedEventArgs e)
+        void client1_MaakLobbyCompleted(object sender, ServiceLocal.MaakLobbyCompletedEventArgs e)
         {
             MessageBox.Show("Lobby toegevoegd");
            // client1.BeschikbareLobbysAsync();
             player = e.Result;
         }
 
-        void client1_InloggenCompleted(object sender, GanzenBordServiceAzure.InloggenCompletedEventArgs e)
+        void client1_InloggenCompleted(object sender, ServiceLocal.InloggenCompletedEventArgs e)
         {
             if (e.Result == null)
             {
@@ -91,7 +93,7 @@ namespace MMSystems5Silverlight
             MessageBox.Show("Normaal ist gelukt");
         }
 
-        void client1_GooiCompleted(object sender, GanzenBordServiceAzure.GooiCompletedEventArgs e)
+        void client1_GooiCompleted(object sender, ServiceLocal.GooiCompletedEventArgs e)
         {
             //throw new NotImplementedException();
             //Speler.Locatie = e.Result;

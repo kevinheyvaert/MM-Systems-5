@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GanzenbordService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2738/GanzenbordService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2738/GanzenbordService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2738/GanzenbordService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" />
+      <xsd:import schemaLocation="http://localhost:2738/GanzenbordService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGanzenbordService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gooi_InputMessage">
+    <wsdl:part name="parameters" element="tns:Gooi" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gooi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GooiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Inloggen_InputMessage">
+    <wsdl:part name="parameters" element="tns:Inloggen" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Inloggen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InloggenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaakAccount" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaakAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_InputMessage">
+    <wsdl:part name="parameters" element="tns:BeschikbareLobbys" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_BeschikbareLobbys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BeschikbareLobbysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:MaakLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_MaakLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MaakLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_LobbyInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:LobbyInfo" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_LobbyInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LobbyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_JoinLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_JoinLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_ExitLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitLobby" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_ExitLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExitLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_StopHost_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopHost" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_StopHost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopHostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Start_InputMessage">
+    <wsdl:part name="parameters" element="tns:Start" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Start_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gamestate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Gamestate" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_Gamestate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GamestateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGanzenbordService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/DoWork" message="tns:IGanzenbordService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/DoWorkResponse" message="tns:IGanzenbordService_DoWork_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Gooi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Gooi" message="tns:IGanzenbordService_Gooi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/GooiResponse" message="tns:IGanzenbordService_Gooi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Inloggen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Inloggen" message="tns:IGanzenbordService_Inloggen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/InloggenResponse" message="tns:IGanzenbordService_Inloggen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaakAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccount" message="tns:IGanzenbordService_MaakAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakAccountResponse" message="tns:IGanzenbordService_MaakAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BeschikbareLobbys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" message="tns:IGanzenbordService_BeschikbareLobbys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/BeschikbareLobbysResponse" message="tns:IGanzenbordService_BeschikbareLobbys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MaakLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobby" message="tns:IGanzenbordService_MaakLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/MaakLobbyResponse" message="tns:IGanzenbordService_MaakLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LobbyInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/LobbyInfo" message="tns:IGanzenbordService_LobbyInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/LobbyInfoResponse" message="tns:IGanzenbordService_LobbyInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/JoinLobby" message="tns:IGanzenbordService_JoinLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/JoinLobbyResponse" message="tns:IGanzenbordService_JoinLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/ExitLobby" message="tns:IGanzenbordService_ExitLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/ExitLobbyResponse" message="tns:IGanzenbordService_ExitLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopHost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/StopHost" message="tns:IGanzenbordService_StopHost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/StopHostResponse" message="tns:IGanzenbordService_StopHost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Start">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Start" message="tns:IGanzenbordService_Start_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/StartResponse" message="tns:IGanzenbordService_Start_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Gamestate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Gamestate" message="tns:IGanzenbordService_Gamestate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/GamestateResponse" message="tns:IGanzenbordService_Gamestate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGanzenbordService" type="tns:IGanzenbordService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Gooi">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Gooi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Inloggen">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Inloggen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaakAccount">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeschikbareLobbys">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/BeschikbareLobbys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MaakLobby">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/MaakLobby" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LobbyInfo">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/LobbyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/JoinLobby" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExitLobby">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/ExitLobby" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopHost">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/StopHost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Start">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Start" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Gamestate">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Gamestate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GanzenbordService">
+    <wsdl:port name="BasicHttpBinding_IGanzenbordService" binding="tns:BasicHttpBinding_IGanzenbordService">
+      <soap:address location="http://localhost:2738/GanzenbordService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -88,6 +88,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceLocal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -111,6 +116,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceLocal\GanzenbordService.wsdl" />
+    <None Include="Service References\ServiceLocal\GanzenbordService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceLocal\GanzenbordService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceLocal\GanzenbordService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceLocal\GanzenbordService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <Resource Include="SpelerRood.png" />
@@ -142,6 +160,22 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ServiceLocal\GanzenbordService.disco" />
+    <None Include="Service References\ServiceLocal\configuration91.svcinfo" />
+    <None Include="Service References\ServiceLocal\configuration.svcinfo" />
+    <None Include="Service References\ServiceLocal\MMSystems5Silverlight.ServiceLocal.GameState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceLocal\MMSystems5Silverlight.ServiceLocal.Lobby.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceLocal\MMSystems5Silverlight.ServiceLocal.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceLocal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\GanzenBordServiceAzure\" />
+    <WCFMetadataStorage Include="Service References\ServiceLocal\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
