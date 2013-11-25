@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1c81c272-7742-4a77-be98-1902d78c98a6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="889ff633-ac00-40e0-9ce2-bd7d2b7a3f3a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,11 +23,12 @@
     <MetadataSource Address="http://localhost:1091/GanzenbordService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="7a4b2138-7eb1-45d4-a509-abe30665041c" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?wsdl" />
-    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="ad95517a-25a4-42e2-80f1-72a4a4ece75e" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd0" />
-    <MetadataFile FileName="GanzenbordService2.xsd" MetadataType="Schema" ID="c29499d6-754e-48af-9a4e-76f1b20b805d" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd2" />
-    <MetadataFile FileName="GanzenbordService1.xsd" MetadataType="Schema" ID="54e09209-d053-406e-af92-29ca6e8f8fe1" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd1" />
-    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="7a2a572c-ce92-40d3-bd1f-b53650c328e0" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?disco" />
+    <MetadataFile FileName="GanzenbordService.xsd" MetadataType="Schema" ID="b2359b18-7849-4b0d-a7fa-07735b93ac8f" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd3" />
+    <MetadataFile FileName="GanzenbordService1.xsd" MetadataType="Schema" ID="e9317971-ba41-4522-bf28-40e1fb9567e3" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GanzenbordService2.xsd" MetadataType="Schema" ID="ee841066-0102-4bd6-84e5-829f5d2d44b3" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GanzenbordService.wsdl" MetadataType="Wsdl" ID="39a6567f-f72b-4177-8310-d630ac16696d" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?wsdl" />
+    <MetadataFile FileName="GanzenbordService3.xsd" MetadataType="Schema" ID="3af4c1e1-c1cb-4ee7-82e5-d9b20a14c9f3" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GanzenbordService.disco" MetadataType="Disco" ID="f821ab5f-808b-44bd-b3f3-37e9529fcc4b" SourceId="1" SourceUrl="http://localhost:1091/GanzenbordService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

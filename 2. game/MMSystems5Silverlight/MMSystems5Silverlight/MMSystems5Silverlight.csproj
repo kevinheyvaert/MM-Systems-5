@@ -88,11 +88,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -105,8 +100,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SpelerRood.png" />
-    <None Include="Properties\AppManifest.xml" />
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.wsdl" />
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.xsd">
       <SubType>Designer</SubType>
@@ -117,26 +110,11 @@
     <None Include="Service References\GanzenBordServiceAzure\GanzenbordService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.Lobby.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\GanzenBordServiceAzure\GanzenbordService3.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.Player.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference1\GanzenbordService.disco" />
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference1\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.disco" />
-    <None Include="Service References\GanzenBordServiceAzure\configuration91.svcinfo" />
-    <None Include="Service References\GanzenBordServiceAzure\configuration.svcinfo" />
-    <None Include="Service References\GanzenBordServiceAzure\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Resource Include="SpelerRood.png" />
+    <None Include="Properties\AppManifest.xml" />
     <Resource Include="Plaatsbordrand2b.png" />
     <Resource Include="Plaatsbordrand2l.png" />
     <Resource Include="Plaatsbordrand2o.png" />
@@ -148,21 +126,29 @@
     <Resource Include="Plaatsbordrandborderr.png" />
     <Resource Include="Einde.png" />
     <Resource Include="Achtergrond.jpeg" />
+    <None Include="Service References\GanzenBordServiceAzure\GanzenbordService.disco" />
+    <None Include="Service References\GanzenBordServiceAzure\configuration91.svcinfo" />
+    <None Include="Service References\GanzenBordServiceAzure\configuration.svcinfo" />
+    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.GameState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.Lobby.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GanzenBordServiceAzure\MMSystems5Silverlight.GanzenBordServiceAzure.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\GanzenBordServiceAzure\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="ServiceReferences.ClientConfig" />
-    <None Include="Service References\ServiceReference1\GanzenbordService.wsdl" />
-    <None Include="Service References\ServiceReference1\GanzenbordService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\GanzenbordService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\GanzenBordServiceAzure\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

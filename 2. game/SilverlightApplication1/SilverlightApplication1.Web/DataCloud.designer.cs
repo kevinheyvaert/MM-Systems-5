@@ -36,6 +36,9 @@ namespace SilverlightApplication1.Web
     partial void InsertLobby(Lobby instance);
     partial void UpdateLobby(Lobby instance);
     partial void DeleteLobby(Lobby instance);
+    partial void InsertLobbi(Lobbi instance);
+    partial void UpdateLobbi(Lobbi instance);
+    partial void DeleteLobbi(Lobbi instance);
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
@@ -84,6 +87,14 @@ namespace SilverlightApplication1.Web
 			get
 			{
 				return this.GetTable<Lobby>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Lobbi> Lobbis
+		{
+			get
+			{
+				return this.GetTable<Lobbi>();
 			}
 		}
 		
@@ -292,6 +303,188 @@ namespace SilverlightApplication1.Web
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Lobbi")]
+	public partial class Lobbi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _HostID;
+		
+		private bool _CanJoinLobby;
+		
+		private System.Nullable<int> _AantalPlayers;
+		
+		private System.Nullable<int> _WhosTunrId;
+		
+		private System.Nullable<bool> _Start;
+		
+		private string _HostPlayer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnHostIDChanging(int value);
+    partial void OnHostIDChanged();
+    partial void OnCanJoinLobbyChanging(bool value);
+    partial void OnCanJoinLobbyChanged();
+    partial void OnAantalPlayersChanging(System.Nullable<int> value);
+    partial void OnAantalPlayersChanged();
+    partial void OnWhosTunrIdChanging(System.Nullable<int> value);
+    partial void OnWhosTunrIdChanged();
+    partial void OnStartChanging(System.Nullable<bool> value);
+    partial void OnStartChanged();
+    partial void OnHostPlayerChanging(string value);
+    partial void OnHostPlayerChanged();
+    #endregion
+		
+		public Lobbi()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HostID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int HostID
+		{
+			get
+			{
+				return this._HostID;
+			}
+			set
+			{
+				if ((this._HostID != value))
+				{
+					this.OnHostIDChanging(value);
+					this.SendPropertyChanging();
+					this._HostID = value;
+					this.SendPropertyChanged("HostID");
+					this.OnHostIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanJoinLobby", DbType="Bit NOT NULL")]
+		public bool CanJoinLobby
+		{
+			get
+			{
+				return this._CanJoinLobby;
+			}
+			set
+			{
+				if ((this._CanJoinLobby != value))
+				{
+					this.OnCanJoinLobbyChanging(value);
+					this.SendPropertyChanging();
+					this._CanJoinLobby = value;
+					this.SendPropertyChanged("CanJoinLobby");
+					this.OnCanJoinLobbyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AantalPlayers", DbType="Int")]
+		public System.Nullable<int> AantalPlayers
+		{
+			get
+			{
+				return this._AantalPlayers;
+			}
+			set
+			{
+				if ((this._AantalPlayers != value))
+				{
+					this.OnAantalPlayersChanging(value);
+					this.SendPropertyChanging();
+					this._AantalPlayers = value;
+					this.SendPropertyChanged("AantalPlayers");
+					this.OnAantalPlayersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WhosTunrId", DbType="Int")]
+		public System.Nullable<int> WhosTunrId
+		{
+			get
+			{
+				return this._WhosTunrId;
+			}
+			set
+			{
+				if ((this._WhosTunrId != value))
+				{
+					this.OnWhosTunrIdChanging(value);
+					this.SendPropertyChanging();
+					this._WhosTunrId = value;
+					this.SendPropertyChanged("WhosTunrId");
+					this.OnWhosTunrIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Start", DbType="Bit")]
+		public System.Nullable<bool> Start
+		{
+			get
+			{
+				return this._Start;
+			}
+			set
+			{
+				if ((this._Start != value))
+				{
+					this.OnStartChanging(value);
+					this.SendPropertyChanging();
+					this._Start = value;
+					this.SendPropertyChanged("Start");
+					this.OnStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HostPlayer", DbType="Char(25) NOT NULL", CanBeNull=false)]
+		public string HostPlayer
+		{
+			get
+			{
+				return this._HostPlayer;
+			}
+			set
+			{
+				if ((this._HostPlayer != value))
+				{
+					this.OnHostPlayerChanging(value);
+					this.SendPropertyChanging();
+					this._HostPlayer = value;
+					this.SendPropertyChanged("HostPlayer");
+					this.OnHostPlayerChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Player")]
 	public partial class Player : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -314,6 +507,8 @@ namespace SilverlightApplication1.Web
 		
 		private System.Nullable<bool> _IsHost;
 		
+		private System.Nullable<int> _HostID;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -334,6 +529,8 @@ namespace SilverlightApplication1.Web
     partial void OnLobbyChanged();
     partial void OnIsHostChanging(System.Nullable<bool> value);
     partial void OnIsHostChanged();
+    partial void OnHostIDChanging(System.Nullable<int> value);
+    partial void OnHostIDChanged();
     #endregion
 		
 		public Player()
@@ -497,6 +694,26 @@ namespace SilverlightApplication1.Web
 					this._IsHost = value;
 					this.SendPropertyChanged("IsHost");
 					this.OnIsHostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HostID", DbType="Int")]
+		public System.Nullable<int> HostID
+		{
+			get
+			{
+				return this._HostID;
+			}
+			set
+			{
+				if ((this._HostID != value))
+				{
+					this.OnHostIDChanging(value);
+					this.SendPropertyChanging();
+					this._HostID = value;
+					this.SendPropertyChanged("HostID");
+					this.OnHostIDChanged();
 				}
 			}
 		}

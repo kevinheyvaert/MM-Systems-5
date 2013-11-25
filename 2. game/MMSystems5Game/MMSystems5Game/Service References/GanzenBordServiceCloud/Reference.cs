@@ -71,13 +71,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             }
             set {
                 if ((this.IsHostField.Equals(value) != true)) {
-                    if (IsHost)
-                    {
-                        App.MaakLobby.createstop = "Create Lobby";
-                    }
-                    else
-                        App.MaakLobby.createstop = "Stop Lobby";
-
                     this.IsHostField = value;
                     this.RaisePropertyChanged("IsHost");
                 }
@@ -394,7 +387,7 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/JoinLobby", ReplyAction="http://tempuri.org/IGanzenbordService/JoinLobbyResponse")]
         System.IAsyncResult BeginJoinLobby(MMSystems5Game.GanzenBordServiceCloud.Lobby lobby, MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
         
-        void EndJoinLobby(System.IAsyncResult result);
+        MMSystems5Game.GanzenBordServiceCloud.Player EndJoinLobby(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/ExitLobby", ReplyAction="http://tempuri.org/IGanzenbordService/ExitLobbyResponse")]
         System.IAsyncResult BeginExitLobby(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
@@ -531,6 +524,25 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class JoinLobbyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public JoinLobbyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public MMSystems5Game.GanzenBordServiceCloud.Player Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((MMSystems5Game.GanzenBordServiceCloud.Player)(this.results[0]));
             }
         }
     }
@@ -697,7 +709,7 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         
         public event System.EventHandler<LobbyInfoCompletedEventArgs> LobbyInfoCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> JoinLobbyCompleted;
+        public event System.EventHandler<JoinLobbyCompletedEventArgs> JoinLobbyCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ExitLobbyCompleted;
         
@@ -1038,8 +1050,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndJoinLobby(System.IAsyncResult result) {
-            base.Channel.EndJoinLobby(result);
+        MMSystems5Game.GanzenBordServiceCloud.Player MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndJoinLobby(System.IAsyncResult result) {
+            return base.Channel.EndJoinLobby(result);
         }
         
         private System.IAsyncResult OnBeginJoinLobby(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -1049,14 +1061,15 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         private object[] OnEndJoinLobby(System.IAsyncResult result) {
-            ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndJoinLobby(result);
-            return null;
+            MMSystems5Game.GanzenBordServiceCloud.Player retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndJoinLobby(result);
+            return new object[] {
+                    retVal};
         }
         
         private void OnJoinLobbyCompleted(object state) {
             if ((this.JoinLobbyCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.JoinLobbyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.JoinLobbyCompleted(this, new JoinLobbyCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
@@ -1434,9 +1447,10 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 return _result;
             }
             
-            public void EndJoinLobby(System.IAsyncResult result) {
+            public MMSystems5Game.GanzenBordServiceCloud.Player EndJoinLobby(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("JoinLobby", _args, result);
+                MMSystems5Game.GanzenBordServiceCloud.Player _result = ((MMSystems5Game.GanzenBordServiceCloud.Player)(base.EndInvoke("JoinLobby", _args, result)));
+                return _result;
             }
             
             public System.IAsyncResult BeginExitLobby(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState) {

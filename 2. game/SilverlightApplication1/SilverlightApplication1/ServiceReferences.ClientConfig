@@ -6,33 +6,12 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
-                <binding name="BasicHttpBinding_IGanzenbordService1" maxBufferSize="2147483647"
-                    maxReceivedMessageSize="2147483647">
-                    <security mode="None" />
-                </binding>
-                <binding name="BasicHttpBinding_IGanzenbordService2" maxBufferSize="2147483647"
-                    maxReceivedMessageSize="2147483647">
-                    <security mode="None" />
-                </binding>
-                <binding name="BasicHttpBinding_IGanzenbordService3" maxBufferSize="2147483647"
-                    maxReceivedMessageSize="2147483647">
-                    <security mode="None" />
-                </binding>
             </basicHttpBinding>
         </bindings>
         <client>
             <endpoint address="../GanzenbordService.svc" binding="basicHttpBinding"
                 bindingConfiguration="BasicHttpBinding_IGanzenbordService"
-                contract="Ganzebord.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService" />
-            <endpoint address="http://ganzenbordphone.cloudapp.net/GanzenbordService.svc"
-                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGanzenbordService1"
-                contract="Ganzenbordcloud.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService1" />
-            <endpoint address="../GanzenbordService.svc" binding="basicHttpBinding"
-                bindingConfiguration="BasicHttpBinding_IGanzenbordService2"
-                contract="GanzenbordServiceSpel.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService2" />
-            <endpoint address="http://ganzenbordmmsystems5.cloudapp.net/GanzenbordService.svc"
-                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGanzenbordService3"
-                contract="ServiceReference1.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService3" />
+                contract="GanzenbordServiceSpel.IGanzenbordService" name="BasicHttpBinding_IGanzenbordService" />
         </client>
     </system.serviceModel>
 </configuration>

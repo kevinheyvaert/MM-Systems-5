@@ -14,10 +14,16 @@
         <elementListCompartment Id="52da0b37-2005-453b-82a5-e7441d011181" absoluteBounds="6.765, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cee2ca33-5a07-4321-b48f-f880dc7091dc" absoluteBounds="4.375, 1.625, 2, 2.3478011067708335">
+    <classShape Id="bf80c9ff-4d03-4562-90f5-37fda7e0aa33" absoluteBounds="2.25, 3.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataCloudDataContext/Lobbi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be967074-94b5-417e-ac63-f9fcf5949499" absoluteBounds="2.2649999999999997, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0545108-e695-4510-bf97-c6c3a83df5ae" absoluteBounds="4.375, 1.875, 2, 2.5401025390625">
       <DataClassMoniker Name="/DataCloudDataContext/Player" />
       <nestedChildShapes>
-        <elementListCompartment Id="cb78f2c9-2191-4e84-816d-af7e9fd2a6df" absoluteBounds="4.39, 2.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d277335f-886a-438f-b2b8-9e9affec9fff" absoluteBounds="4.39, 2.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

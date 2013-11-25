@@ -16,30 +16,36 @@ namespace SilverlightApplication1.Web
 
 
         [OperationContract]
-        int Gooi();
+        List<int> Gooi(DTO.Player player);
 
         [OperationContract]
         DTO.Player Inloggen(string naam, string wachtwoord);
 
         [OperationContract]
-        DTO.Player MaakAccount(string naam, string wachtwoord);
+        DTO.Player MaakAccount(string PlayerNaam, string Wachtwoord);
 
         [OperationContract]
         List<DTO.Lobby> BeschikbareLobbys();
-       
+
         [OperationContract]
         DTO.Player MaakLobby(DTO.Player player);
-        
+
         [OperationContract]
         List<DTO.Player> LobbyInfo(DTO.Lobby lobby);
 
         [OperationContract]
-        void JoinLobby(DTO.Lobby lobby, DTO.Player player);
+        DTO.Player JoinLobby(DTO.Lobby lobby, DTO.Player player);
 
         [OperationContract]
-        void ExitLobby (DTO.Player player);
-        
+        void ExitLobby(DTO.Player player);
+
         [OperationContract]
         void StopHost(DTO.Player player);
+
+        [OperationContract]
+        void Start(DTO.Lobby lobby);
+
+        [OperationContract]
+        DTO.GameState Gamestate(DTO.Player player);
     }
 }

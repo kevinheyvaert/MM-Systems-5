@@ -13,6 +13,16 @@
       <Column Name="AantalPlayers" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Lobbi" Member="Lobbis">
+    <Type Name="Lobbi">
+      <Column Name="HostID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CanJoinLobby" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AantalPlayers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WhosTunrId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Start" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HostPlayer" Type="System.String" DbType="Char(25) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Player" Member="Players">
     <Type Name="Player">
       <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -23,6 +33,7 @@
       <Column Name="Verloren" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lobby" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
       <Column Name="IsHost" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HostID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

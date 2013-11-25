@@ -15,10 +15,11 @@ namespace MMSystems5Silverlight
 {
     public partial class MainPage : UserControl
     {
-        //ServiceReference1.GanzenbordServiceClient client;
+        //ServiceReference1.GanzenbordServiceClient client1;
         GanzenBordServiceAzure.GanzenbordServiceClient client1;
-
         GanzenBordServiceAzure.Player player = new GanzenBordServiceAzure.Player();
+
+  
         ObservableCollection<GanzenBordServiceAzure.Lobby> aList = new ObservableCollection<GanzenBordServiceAzure.Lobby>();
 
         string txtboxnaam;
@@ -40,8 +41,14 @@ namespace MMSystems5Silverlight
             client1.InloggenCompleted += client1_InloggenCompleted;
             client1.MaakLobbyCompleted += client1_MaakLobbyCompleted;
             client1.BeschikbareLobbysCompleted += client1_BeschikbareLobbysCompleted;
+            client1.GamestateCompleted += client1_GamestateCompleted;
         
           
+        }
+
+        void client1_GamestateCompleted(object sender, GanzenBordServiceAzure.GamestateCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceAzure.BeschikbareLobbysCompletedEventArgs e)
@@ -59,7 +66,8 @@ namespace MMSystems5Silverlight
         void client1_MaakLobbyCompleted(object sender, GanzenBordServiceAzure.MaakLobbyCompletedEventArgs e)
         {
             MessageBox.Show("Lobby toegevoegd");
-            client1.BeschikbareLobbysAsync();
+           // client1.BeschikbareLobbysAsync();
+            player = e.Result;
         }
 
         void client1_InloggenCompleted(object sender, GanzenBordServiceAzure.InloggenCompletedEventArgs e)
@@ -71,9 +79,9 @@ namespace MMSystems5Silverlight
 
             else
             {
-                Player player = new Player();
+                
 
-                player.UserName = e.Result.PlayerNaam;
+                player = e.Result;
                 MessageBox.Show("[proficiat ");
             }  
         }
@@ -87,7 +95,7 @@ namespace MMSystems5Silverlight
         {
             //throw new NotImplementedException();
             //Speler.Locatie = e.Result;
-            player.Locatie = player.Locatie + e.Result;
+            //player.Locatie = player.Locatie + e.Result;
             AantalDobbelsteen.Text = e.Result.ToString();
       
             PlaatsOpBord.Text = player.Locatie.ToString();
@@ -108,12 +116,7 @@ namespace MMSystems5Silverlight
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            //client.GooiAsync();
-            client1.GooiAsync();
-
-            
-
+            client1.GamestateAsync(player);
         }
 
         private void MaakAccount(object sender, RoutedEventArgs e)

@@ -15,5 +15,13 @@ namespace SilverlightApplication1.Web.DTO
         public string HostPlayer { get; set; }
         [DataMember]
         public bool CanJoinLobby { get; set; }
+        [DataMember]
+        public bool Start { get; set; }
+        [DataMember]
+        public int HostID { get; set; }
+        [DataMember]
+        public int WhoIsTurnId { get; set; }
+        [DataMember]
+        public int AantalPlayers { get; set; }
     }
 }
