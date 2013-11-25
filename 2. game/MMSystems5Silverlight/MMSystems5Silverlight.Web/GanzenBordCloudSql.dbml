@@ -29,7 +29,7 @@
       <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="PlayerNaam" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="Wachtwoord" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="Locatie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Locatie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Gewonnen" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Verloren" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Lobby" Type="System.String" DbType="NChar(25)" CanBeNull="true" />

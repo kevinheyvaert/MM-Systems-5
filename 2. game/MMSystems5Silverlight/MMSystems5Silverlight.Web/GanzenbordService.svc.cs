@@ -47,10 +47,9 @@ namespace MMSystems5Silverlight.Web
                               where s.PlayerId == player.PlayerId
                               select s).First();
                 
-                    if (speler.Locatie.HasValue)
+                    
                         speler.Locatie += DobbelEnLocatie[0];
-                    else
-                        speler.Locatie = 0;
+                  
                     // Speler.Locatie = Speler.Locatie + e.Result;
 
                     //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
@@ -92,7 +91,7 @@ namespace MMSystems5Silverlight.Web
                     else if (speler.Locatie > 63)
                     {
 
-                        int TijdelijkeLocatie = speler.Locatie.Value - 63;
+                        int TijdelijkeLocatie = speler.Locatie - 63;
                         speler.Locatie = 63 - TijdelijkeLocatie;
                     }
 
@@ -104,7 +103,7 @@ namespace MMSystems5Silverlight.Web
                         // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
                     }
 
-                    DobbelEnLocatie.Add(speler.Locatie.Value);
+                    DobbelEnLocatie.Add(speler.Locatie);
                     db.SubmitChanges();
 
 
@@ -147,8 +146,8 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
 
-                if (user.Locatie.HasValue)
-                     player.Locatie = user.Locatie.Value;
+                
+                     player.Locatie = user.Locatie;
                 
                 if (user.IsHost.HasValue)
                    player.IsHost = user.IsHost.Value;
@@ -430,7 +429,7 @@ namespace MMSystems5Silverlight.Web
 
                 exit.Lobby = null;
                 exit.HostID = null;
-                exit.Locatie = null;
+                exit.Locatie = 0;
                 db.SubmitChanges();
                 updatelobby(player.HostID);
             }
@@ -457,7 +456,7 @@ namespace MMSystems5Silverlight.Web
                     item.Lobby = null;
                     item.IsHost = false;
                     item.HostID = null;
-                    item.Locatie = null;
+                    item.Locatie = 0;
                    
                 }
 
@@ -522,10 +521,10 @@ namespace MMSystems5Silverlight.Web
                                select new { s.PlayerNaam, s.Locatie, s.PlayerId });
 
 
-                //foreach (var item in spelers)
-                //{
-                //    gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie.Value, PlayerId = item.PlayerId });
-                //}
+                foreach (var item in spelers)
+                {
+                    gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie, PlayerId = item.PlayerId });
+                }
 
                
                 var lobby = (from l in db.Lobbis

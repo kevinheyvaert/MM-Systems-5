@@ -521,7 +521,7 @@ namespace MMSystems5Silverlight.Web
 		
 		private string _Wachtwoord;
 		
-		private System.Nullable<int> _Locatie;
+		private int _Locatie;
 		
 		private System.Nullable<int> _Gewonnen;
 		
@@ -543,7 +543,7 @@ namespace MMSystems5Silverlight.Web
     partial void OnPlayerNaamChanged();
     partial void OnWachtwoordChanging(string value);
     partial void OnWachtwoordChanged();
-    partial void OnLocatieChanging(System.Nullable<int> value);
+    partial void OnLocatieChanging(int value);
     partial void OnLocatieChanged();
     partial void OnGewonnenChanging(System.Nullable<int> value);
     partial void OnGewonnenChanged();
@@ -622,8 +622,8 @@ namespace MMSystems5Silverlight.Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locatie", DbType="Int")]
-		public System.Nullable<int> Locatie
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locatie", DbType="Int NOT NULL")]
+		public int Locatie
 		{
 			get
 			{
