@@ -7,7 +7,7 @@ namespace MMSystems5Game
 {
     public class GameState
     {
-        GanzenBordServiceCloud.GameState gamestate= new GanzenBordServiceCloud.GameState();
+       
         public GameState()
         {
             App.client1.GamestateCompleted += client1_GamestateCompleted;
@@ -17,7 +17,7 @@ namespace MMSystems5Game
 
         void client1_GamestateCompleted(object sender, GanzenBordServiceCloud.GamestateCompletedEventArgs e)
         {
-            gamestate = e.Result;
+            App.gamestate = e.Result;
         }
 
         public void status(GanzenBordServiceCloud.Player player)

@@ -522,12 +522,12 @@ namespace MMSystems5Silverlight.Web
                                select new { s.PlayerNaam, s.Locatie, s.PlayerId });
 
 
-                foreach (var item in spelers)
-                {
-                    gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie.Value, PlayerId = item.PlayerId });
-                }
+                //foreach (var item in spelers)
+                //{
+                //    gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie.Value, PlayerId = item.PlayerId });
+                //}
 
-
+               
                 var lobby = (from l in db.Lobbis
                              where l.HostID == player.HostID
                              select l).First();
@@ -552,6 +552,7 @@ namespace MMSystems5Silverlight.Web
                     gamestate.Start = false;
                     
                 }
+               
                 return gamestate;
 
             }

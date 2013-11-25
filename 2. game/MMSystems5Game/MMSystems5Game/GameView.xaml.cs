@@ -105,6 +105,7 @@ namespace MMSystems5Game
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
             App.stophost.StopHost(App.player);
+            App.exitlobby.ExitLobby(App.player);
         }
 
        

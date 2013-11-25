@@ -1,13 +1,15 @@
-﻿using Microsoft.Phone.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Net;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Net.NetworkInformation;
-using System.Windows;
 
 namespace MMSystems5Game
 {
@@ -30,7 +32,9 @@ namespace MMSystems5Game
 
         public void Startclient()
         {
+            App.timer.Stop();
             (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
+
         }
     }
 }

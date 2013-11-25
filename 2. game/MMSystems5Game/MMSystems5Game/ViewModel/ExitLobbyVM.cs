@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MMSystems5Game
 {
-    class ExitLobbyVM
+    public class ExitLobbyVM
     {
 
         public ExitLobbyVM()

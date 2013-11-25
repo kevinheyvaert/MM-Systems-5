@@ -49,14 +49,12 @@ namespace MMSystems5Game
                 {
                     BeschikbareLobbys = e.Result;
                 }
+                if (App.gamestate.Start)
+                {
+                    App.start.Startclient();
+                }
                 
-            
 
-       
-           
-
-           
-          
            
         }
 

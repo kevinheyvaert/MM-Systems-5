@@ -21,6 +21,7 @@ namespace MMSystems5Game
             App.player.HostID = App.lobbylistvm.TemplateBind.HostID;
             App.player.Lobby = App.lobbylistvm.TemplateBind.HostPlayer;
             
+            
         }
 
         public void Join(GanzenBordServiceCloud.Lobby lobby, GanzenBordServiceCloud.Player player)

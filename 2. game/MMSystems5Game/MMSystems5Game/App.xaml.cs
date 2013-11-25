@@ -24,6 +24,7 @@ namespace MMSystems5Game
         public static GanzenBordServiceCloud.GanzenbordServiceClient client1;
         public static GanzenBordServiceCloud.Player player;
         public static GanzenBordServiceCloud.Lobby lobby;
+        public static GanzenBordServiceCloud.GameState gamestate;
        
         public static InloggenVM login;
         public static MaakAccountVM maakaccount;
@@ -39,6 +40,7 @@ namespace MMSystems5Game
         public static StopHostVM stophost;
         public static StartPlayVM start;
         public static GameState Status;
+        public static ExitLobbyVM exitlobby;
        
         public static Dice dice;
      
@@ -107,6 +109,7 @@ namespace MMSystems5Game
             client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
             player = new GanzenBordServiceCloud.Player();
             lobby = new GanzenBordServiceCloud.Lobby();
+            gamestate = new GanzenBordServiceCloud.GameState();
             login = new InloggenVM();
             maakaccount = new MaakAccountVM();
             lobbylistvm = new LobbysListVM();
@@ -117,6 +120,7 @@ namespace MMSystems5Game
             dice = new Dice();
             start = new StartPlayVM();
             Status = new GameState();
+            exitlobby = new ExitLobbyVM();
 
 
             rood = new LocatieVM();
