@@ -24,7 +24,7 @@ namespace MMSystems5Game
                 App.dice.Turn = true;
             }
 
-            else if (App.player.PlayerId==e.Result.turn.PlayerId)
+            else if (App.player.PlayerId!=e.Result.turn.PlayerId)
             {
                 App.dice.Turn = false;
 
