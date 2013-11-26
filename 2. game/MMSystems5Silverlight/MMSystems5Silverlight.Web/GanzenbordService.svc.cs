@@ -494,6 +494,7 @@ namespace MMSystems5Silverlight.Web
             if (lob.WhosTunrId.HasValue)
             {
                 int turn = lob.WhosTunrId.Value;
+                players = players-1;
                 if (turn == players)
                     lob.WhosTunrId = 0;
                 else
