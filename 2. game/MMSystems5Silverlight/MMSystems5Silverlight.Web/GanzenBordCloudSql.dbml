@@ -35,6 +35,9 @@
       <Column Name="Lobby" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
       <Column Name="IsHost" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="HostID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Rule 19]" Member="Rule_19" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PlaceGame" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Rule 52]" Member="Rule_52" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

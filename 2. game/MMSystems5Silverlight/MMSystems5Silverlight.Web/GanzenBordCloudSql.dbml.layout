@@ -20,10 +20,10 @@
         <elementListCompartment Id="0df613ee-5d63-4b1f-afc5-a5f4c5d76cdc" absoluteBounds="6.64, 2.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b9fc3db5-b1c2-49a9-b778-0e1957843023" absoluteBounds="3.875, 1.875, 2, 2.5401025390625">
+    <classShape Id="3f910f8e-2263-41cf-9cad-31c4c48d53b8" absoluteBounds="3.875, 1.75, 2, 3.1170068359375">
       <DataClassMoniker Name="/GanzenBordCloudSqlDataContext/Player" />
       <nestedChildShapes>
-        <elementListCompartment Id="b4d6951c-0434-4d45-8ee0-36baa0afab1b" absoluteBounds="3.89, 2.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c909839c-a24c-4a44-9704-7bd7ab6cf752" absoluteBounds="3.8899999999999997, 2.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

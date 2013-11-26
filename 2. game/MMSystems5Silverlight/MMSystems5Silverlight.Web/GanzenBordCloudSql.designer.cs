@@ -533,6 +533,12 @@ namespace MMSystems5Silverlight.Web
 		
 		private System.Nullable<int> _HostID;
 		
+		private System.Nullable<bool> _Rule_19;
+		
+		private System.Nullable<int> _PlaceGame;
+		
+		private System.Nullable<bool> _Rule_52;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -555,6 +561,12 @@ namespace MMSystems5Silverlight.Web
     partial void OnIsHostChanged();
     partial void OnHostIDChanging(System.Nullable<int> value);
     partial void OnHostIDChanged();
+    partial void OnRule_19Changing(System.Nullable<bool> value);
+    partial void OnRule_19Changed();
+    partial void OnPlaceGameChanging(System.Nullable<int> value);
+    partial void OnPlaceGameChanged();
+    partial void OnRule_52Changing(System.Nullable<bool> value);
+    partial void OnRule_52Changed();
     #endregion
 		
 		public Player()
@@ -738,6 +750,66 @@ namespace MMSystems5Silverlight.Web
 					this._HostID = value;
 					this.SendPropertyChanged("HostID");
 					this.OnHostIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Rule 19]", Storage="_Rule_19", DbType="Bit")]
+		public System.Nullable<bool> Rule_19
+		{
+			get
+			{
+				return this._Rule_19;
+			}
+			set
+			{
+				if ((this._Rule_19 != value))
+				{
+					this.OnRule_19Changing(value);
+					this.SendPropertyChanging();
+					this._Rule_19 = value;
+					this.SendPropertyChanged("Rule_19");
+					this.OnRule_19Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlaceGame", DbType="Int")]
+		public System.Nullable<int> PlaceGame
+		{
+			get
+			{
+				return this._PlaceGame;
+			}
+			set
+			{
+				if ((this._PlaceGame != value))
+				{
+					this.OnPlaceGameChanging(value);
+					this.SendPropertyChanging();
+					this._PlaceGame = value;
+					this.SendPropertyChanged("PlaceGame");
+					this.OnPlaceGameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Rule 52]", Storage="_Rule_52", DbType="Bit")]
+		public System.Nullable<bool> Rule_52
+		{
+			get
+			{
+				return this._Rule_52;
+			}
+			set
+			{
+				if ((this._Rule_52 != value))
+				{
+					this.OnRule_52Changing(value);
+					this.SendPropertyChanging();
+					this._Rule_52 = value;
+					this.SendPropertyChanged("Rule_52");
+					this.OnRule_52Changed();
 				}
 			}
 		}
