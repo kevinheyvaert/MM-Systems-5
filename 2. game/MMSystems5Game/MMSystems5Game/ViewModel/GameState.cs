@@ -26,11 +26,8 @@ namespace MMSystems5Game
 
             }
 
-<<<<<<< HEAD
-            else if (App.player.PlayerId != e.Result.turn.PlayerId)
-=======
             else if (App.player.PlayerId!=e.Result.turn.PlayerId)
->>>>>>> b8786e1bb805af30b74a3f49cbd075aa14e0cdd9
+
             {
                 App.dice.Turn = false;
 
