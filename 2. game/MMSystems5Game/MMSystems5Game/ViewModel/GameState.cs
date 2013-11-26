@@ -19,6 +19,17 @@ namespace MMSystems5Game
         {
             App.gamestate = e.Result;
 
+            if (App.player.PlayerId==e.Result.turn.PlayerId)
+            {
+                App.dice.Turn = true;
+            }
+
+            else if (App.player.PlayerId==e.Result.turn.PlayerId)
+            {
+                App.dice.Turn = false;
+
+            }
+           
 
             App.geel.PlaatsC = App.bord.Plaats[e.Result.players[0].Locatie, 0];
             App.geel.PlaatsR = App.bord.Plaats[e.Result.players[0].Locatie, 1];

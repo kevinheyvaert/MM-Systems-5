@@ -19,6 +19,7 @@ namespace MMSystems5Game
         {
             App.player = e.Result;
             App.gametimer.Start();
+          
 
         }
 

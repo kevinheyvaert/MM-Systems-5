@@ -119,11 +119,12 @@
                 <Image Grid.Column="3" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="4" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="5" Grid.Row="3" Source="Einde.png"></Image>
-
+                
                 <Image Source="SpelerBlauw.PNG" x:Name="blpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerGeel.PNG" x:Name="glpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerRood.PNG" x:Name="rdpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
-                <Image Source="SpelerGroen.PGN" x:Name="grpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+                <Image Source="SpelerGroen.PNG" x:Name="gpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
+
 
 
             </Grid>
@@ -133,7 +134,7 @@
         </Grid>
         
         <StackPanel Grid.Column="2" >
-            <Button BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
+            <Button IsEnabled="{Binding Turn}" BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
                 <Button.Background>
                     <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
                 </Button.Background>

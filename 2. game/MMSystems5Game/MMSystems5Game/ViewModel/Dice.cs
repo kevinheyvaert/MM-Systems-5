@@ -12,7 +12,12 @@ namespace MMSystems5Game
 {
    public class Dice:BaseViewModel
    {
-       
+       private bool _turn;
+       public bool Turn 
+       {
+           get { return _turn; }
+           set { _turn = value; RaisePropChanged("Turn"); } 
+       }
        private Grid _dobbelaantal;
         public Grid DobbelAantal 
         {

@@ -145,9 +145,7 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerId = user.PlayerId;
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
-
-                
-                     player.Locatie = user.Locatie;
+                player.Locatie = user.Locatie;
                 
                 if (user.IsHost.HasValue)
                    player.IsHost = user.IsHost.Value;
@@ -163,17 +161,7 @@ namespace MMSystems5Silverlight.Web
 
                 if (user.Verloren.HasValue)
                     player.Verloren = user.Verloren.Value;
-                
-                
-                
 
-
-
-                // add players attributes  
-                //foreach (var item in user)
-                //{
-                //    playerList.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Wachtwoord = item.Wachtwoord, PlayerId = item.PlayerId, Lobby = item.Lobby, IsHost=item.IsHost.Value, Gewonnen=item.Gewonnen.Value, Verloren=item.Verloren.Value });
-                //}
                 return player;
             }
 
@@ -200,6 +188,7 @@ namespace MMSystems5Silverlight.Web
                 player.Wachtwoord = (string)wachtwoord;
                 player.PlayerId = playerid;
                 player.IsHost = false;
+                player.Locatie = 0;
                 db.Players.InsertOnSubmit(player);
                 db.SubmitChanges();
 
@@ -253,6 +242,7 @@ namespace MMSystems5Silverlight.Web
                 lobby.CanJoinLobby = true;
                 lobby.AantalPlayers = 1;
                 lobby.HostID = player.PlayerId;
+                lobby.WhosTunrId = 0;
                
                 db.Lobbis.InsertOnSubmit(lobby);
                 db.SubmitChanges();
@@ -462,7 +452,7 @@ namespace MMSystems5Silverlight.Web
                     item.Locatie = 0;
                    
                 }
-
+                db.SubmitChanges();
                 var stoplobby = (from s in db.Lobbis
                                  where s.HostID == player.PlayerId
                                  select s).First();
@@ -495,6 +485,7 @@ namespace MMSystems5Silverlight.Web
                        where l.HostID == player.HostID
                        select l).FirstOrDefault();
            
+            // grote van aantal players in een lobby
             var players = (from p in db.Players
                           where p.HostID == lob.HostID
                           select p).Count();

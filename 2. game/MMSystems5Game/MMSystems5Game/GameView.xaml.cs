@@ -32,7 +32,7 @@ namespace MMSystems5Game
             dobbel.DataContext = App.dice;
             rdpion.DataContext = App.rood;
             blpion.DataContext = App.blauw;
-            grpion.DataContext = App.groen;
+            gpion.DataContext = App.groen;
             glpion.DataContext = App.geel;
           //blablaba
 

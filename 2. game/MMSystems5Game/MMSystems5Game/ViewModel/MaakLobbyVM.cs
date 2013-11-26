@@ -10,7 +10,7 @@ namespace MMSystems5Game
         public MaakLobbyVM()
         {
             App.client1.MaakLobbyCompleted += client1_MaakLobbyCompleted;
-            createstop = "Create lobby"; // voor als de speler geen lobby heeft. IsHost geeft  geen propertychanged event hier bij false omdat deze al op false staat
+            createstop = "Create Lobby"; // voor als de speler geen lobby heeft. IsHost geeft  geen propertychanged event hier bij false omdat deze al op false staat
         
         }
 
@@ -18,14 +18,7 @@ namespace MMSystems5Game
         {
              if(e.Result!=null)
             {
-                App.player = e.Result;
-
-                //App.player = e.Result;
-                //App.player.Lobby = App.player.PlayerNaam;
-                //App.player.IsHost = true;
-                //App.player.HostID = App.player.PlayerId;
-                 
-                    
+                App.player = e.Result;  
             }
         }
         private string _createstop;
@@ -35,11 +28,7 @@ namespace MMSystems5Game
             set { _createstop = value; RaisePropChanged("createstop"); }
         }
 
-        
-        void client1_MaakLobompleted(object sender, GanzenBordServiceCloud.MaakLobbyCompletedEventArgs e)
-        {
-           
-        }
+
 
         public void MaakLobby(GanzenBordServiceCloud.Player player)
         {
