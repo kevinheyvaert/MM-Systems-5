@@ -33,6 +33,7 @@ namespace MMSystems5Game
         public void Startclient()
         {
             App.timer.Stop();
+            App.gametimer.Start();
             (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/GameView.xaml"), UriKind.Relative));
 
         }
