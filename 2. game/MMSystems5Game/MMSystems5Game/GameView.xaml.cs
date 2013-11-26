@@ -52,7 +52,10 @@ namespace MMSystems5Game
        
         public void Gooi(object sender, RoutedEventArgs e)
         {
+
             App.client1.GooiAsync(App.player);
+
+            
             
             
         }

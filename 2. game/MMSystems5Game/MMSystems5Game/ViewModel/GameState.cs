@@ -22,9 +22,11 @@ namespace MMSystems5Game
             if (App.player.PlayerId==e.Result.turn.PlayerId)
             {
                 App.dice.Turn = true;
+                App.KanGooien = true;
+
             }
 
-            else if (App.player.PlayerId==e.Result.turn.PlayerId)
+            else if (App.player.PlayerId != e.Result.turn.PlayerId)
             {
                 App.dice.Turn = false;
 
