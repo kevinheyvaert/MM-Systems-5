@@ -19,9 +19,11 @@ namespace MMSystems5Game
              if(e.Result!=null)
             {
                 App.player = e.Result;
-                App.player.Lobby = App.player.PlayerNaam;
-                App.player.IsHost = true;
-                App.player.HostID = App.player.PlayerId;
+
+                //App.player = e.Result;
+                //App.player.Lobby = App.player.PlayerNaam;
+                //App.player.IsHost = true;
+                //App.player.HostID = App.player.PlayerId;
                  
                     
             }

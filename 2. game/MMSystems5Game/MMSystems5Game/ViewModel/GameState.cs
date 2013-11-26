@@ -28,23 +28,24 @@ namespace MMSystems5Game
                 {
                     App.blauw.PlaatsC = App.bord.Plaats[e.Result.players[1].Locatie, 0];
                     App.blauw.PlaatsR = App.bord.Plaats[e.Result.players[1].Locatie, 1];
+
+
+
+                    if (e.Result.players.Count > 2)
+                    {
+                        App.groen.PlaatsC = App.bord.Plaats[e.Result.players[2].Locatie, 0];
+                        App.groen.PlaatsR = App.bord.Plaats[e.Result.players[2].Locatie, 1];
+
+
+
+                        if (e.Result.players.Count > 3)
+                        {
+                            App.geel.PlaatsC = App.bord.Plaats[e.Result.players[3].Locatie, 0];
+                            App.geel.PlaatsR = App.bord.Plaats[e.Result.players[3].Locatie, 1];
+                        }
+                    }
+
                 }
-           
-
-            if (e.Result.players.Count>2)
-            {
-                App.groen.PlaatsC = App.bord.Plaats[e.Result.players[2].Locatie, 0];
-                App.groen.PlaatsR = App.bord.Plaats[e.Result.players[2].Locatie, 1];
-            }
-          
-
-            if (e.Result.players.Count>3)
-            {
-                App.geel.PlaatsC = App.bord.Plaats[e.Result.players[3].Locatie, 0];
-                App.geel.PlaatsR = App.bord.Plaats[e.Result.players[3].Locatie, 1]; 
-            }
-            
-
         }
 
         public void status(GanzenBordServiceCloud.Player player)
