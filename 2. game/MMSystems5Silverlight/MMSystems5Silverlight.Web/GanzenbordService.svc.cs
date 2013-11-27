@@ -189,15 +189,10 @@ namespace MMSystems5Silverlight.Web
             var speler = (from s in db.Players
                           where s.PlayerId == player.PlayerId
                           select s).First();
+            speler.Rule_52 = true;
+            db.SubmitChanges();
 
-            foreach (var item in lijstspelers)
-            {
-                if (speler.Locatie == item.Locatie)
-	            {
-                    speler.Rule_52 = false;
-                    db.SubmitChanges();
-	            }
-            }
+           
         }
 
         private void dead(DTO.Player player)
@@ -627,15 +622,17 @@ namespace MMSystems5Silverlight.Web
                     lob.WhosTunrId = 0;
                 else
                     lob.WhosTunrId++;
+
                 while (state.players[lob.WhosTunrId.Value].Rule_19)
                 {
                     var speler = (from s in db.Players
                                   where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
                                   select s).First();
                     speler.Rule_19 = false;
+                    state.players[lob.WhosTunrId.Value].Rule_19 = false;
                     db.SubmitChanges();
-                    
-                    if (turn == players)
+
+                    if (lob.WhosTunrId == players)
                         lob.WhosTunrId = 0;
                     else
                         lob.WhosTunrId++;
@@ -652,10 +649,12 @@ namespace MMSystems5Silverlight.Web
                                           where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
                                           select s).First();
                             speler.Rule_52 = false;
+                            state.players[lob.WhosTunrId.Value].Rule_52 = false;
+
                             db.SubmitChanges();
                         }
                     }
-                    if (turn == players)
+                    if (lob.WhosTunrId == players)
                         lob.WhosTunrId = 0;
                     else
                         lob.WhosTunrId++;
