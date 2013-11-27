@@ -599,7 +599,10 @@ namespace MMSystems5Silverlight.Web
         }
 
         private void next(DTO.Player player)
-        {
+       {
+            DTO.GameState state = Gamestate(player);
+
+           
             var lob = (from l in db.Lobbis
                        where l.HostID == player.HostID
                        select l).FirstOrDefault();
@@ -624,58 +627,84 @@ namespace MMSystems5Silverlight.Web
                     lob.WhosTunrId = 0;
                 else
                     lob.WhosTunrId++;
-
-                // kijken of de volgende player wel het mag zijn.
-                int temp = 0;
-                foreach (var item in lijstspeler)
+                while (state.players[lob.WhosTunrId.Value].Rule_19)
                 {
-                    if (item.PlayerId == player.PlayerId && temp == lob.WhosTunrId)
-                    {
-                        if (item.Rule_19.HasValue)
-                        {
-                            if (item.Rule_19.Value)
-                            {
-                                if (turn == players)
-                                    lob.WhosTunrId = 0;
-                                else
-                                    lob.WhosTunrId++;
+                    var speler = (from s in db.Players
+                                  where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
+                                  select s).First();
+                    speler.Rule_19 = false;
+                    db.SubmitChanges();
+                    
+                    if (turn == players)
+                        lob.WhosTunrId = 0;
+                    else
+                        lob.WhosTunrId++;
 
-                                item.Rule_19 = false;
-                            }
-                        }
-                        if (item.Rule_52.HasValue)
-                        {
-                            if (item.Rule_52.Value)
-                            {
-                                foreach (var bitem in lijstspeler)
-                                {
-                                    if (bitem.Locatie == item.Locatie)
-                                    {
-                                        bitem.Rule_52 = false;
-                                    }
-
-                                    else
-                                    {
-                                        if (turn == players)
-                                            lob.WhosTunrId = 0;
-                                        else
-                                            lob.WhosTunrId++;
-                                    }
-                                }
-                            }
-                        }
-
-
-                    }
-                    temp++;
                 }
-            }
-            
-            
-            
+
+                while (state.players[lob.WhosTunrId.Value].Rule_52)
+                {
+                    foreach (var item in state.players)
+                    {
+                        if (state.players[lob.WhosTunrId.Value].Locatie == item.Locatie)
+                        {
+                            var speler = (from s in db.Players
+                                          where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
+                                          select s).First();
+                            speler.Rule_52 = false;
+                            db.SubmitChanges();
+                        }
+                    }
+                    if (turn == players)
+                        lob.WhosTunrId = 0;
+                    else
+                        lob.WhosTunrId++;
+
+                }
+                // kijken of de volgende player wel het mag zijn.
+                //int temp = 0;
+                //foreach (var item in lijstspeler)
+                //{
+                //    if (item.PlayerId == player.PlayerId && temp == lob.WhosTunrId)
+                //    {
+                //        if (item.Rule_19.HasValue)
+                //        {
+                //            if (item.Rule_19.Value)
+                //            {
+                //                if (turn == players)
+                //                    lob.WhosTunrId = 0;
+                //                else
+                //                    lob.WhosTunrId++;
+
+                //                item.Rule_19 = false;
+                //            }
+                //        }
+                //        if (item.Rule_52.HasValue)
+                //        {
+                //            if (item.Rule_52.Value)
+                //            {
+                //                foreach (var bitem in lijstspeler)
+                //                {
+                //                    if (bitem.Locatie == item.Locatie)
+                //                    {
+                //                        bitem.Rule_52 = false;
+                //                    }
+
+                //                    else
+                //                    {
+                //                        if (turn == players)
+                //                            lob.WhosTunrId = 0;
+                //                        else
+                //                            lob.WhosTunrId++;
+                //                    }
+                //                }
+                //            }
+                //        }
 
 
-
+                 //}
+                   // temp++;
+                }
             
             db.SubmitChanges();
         }
