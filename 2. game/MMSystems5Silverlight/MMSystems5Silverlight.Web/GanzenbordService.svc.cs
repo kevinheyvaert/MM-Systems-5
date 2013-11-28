@@ -36,7 +36,7 @@ namespace MMSystems5Silverlight.Web
 
         public List<int> Gooi(DTO.Player player)
         {
-            
+
             // list for location and for dice number
             DobbelEnLocatie = new List<int>();
             // class for generate a number between 1 and 6
@@ -47,67 +47,67 @@ namespace MMSystems5Silverlight.Web
                               where s.PlayerId == player.PlayerId
                               select s).First();
 
-           
-                        speler.Locatie += DobbelEnLocatie[0];
-                  
-                    // Speler.Locatie = Speler.Locatie + e.Result;
 
-                    //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
-                    //{
-                    //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
-                    //}
+                speler.Locatie += DobbelEnLocatie[0];
 
-                    if (speler.Locatie == 6)
-                    {
-                        brug(player);
-                       
-                    }
-                    else if (speler.Locatie == 19)
-                    {
-                        herberg(player);
-                    }
-                    else if (speler.Locatie == 31)
-                    {
-                        //nog te maken bool Put
-                        // MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
-                    }
-                    else if (speler.Locatie == 42)
-                    {
-                        doornstruik(player);
-                    }
-                    else if (speler.Locatie == 52)
-                    {
-                        jail(player);
-                    }
-                    else if (speler.Locatie == 58)
-                    {
-                        dead(player);
-                    }
+                // Speler.Locatie = Speler.Locatie + e.Result;
 
-                    else if (speler.Locatie > 63)
-                    {
+                //If (Speler.Locatie == 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59)
+                //{
+                //  NOG IS GOOIEN MET HET GEGOOIDE AANTAL
+                //}
 
-                        int TijdelijkeLocatie = speler.Locatie - 63;
-                        speler.Locatie = 63 - TijdelijkeLocatie;
-                    }
+                if (speler.Locatie == 6)
+                {
+                    brug(player);
 
-                    else if (speler.Locatie == 63)
-                    {
-                        // MessageBox.Show("Einde : U heeft gewonnen!");
-                        speler.Locatie = 62;
-                        //Speler.Score = Speler.Score + 1;
-                        // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
-                    }
+                }
+                else if (speler.Locatie == 19)
+                {
+                    herberg(player);
+                }
+                else if (speler.Locatie == 31)
+                {
+                    //nog te maken bool Put
+                    // MessageBox.Show("Put : Je zit in de put tot er een andere speler in komt");
+                }
+                else if (speler.Locatie == 42)
+                {
+                    doornstruik(player);
+                }
+                else if (speler.Locatie == 52)
+                {
+                    jail(player);
+                }
+                else if (speler.Locatie == 58)
+                {
+                    dead(player);
+                }
 
-                    DobbelEnLocatie.Add(speler.Locatie);
-                    db.SubmitChanges();
+                else if (speler.Locatie > 63)
+                {
+
+                    int TijdelijkeLocatie = speler.Locatie - 63;
+                    speler.Locatie = 63 - TijdelijkeLocatie;
+                }
+
+                else if (speler.Locatie == 63)
+                {
+                    // MessageBox.Show("Einde : U heeft gewonnen!");
+                    speler.Locatie = 62;
+                    //Speler.Score = Speler.Score + 1;
+                    // NavigationService.Navigate(new Uri(string.Format("/Lobby.xaml"), UriKind.Relative));
+                }
+
+                DobbelEnLocatie.Add(speler.Locatie);
+                db.SubmitChanges();
 
 
 
-                    if (DobbelEnLocatie[0] != 6)
-                    {
-                        next(player);
-                    }
+                if (DobbelEnLocatie[0] != 6)
+                {
+                    next(player);
+                }
                 return DobbelEnLocatie;
 
             }
@@ -120,52 +120,52 @@ namespace MMSystems5Silverlight.Web
         }
 
         private void plaatsgame(DTO.Player player)
-    {
-        int plaatsingame = 0;
-        var lijstspelers = from l in db.Players
-                                   where l.HostID == player.HostID
-                                   orderby l.Locatie
-                                   select l;
+        {
+            int plaatsingame = 0;
+            var lijstspelers = from l in db.Players
+                               where l.HostID == player.HostID
+                               orderby l.Locatie
+                               select l;
 
-          
-                foreach (var item in lijstspelers)
-                {
-                    
-                       
-                    item.PlaceGame = plaatsingame;
-                    plaatsingame++;
-                    db.SubmitChanges();
-                }
-    }
+
+            foreach (var item in lijstspelers)
+            {
+
+
+                item.PlaceGame = plaatsingame;
+                plaatsingame++;
+                db.SubmitChanges();
+            }
+        }
 
         private void brug(DTO.Player player)
-        {   
-            var speler = (from s in db.Players
-                              where s.PlayerId == player.PlayerId
-                              select s).First();
-            speler.Locatie = 12;
-            db.SubmitChanges();
-        
-        }
-
-        private void herberg (DTO.Player player)
         {
             var speler = (from s in db.Players
-                              where s.PlayerId == player.PlayerId
-                              select s).First();
-            speler.Rule_19 = true;
+                          where s.PlayerId == player.PlayerId
+                          select s).First();
+            speler.Locatie = 12;
             db.SubmitChanges();
-        
+
         }
 
-        
+        private void herberg(DTO.Player player)
+        {
+            var speler = (from s in db.Players
+                          where s.PlayerId == player.PlayerId
+                          select s).First();
+            speler.Rule_19 = true;
+            db.SubmitChanges();
+
+        }
+
+
 
         private void put(DTO.Player player)
         {
             var speler = (from s in db.Players
                           where s.PlayerId == player.PlayerId
                           select s).First();
-            
+
         }
 
         private void doornstruik(DTO.Player player)
@@ -176,7 +176,7 @@ namespace MMSystems5Silverlight.Web
 
             speler.Locatie = 39;
             db.SubmitChanges();
-            
+
         }
 
         private void jail(DTO.Player player)
@@ -192,7 +192,7 @@ namespace MMSystems5Silverlight.Web
             speler.Rule_52 = true;
             db.SubmitChanges();
 
-           
+
         }
 
         private void dead(DTO.Player player)
@@ -215,7 +215,7 @@ namespace MMSystems5Silverlight.Web
                           where s.PlayerId == player.PlayerId
                           select s).First();
 
-            
+
             foreach (var item in lijstspelers)
             {
                 if (speler.PlayerId == item.PlayerId)
@@ -235,7 +235,7 @@ namespace MMSystems5Silverlight.Web
             lobby.Start = false;
             lobby.CanJoinLobby = true;
             db.SubmitChanges();
-            
+
         }
 
         public DTO.Player Inloggen(string naam, string wachtwoord)
@@ -243,7 +243,7 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-               // List<DTO.Player> playerList = new List<DTO.Player>();
+                // List<DTO.Player> playerList = new List<DTO.Player>();
 
                 DTO.Player player = new DTO.Player();
 
@@ -260,18 +260,18 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
                 player.Locatie = user.Locatie;
-                
+
                 if (user.IsHost.HasValue)
-                   player.IsHost = user.IsHost.Value;
-                
+                    player.IsHost = user.IsHost.Value;
+
 
                 if (user.HostID.HasValue)
                     player.HostID = user.HostID.Value;
 
-                
+
                 if (user.Gewonnen.HasValue)
                     player.Gewonnen = user.Gewonnen.Value;
-                
+
 
                 if (user.Verloren.HasValue)
                     player.Verloren = user.Verloren.Value;
@@ -297,12 +297,14 @@ namespace MMSystems5Silverlight.Web
             playerid = maxId + 1;
 
             try
-            {   
+            {
                 player.PlayerNaam = (string)naam;
                 player.Wachtwoord = (string)wachtwoord;
                 player.PlayerId = playerid;
                 player.IsHost = false;
                 player.Locatie = 0;
+                player.Rule_19 = false;
+                player.Rule_52 = false;
                 db.Players.InsertOnSubmit(player);
                 db.SubmitChanges();
 
@@ -321,19 +323,19 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-            // look for joinable lobbys
-            var BeschikbareLobbys = (from l in db.Lobbis
-                                     where l.CanJoinLobby == true
-                                     select new { l.HostPlayer,l.HostID });
+                // look for joinable lobbys
+                var BeschikbareLobbys = (from l in db.Lobbis
+                                         where l.CanJoinLobby == true
+                                         select new { l.HostPlayer, l.HostID });
 
-            List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
+                List<DTO.Lobby> LobbyList = new List<DTO.Lobby>();
 
-            foreach (var item in BeschikbareLobbys)
-            {
-                LobbyList.Add(new DTO.Lobby() { HostPlayer = item.HostPlayer, HostID=item.HostID });
-            }
+                foreach (var item in BeschikbareLobbys)
+                {
+                    LobbyList.Add(new DTO.Lobby() { HostPlayer = item.HostPlayer, HostID = item.HostID });
+                }
 
-            return LobbyList;
+                return LobbyList;
             }
             catch (Exception)
             {
@@ -349,15 +351,15 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-          
-           
+                StopHost(player);
+
                 Lobbi lobby = new Lobbi();
                 lobby.HostPlayer = player.PlayerNaam;
                 lobby.CanJoinLobby = true;
                 lobby.AantalPlayers = 1;
                 lobby.HostID = player.PlayerId;
                 lobby.WhosTunrId = 0;
-               
+
                 db.Lobbis.InsertOnSubmit(lobby);
                 db.SubmitChanges();
 
@@ -382,7 +384,7 @@ namespace MMSystems5Silverlight.Web
             catch (Exception)
             {
 
-                throw;
+                return player;
             }
 
         }
@@ -409,8 +411,8 @@ namespace MMSystems5Silverlight.Web
 
                 throw;
             }
-            
-           
+
+
 
         }
 
@@ -418,7 +420,7 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
-                
+
                 var ad = (from i in db.Lobbis
                           where i.HostID == lobby
                           select i).First();
@@ -448,11 +450,11 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
 
-           
+
 
         }
 
@@ -477,10 +479,10 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-           
+
 
         }
 
@@ -499,10 +501,10 @@ namespace MMSystems5Silverlight.Web
                             select l).First();
 
                 var isthere = (from l in db.Lobbis
-                               where l.HostID== lobby.HostID
+                               where l.HostID == lobby.HostID
                                select l);
 
-                if(isthere!=null )
+                if (isthere != null)
                 {
                     join.Lobby = lobby.HostPlayer;
                     join.HostID = lobby.HostID;
@@ -518,10 +520,10 @@ namespace MMSystems5Silverlight.Web
 
             catch (Exception)
             {
-                
+
                 throw;
             }
-           
+
 
         }
 
@@ -537,15 +539,17 @@ namespace MMSystems5Silverlight.Web
                 exit.Lobby = null;
                 exit.HostID = null;
                 exit.Locatie = 0;
+                exit.Rule_19 = false;
+                exit.Rule_52 = false;
                 db.SubmitChanges();
                 updatelobby(player.HostID);
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-          
+
 
         }
 
@@ -564,9 +568,12 @@ namespace MMSystems5Silverlight.Web
                     item.IsHost = false;
                     item.HostID = null;
                     item.Locatie = 0;
-                   
+                    item.Rule_19 = false;
+                    item.Rule_52 = false;
+                    db.SubmitChanges();
+
                 }
-                db.SubmitChanges();
+
                 var stoplobby = (from s in db.Lobbis
                                  where s.HostID == player.PlayerId
                                  select s).First();
@@ -576,10 +583,10 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                
-                throw;
+
+
             }
-           
+
         }
 
         public void Start(DTO.Lobby lobby)
@@ -590,76 +597,74 @@ namespace MMSystems5Silverlight.Web
 
             lob.Start = true;
             lob.CanJoinLobby = false;
+            lob.WhosTunrId = 0;
             db.SubmitChanges();
         }
 
         private void next(DTO.Player player)
-       {
+        {
             DTO.GameState state = Gamestate(player);
 
-           
-            var lob = (from l in db.Lobbis
-                       where l.HostID == player.HostID
-                       select l).FirstOrDefault();
-           
-
+            var lobby = (from l in db.Lobbis
+                         where l.HostID == player.HostID
+                         select l).First();
 
             // grote van aantal players in een lobby
             var players = (from p in db.Players
-                          where p.HostID == lob.HostID
-                          select p).Count();
-            
+                           where p.HostID == lobby.HostID
+                           select p).Count();
+
             var lijstspeler = (from l in db.Players
                                where l.HostID == player.HostID
                                select l);
 
-            if (lob.WhosTunrId.HasValue)
+            if (lobby.WhosTunrId.HasValue)
             {
-                int turn = lob.WhosTunrId.Value;
+                int turn = lobby.WhosTunrId.Value;
                 players = players - 1;
 
                 if (turn == players)
-                    lob.WhosTunrId = 0;
+                    lobby.WhosTunrId = 0;
                 else
-                    lob.WhosTunrId++;
-
-                while (state.players[lob.WhosTunrId.Value].Rule_19)
+                    lobby.WhosTunrId++;
+                while (state.players[lobby.WhosTunrId.Value].Rule_19 || state.players[lobby.WhosTunrId.Value].Rule_52)
                 {
-                    var speler = (from s in db.Players
-                                  where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
-                                  select s).First();
-                    speler.Rule_19 = false;
-                    state.players[lob.WhosTunrId.Value].Rule_19 = false;
-                    db.SubmitChanges();
-
-                    if (lob.WhosTunrId == players)
-                        lob.WhosTunrId = 0;
-                    else
-                        lob.WhosTunrId++;
-
-                }
-
-                while (state.players[lob.WhosTunrId.Value].Rule_52)
-                {
-                    foreach (var item in state.players)
+                    if (state.players[lobby.WhosTunrId.Value].Rule_19)
                     {
-                        if (state.players[lob.WhosTunrId.Value].Locatie == item.Locatie)
-                        {
-                            var speler = (from s in db.Players
-                                          where s.PlayerId == state.players[lob.WhosTunrId.Value].PlayerId
-                                          select s).First();
-                            speler.Rule_52 = false;
-                            state.players[lob.WhosTunrId.Value].Rule_52 = false;
-
-                            db.SubmitChanges();
-                        }
+                        var speler = (from s in db.Players
+                                      where s.PlayerId == state.players[lobby.WhosTunrId.Value].PlayerId
+                                      select s).First();
+                        speler.Rule_19 = false;
+                        state.players[lobby.WhosTunrId.Value].Rule_19 = false;
+                        if (lobby.WhosTunrId == players)
+                            lobby.WhosTunrId = 0;
+                        else
+                            lobby.WhosTunrId++;
                     }
-                    if (lob.WhosTunrId == players)
-                        lob.WhosTunrId = 0;
-                    else
-                        lob.WhosTunrId++;
+                    if (state.players[lobby.WhosTunrId.Value].Rule_52)
+                    {
+                        foreach (var item in state.players)
+                        {
+                            if (state.players[lobby.WhosTunrId.Value].Locatie == item.Locatie && item.PlayerId != state.players[lobby.WhosTunrId.Value].PlayerId)
+                            {
+                                var speler = (from s in db.Players
+                                              where s.PlayerId == state.players[lobby.WhosTunrId.Value].PlayerId
+                                              select s).First();
+                                speler.Rule_52 = false;
+                                state.players[lobby.WhosTunrId.Value].Rule_52 = false;
+
+                            }
+                        }
+                        if (lobby.WhosTunrId == players)
+                            lobby.WhosTunrId = 0;
+                        else
+                            lobby.WhosTunrId++;
+
+                    }
 
                 }
+
+
                 // kijken of de volgende player wel het mag zijn.
                 //int temp = 0;
                 //foreach (var item in lijstspeler)
@@ -701,10 +706,10 @@ namespace MMSystems5Silverlight.Web
                 //        }
 
 
-                 //}
-                   // temp++;
-                }
-            
+                //}
+                // temp++;
+            }
+
             db.SubmitChanges();
         }
 
@@ -712,7 +717,7 @@ namespace MMSystems5Silverlight.Web
         public DTO.GameState Gamestate(DTO.Player player)
         {
             DTO.GameState gamestate = new DTO.GameState();
-            
+
             try
             {
 
@@ -723,15 +728,15 @@ namespace MMSystems5Silverlight.Web
                 if (spelers != null)
                 {
 
-                    gamestate.players=new List<DTO.Player>();
+                    gamestate.players = new List<DTO.Player>();
                     foreach (var item in spelers)
                     {
-                       
-                        gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie, PlayerId = item.PlayerId });
+
+                        gamestate.players.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Locatie = item.Locatie, PlayerId = item.PlayerId, Rule_19 = item.Rule_19.Value, Rule_52 = item.Rule_52.Value });
                     }
                 }
 
-               
+
                 var lobby = (from l in db.Lobbis
                              where l.HostID == player.HostID
                              select l).First();
@@ -739,26 +744,26 @@ namespace MMSystems5Silverlight.Web
 
                 if (lobby != null)
                 {
-                    if (lobby.Start!=null)
+                    if (lobby.Start != null)
                     {
                         gamestate.Start = lobby.Start.Value;
                     }
 
-                    if (lobby.WhosTunrId!=null)
+                    if (lobby.WhosTunrId != null)
                     {
-                            gamestate.turn = gamestate.players[lobby.WhosTunrId.Value]; 
+                        gamestate.turn = gamestate.players[lobby.WhosTunrId.Value];
                     }
 
-                    
+
                 }
 
                 else
                 {
-                    
+
                     gamestate.Start = false;
-                    
+
                 }
-               
+
                 return gamestate;
 
             }
@@ -768,7 +773,6 @@ namespace MMSystems5Silverlight.Web
             }
         }
 
-        }
-
-
+    }
 }
+

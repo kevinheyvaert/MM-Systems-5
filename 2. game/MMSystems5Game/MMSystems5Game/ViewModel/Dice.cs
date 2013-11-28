@@ -39,11 +39,15 @@ namespace MMSystems5Game
 
         public void dobbel(GanzenBordServiceCloud.Player player)
         {
+
+           
             if (App.KanGooien)
             {
+                App.KanGooien = false;
                 App.client1.GooiAsync(player);
             }
-            App.KanGooien = false;
+
+
         }
         
 
