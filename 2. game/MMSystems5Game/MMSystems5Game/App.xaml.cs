@@ -21,6 +21,7 @@ namespace MMSystems5Game
 {
     public partial class App : Application
     {
+        //Hier worden alle objecten aangemaakt zodat eze overal in de phone app kunnen worden aangeroepen
         public static GanzenBordServiceCloud.GanzenbordServiceClient client1;
         public static GanzenBordServiceCloud.Player player;
         public static GanzenBordServiceCloud.Lobby lobby;
@@ -50,13 +51,7 @@ namespace MMSystems5Game
         public static LocatieVM groen;
         public static LocatieVM geel;
         public static BordVm bord;
-
-      
-
-        
-
-       
-
+     
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -98,6 +93,7 @@ namespace MMSystems5Game
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            // We maken ook 2 timers aan : eentje om lobby lijsten up te daten en 1 om het spel up te daten
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += timer_Tick;
@@ -123,7 +119,6 @@ namespace MMSystems5Game
             Status = new GameState();
             exitlobby = new ExitLobbyVM();
 
-
             rood = new LocatieVM();
             blauw = new LocatieVM();
             groen = new LocatieVM();
@@ -132,27 +127,22 @@ namespace MMSystems5Game
 
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
-            
-
-         
 
         }
 
         void gametimer_Tick(object sender, EventArgs e)
         {
+            //Status van de spelers updaten tijdens het spel
             Status.status(player);
         }
 
-   
-
         void timer_Tick(object sender, EventArgs e)
         {
-
+            // updaten van de lobby lijsten (lobby info)
             if (lobbylistvm.InfoLobby != null)
             {
                 lobbylistvm.TemplateBind = lobbylistvm.InfoLobby;
                 LobbyInfo.infolobby(lobbylistvm.TemplateBind);
-
             }
 
             else
@@ -166,9 +156,7 @@ namespace MMSystems5Game
             {
                 if (lobbylistvm.TemplateBind.HostPlayer != player.PlayerNaam)
                 {
-
                     lobbylistvm.Join = true;
-
                 }
 
                 else

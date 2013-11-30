@@ -17,15 +17,11 @@ namespace MMSystems5Game
     public partial class MainPage : PhoneApplicationPage
     {
 
-        
-        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
         }
-
-        
 
         private void Login(object sender, RoutedEventArgs e)
         {
@@ -37,8 +33,6 @@ namespace MMSystems5Game
             NavigationService.Navigate(new Uri(string.Format("/MakeAccount.xaml"), UriKind.Relative));
 
         }
-
-        
-        
+    
     }
 }

@@ -28,8 +28,7 @@ namespace MMSystems5Game
                 App.client1.LobbyInfoCompleted += client1_LobbyInfoCompleted;
             }
             catch (Exception)
-            {
-                
+            {    
                 throw;
             }
             

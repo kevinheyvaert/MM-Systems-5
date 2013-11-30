@@ -15,8 +15,7 @@ namespace MMSystems5Game
         void client1_StopHostCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             App.player.Lobby = null;
-            App.player.IsHost = false;
-            
+            App.player.IsHost = false;           
         }
 
         public void StopHost(GanzenBordServiceCloud.Player player)
@@ -26,8 +25,7 @@ namespace MMSystems5Game
                App.client1.StopHostAsync(player);
             }
             catch (Exception)
-            {
-                
+            {               
                 throw;
             }
            

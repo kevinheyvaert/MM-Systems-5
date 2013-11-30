@@ -11,16 +11,13 @@ namespace MMSystems5Game
         public string playjoin { get; set; }
         public JoinVM()
         {
-            App.client1.JoinLobbyCompleted += client1_JoinLobbyCompleted;
-        
+            App.client1.JoinLobbyCompleted += client1_JoinLobbyCompleted;       
         }
 
         void client1_JoinLobbyCompleted(object sender, GanzenBordServiceCloud.JoinLobbyCompletedEventArgs e)
         {
             App.player = e.Result;
             App.gametimer.Start();
-          
-
         }
 
         public void Join(GanzenBordServiceCloud.Lobby lobby, GanzenBordServiceCloud.Player player)
@@ -36,8 +33,7 @@ namespace MMSystems5Game
                 
             }
             catch (Exception)
-            {
-                
+            {                
                 throw;
             }
             

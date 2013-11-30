@@ -25,8 +25,7 @@ namespace MMSystems5Game
         public GameView()
         {
             InitializeComponent();
-            
-           
+
             Speler = new Player();
            // this.DataContext = Speler;
             dobbel.DataContext = App.dice;
@@ -40,8 +39,6 @@ namespace MMSystems5Game
            
         }
 
-       
-
         private void Exit(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
@@ -49,18 +46,11 @@ namespace MMSystems5Game
             App.exitlobby.ExitLobby(App.player);
         }
 
-       
         public void Gooi(object sender, RoutedEventArgs e)
         {
 
-            App.client1.GooiAsync(App.player);
-
+            App.client1.GooiAsync(App.player); 
             
-            
-            
-        }
-
-
-      
+        } 
     }
 }
