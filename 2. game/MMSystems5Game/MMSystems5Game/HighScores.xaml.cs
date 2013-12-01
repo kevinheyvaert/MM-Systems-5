@@ -16,11 +16,18 @@ namespace MMSystems5Game
         {
             InitializeComponent();
             Highscores.DataContext = App.highscore;
+            
         }
 
+        
         private void Back(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.highscore.winnaars();
         }
     }
 }

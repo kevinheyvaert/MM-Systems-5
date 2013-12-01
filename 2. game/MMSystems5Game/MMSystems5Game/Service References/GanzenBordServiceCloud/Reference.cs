@@ -453,6 +453,11 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         System.IAsyncResult BeginGamestate(MMSystems5Game.GanzenBordServiceCloud.Player player, System.AsyncCallback callback, object asyncState);
         
         MMSystems5Game.GanzenBordServiceCloud.GameState EndGamestate(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGanzenbordService/HighScore", ReplyAction="http://tempuri.org/IGanzenbordService/HighScoreResponse")]
+        System.IAsyncResult BeginHighScore(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> EndHighScore(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -613,6 +618,25 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class HighScoreCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public HighScoreCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GanzenbordServiceClient : System.ServiceModel.ClientBase<MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService>, MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -686,6 +710,12 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         private EndOperationDelegate onEndGamestateDelegate;
         
         private System.Threading.SendOrPostCallback onGamestateCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginHighScoreDelegate;
+        
+        private EndOperationDelegate onEndHighScoreDelegate;
+        
+        private System.Threading.SendOrPostCallback onHighScoreCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -763,6 +793,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> StartCompleted;
         
         public event System.EventHandler<GamestateCompletedEventArgs> GamestateCompleted;
+        
+        public event System.EventHandler<HighScoreCompletedEventArgs> HighScoreCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1318,6 +1350,50 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                         player}, this.onEndGamestateDelegate, this.onGamestateCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.BeginHighScore(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginHighScore(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService.EndHighScore(System.IAsyncResult result) {
+            return base.Channel.EndHighScore(result);
+        }
+        
+        private System.IAsyncResult OnBeginHighScore(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).BeginHighScore(callback, asyncState);
+        }
+        
+        private object[] OnEndHighScore(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> retVal = ((MMSystems5Game.GanzenBordServiceCloud.IGanzenbordService)(this)).EndHighScore(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnHighScoreCompleted(object state) {
+            if ((this.HighScoreCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.HighScoreCompleted(this, new HighScoreCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void HighScoreAsync() {
+            this.HighScoreAsync(null);
+        }
+        
+        public void HighScoreAsync(object userState) {
+            if ((this.onBeginHighScoreDelegate == null)) {
+                this.onBeginHighScoreDelegate = new BeginOperationDelegate(this.OnBeginHighScore);
+            }
+            if ((this.onEndHighScoreDelegate == null)) {
+                this.onEndHighScoreDelegate = new EndOperationDelegate(this.OnEndHighScore);
+            }
+            if ((this.onHighScoreCompletedDelegate == null)) {
+                this.onHighScoreCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnHighScoreCompleted);
+            }
+            base.InvokeAsync(this.onBeginHighScoreDelegate, null, this.onEndHighScoreDelegate, this.onHighScoreCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1544,6 +1620,18 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
             public MMSystems5Game.GanzenBordServiceCloud.GameState EndGamestate(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 MMSystems5Game.GanzenBordServiceCloud.GameState _result = ((MMSystems5Game.GanzenBordServiceCloud.GameState)(base.EndInvoke("Gamestate", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginHighScore(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("HighScore", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> EndHighScore(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player> _result = ((System.Collections.ObjectModel.ObservableCollection<MMSystems5Game.GanzenBordServiceCloud.Player>)(base.EndInvoke("HighScore", _args, result)));
                 return _result;
             }
         }

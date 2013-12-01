@@ -20,8 +20,13 @@ namespace MMSystems5Game
             set { _highscore= value; RaisePropChanged("HighScore"); }
         }
 
+        public void winnaars()
+        {
+            App.client1.HighScoreAsync();
+        }
+
        
-       public HighScores()
+       public HighScoreVM()
        {
            
            App.client1.HighScoreCompleted+=client1_HighScoreCompleted;  
@@ -32,5 +37,7 @@ namespace MMSystems5Game
         {
             HighScore=e.Result;
         }
+
+        
     }
 }

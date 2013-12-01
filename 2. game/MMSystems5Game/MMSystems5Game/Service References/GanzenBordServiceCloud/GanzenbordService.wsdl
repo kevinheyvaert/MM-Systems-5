@@ -80,6 +80,12 @@
   <wsdl:message name="IGanzenbordService_Gamestate_OutputMessage">
     <wsdl:part name="parameters" element="tns:GamestateResponse" />
   </wsdl:message>
+  <wsdl:message name="IGanzenbordService_HighScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:HighScore" />
+  </wsdl:message>
+  <wsdl:message name="IGanzenbordService_HighScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HighScoreResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGanzenbordService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/DoWork" message="tns:IGanzenbordService_DoWork_InputMessage" />
@@ -128,6 +134,10 @@
     <wsdl:operation name="Gamestate">
       <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/Gamestate" message="tns:IGanzenbordService_Gamestate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/GamestateResponse" message="tns:IGanzenbordService_Gamestate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HighScore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGanzenbordService/HighScore" message="tns:IGanzenbordService_HighScore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGanzenbordService/HighScoreResponse" message="tns:IGanzenbordService_HighScore_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGanzenbordService" type="tns:IGanzenbordService">
@@ -233,6 +243,15 @@
     </wsdl:operation>
     <wsdl:operation name="Gamestate">
       <soap:operation soapAction="http://tempuri.org/IGanzenbordService/Gamestate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HighScore">
+      <soap:operation soapAction="http://tempuri.org/IGanzenbordService/HighScore" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

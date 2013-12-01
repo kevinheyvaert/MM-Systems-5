@@ -161,4 +161,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="HighScore">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HighScoreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO" minOccurs="0" name="HighScoreResult" nillable="true" type="q18:ArrayOfPlayer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

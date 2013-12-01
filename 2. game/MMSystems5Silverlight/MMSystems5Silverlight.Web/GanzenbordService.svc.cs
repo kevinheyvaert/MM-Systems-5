@@ -247,8 +247,16 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
                 player.Locatie = user.Locatie;
-                player.Gewonnen = user.Gewonnen.Value;
-                player.Verloren = user.Verloren.Value;
+                if (user.Gewonnen.HasValue)
+                {
+                    player.Gewonnen = user.Gewonnen.Value;
+                }
+
+                if (user.Verloren.HasValue)
+                {
+                    player.Verloren = user.Verloren.Value;
+                }
+               
                 player.IsHost = user.IsHost.Value;
                 if (player.IsHost)
                 {
@@ -722,7 +730,7 @@ namespace MMSystems5Silverlight.Web
         {
             List<DTO.Player> Spelers = new List<DTO.Player>();
             var players = (from p in db.Players
-                           orderby p.Gewonnen / p.Verloren
+                           orderby  p.Gewonnen
                            select p);
 
             foreach (var item in players)

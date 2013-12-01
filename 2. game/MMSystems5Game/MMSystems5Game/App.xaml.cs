@@ -51,7 +51,7 @@ namespace MMSystems5Game
         public static LocatieVM groen;
         public static LocatieVM geel;
         public static BordVm bord;
-        public static HighScores highscore;
+        public static HighScoreVM highscore;
 
         public static Network connectie;
 
@@ -127,7 +127,7 @@ namespace MMSystems5Game
             groen = new LocatieVM();
             geel = new LocatieVM();
             bord = new BordVm();
-            highscore = new HighScores();
+            highscore = new HighScoreVM();
 
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;

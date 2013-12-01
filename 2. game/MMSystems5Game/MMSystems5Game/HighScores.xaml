@@ -11,7 +11,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -35,7 +35,9 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                                <TextBlock Text="Aantal keer gewonnen"></TextBlock>
                                 <TextBlock Text="{Binding Gewonnen }"></TextBlock>
+                                <TextBlock Text="Aantal Keer verloren"></TextBlock>
                                 <TextBlock Text="{Binding Verloren }"></TextBlock>
 
                             </StackPanel>
