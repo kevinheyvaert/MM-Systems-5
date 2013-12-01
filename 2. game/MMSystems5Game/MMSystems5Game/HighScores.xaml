@@ -35,9 +35,9 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
-                                <TextBlock Text="Aantal keer gewonnen"></TextBlock>
+                                <TextBlock Text="Gewonnen: "></TextBlock>
                                 <TextBlock Text="{Binding Gewonnen }"></TextBlock>
-                                <TextBlock Text="Aantal Keer verloren"></TextBlock>
+                                <TextBlock Text="Verloren: "></TextBlock>
                                 <TextBlock Text="{Binding Verloren }"></TextBlock>
 
                             </StackPanel>
