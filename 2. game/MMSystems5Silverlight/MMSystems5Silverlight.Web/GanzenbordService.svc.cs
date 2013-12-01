@@ -249,7 +249,12 @@ namespace MMSystems5Silverlight.Web
                 player.Locatie = user.Locatie;
                 player.Gewonnen = user.Gewonnen.Value;
                 player.Verloren = user.Verloren.Value;
-                StopHost(player);
+                player.IsHost = user.IsHost.Value;
+                if (player.IsHost)
+                {
+                    StopHost(player);
+                }
+                
 
                 user.Locatie = 0;
                 user.Rule_19 = false;
