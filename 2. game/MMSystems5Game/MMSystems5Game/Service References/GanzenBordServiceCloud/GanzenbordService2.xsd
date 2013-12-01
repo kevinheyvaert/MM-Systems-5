@@ -7,8 +7,11 @@
       <xs:element minOccurs="0" name="IsHost" type="xs:boolean" />
       <xs:element minOccurs="0" name="Lobby" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Locatie" type="xs:int" />
+      <xs:element minOccurs="0" name="PlaceGame" type="xs:int" />
       <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="PlayerNaam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rule_19" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Rule_52" type="xs:boolean" />
       <xs:element minOccurs="0" name="Verloren" type="xs:int" />
       <xs:element minOccurs="0" name="Wachtwoord" nillable="true" type="xs:string" />
     </xs:sequence>

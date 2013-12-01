@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    
+
     <Grid  >
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Achtergrond.jpeg"></ImageBrush>
@@ -31,8 +31,8 @@
                 <RowDefinition Height="25*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-  
-            
+
+
             <Grid  x:Name="bord" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -43,7 +43,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-  
+
                 <Image Grid.Column="0" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="1" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="2" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
@@ -119,7 +119,7 @@
                 <Image Grid.Column="3" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="4" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="5" Grid.Row="3" Source="Einde.png"></Image>
-                
+
                 <Image Source="SpelerBlauw.PNG" x:Name="blpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerGeel.PNG" x:Name="glpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerRood.PNG" x:Name="rdpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
@@ -128,24 +128,23 @@
 
 
             </Grid>
-            
 
-         
+
+
         </Grid>
-        
+
         <StackPanel Grid.Column="2" >
-            <Button IsEnabled="{Binding Turn}" BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
+            <Button  IsEnabled="{Binding Turn}" BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
                 <Button.Background>
                     <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
                 </Button.Background>
-             </Button>
+            </Button>
             <Button Click="Exit">Exit</Button>
-            <TextBlock FontSize="20" TextAlignment="Center" x:Name="PlaatsOpBord" Height="35"></TextBlock>
-            <TextBlock FontSize="20" TextAlignment="Center" x:Name="AantalDobbelsteen" Height="35"></TextBlock>
         </StackPanel>
-        
-        
+
+
+
     </Grid>
-    
+
 
 </phone:PhoneApplicationPage>

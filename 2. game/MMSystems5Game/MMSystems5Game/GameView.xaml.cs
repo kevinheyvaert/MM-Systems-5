@@ -34,6 +34,9 @@ namespace MMSystems5Game
             blpion.DataContext = App.blauw;
             gpion.DataContext = App.groen;
             glpion.DataContext = App.geel;
+            //spelers.DataContext = App.gamestate;
+
+            
           //blablaba
 
            // App.client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
@@ -53,7 +56,7 @@ namespace MMSystems5Game
         public void Gooi(object sender, RoutedEventArgs e)
         {
 
-            App.client1.GooiAsync(App.player);
+            App.dice.dobbel(App.player);
 
             
             

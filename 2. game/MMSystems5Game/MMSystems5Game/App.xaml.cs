@@ -50,6 +50,7 @@ namespace MMSystems5Game
         public static LocatieVM groen;
         public static LocatieVM geel;
         public static BordVm bord;
+        public static Network connectie;
 
       
 
@@ -122,8 +123,9 @@ namespace MMSystems5Game
             start = new StartPlayVM();
             Status = new GameState();
             exitlobby = new ExitLobbyVM();
-
-
+            
+            
+            
             rood = new LocatieVM();
             blauw = new LocatieVM();
             groen = new LocatieVM();
@@ -244,6 +246,7 @@ namespace MMSystems5Game
                 System.Diagnostics.Debugger.Break();
             }
         }
+       
 
         // Code to execute on Unhandled Exceptions
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
