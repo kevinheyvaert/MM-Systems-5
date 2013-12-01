@@ -28,8 +28,6 @@ namespace MMSystems5Game
             set { _createstop = value; RaisePropChanged("createstop"); }
         }
 
-
-
         public void MaakLobby(GanzenBordServiceCloud.Player player)
         {
             try
@@ -37,8 +35,7 @@ namespace MMSystems5Game
                 App.client1.MaakLobbyAsync(player);
             }
             catch (Exception)
-            {
-                
+            {             
                 throw;
             }
             

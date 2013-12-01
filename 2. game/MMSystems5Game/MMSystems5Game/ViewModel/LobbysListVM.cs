@@ -14,8 +14,6 @@ namespace MMSystems5Game
 {
     public class LobbysListVM:BaseViewModel
     {
-
-
         public LobbysListVM()
         {
            App.client1.BeschikbareLobbysCompleted +=client1_BeschikbareLobbysCompleted;
@@ -27,8 +25,6 @@ namespace MMSystems5Game
             get { return _beschikbarelobbys; }
             set { _beschikbarelobbys = value; RaisePropChanged("BeschikbareLobbys"); }
         }
-
-       
 
         public GanzenBordServiceCloud.Lobby InfoLobby { get; set; }
         public GanzenBordServiceCloud.Lobby TemplateBind { get; set; }
@@ -43,8 +39,6 @@ namespace MMSystems5Game
        
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
         {
-
-
                 if (BeschikbareLobbys == null || BeschikbareLobbys.Count != e.Result.Count)
                 {
                     BeschikbareLobbys = e.Result;
@@ -53,9 +47,6 @@ namespace MMSystems5Game
                 {
                     App.start.Startclient();
                 }
-                
-
-           
         }
 
         public void GetLobbys()
@@ -64,11 +55,9 @@ namespace MMSystems5Game
             {
                 App.client1.BeschikbareLobbysAsync();
                 
-
             }
             catch (Exception)
-            {
-                
+            {                
                 throw;
             }
             

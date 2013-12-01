@@ -11,7 +11,6 @@ namespace MMSystems5Game
         public GameState()
         {
             App.client1.GamestateCompleted += client1_GamestateCompleted;
-            
         }
 
 
@@ -23,17 +22,17 @@ namespace MMSystems5Game
             {
                 App.dice.Turn = true;
                 App.KanGooien = true;
-
             }
 
             else if (App.player.PlayerId!=e.Result.turn.PlayerId)
 
             {
                 App.dice.Turn = false;
-
             }
-           
 
+            //Plaatsen van de pionen.
+            //Kleur van pionen wordt toegewezen aan de rangschikking van players in database
+           
             App.geel.PlaatsC = App.bord.Plaats[e.Result.players[0].Locatie, 0];
             App.geel.PlaatsR = App.bord.Plaats[e.Result.players[0].Locatie, 1];
              
@@ -42,8 +41,6 @@ namespace MMSystems5Game
                 {
                     App.blauw.PlaatsC = App.bord.Plaats[e.Result.players[1].Locatie, 0];
                     App.blauw.PlaatsR = App.bord.Plaats[e.Result.players[1].Locatie, 1];
-
-
 
                     if (e.Result.players.Count > 2)
                     {

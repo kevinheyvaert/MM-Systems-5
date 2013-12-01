@@ -30,9 +30,6 @@ namespace MMSystems5Game
 
                 App.timer.Stop();
                 App.start.Start(App.lobbylistvm.TemplateBind);
-                
-                
-            
 
         }
 

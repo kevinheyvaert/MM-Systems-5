@@ -17,22 +17,17 @@ namespace MMSystems5Game
     {
         public InloggenVM()
         {
-           App.client1.InloggenCompleted += client1_InloggenCompleted;
-            
-          
+           App.client1.InloggenCompleted += client1_InloggenCompleted;  
         }
-
-         
+  
         public void inloggen(string playernaam, string wachtwoord)
         {
             try
-            {
-                
+            {                
                 App.client1.InloggenAsync(playernaam, wachtwoord);
             }
             catch (Exception)
-            {
-                
+            {               
                 throw;
             }
            
@@ -53,7 +48,6 @@ namespace MMSystems5Game
             {
                 MessageBox.Show("Wachtwoord en of gebruikersnaam is niet juist");
             }
-
 
         }
 

@@ -12,9 +12,7 @@ namespace MMSystems5Game
 {
     public partial class MakeAccount : PhoneApplicationPage
     {
-        
-       
-        
+
         public MakeAccount()
         {
             InitializeComponent();    
