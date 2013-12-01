@@ -29,8 +29,8 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0">
             <!--listbox voor scores zetten-->
-            <StackPanel>
-                <ListBox x:Name="Highscores" ItemsSource="{Binding HighScore}" >
+            <StackPanel Margin="10,0,-10,129">
+                <ListBox x:Name="Highscores" ItemsSource="{Binding HighScore}" Height="480" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -44,10 +44,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="Back" HorizontalAlignment="Left" Margin="121,470,0,0" VerticalAlignment="Top" Click="Back" Width="226"/>
             </StackPanel>
-            
-           
+            <Button Content="Back" HorizontalAlignment="Left" Margin="121,502,0,0" VerticalAlignment="Top" Click="Back" Width="226"/>
+
 
 
         </Grid>
