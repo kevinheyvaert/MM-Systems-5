@@ -227,6 +227,7 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
+
                 // List<DTO.Player> playerList = new List<DTO.Player>();
 
                 DTO.Player player = new DTO.Player();
@@ -240,23 +241,21 @@ namespace MMSystems5Silverlight.Web
                             where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
                             select u).First();
 
+
+
                 player.PlayerId = user.PlayerId;
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
                 player.Locatie = user.Locatie;
+                player.Gewonnen = user.Gewonnen.Value;
+                player.Verloren = user.Verloren.Value;
+                StopHost(player);
 
-                if (user.IsHost.HasValue)
-                    player.IsHost = user.IsHost.Value;
+                user.Locatie = 0;
+                user.Rule_19 = false;
+                user.Rule_52 = false;
 
-                if (user.HostID.HasValue)
-                    player.HostID = user.HostID.Value;
-
-                if (user.Gewonnen.HasValue)
-                    player.Gewonnen = user.Gewonnen.Value;
-
-                if (user.Verloren.HasValue)
-                    player.Verloren = user.Verloren.Value;
-
+                db.SubmitChanges();
                 return player;
             }
 
@@ -268,13 +267,13 @@ namespace MMSystems5Silverlight.Web
 
         public DTO.Player MaakAccount(string naam, string wachtwoord)
         {
-            //check voor welk Id toekennen
+                //check voor welk Id toekennen
             var maxId = (from r in db.Players
                          select r.PlayerId).Max();
             playerid = maxId + 1;
-            // hieronder wordt een account aangemaakt
+
             try
-            {
+            {   
                 player.PlayerNaam = (string)naam;
                 player.Wachtwoord = (string)wachtwoord;
                 player.PlayerId = playerid;
@@ -282,18 +281,21 @@ namespace MMSystems5Silverlight.Web
                 player.Locatie = 0;
                 player.Rule_19 = false;
                 player.Rule_52 = false;
+                player.Gewonnen = 0;
+                player.Verloren = 0;
                 db.Players.InsertOnSubmit(player);
                 db.SubmitChanges();
 
                 return Inloggen(naam, wachtwoord);
-            }
 
+            }
             catch (Exception)
             {
+
                 return null;
             }
         }
-
+        
         public List<DTO.Lobby> BeschikbareLobbys()
         {
             try
@@ -709,6 +711,26 @@ namespace MMSystems5Silverlight.Web
             {
                 throw;
             }
+        }
+
+        public List<DTO.Player> HighScore()
+        {
+            List<DTO.Player> Spelers = new List<DTO.Player>();
+            var players = (from p in db.Players
+                           orderby p.Gewonnen / p.Verloren
+                           select p);
+
+            foreach (var item in players)
+            {
+
+                if (item.Gewonnen.Value != 0 || item.Verloren.Value != 0)
+                {
+                    Spelers.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam, Gewonnen = item.Gewonnen.Value, Verloren = item.Verloren.Value });
+                }
+
+            }
+
+            return Spelers;
         }
 
     }

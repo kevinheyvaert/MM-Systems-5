@@ -41,7 +41,7 @@ namespace MMSystems5Game
         {
             if (App.KanGooien)
             {
-                App.KanGooien = false;
+               
                 App.client1.GooiAsync(player);
             }
         }

@@ -47,6 +47,9 @@ namespace MMSystems5Silverlight.Web
         [OperationContract]
         DTO.GameState Gamestate(DTO.Player player);
         
+        [OperationContract]
+        List<DTO.Player> HighScore();
+        
         
         //[DataContract]
         //public class Bord

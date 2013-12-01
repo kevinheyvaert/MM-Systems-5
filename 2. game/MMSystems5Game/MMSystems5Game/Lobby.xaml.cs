@@ -60,10 +60,6 @@ namespace MMSystems5Game
             
         }
 
-        private void jn_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
 
         private void join_Click(object sender, RoutedEventArgs e)
         {

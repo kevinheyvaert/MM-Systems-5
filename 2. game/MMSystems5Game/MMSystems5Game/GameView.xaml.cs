@@ -47,17 +47,16 @@ namespace MMSystems5Game
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
             App.stophost.StopHost(App.player);
             App.exitlobby.ExitLobby(App.player);
+            App.gametimer.Stop();
         }
 
         public void Gooi(object sender, RoutedEventArgs e)
         {
 
-<<<<<<< HEAD
+            
             App.dice.dobbel(App.player);
+            App.KanGooien = false;
 
-=======
-            App.client1.GooiAsync(App.player); 
->>>>>>> abdce57b8cd635200dcd9d74e98bf48ecc5f820b
             
         } 
     }

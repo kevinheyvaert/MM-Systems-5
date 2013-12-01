@@ -51,18 +51,10 @@ namespace MMSystems5Game
         public static LocatieVM groen;
         public static LocatieVM geel;
         public static BordVm bord;
-<<<<<<< HEAD
+        public static HighScores highscore;
+
         public static Network connectie;
 
-      
-
-        
-
-       
-
-=======
-     
->>>>>>> abdce57b8cd635200dcd9d74e98bf48ecc5f820b
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -129,18 +121,13 @@ namespace MMSystems5Game
             start = new StartPlayVM();
             Status = new GameState();
             exitlobby = new ExitLobbyVM();
-<<<<<<< HEAD
-            
-            
-            
-=======
 
->>>>>>> abdce57b8cd635200dcd9d74e98bf48ecc5f820b
             rood = new LocatieVM();
             blauw = new LocatieVM();
             groen = new LocatieVM();
             geel = new LocatieVM();
             bord = new BordVm();
+            highscore = new HighScores();
 
 
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;

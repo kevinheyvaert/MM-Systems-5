@@ -15,6 +15,7 @@ namespace MMSystems5Game
         public HighScores()
         {
             InitializeComponent();
+            Highscores.DataContext = App.highscore;
         }
 
         private void Back(object sender, RoutedEventArgs e)

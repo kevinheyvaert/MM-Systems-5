@@ -30,11 +30,14 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0">
             <!--listbox voor scores zetten-->
             <StackPanel>
-                <ListBox x:Name="Highscores" ItemsSource="{Binding}" >
+                <ListBox x:Name="Highscores" ItemsSource="{Binding HighScore}" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding}"></TextBlock>
+                                <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                                <TextBlock Text="{Binding Gewonnen }"></TextBlock>
+                                <TextBlock Text="{Binding Verloren }"></TextBlock>
+
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

@@ -96,6 +96,7 @@
     <Compile Include="ViewModel\Dice.cs" />
     <Compile Include="ViewModel\ExitLobbyVM.cs" />
     <Compile Include="ViewModel\GameState.cs" />
+    <Compile Include="ViewModel\HighScoreVM.cs" />
     <Compile Include="ViewModel\InloggenVM.cs" />
     <Compile Include="ViewModel\JoinVM.cs" />
     <Compile Include="ViewModel\LobbysListVM.cs" />
