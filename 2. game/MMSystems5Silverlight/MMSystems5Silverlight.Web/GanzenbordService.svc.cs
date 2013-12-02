@@ -81,8 +81,7 @@ namespace MMSystems5Silverlight.Web
 
                 else if (speler.Locatie == 63)
                 {
-                    //Einde(player);
-                    speler.Locatie = 62;
+                    Einde(player); 
                 }
 
                 DobbelEnLocatie.Add(speler.Locatie);
@@ -517,7 +516,6 @@ namespace MMSystems5Silverlight.Web
             }
         }
 
-
         public void StopHost(DTO.Player player)
         {
             try
@@ -534,7 +532,7 @@ namespace MMSystems5Silverlight.Web
                     item.Locatie = 0;
                     item.Rule_19 = false;
                     item.Rule_52 = false;
-                    db.SubmitChanges();
+                    
 
                 }
                 // lobby wordt gewist uit de database
