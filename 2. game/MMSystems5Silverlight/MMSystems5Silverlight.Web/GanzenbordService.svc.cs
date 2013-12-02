@@ -215,7 +215,7 @@ namespace MMSystems5Silverlight.Web
                     item.Rule_52 = false;
                     item.Rule_19 = false;
                 }
-                db.SubmitChanges();
+                
 
             }
             var lobby = (from l in db.Lobbis
@@ -232,20 +232,17 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-                // List<DTO.Player> playerList = new List<DTO.Player>();
+               
 
                 DTO.Player player = new DTO.Player();
-
-                // look for player
-                //var usercontrol = from u in db.Players
-                //                  where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
-                //                  select new { u.PlayerNaam, u.Gewonnen, u.Verloren, u.Wachtwoord, u.PlayerId, u.Lobby, u.IsHost };
-
+                
                 var user = (from u in db.Players
                             where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
                             select u).First();
 
-
+                
+                    StopHost(player);
+                
 
                 player.PlayerId = user.PlayerId;
                 player.PlayerNaam = user.PlayerNaam;
@@ -263,12 +260,6 @@ namespace MMSystems5Silverlight.Web
                 }
                
                 player.IsHost = user.IsHost.Value;
-                if (player.IsHost)
-                {
-                    StopHost(player);
-                }
-                
-
                 user.Locatie = 0;
                 user.Rule_19 = false;
                 user.Rule_52 = false;
@@ -276,7 +267,9 @@ namespace MMSystems5Silverlight.Web
                 
 
                 db.SubmitChanges();
+                player.IsHost = false;
                 return player;
+               
             }
 
             catch (Exception)
@@ -531,6 +524,7 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
+               
                 var stophost = (from s in db.Players
                                 where s.HostID == player.PlayerId
                                 select s);
@@ -551,7 +545,11 @@ namespace MMSystems5Silverlight.Web
                                  where s.HostID == player.PlayerId
                                  select s).First();
 
-                db.Lobbis.DeleteOnSubmit(stoplobby);
+                if (stoplobby!=null)
+                {
+                    db.Lobbis.DeleteOnSubmit(stoplobby);
+                }
+               
                 db.SubmitChanges();
             }
             catch (Exception)
@@ -595,10 +593,6 @@ namespace MMSystems5Silverlight.Web
             var players = (from p in db.Players
                            where p.HostID == lobby.HostID
                            select p).Count();
-
-            var lijstspeler = (from l in db.Players
-                               where l.HostID == player.HostID
-                               select l);
 
             if (lobby.WhosTunrId.HasValue)
             {
