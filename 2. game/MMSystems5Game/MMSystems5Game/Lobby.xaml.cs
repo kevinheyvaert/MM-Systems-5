@@ -23,8 +23,14 @@ namespace MMSystems5Game
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+            if (App.player.IsHost)
+            {
                 App.timer.Stop();
                 App.start.Start(App.lobbylistvm.TemplateBind);
+            }
+            else
+                play.IsEnabled = false;
+               
 
         }
 
@@ -38,9 +44,10 @@ namespace MMSystems5Game
               
                 join.DataContext = App.lobbylistvm;
                 create.DataContext = App.MaakLobby;
-                play.IsEnabled = false;
-  
-                App.timer.Start();  
+                play.IsEnabled = App.Startspel;
+                App.plaats=true;  
+                App.timer.Start();
+                App.gametimer.Stop();
             }
             catch (Exception)
             {

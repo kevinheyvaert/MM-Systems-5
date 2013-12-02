@@ -25,6 +25,11 @@ namespace MMSystems5Game
            
         }
 
+        public void navigatielobby()
+        {
+            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("Lobby"), UriKind.Relative));
+        }
+
         public void MaakAan(string playernaam, string wachtwoord)
         {
             try

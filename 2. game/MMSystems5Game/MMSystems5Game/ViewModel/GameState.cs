@@ -18,6 +18,14 @@ namespace MMSystems5Game
         {
             App.gamestate = e.Result;
 
+            if (!App.gamestate.Start)
+            {
+                if (!App.plaats)
+                {
+                    App.maakaccount.navigatielobby();
+                }
+            }
+    
             if (App.player.PlayerId==e.Result.turn.PlayerId)
             {
                 App.dice.Turn = true;

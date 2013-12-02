@@ -27,7 +27,8 @@ namespace MMSystems5Game
         public static GanzenBordServiceCloud.Lobby lobby;
         public static GanzenBordServiceCloud.GameState gamestate;
         public static bool KanGooien = false;
-       
+        public static bool plaats = false;
+        public static bool Startspel = false;
         public static InloggenVM login;
         public static MaakAccountVM maakaccount;
 

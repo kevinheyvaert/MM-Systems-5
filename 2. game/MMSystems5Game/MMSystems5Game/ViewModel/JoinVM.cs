@@ -29,6 +29,7 @@ namespace MMSystems5Game
                     App.client1.JoinLobbyAsync(lobby, player);
                     App.player.Lobby = lobby.HostPlayer;
                     App.player.HostID = lobby.HostID;
+                    App.MaakLobby.createstop = "Create Lobby";
                 }
                 
             }

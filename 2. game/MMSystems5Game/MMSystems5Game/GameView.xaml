@@ -147,7 +147,7 @@
                 </Button>
                 <Button Click="Exit">Exit</Button>
             </StackPanel>
-            <ListBox Grid.Row="1" x:Name="spelers" ItemsSource="{Binding players}">
+            <ListBox Grid.Row="1" x:Name="spelers" ItemsSource="{Binding players}" Loaded="spelers_Loaded">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>

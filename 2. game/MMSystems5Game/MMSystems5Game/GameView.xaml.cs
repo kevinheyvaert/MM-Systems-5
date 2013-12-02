@@ -21,12 +21,11 @@ namespace MMSystems5Game
     {
        // GanzenBordServiceCloud.GanzenbordServiceClient client;
         
-        Player Speler;
         public GameView()
         {
             InitializeComponent();
 
-            Speler = new Player();
+            
            // this.DataContext = Speler;
             dobbel.DataContext = App.dice;
             rdpion.DataContext = App.rood;
@@ -56,6 +55,11 @@ namespace MMSystems5Game
             App.KanGooien = false;
 
             
+        }
+
+        private void spelers_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.plaats = false;
         } 
     }
 }
