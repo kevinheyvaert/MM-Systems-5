@@ -36,8 +36,15 @@
                 <ListBox  ItemsSource="{Binding BeschikbareLobbys}" x:Name="ListAvaibleLobbys" SelectedItem="{Binding InfoLobby, Mode=TwoWay}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                         <StackPanel  Background="Black" Orientation="Horizontal">
-                                    <TextBlock Margin="10" Text="{Binding HostPlayer }"></TextBlock>
+                         <StackPanel  Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource=""></ImageBrush>
+                                    </Grid.Background>
+                                </Grid>
+                                <TextBlock Margin="10" Text="{Binding HostPlayer }"></TextBlock>
+                                
+                                    
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

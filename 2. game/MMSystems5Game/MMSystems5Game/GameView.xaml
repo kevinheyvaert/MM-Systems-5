@@ -151,7 +151,6 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock>hallo</TextBlock>
                             <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
                         </StackPanel>
                         

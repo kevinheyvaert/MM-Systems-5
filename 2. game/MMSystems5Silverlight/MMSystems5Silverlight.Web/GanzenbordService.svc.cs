@@ -391,13 +391,15 @@ namespace MMSystems5Silverlight.Web
 
         public List<DTO.Player> LobbyInfo(DTO.Lobby lobby)
         {
+            List<DTO.Player> lobbyinfo = new List<DTO.Player>();
             try
             {
+               
                 var spelersinlobby = (from s in db.Players
                                       where s.Lobby == lobby.HostPlayer
                                       select new { s.PlayerNaam });
                 //geeft een lijst van spelers in een lobby
-                List<DTO.Player> lobbyinfo = new List<DTO.Player>();
+                
                 foreach (var item in spelersinlobby)
                 {
                     lobbyinfo.Add(new DTO.Player() { PlayerNaam = item.PlayerNaam });
@@ -407,7 +409,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                throw;
+                return lobbyinfo;
             }
         }
 

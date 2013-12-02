@@ -38,6 +38,16 @@ namespace MMSystems5Game
                             {
                                 MessageBox.Show("U hebt Verloren :(");
                             }
+
+                            if (item.IsHost)
+                            {
+                                App.stophost.StopHost(App.player);
+                            }
+                            if (!item.IsHost)
+                            {
+                                App.exitlobby.ExitLobby(App.player);
+                            }
+                            App.gametimer.Stop();
                         }
                     }
                     App.maakaccount.navigatielobby();                   
