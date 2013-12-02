@@ -42,8 +42,8 @@ namespace MMSystems5Game
         private void Exit(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
-            App.exitlobby.ExitLobby(App.player);
-            App.gametimer.Stop();
+            
+
         }
 
         public void Gooi(object sender, RoutedEventArgs e)

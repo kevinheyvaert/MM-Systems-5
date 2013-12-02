@@ -240,46 +240,54 @@ namespace MMSystems5Silverlight.Web
                             where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
                             select u).First();
 
-                
-                    
-                
 
-                player.PlayerId = user.PlayerId;
-                player.PlayerNaam = user.PlayerNaam;
-                player.Lobby = user.Lobby;
-                if (user.HostID.HasValue)
-                {
-                    player.HostID = user.HostID.Value;
-                }
-                
-                player.Locatie = user.Locatie;
-                StopHost(player);
-                if (user.Gewonnen.HasValue)
-                {
-                    player.Gewonnen = user.Gewonnen.Value;
-                }
 
-                if (user.Verloren.HasValue)
-                {
-                    player.Verloren = user.Verloren.Value;
-                }
-               
-                
-                user.Locatie = 0;
-                user.Rule_19 = false;
-                user.Rule_52 = false;
-                user.IsHost = false;
-                
 
-                db.SubmitChanges();
-                player.IsHost = false;
-                return player;
+                if (user != null)
+                {
+
+
+                    player.PlayerId = user.PlayerId;
+                    player.PlayerNaam = user.PlayerNaam;
+                    player.Lobby = user.Lobby;
+                    if (user.HostID.HasValue)
+                    {
+                        player.HostID = user.HostID.Value;
+                    }
+
+                    player.Locatie = user.Locatie;
+                    StopHost(player);
+                    if (user.Gewonnen.HasValue)
+                    {
+                        player.Gewonnen = user.Gewonnen.Value;
+                    }
+
+                    if (user.Verloren.HasValue)
+                    {
+                        player.Verloren = user.Verloren.Value;
+                    }
+
+
+                    user.Locatie = 0;
+                    user.Rule_19 = false;
+                    user.Rule_52 = false;
+                    user.IsHost = false;
+
+
+                    db.SubmitChanges();
+                    player.IsHost = false;
+                    return player;
+                }
+                else
+                    return null;
+                   
+                
                
             }
 
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 
@@ -568,6 +576,7 @@ namespace MMSystems5Silverlight.Web
             var Speler = (from s in db.Players
                           where s.HostID == lobby.HostID
                           select s);
+           
             foreach (var item in Speler)
             {
                 item.Locatie = 0;

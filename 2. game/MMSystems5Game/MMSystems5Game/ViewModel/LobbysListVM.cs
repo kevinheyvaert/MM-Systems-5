@@ -43,6 +43,8 @@ namespace MMSystems5Game
                 {
                     BeschikbareLobbys = e.Result;
                 }
+
+                 
                 if (App.gamestate.Start)
                 {
                     App.start.Startclient();
@@ -54,6 +56,7 @@ namespace MMSystems5Game
                 if (App.player.IsHost)
                 {
                     App.MaakLobby.createstop = "Stop Lobby";
+                    
                 }
         }
 

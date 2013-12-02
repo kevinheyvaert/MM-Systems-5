@@ -23,6 +23,7 @@ namespace MMSystems5Game
             try
             {
                App.client1.StopHostAsync(player);
+               App.gametimer.Stop();
             }
             catch (Exception)
             {               

@@ -28,7 +28,8 @@ namespace MMSystems5Game
 
         public void Start(GanzenBordServiceCloud.Lobby lobby)
         {
-            App.client1.StartAsync(lobby);
+            App.lobby.HostID = App.player.PlayerId;
+            App.client1.StartAsync(App.lobby);
         }
 
         public void Startclient()
