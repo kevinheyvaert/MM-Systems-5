@@ -42,7 +42,6 @@ namespace MMSystems5Game
         private void Exit(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
-            App.stophost.StopHost(App.player);
             App.exitlobby.ExitLobby(App.player);
             App.gametimer.Stop();
         }
@@ -53,13 +52,16 @@ namespace MMSystems5Game
             
             App.dice.dobbel(App.player);
             App.KanGooien = false;
+            App.plaats = false;
 
             
         }
 
         private void spelers_Loaded(object sender, RoutedEventArgs e)
         {
-            App.plaats = false;
-        } 
+            
+        }
+
+        
     }
 }

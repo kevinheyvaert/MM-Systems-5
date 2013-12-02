@@ -205,10 +205,16 @@ namespace MMSystems5Silverlight.Web
                 if (speler.PlayerId == item.PlayerId)
                 {
                     speler.Gewonnen++;
+                    speler.Rule_19 = false;
+                    speler.Locatie = 0;
+                    speler.Rule_52 = false;
                 }
                 else
                 {
                     item.Verloren++;
+                    item.Locatie = 0;
+                    item.Rule_52 = false;
+                    item.Rule_19 = false;
                 }
                 db.SubmitChanges();
 
@@ -246,6 +252,7 @@ namespace MMSystems5Silverlight.Web
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
                 player.Locatie = user.Locatie;
+                player.IsHost = false;
                 if (user.Gewonnen.HasValue)
                 {
                     player.Gewonnen = user.Gewonnen.Value;
@@ -266,6 +273,7 @@ namespace MMSystems5Silverlight.Web
                 user.Locatie = 0;
                 user.Rule_19 = false;
                 user.Rule_52 = false;
+                
 
                 db.SubmitChanges();
                 return player;
@@ -720,7 +728,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                throw;
+                return gamestate;
             }
         }
 
