@@ -47,6 +47,14 @@ namespace MMSystems5Game
                 {
                     App.start.Startclient();
                 }
+                if (!App.player.IsHost)
+                {
+                    App.MaakLobby.createstop = "Create Lobby";
+                }
+                if (App.player.IsHost)
+                {
+                    App.MaakLobby.createstop = "Stop Lobby";
+                }
         }
 
         public void GetLobbys()

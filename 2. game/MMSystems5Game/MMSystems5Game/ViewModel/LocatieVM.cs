@@ -7,6 +7,7 @@ namespace MMSystems5Game
 {
    public class LocatieVM:BaseViewModel
     {
+
         private int _plaatsc;
         public int PlaatsC 
         {
@@ -20,5 +21,13 @@ namespace MMSystems5Game
             get { return _plaatsr; }
             set { _plaatsr = value; RaisePropChanged("PlaatsR"); }
         }
+
+        public LocatieVM()
+        {
+            PlaatsC = 0;
+            PlaatsR = 6;
+        }
+       
+
     }
 }

@@ -16,12 +16,7 @@ namespace MMSystems5Game
         {
             
             InitializeComponent();
-            ListAvaibleLobbys.DataContext = App.lobbylistvm;
-            LijstSpelersInLobby.DataContext = App.LobbyInfo;
-            play.DataContext = App.player;
-            join.DataContext = App.lobbylistvm;
-            create.DataContext = App.MaakLobby;
-  
+       
         }
 
 
@@ -38,7 +33,13 @@ namespace MMSystems5Game
         {
             try
             {
-                
+                ListAvaibleLobbys.DataContext = App.lobbylistvm;
+                LijstSpelersInLobby.DataContext = App.LobbyInfo;
+              
+                join.DataContext = App.lobbylistvm;
+                create.DataContext = App.MaakLobby;
+                play.IsEnabled = false;
+  
                 App.timer.Start();  
             }
             catch (Exception)
@@ -54,9 +55,14 @@ namespace MMSystems5Game
             if (App.player.IsHost)
             {
                 App.stophost.StopHost(App.player);
+                play.IsEnabled = false;
             }
             else
-             App.MaakLobby.MaakLobby(App.player);
+            {
+                App.MaakLobby.MaakLobby(App.player);
+                play.IsEnabled = true;
+            }
+          
             
         }
 
@@ -65,7 +71,8 @@ namespace MMSystems5Game
         {
             
             App.join.Join(App.lobbylistvm.TemplateBind, App.player);
-            App.gametimer.Start();
+            
+           
 
         }
     }

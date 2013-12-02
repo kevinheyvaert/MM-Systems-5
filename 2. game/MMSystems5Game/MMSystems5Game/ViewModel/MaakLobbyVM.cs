@@ -6,7 +6,8 @@ using System.Text;
 namespace MMSystems5Game
 {
     public class MaakLobbyVM:BaseViewModel
-    {
+    
+    {   
         public MaakLobbyVM()
         {
             App.client1.MaakLobbyCompleted += client1_MaakLobbyCompleted;

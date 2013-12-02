@@ -33,12 +33,10 @@ namespace MMSystems5Game
             blpion.DataContext = App.blauw;
             gpion.DataContext = App.groen;
             glpion.DataContext = App.geel;
-            //spelers.DataContext = App.gamestate;
 
-            
-          //blablaba
 
-           // App.client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
+            App.gamestate.players=new System.Collections.ObjectModel.ObservableCollection<GanzenBordServiceCloud.Player>();
+            spelers.DataContext = App.gamestate;
            
         }
 

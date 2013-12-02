@@ -133,14 +133,35 @@
 
         </Grid>
 
-        <StackPanel Grid.Column="2" >
-            <Button  IsEnabled="{Binding Turn}" BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
-                <Button.Background>
-                    <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
-                </Button.Background>
-            </Button>
-            <Button Click="Exit">Exit</Button>
-        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel  Grid.Row="0" Orientation="Vertical" >
+                <Button  IsEnabled="{Binding Turn}" BorderThickness="0" Height="150" Width="150" x:Name="dobbel" Content="{Binding DobbelAantal}"   Click="Gooi">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="dobbelsteen.png" ></ImageBrush>
+                    </Button.Background>
+                </Button>
+                <Button Click="Exit">Exit</Button>
+            </StackPanel>
+            <ListBox Grid.Row="1" x:Name="spelers" ItemsSource="{Binding players}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock>hallo</TextBlock>
+                            <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        
+        
+        
 
 
 
