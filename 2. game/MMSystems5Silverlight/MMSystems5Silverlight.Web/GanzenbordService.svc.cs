@@ -241,14 +241,19 @@ namespace MMSystems5Silverlight.Web
                             select u).First();
 
                 
-                    StopHost(player);
+                    
                 
 
                 player.PlayerId = user.PlayerId;
                 player.PlayerNaam = user.PlayerNaam;
                 player.Lobby = user.Lobby;
+                if (user.HostID.HasValue)
+                {
+                    player.HostID = user.HostID.Value;
+                }
+                
                 player.Locatie = user.Locatie;
-                player.IsHost = false;
+                StopHost(player);
                 if (user.Gewonnen.HasValue)
                 {
                     player.Gewonnen = user.Gewonnen.Value;
@@ -259,7 +264,7 @@ namespace MMSystems5Silverlight.Web
                     player.Verloren = user.Verloren.Value;
                 }
                
-                player.IsHost = user.IsHost.Value;
+                
                 user.Locatie = 0;
                 user.Rule_19 = false;
                 user.Rule_52 = false;
