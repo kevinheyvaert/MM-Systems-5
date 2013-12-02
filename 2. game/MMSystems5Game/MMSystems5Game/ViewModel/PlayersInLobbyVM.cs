@@ -36,7 +36,11 @@ namespace MMSystems5Game
 
         void client1_LobbyInfoCompleted(object sender, GanzenBordServiceCloud.LobbyInfoCompletedEventArgs e)
         {
-            LijstSpelersInLobby = e.Result;
+            if (e.Result!=null)
+            {
+               LijstSpelersInLobby = e.Result; 
+            }
+           
         }
 
         public void infolobby(GanzenBordServiceCloud.Lobby lobby)
