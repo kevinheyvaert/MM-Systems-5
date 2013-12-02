@@ -23,7 +23,8 @@ namespace MMSystems5Game
         void client1_StartCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             Startclient();
-            }
+           
+        }
 
         public void Start(GanzenBordServiceCloud.Lobby lobby)
         {

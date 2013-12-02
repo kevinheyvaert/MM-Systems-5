@@ -45,9 +45,9 @@ namespace MMSystems5Game
                 join.DataContext = App.lobbylistvm;
                 create.DataContext = App.MaakLobby;
                 play.IsEnabled = App.Startspel;
-                App.plaats=true;  
                 App.timer.Start();
                 App.gametimer.Stop();
+                App.plaats = true;
             }
             catch (Exception)
             {
@@ -63,11 +63,13 @@ namespace MMSystems5Game
             {
                 App.stophost.StopHost(App.player);
                 play.IsEnabled = false;
+                App.plaats = true;
             }
             else
             {
                 App.MaakLobby.MaakLobby(App.player);
                 play.IsEnabled = true;
+                App.plaats = true;
             }
           
             

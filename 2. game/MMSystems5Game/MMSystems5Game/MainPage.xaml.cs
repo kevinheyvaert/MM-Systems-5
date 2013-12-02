@@ -22,7 +22,6 @@ namespace MMSystems5Game
         {
             InitializeComponent();
         }
-
         private void Login(object sender, RoutedEventArgs e)
         {
             App.login.inloggen(Username.Text, Password.Text);

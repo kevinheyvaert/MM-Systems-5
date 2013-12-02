@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Phone.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace MMSystems5Game
 {
@@ -18,11 +20,28 @@ namespace MMSystems5Game
         {
             App.gamestate = e.Result;
 
+            
             if (!App.gamestate.Start)
             {
+                 
                 if (!App.plaats)
                 {
-                    App.maakaccount.navigatielobby();
+                    foreach (var item in App.gamestate.players)
+                    {
+                        if (item.PlayerId == App.player.PlayerId)
+                        {
+                            if (item.Locatie == 63)
+                            {
+                                MessageBox.Show("U hebt gewonnen");
+                            }
+                            else if (item.Locatie!=63)
+                            {
+                                MessageBox.Show("U hebt Verloren :(");
+                            }
+                        }
+                    }
+                    App.maakaccount.navigatielobby();                   
+                    
                 }
             }
     

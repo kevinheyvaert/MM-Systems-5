@@ -17,6 +17,7 @@ namespace MMSystems5Game
         void client1_JoinLobbyCompleted(object sender, GanzenBordServiceCloud.JoinLobbyCompletedEventArgs e)
         {
             App.player = e.Result;
+            App.plaats = true;
             App.gametimer.Start();
         }
 

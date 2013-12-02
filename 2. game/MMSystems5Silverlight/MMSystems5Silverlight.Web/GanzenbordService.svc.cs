@@ -204,9 +204,8 @@ namespace MMSystems5Silverlight.Web
             {
                 if (speler.PlayerId == item.PlayerId)
                 {
-                    speler.Gewonnen++;
+                    speler.Gewonnen++;             
                     speler.Rule_19 = false;
-                    speler.Locatie = 0;
                     speler.Rule_52 = false;
                 }
                 else
@@ -273,6 +272,7 @@ namespace MMSystems5Silverlight.Web
                 user.Locatie = 0;
                 user.Rule_19 = false;
                 user.Rule_52 = false;
+                user.IsHost = false;
                 
 
                 db.SubmitChanges();
@@ -364,6 +364,7 @@ namespace MMSystems5Silverlight.Web
                 isHost.Lobby = player.PlayerNaam;
                 isHost.IsHost = true;
                 isHost.HostID = player.PlayerId;
+                
                 db.SubmitChanges();
                 if (player.Lobby != null)
                 {
@@ -372,6 +373,7 @@ namespace MMSystems5Silverlight.Web
                 player.HostID = player.PlayerId;
                 player.Lobby = player.PlayerNaam;
                 player.IsHost = true;
+               
                 return player;
 
             }
@@ -485,6 +487,7 @@ namespace MMSystems5Silverlight.Web
                 {
                     join.Lobby = lobby.HostPlayer;
                     join.HostID = lobby.HostID;
+                    join.Locatie = 0;
                     db.SubmitChanges();
                     updatelobby(lobby.HostID);
                 }
@@ -559,10 +562,20 @@ namespace MMSystems5Silverlight.Web
 
         public void Start(DTO.Lobby lobby)
         {
+            var Speler = (from s in db.Players
+                          where s.HostID == lobby.HostID
+                          select s);
+            foreach (var item in Speler)
+            {
+                item.Locatie = 0;
+            }
+            db.SubmitChanges();
             var lob = (from l in db.Lobbis
                        where l.HostID == lobby.HostID
                        select l).FirstOrDefault();
             //spel in de lobby wordt gestart
+           
+            
             lob.Start = true;
             lob.CanJoinLobby = false;
             lob.WhosTunrId = 0;
