@@ -28,11 +28,14 @@ namespace MMSystems5Silverlight.Web.DTO
         [DataMember]
         public int  HostID { get; set; }
         [DataMember]
-        public int PlaceGame { get; set; }
-        [DataMember]
         public bool Rule_19 { get; set; }
         [DataMember]
         public bool Rule_52 { get; set; }
+        [DataMember]
+        public bool Rule_31 { get; set; }
+        [DataMember]
+        public int Diced { get; set; }
+
 
     }
 }

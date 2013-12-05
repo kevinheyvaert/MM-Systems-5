@@ -535,9 +535,11 @@ namespace MMSystems5Silverlight.Web
 		
 		private System.Nullable<bool> _Rule_19;
 		
-		private System.Nullable<int> _PlaceGame;
-		
 		private System.Nullable<bool> _Rule_52;
+		
+		private System.Nullable<bool> _Rule_32;
+		
+		private System.Nullable<int> _Diced;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -563,10 +565,12 @@ namespace MMSystems5Silverlight.Web
     partial void OnHostIDChanged();
     partial void OnRule_19Changing(System.Nullable<bool> value);
     partial void OnRule_19Changed();
-    partial void OnPlaceGameChanging(System.Nullable<int> value);
-    partial void OnPlaceGameChanged();
     partial void OnRule_52Changing(System.Nullable<bool> value);
     partial void OnRule_52Changed();
+    partial void OnRule_32Changing(System.Nullable<bool> value);
+    partial void OnRule_32Changed();
+    partial void OnDicedChanging(System.Nullable<int> value);
+    partial void OnDicedChanged();
     #endregion
 		
 		public Player()
@@ -774,26 +778,6 @@ namespace MMSystems5Silverlight.Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlaceGame", DbType="Int")]
-		public System.Nullable<int> PlaceGame
-		{
-			get
-			{
-				return this._PlaceGame;
-			}
-			set
-			{
-				if ((this._PlaceGame != value))
-				{
-					this.OnPlaceGameChanging(value);
-					this.SendPropertyChanging();
-					this._PlaceGame = value;
-					this.SendPropertyChanged("PlaceGame");
-					this.OnPlaceGameChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Rule 52]", Storage="_Rule_52", DbType="Bit")]
 		public System.Nullable<bool> Rule_52
 		{
@@ -810,6 +794,46 @@ namespace MMSystems5Silverlight.Web
 					this._Rule_52 = value;
 					this.SendPropertyChanged("Rule_52");
 					this.OnRule_52Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Rule 32]", Storage="_Rule_32", DbType="Bit")]
+		public System.Nullable<bool> Rule_32
+		{
+			get
+			{
+				return this._Rule_32;
+			}
+			set
+			{
+				if ((this._Rule_32 != value))
+				{
+					this.OnRule_32Changing(value);
+					this.SendPropertyChanging();
+					this._Rule_32 = value;
+					this.SendPropertyChanged("Rule_32");
+					this.OnRule_32Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diced", DbType="Int")]
+		public System.Nullable<int> Diced
+		{
+			get
+			{
+				return this._Diced;
+			}
+			set
+			{
+				if ((this._Diced != value))
+				{
+					this.OnDicedChanging(value);
+					this.SendPropertyChanging();
+					this._Diced = value;
+					this.SendPropertyChanged("Diced");
+					this.OnDicedChanged();
 				}
 			}
 		}
