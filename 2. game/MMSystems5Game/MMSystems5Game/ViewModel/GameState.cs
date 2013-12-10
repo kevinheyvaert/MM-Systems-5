@@ -28,7 +28,14 @@ namespace MMSystems5Game
                 temp = 1;
             }
 
-
+            if (App.gamestate.turn.Locatie != e.Result.turn.Locatie)
+            {
+                App.gamestate = e.Result;
+                App.pionsetter.Start();
+                App.gametimer.Stop();
+            }
+           
+            
             if (App.gamestate.turn.PlayerId != e.Result.turn.PlayerId)
             {
                 App.gamestate = e.Result;
@@ -37,12 +44,7 @@ namespace MMSystems5Game
                
             }
 
-            if (App.gamestate.turn.Locatie != e.Result.turn.Locatie)
-            {
-                App.gamestate = e.Result;
-                App.pionsetter.Start();
-                App.gametimer.Stop();
-            }
+          
             
            
             

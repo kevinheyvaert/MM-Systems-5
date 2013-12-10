@@ -80,6 +80,8 @@
                 <Image Grid.Column="6" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="5" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="4" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
+                <it:AnimatedImage  Grid.Column="4" Grid.Row="0" x:Name="Gif2"  Source="{Binding AnimationImage2}" />
+
                 <Image Grid.Column="3" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="2" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="1" Grid.Row="0" Source="Plaatsbordrand2b.png"></Image>
@@ -92,7 +94,7 @@
                 <Image Grid.Column="1" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="2" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="3" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
-                <it:AnimatedImage  Grid.Column="3" Grid.Row="5" x:Name="Gif2"  Source="{Binding AnimationImage2}" />
+                <it:AnimatedImage  Grid.Column="3" Grid.Row="5" x:Name="Gif3"  Source="{Binding AnimationImage3}" />
 
                 <Image Grid.Column="4" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="5" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
@@ -105,6 +107,7 @@
                 <Image Grid.Column="6" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="5" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="4" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
+                <it:AnimatedImage  Grid.Column="4" Grid.Row="1" x:Name="Gif4"  Source="{Binding AnimationImage4}" />
                 <Image Grid.Column="3" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="2" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="1" Grid.Row="1" Source="Plaatsbordrandborderlb.png"></Image>
@@ -115,12 +118,15 @@
                 <Image Grid.Column="3" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="4" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="5" Grid.Row="4" Source="Plaatsbordrand2o.png"></Image>
+                <it:AnimatedImage  Grid.Column="5" Grid.Row="4" x:Name="Gif5"  Source="{Binding AnimationImage5}" />
                 <Image Grid.Column="6" Grid.Row="4" Source="Plaatsbordrandborder.png"></Image>
                 <Image Grid.Column="6" Grid.Row="3" Source="Plaatsbordrand2r.png"></Image>
                 <Image Grid.Column="6" Grid.Row="2" Source="Plaatsbordrandborderr.png"></Image>
                 <Image Grid.Column="5" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="4" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="3" Grid.Row="2" Source="Plaatsbordrand2b.png"></Image>
+                <it:AnimatedImage  Grid.Column="3" Grid.Row="2" x:Name="Gif6"  Source="{Binding AnimationImage6}" />
+
                 <Image Grid.Column="2" Grid.Row="2" Source="Plaatsbordrandborderlb.png"></Image>
                 <Image Grid.Column="2" Grid.Row="3" Source="Plaatsbordrandborderl.png"></Image>
                 <Image Grid.Column="3" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>

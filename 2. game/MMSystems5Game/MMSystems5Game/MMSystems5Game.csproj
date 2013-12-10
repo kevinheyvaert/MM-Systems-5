@@ -168,6 +168,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ViewModel\Gifs\hallo.gif" />
+    <Resource Include="ViewModel\Gifs\dead.gif" />
+    <Resource Include="ViewModel\Gifs\gevangen.gif" />
     <Resource Include="ViewModel\Gifs\falling.gif" />
     <Resource Include="ViewModel\Gifs\gans.gif" />
     <None Include="Properties\AppManifest.xml" />
