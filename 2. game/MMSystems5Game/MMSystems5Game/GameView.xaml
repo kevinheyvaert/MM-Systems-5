@@ -6,17 +6,21 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:it="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+    xmlns:vm="clr-namespace:MMSystems5Game.ViewModel"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    
+    
     
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-
-    <Grid  >
+    
+    <Grid  x:Name="fullscreen">
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="Achtergrond.jpeg"></ImageBrush>
         </Grid.Background>
@@ -63,6 +67,7 @@
                 <Image Grid.Column="4" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="5" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="6" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
+                <it:AnimatedImage  Grid.Column="6" Grid.Row="6" x:Name="Gif1"  Source="{Binding AnimationImage}" />
                 <Image Grid.Column="7" Grid.Row="6" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="8" Grid.Row="6" Source="Plaatsbordrandborder.png"></Image>
                 <Image Grid.Column="8" Grid.Row="5" Source="Plaatsbordrand2r.png"></Image>
@@ -87,6 +92,8 @@
                 <Image Grid.Column="1" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="2" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="3" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
+                <it:AnimatedImage  Grid.Column="3" Grid.Row="5" x:Name="Gif2"  Source="{Binding AnimationImage2}" />
+
                 <Image Grid.Column="4" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="5" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
                 <Image Grid.Column="6" Grid.Row="5" Source="Plaatsbordrand2o.png"></Image>
@@ -119,7 +126,7 @@
                 <Image Grid.Column="3" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="4" Grid.Row="3" Source="Plaatsbordrand2os.png"></Image>
                 <Image Grid.Column="5" Grid.Row="3" Source="Einde.png"></Image>
-                <MediaElement Height="30" Width="30"  ></MediaElement>
+
                 <Image Source="SpelerBlauw.PNG" x:Name="blpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerGeel.PNG" x:Name="glpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
                 <Image Source="SpelerRood.PNG" x:Name="rdpion" Grid.Column="{Binding Path=PlaatsC}" Grid.Row="{Binding Path=PlaatsR}"></Image>
@@ -147,16 +154,6 @@
                 </Button>
                 <Button Click="Exit">Exit</Button>
             </StackPanel>
-            <ListBox Grid.Row="1" x:Name="spelers" ItemsSource="{Binding players}" Loaded="spelers_Loaded">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding PlayerNaam}"></TextBlock>
-                        </StackPanel>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
         </Grid>
         
         

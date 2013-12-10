@@ -20,6 +20,8 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
     [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/MMSystems5Silverlight.Web.DTO")]
     public partial class Player : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int DicedField;
+        
         private int GewonnenField;
         
         private int HostIDField;
@@ -30,19 +32,32 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         
         private int LocatieField;
         
-        private int PlaceGameField;
-        
         private int PlayerIdField;
         
         private string PlayerNaamField;
         
         private bool Rule_19Field;
         
+        private bool Rule_31Field;
+        
         private bool Rule_52Field;
         
         private int VerlorenField;
         
         private string WachtwoordField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Diced {
+            get {
+                return this.DicedField;
+            }
+            set {
+                if ((this.DicedField.Equals(value) != true)) {
+                    this.DicedField = value;
+                    this.RaisePropertyChanged("Diced");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int Gewonnen {
@@ -110,19 +125,6 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PlaceGame {
-            get {
-                return this.PlaceGameField;
-            }
-            set {
-                if ((this.PlaceGameField.Equals(value) != true)) {
-                    this.PlaceGameField = value;
-                    this.RaisePropertyChanged("PlaceGame");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int PlayerId {
             get {
                 return this.PlayerIdField;
@@ -157,6 +159,19 @@ namespace MMSystems5Game.GanzenBordServiceCloud {
                 if ((this.Rule_19Field.Equals(value) != true)) {
                     this.Rule_19Field = value;
                     this.RaisePropertyChanged("Rule_19");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Rule_31 {
+            get {
+                return this.Rule_31Field;
+            }
+            set {
+                if ((this.Rule_31Field.Equals(value) != true)) {
+                    this.Rule_31Field = value;
+                    this.RaisePropertyChanged("Rule_31");
                 }
             }
         }

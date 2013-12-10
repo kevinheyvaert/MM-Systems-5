@@ -48,8 +48,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZLib.Phone">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ICSharpCode.SharpZLib.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Filtering">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.Filtering.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Bmp">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.IO.Bmp.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\ImageTools.Utils.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="PhoneCodeContractsAssemblies">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\PhoneCodeContractsAssemblies.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpZipLib.WindowsPhone7">
+      <HintPath>..\..\..\Documents\MM-Systems-5\2. game\MMSystems5Game\MMSystems5Game\SharpZipLib.WindowsPhone7.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows" />
@@ -94,6 +124,7 @@
     <Compile Include="ViewModel\Dice.cs" />
     <Compile Include="ViewModel\ExitLobbyVM.cs" />
     <Compile Include="ViewModel\GameState.cs" />
+    <Compile Include="ViewModel\GifViewer.cs" />
     <Compile Include="ViewModel\HighScoreVM.cs" />
     <Compile Include="ViewModel\InloggenVM.cs" />
     <Compile Include="ViewModel\JoinVM.cs" />
@@ -137,6 +168,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ViewModel\Gifs\falling.gif" />
+    <Resource Include="ViewModel\Gifs\gans.gif" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
     <None Include="Service References\GanzenBordServiceCloud\GanzenbordService.wsdl" />
@@ -158,7 +191,6 @@
     </Content>
     <Content Include="dobbelsteen.png" />
     <Content Include="Einde.png" />
-    <Content Include="ganzenbord.jpg" />
     <Content Include="Plaatsbordrand2b.png" />
     <Content Include="Plaatsbordrand2l.png" />
     <Content Include="Plaatsbordrand2o.png" />
