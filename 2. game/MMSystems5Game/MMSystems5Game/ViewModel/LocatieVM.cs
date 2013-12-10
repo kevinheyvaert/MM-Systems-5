@@ -10,7 +10,7 @@ namespace MMSystems5Game
     {
 
        public int playerid;
-       private int temploc = 0;
+       public int temploc = 0;
 
       
 
@@ -38,21 +38,10 @@ namespace MMSystems5Game
 
         public void lopen()
         {
-            if (temploc == App.gamestate.turn.Locatie)
-            {
-                App.gametimer.Start();
-                App.pionsetter.Stop();
-                
-            }
-            else
-            {
                 PlaatsC = App.bord.Plaats[temploc, 0];
                 PlaatsR = App.bord.Plaats[temploc, 1];
                 temploc++;
-            }
-
            
-            
         }
 
     }

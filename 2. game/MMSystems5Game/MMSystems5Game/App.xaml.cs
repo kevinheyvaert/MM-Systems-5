@@ -147,24 +147,37 @@ namespace MMSystems5Game
 
         void pionsetter_Tick(object sender, EventArgs e)
         {
-            if (App.gamestate.turn.PlayerId == App.rood.playerid)
+            if (gamestate.players.Count>=1)
             {
-                App.rood.lopen();
-            }
-            else if (App.gamestate.turn.PlayerId == App.blauw.playerid)
-            {
-                App.blauw.lopen();
-            }
+                if (App.gamestate.players[0].Locatie != App.geel.temploc)
+                {
+                    App.geel.lopen();
+                }
 
-            else if (App.gamestate.turn.PlayerId == App.groen.playerid)
-            {
-                App.groen.lopen();
-            }
+                if (gamestate.players.Count>1)
+                {
+                    if (App.gamestate.players[1].Locatie != App.blauw.temploc)
+                    {
+                        App.blauw.lopen();
+                    }
+                    if (gamestate.players.Count>2)
+                    {
+                        if (App.gamestate.players[2].Locatie != App.rood.temploc)
+                        {
+                            App.rood.lopen();
+                        }
+                        if (gamestate.players.Count > 3)
+                        {
 
-            else if (App.gamestate.turn.PlayerId == App.geel.playerid)
-            {
-                App.geel.lopen();
-            }
+                            if (App.gamestate.players[3].Locatie != App.groen.temploc)
+                            {
+                                App.groen.lopen();
+                            }
+
+                        }         
+                    }
+                }
+            }  
         }
 
    

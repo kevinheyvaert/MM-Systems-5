@@ -107,7 +107,7 @@
                 <Image Grid.Column="6" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="5" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="4" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
-                <it:AnimatedImage  Grid.Column="4" Grid.Row="1" x:Name="Gif4"  Source="{Binding AnimationImage4}" />
+                <Image Grid.Column="4" Grid.Row="1" Source="doolhof.gif"></Image>
                 <Image Grid.Column="3" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="2" Grid.Row="1" Source="Plaatsbordrand2b.png"></Image>
                 <Image Grid.Column="1" Grid.Row="1" Source="Plaatsbordrandborderlb.png"></Image>

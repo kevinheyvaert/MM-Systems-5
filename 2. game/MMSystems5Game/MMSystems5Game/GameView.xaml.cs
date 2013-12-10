@@ -35,9 +35,9 @@ namespace MMSystems5Game
             Gif1.DataContext = App.gifviewer;
             Gif2.DataContext = App.gifviewer;
             Gif3.DataContext = App.gifviewer;
-            Gif4.DataContext = App.gifviewer;
-            Gif5.DataContext = App.gifviewer;
-            Gif6.DataContext = App.gifviewer;
+           // Gif4.DataContext = App.gifviewer;
+            //Gif5.DataContext = App.gifviewer;
+            //Gif6.DataContext = App.gifviewer;
 
             App.gamestate.players=new System.Collections.ObjectModel.ObservableCollection<GanzenBordServiceCloud.Player>();
             //spelers.DataContext = App.gamestate;

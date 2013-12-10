@@ -22,35 +22,11 @@ namespace MMSystems5Game
 
         void client1_GamestateCompleted(object sender, GanzenBordServiceCloud.GamestateCompletedEventArgs e)
         {
-            if (temp==0)
-            {
-                App.gamestate = e.Result;
-                temp = 1;
-            }
-
-            if (App.gamestate.turn.Locatie != e.Result.turn.Locatie)
-            {
-                App.gamestate = e.Result;
-                App.pionsetter.Start();
-                App.gametimer.Stop();
-            }
            
             
-            if (App.gamestate.turn.PlayerId != e.Result.turn.PlayerId)
-            {
-                App.gamestate = e.Result;
-
-
-               
-            }
-
-          
-            
-           
-            
-
-            
-            
+               App.gamestate = e.Result;
+               App.pionsetter.Start();
+             
             if (!App.gamestate.Start)
             {
                  
@@ -95,13 +71,11 @@ namespace MMSystems5Game
 
             //Plaatsen van de pionen.
             //Kleur van pionen wordt toegewezen aan de rangschikking van players in database
+
             if (e.Result.players.Count==1)
             {
-                
                 App.geel.playerid = e.Result.players[0].PlayerId;
-            //App.geel.PlaatsC = App.bord.Plaats[e.Result.players[0].Locatie, 0];
-            //App.geel.PlaatsR = App.bord.Plaats[e.Result.players[0].Locatie, 1];
-             
+            
 
                 if (e.Result.players.Count > 1)
                 {
