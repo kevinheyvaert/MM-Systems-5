@@ -27,17 +27,23 @@ namespace MMSystems5Game
                 App.gamestate = e.Result;
                 temp = 1;
             }
-            if (e.Result.turn != null)
+
+
+            if (App.gamestate.turn.PlayerId != e.Result.turn.PlayerId)
             {
+                App.gamestate = e.Result;
 
 
-                if (App.gamestate.turn.PlayerId != e.Result.turn.PlayerId|| App.gamestate.turn.Locatie!=e.Result.turn.Locatie)
-                {
-                    App.gamestate = e.Result;
-                    App.pionsetter.Start();
-                    App.gametimer.Stop();
-                }
+               
             }
+
+            if (App.gamestate.turn.Locatie != e.Result.turn.Locatie)
+            {
+                App.gamestate = e.Result;
+                App.pionsetter.Start();
+                App.gametimer.Stop();
+            }
+            
            
             
 

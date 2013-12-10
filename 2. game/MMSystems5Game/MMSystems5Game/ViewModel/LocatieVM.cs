@@ -40,8 +40,9 @@ namespace MMSystems5Game
         {
             if (temploc == App.gamestate.turn.Locatie)
             {
-                App.pionsetter.Stop();
                 App.gametimer.Start();
+                App.pionsetter.Stop();
+                
             }
             else
             {
