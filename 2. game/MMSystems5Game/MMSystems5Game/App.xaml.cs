@@ -153,6 +153,10 @@ namespace MMSystems5Game
                 {
                     App.geel.lopen();
                 }
+                else if(App.gamestate.players[0].Locatie == App.geel.temploc)
+                {
+                    App.geel.tempOldLoc = App.geel.temploc; 
+                }
 
                 if (gamestate.players.Count>1)
                 {

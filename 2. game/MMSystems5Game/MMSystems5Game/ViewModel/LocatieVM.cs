@@ -11,6 +11,7 @@ namespace MMSystems5Game
 
        public int playerid;
        public int temploc = 0;
+       public int tempOldLoc = 0;
 
       
 
@@ -38,9 +39,31 @@ namespace MMSystems5Game
 
         public void lopen()
         {
+        
+            var player = App.gamestate.players.First(p=>p.PlayerId==playerid);
+            if (temploc!=63)
+            {
+            
+               
                 PlaatsC = App.bord.Plaats[temploc, 0];
                 PlaatsR = App.bord.Plaats[temploc, 1];
-                temploc++;
+                if (temploc < player.Locatie)
+                {
+                    temploc++;
+                }
+                else if (temploc>player.Locatie)
+                {
+                    temploc--;
+                }
+                
+            }
+
+                
+            else if (temploc==63)
+            {
+                temploc = 63;
+            }
+               
            
         }
 

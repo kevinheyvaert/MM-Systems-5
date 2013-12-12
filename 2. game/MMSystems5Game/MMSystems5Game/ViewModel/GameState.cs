@@ -75,7 +75,7 @@ namespace MMSystems5Game
             if (e.Result.players.Count==1)
             {
                 App.geel.playerid = e.Result.players[0].PlayerId;
-            
+                
 
                 if (e.Result.players.Count > 1)
                 {
