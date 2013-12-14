@@ -138,21 +138,14 @@ namespace MMSystems5Silverlight.Web
             try
             {
 
-               
-
                 DTO.Player player = new DTO.Player();
                 
                 var user = (from u in db.Players
                             where u.PlayerNaam == naam && u.Wachtwoord == wachtwoord
                             select u).First();
 
-
-
-
                 if (user != null)
                 {
-
-
                     player.PlayerId = user.PlayerId;
                     player.PlayerNaam = user.PlayerNaam;
                     player.Lobby = user.Lobby;
@@ -173,12 +166,10 @@ namespace MMSystems5Silverlight.Web
                         player.Verloren = user.Verloren.Value;
                     }
 
-
                     user.Locatie = 0;
                     user.Rule_19 = false;
                     user.Rule_52 = false;
                     user.IsHost = false;
-
 
                     db.SubmitChanges();
                     player.IsHost = false;
@@ -186,9 +177,7 @@ namespace MMSystems5Silverlight.Web
                 }
                 else
                     return null;
-                   
-                
-               
+                               
             }
 
             catch (Exception)
@@ -453,7 +442,6 @@ namespace MMSystems5Silverlight.Web
         {
             try
             {
-               
                 var stophost = (from s in db.Players
                                 where s.HostID == player.PlayerId
                                 select s);
@@ -469,7 +457,6 @@ namespace MMSystems5Silverlight.Web
                     item.Rule_32 = false;
                     item.Diced = 0;
                     
-
                 }
                 // lobby wordt gewist uit de database
                 var stoplobby = (from s in db.Lobbis
@@ -504,8 +491,7 @@ namespace MMSystems5Silverlight.Web
                        where l.HostID == lobby.HostID
                        select l).FirstOrDefault();
             //spel in de lobby wordt gestart
-           
-            
+                       
             lob.Start = true;
             lob.CanJoinLobby = false;
             lob.WhosTunrId = 0;
@@ -571,8 +557,6 @@ namespace MMSystems5Silverlight.Web
                                     speler.Rule_52 = false;
                                     state.players[lobby.WhosTunrId.Value].Rule_52 = false;
                                 }
-                               
-
                             }
                         }
                         if (lobby.WhosTunrId == players)
