@@ -20,8 +20,12 @@ namespace MMSystems5Game
 
         void client1_MaakAccountCompleted(object sender, GanzenBordServiceCloud.MaakAccountCompletedEventArgs e)
         {
-            App.player = e.Result;
-           (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
+            if (e.Result!=null)
+            {
+                  App.player = e.Result;
+                  (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri(string.Format("/MainGame.xaml"), UriKind.Relative));
+           
+            }
            
         }
 

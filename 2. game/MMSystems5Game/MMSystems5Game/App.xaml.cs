@@ -147,17 +147,12 @@ namespace MMSystems5Game
 
         void pionsetter_Tick(object sender, EventArgs e)
         {
-            if (gamestate.players.Count>=1)
+            if (gamestate.players.Count>0)
             {
                 if (App.gamestate.players[0].Locatie != App.geel.temploc)
                 {
                     App.geel.lopen();
                 }
-                else if(App.gamestate.players[0].Locatie == App.geel.temploc)
-                {
-                    App.geel.tempOldLoc = App.geel.temploc; 
-                }
-
                 if (gamestate.players.Count>1)
                 {
                     if (App.gamestate.players[1].Locatie != App.blauw.temploc)
