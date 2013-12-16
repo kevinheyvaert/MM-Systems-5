@@ -89,8 +89,8 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                DobbelEnLocatie.Add(0);
-                return DobbelEnLocatie;
+                
+                return null;
             }
         }
 
@@ -239,7 +239,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 
@@ -306,7 +306,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                return lobbyinfo;
+                return null;
             }
         }
 
@@ -410,7 +410,7 @@ namespace MMSystems5Silverlight.Web
 
             catch (Exception)
             {
-                return returnplay;
+                return null;
             }
         }
 
@@ -434,7 +434,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                throw;
+                
             }
         }
 
@@ -616,7 +616,7 @@ namespace MMSystems5Silverlight.Web
             }
             catch (Exception)
             {
-                return gamestate;
+                return null;
             }
         }
 
