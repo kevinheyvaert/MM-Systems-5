@@ -31,6 +31,8 @@ namespace MMSystems5Game
         public static bool Startspel = false;
         public static InloggenVM login;
         public static MaakAccountVM maakaccount;
+        public static GifViewer gifviewer;
+        public static int staplocatie;
 
         public static LobbysListVM lobbylistvm;
         public static PlayersInLobby LobbyInfo;
@@ -38,6 +40,7 @@ namespace MMSystems5Game
        
         public static DispatcherTimer timer;
         public static DispatcherTimer gametimer;
+        public static DispatcherTimer pionsetter;
        
         public static JoinVM join;
         public static StopHostVM stophost;
@@ -107,6 +110,11 @@ namespace MMSystems5Game
             gametimer.Tick += gametimer_Tick;
 
 
+            pionsetter = new DispatcherTimer();
+            pionsetter.Interval = TimeSpan.FromMilliseconds(500);
+            pionsetter.Tick += pionsetter_Tick;
+           
+
             client1 = new GanzenBordServiceCloud.GanzenbordServiceClient();
             player = new GanzenBordServiceCloud.Player();
             lobby = new GanzenBordServiceCloud.Lobby();
@@ -122,6 +130,8 @@ namespace MMSystems5Game
             start = new StartPlayVM();
             Status = new GameState();
             exitlobby = new ExitLobbyVM();
+            gifviewer = new GifViewer();
+            
 
             rood = new LocatieVM();
             blauw = new LocatieVM();
@@ -134,6 +144,42 @@ namespace MMSystems5Game
             DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformation_NetworkAvailabilityChanged;
 
         }
+
+        void pionsetter_Tick(object sender, EventArgs e)
+        {
+            if (gamestate.players.Count>0)
+            {
+                if (App.gamestate.players[0].Locatie != App.geel.temploc)
+                {
+                    App.geel.lopen();
+                }
+                if (gamestate.players.Count>1)
+                {
+                    if (App.gamestate.players[1].Locatie != App.blauw.temploc)
+                    {
+                        App.blauw.lopen();
+                    }
+                    if (gamestate.players.Count>2)
+                    {
+                        if (App.gamestate.players[2].Locatie != App.rood.temploc)
+                        {
+                            App.rood.lopen();
+                        }
+                        if (gamestate.players.Count > 3)
+                        {
+
+                            if (App.gamestate.players[3].Locatie != App.groen.temploc)
+                            {
+                                App.groen.lopen();
+                            }
+
+                        }         
+                    }
+                }
+            }  
+        }
+
+   
 
         void gametimer_Tick(object sender, EventArgs e)
         {
