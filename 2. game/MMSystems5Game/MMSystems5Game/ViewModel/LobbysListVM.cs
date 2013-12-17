@@ -39,16 +39,12 @@ namespace MMSystems5Game
        
         void client1_BeschikbareLobbysCompleted(object sender, GanzenBordServiceCloud.BeschikbareLobbysCompletedEventArgs e)
         {
-            if (e.Result != null)
-            {
-
-
                 if (BeschikbareLobbys == null || BeschikbareLobbys.Count != e.Result.Count)
                 {
                     BeschikbareLobbys = e.Result;
                 }
 
-
+                 
                 if (App.gamestate.Start)
                 {
                     App.start.Startclient();
@@ -60,9 +56,8 @@ namespace MMSystems5Game
                 if (App.player.IsHost)
                 {
                     App.MaakLobby.createstop = "Stop Lobby";
-
+                    
                 }
-            }
         }
 
         public void GetLobbys()

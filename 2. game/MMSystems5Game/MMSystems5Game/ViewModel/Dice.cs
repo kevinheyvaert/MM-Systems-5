@@ -27,18 +27,13 @@ namespace MMSystems5Game
         
         public Dice()
         {
-
             App.client1.GooiCompleted += client1_GooiCompleted;
 
         }
 
         void client1_GooiCompleted(object sender, GanzenBordServiceCloud.GooiCompletedEventArgs e)
         {
-            if (e.Result!=null)
-            {
-                 DobbelAantal = dice(e.Result[0]);
-            }
-        
+         DobbelAantal = dice(e.Result[0]);
           
         }
 

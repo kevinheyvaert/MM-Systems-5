@@ -27,7 +27,7 @@ namespace MMSystems5Game
             }
             catch (Exception)
             {               
-               
+                throw;
             }
            
         }
